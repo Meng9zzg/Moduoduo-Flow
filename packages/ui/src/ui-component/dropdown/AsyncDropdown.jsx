@@ -1,8 +1,6 @@
 import { useState, useEffect, useContext, Fragment } from 'react'
 import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
-import axios from 'axios'
-
 // Material
 import Autocomplete, { autocompleteClasses } from '@mui/material/Autocomplete'
 import { Popper, CircularProgress, TextField, Box, Typography, Tooltip } from '@mui/material'
@@ -10,6 +8,7 @@ import { useTheme, styled } from '@mui/material/styles'
 
 // API
 import credentialsApi from '@/api/credentials'
+import client from '@/api/client'
 
 // const
 import { baseURL } from '@/store/constant'

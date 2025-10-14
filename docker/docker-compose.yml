@@ -5,7 +5,9 @@ services:
         image: flowiseai/flowise:latest
         restart: always
         environment:
-            - PORT=${PORT}
+            - PORT=3000
+            - FLOWISE_USERNAME=admin
+            - FLOWISE_PASSWORD=admin123
 
             # DATABASE
             - DATABASE_PATH=${DATABASE_PATH}
@@ -132,7 +134,7 @@ services:
             - HTTP_DENY_LIST=${HTTP_DENY_LIST}
             - TRUST_PROXY=${TRUST_PROXY}
         ports:
-            - '${PORT}:${PORT}'
+            - "8000:3000"
         healthcheck:
             test: ['CMD', 'curl', '-f', 'http://localhost:${PORT}/api/v1/ping']
             interval: 10s

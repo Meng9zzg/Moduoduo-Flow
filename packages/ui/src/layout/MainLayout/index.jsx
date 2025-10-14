@@ -94,6 +94,96 @@ const MainLayout = () => {
             {/* drawer */}
             <Sidebar drawerOpen={leftDrawerOpened} drawerToggle={handleLeftDrawerToggle} />
 
+            {/* sidebar toggle button */}
+            <Box
+                sx={{
+                    position: 'fixed',
+                    left: leftDrawerOpened ? `${drawerWidth - 20}px` : '10px',
+                    top: `${headerHeight + 40}px`,
+                    transform: 'translateY(-50%)',
+                    zIndex: 1300,
+                    transition: theme.transitions.create('left', {
+                        easing: theme.transitions.easing.sharp,
+                        duration: theme.transitions.duration.leavingScreen
+                    })
+                }}
+            >
+                <div 
+                    style={{ 
+                        width: '32px', 
+                        height: '32px', 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        justifyContent: 'center',
+                        cursor: 'pointer',
+                        borderRadius: '50%',
+                        backgroundColor: theme.palette.background.paper,
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+                        border: `1px solid ${theme.palette.divider}`,
+                        transition: 'all 0.2s ease',
+                        color: theme.palette.text.primary
+                    }} 
+                    onClick={handleLeftDrawerToggle}
+                    onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = theme.palette.action.hover;
+                        e.currentTarget.style.transform = 'scale(1.1)';
+                        const paths = e.currentTarget.querySelectorAll('path');
+                        paths.forEach(path => {
+                            path.style.animation = 'arrowAnimate 0.4s ease-in-out';
+                        });
+                    }}
+                    onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = theme.palette.background.paper;
+                        e.currentTarget.style.transform = 'scale(1)';
+                        const paths = e.currentTarget.querySelectorAll('path');
+                        paths.forEach(path => {
+                            path.style.animation = '';
+                        });
+                    }}
+                >
+                    <style>{`
+                        @keyframes arrowAnimate {
+                            0% { transform: translateX(0px); }
+                            50% { transform: translateX(${leftDrawerOpened ? '3px' : '-3px'}); }
+                            100% { transform: translateX(0px); }
+                        }
+                    `}</style>
+                    {leftDrawerOpened ? (
+                        // 左箭头 - 侧边栏打开时显示
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width={16}
+                            height={16}
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        >
+                            <path d="m12 19-7-7 7-7" />
+                            <path d="M19 12H5" />
+                        </svg>
+                    ) : (
+                        // 右箭头 - 侧边栏关闭时显示
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width={16}
+                            height={16}
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        >
+                            <path d="M5 12h14" />
+                            <path d="m12 5 7 7-7 7" />
+                        </svg>
+                    )}
+                </div>
+            </Box>
+
             {/* main content */}
             <Main theme={theme} open={leftDrawerOpened}>
                 <Outlet />

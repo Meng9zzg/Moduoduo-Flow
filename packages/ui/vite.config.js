@@ -7,8 +7,8 @@ export default defineConfig(async ({ mode }) => {
     let proxy = undefined
     if (mode === 'development') {
         const serverEnv = dotenv.config({ processEnv: {}, path: '../server/.env' }).parsed
-        const serverHost = serverEnv?.['HOST'] ?? 'localhost'
-        const serverPort = parseInt(serverEnv?.['PORT'] ?? 3000)
+        const serverHost = 'localhost'
+        const serverPort = 8000
         if (!Number.isNaN(serverPort) && serverPort > 0 && serverPort < 65535) {
             proxy = {
                 '^/api(/|$).*': {
@@ -44,8 +44,8 @@ export default defineConfig(async ({ mode }) => {
         server: {
             open: true,
             proxy,
-            port: process.env.VITE_PORT ?? 8080,
-            host: process.env.VITE_HOST
+            port: 3000,
+            host: '0.0.0.0' // 监听所有网络接口
         }
     }
 })

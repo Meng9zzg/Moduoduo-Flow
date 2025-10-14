@@ -50,6 +50,8 @@ const OrgSetupSchema = z
 const OrganizationSetupPage = () => {
     useNotifier()
     const { isEnterpriseLicensed, isOpenSource } = useConfig()
+    const navigate = useNavigate()
+    
 
     const orgNameInput = {
         label: 'Organization',
@@ -102,7 +104,6 @@ const OrganizationSetupPage = () => {
     const loginApi = useApi(authApi.login)
     const registerAccountApi = useApi(accountApi.registerAccount)
     const getBasicAuthApi = useApi(accountApi.getBasicAuth)
-    const navigate = useNavigate()
 
     const getDefaultProvidersApi = useApi(loginMethodApi.getLoginMethods)
     const [configuredSsoProviders, setConfiguredSsoProviders] = useState([])

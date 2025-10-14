@@ -38,7 +38,38 @@ export default function componentStyleOverrides(theme) {
             styleOverrides: {
                 root: {
                     fontWeight: 500,
-                    borderRadius: '4px'
+                    borderRadius: '4px',
+                    // 为所有 contained 按钮添加样式
+                    '&.MuiButton-contained': {
+                        color: theme?.customization?.isDarkMode ? theme.colors?.darkPaper : 'white',
+                        backgroundColor: theme?.customization?.isDarkMode ? theme.colors?.highlightYellow : theme.colors?.primaryMain,
+                        '&:hover': {
+                            backgroundColor: theme?.customization?.isDarkMode 
+                                ? `${theme.colors?.highlightYellow}E6` // 90% 透明度
+                                : theme.colors?.primaryDark,
+                            backgroundImage: theme?.customization?.isDarkMode ? 'none' : undefined
+                        }
+                    }
+                },
+                containedPrimary: {
+                    color: theme?.customization?.isDarkMode ? theme.colors?.darkPaper : 'white',
+                    backgroundColor: theme?.customization?.isDarkMode ? theme.colors?.highlightYellow : theme.colors?.primaryMain,
+                    '&:hover': {
+                        backgroundColor: theme?.customization?.isDarkMode 
+                            ? `${theme.colors?.highlightYellow}E6` // 90% 透明度
+                            : theme.colors?.primaryDark,
+                        backgroundImage: theme?.customization?.isDarkMode ? 'none' : undefined
+                    }
+                },
+                contained: {
+                    color: theme?.customization?.isDarkMode ? theme.colors?.darkPaper : 'white',
+                    backgroundColor: theme?.customization?.isDarkMode ? theme.colors?.highlightYellow : theme.colors?.primaryMain,
+                    '&:hover': {
+                        backgroundColor: theme?.customization?.isDarkMode 
+                            ? `${theme.colors?.highlightYellow}E6` // 90% 透明度
+                            : theme.colors?.primaryDark,
+                        backgroundImage: theme?.customization?.isDarkMode ? 'none' : undefined
+                    }
                 }
             }
         },
@@ -96,19 +127,29 @@ export default function componentStyleOverrides(theme) {
                     paddingBottom: '10px',
                     '&.Mui-selected': {
                         color: theme.menuSelected,
-                        backgroundColor: theme.menuSelectedBack,
+                        backgroundColor: theme?.customization?.isDarkMode 
+                            ? `${theme.colors?.grey700}80` // 50% transparency
+                            : theme.menuSelectedBack,
                         '&:hover': {
-                            backgroundColor: theme.menuSelectedBack
+                            backgroundColor: theme?.customization?.isDarkMode 
+                                ? `${theme.colors?.grey700}80` // Keep 50% transparency on hover when selected
+                                : theme.menuSelectedBack
                         },
                         '& .MuiListItemIcon-root': {
                             color: theme.menuSelected
                         }
                     },
                     '&:hover': {
-                        backgroundColor: theme.menuSelectedBack,
-                        color: theme.menuSelected,
+                        backgroundColor: theme?.customization?.isDarkMode 
+                            ? `${theme.colors?.grey700}33` // 20% transparency (33 in hex)
+                            : theme.menuSelectedBack,
+                        color: theme?.customization?.isDarkMode 
+                            ? theme.darkTextPrimary // Keep regular sidebar text color
+                            : theme.menuSelected,
                         '& .MuiListItemIcon-root': {
-                            color: theme.menuSelected
+                            color: theme?.customization?.isDarkMode 
+                                ? theme.darkTextPrimary // Keep regular sidebar icon color
+                                : theme.menuSelected
                         }
                     }
                 }
@@ -232,6 +273,15 @@ export default function componentStyleOverrides(theme) {
                 option: {
                     '&:hover': {
                         background: theme?.customization?.isDarkMode ? '#233345 !important' : ''
+                    }
+                }
+            }
+        },
+        MuiTab: {
+            styleOverrides: {
+                root: {
+                    '&.Mui-selected': {
+                        color: theme?.customization?.isDarkMode ? '#ffffff !important' : undefined
                     }
                 }
             }

@@ -19,15 +19,15 @@ export const theme = (customization) => {
     const themeOption = customization.isDarkMode
         ? {
               colors: color,
-              heading: color.paper,
+              heading: color.darkTextTitle,
               paper: color.darkPrimaryLight,
               backgroundDefault: color.darkPaper,
               background: color.darkPrimaryLight,
-              darkTextPrimary: color.paper,
-              darkTextSecondary: color.paper,
-              textDark: color.paper,
-              menuSelected: color.darkSecondaryDark,
-              menuSelectedBack: color.darkSecondaryLight,
+              darkTextPrimary: color.darkTextPrimary,
+              darkTextSecondary: color.darkTextSecondary,
+              textDark: color.darkTextTitle,
+              menuSelected: color.highlightYellow,
+              menuSelectedBack: color.grey700,
               divider: color.darkPaper,
               customization
           }
