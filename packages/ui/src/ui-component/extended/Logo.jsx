@@ -9,9 +9,20 @@ const Logo = () => {
     const customization = useSelector((state) => state.customization)
 
     return (
-        <div style={{ alignItems: 'center', display: 'flex', flexDirection: 'row', marginLeft: '10px' }}>
+        <div style={{ 
+            alignItems: 'center', 
+            display: 'flex', 
+            flexDirection: 'row', 
+            marginLeft: '10px'
+        }}>
             <img
-                style={{ objectFit: 'contain', height: '40px', width: 'auto' }}
+                style={{ 
+                    objectFit: 'contain', 
+                    height: '40px', 
+                    width: 'auto',
+                    transform: 'scale(1.2)',
+                    transformOrigin: 'left center'
+                }}
                 src={customization.isDarkMode ? logoDark : logo}
                 alt='Moduoduo Agent FLOW'
             />

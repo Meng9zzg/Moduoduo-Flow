@@ -389,24 +389,31 @@ const ProfileSection = ({ handleLogout }) => {
     return (
         <>
             <ButtonBase ref={anchorRef} sx={{ borderRadius: '12px', overflow: 'hidden' }}>
-                <Avatar
-                    variant='rounded'
-                    sx={{
-                        ...theme.typography.commonAvatar,
-                        ...theme.typography.mediumAvatar,
-                        transition: 'all .2s ease-in-out',
-                        background: theme.palette.secondary.light,
-                        color: theme.palette.secondary.dark,
-                        '&:hover': {
-                            background: theme.palette.secondary.dark,
-                            color: theme.palette.secondary.light
-                        }
-                    }}
-                    onClick={handleToggle}
-                    color='inherit'
-                >
-                    <IconSettings stroke={1.5} size='1.3rem' />
-                </Avatar>
+                    <Avatar
+                        variant='rounded'
+                        sx={{
+                            ...theme.typography.commonAvatar,
+                            ...theme.typography.mediumAvatar,
+                            transition: 'all .2s ease-in-out',
+                            background: theme.palette.secondary.light,
+                            color: theme.palette.secondary.dark,
+                            '&:hover': {
+                                background: theme.palette.secondary.dark,
+                                color: theme.palette.secondary.light,
+                                '& svg': {
+                                    transform: 'rotate(180deg)',
+                                    transition: 'transform 0.3s ease-in-out'
+                                }
+                            },
+                            '& svg': {
+                                transition: 'transform 0.3s ease-in-out'
+                            }
+                        }}
+                        onClick={handleToggle}
+                        color='inherit'
+                    >
+                        <IconSettings stroke={1.5} size='1.3rem' />
+                    </Avatar>
             </ButtonBase>
             <Popper
                 placement='bottom-end'
