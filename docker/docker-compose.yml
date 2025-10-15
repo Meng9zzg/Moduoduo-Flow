@@ -2,7 +2,10 @@ version: '3.1'
 
 services:
     flowise:
-        image: flowiseai/flowise:latest
+        build:
+            context: ..
+            dockerfile: Dockerfile
+        image: flowise-i18n:latest
         restart: always
         environment:
             - PORT=3000
@@ -134,7 +137,7 @@ services:
             - HTTP_DENY_LIST=${HTTP_DENY_LIST}
             - TRUST_PROXY=${TRUST_PROXY}
         ports:
-            - "8000:3000"
+            - '8000:3000'
         healthcheck:
             test: ['CMD', 'curl', '-f', 'http://localhost:${PORT}/api/v1/ping']
             interval: 10s
