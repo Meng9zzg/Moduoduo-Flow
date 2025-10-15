@@ -26,8 +26,8 @@
     "maintenanceMode": "System is under maintenance",
     "featureUnavailable": "This feature is currently unavailable",
     "boundary": {
-        "title": "Sorry, an error occurred while loading this page.",
+        "title": "Sorry, an error occurred while loading this page",
         "statusLabel": "Status",
-        "retryMessage": "Please retry after some time."
+        "retryMessage": "Please retry after some time"
     }
 }
