@@ -1,0 +1,23 @@
+{
+    "title": "Variables",
+    "description": "Create and manage global variables",
+    "searchPlaceholder": "Search Variables",
+    "addVariable": "Add Variable",
+    "noVariablesYet": "No Variables Yet",
+    "name": "Name",
+    "value": "Value",
+    "type": "Type",
+    "lastUpdated": "Last Updated",
+    "created": "Created",
+    "edit": "Edit",
+    "delete": "Delete",
+    "deleteConfirmTitle": "Delete",
+    "deleteConfirmDescription": "Delete variable {{name}}?",
+    "cancel": "Cancel",
+    "confirmDelete": "Delete",
+    "add": "Add",
+    "save": "Save",
+    "variableDeleted": "Variable deleted",
+    "deleteError": "Failed to delete Variable: {{message}}",
+    "howToUse": "How To Use"
+}

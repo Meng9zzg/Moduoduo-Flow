@@ -1,0 +1,23 @@
+{
+    "title": "变量",
+    "description": "创建和管理全局变量",
+    "searchPlaceholder": "搜索变量",
+    "addVariable": "添加变量",
+    "noVariablesYet": "暂无变量",
+    "name": "名称",
+    "value": "值",
+    "type": "类型",
+    "lastUpdated": "最后更新",
+    "created": "创建时间",
+    "edit": "编辑",
+    "delete": "删除",
+    "deleteConfirmTitle": "删除",
+    "deleteConfirmDescription": "删除变量 {{name}}?",
+    "cancel": "取消",
+    "confirmDelete": "删除",
+    "add": "添加",
+    "save": "保存",
+    "variableDeleted": "变量已删除",
+    "deleteError": "删除变量失败: {{message}}",
+    "howToUse": "如何使用"
+}

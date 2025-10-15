@@ -1,0 +1,32 @@
+{
+    "title": "Agent Executions",
+    "description": "Monitor and manage agentflows executions",
+    "filters": {
+        "state": "State",
+        "startDate": "Start date",
+        "endDate": "End date",
+        "agentflow": "Agentflow",
+        "sessionId": "Session ID",
+        "apply": "Apply",
+        "reset": "Reset",
+        "deleteTooltip": "Delete selected executions"
+    },
+    "states": {
+        "all": "All",
+        "inProgress": "In Progress",
+        "finished": "Finished",
+        "error": "Error",
+        "terminated": "Terminated",
+        "timeout": "Timeout",
+        "stopped": "Stopped"
+    },
+    "deleteDialog": {
+        "title": "Confirm Deletion",
+        "message": "Are you sure you want to delete {{count}} execution",
+        "message_plural": "Are you sure you want to delete {{count}} executions",
+        "confirmMessage": "This action cannot be undone.",
+        "cancel": "Cancel",
+        "delete": "Delete"
+    },
+    "noExecutionsYet": "No Executions Yet"
+}
