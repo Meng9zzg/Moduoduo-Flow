@@ -1,0 +1,11 @@
+{
+    "title": "Agentflows",
+    "description": "Multi-agent systems, workflow orchestration",
+    "searchPlaceholder": "Search Name or Category",
+    "addNew": "Add New",
+    "cardView": "Card View",
+    "listView": "List View",
+    "noAgentsYet": "No Agents Yet",
+    "v1Deprecated": "V1 Agentflows are deprecated.",
+    "v1DeprecatedMessage": "We recommend migrating to V2 for improved performance and continued support."
+}

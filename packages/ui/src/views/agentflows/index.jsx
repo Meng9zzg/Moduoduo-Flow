@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { Chip, Box, Stack, ToggleButton, ToggleButtonGroup, IconButton } from '@mui/material'
@@ -37,6 +38,7 @@ const Agentflows = () => {
     const navigate = useNavigate()
     const theme = useTheme()
     const customization = useSelector((state) => state.customization)
+    const { t } = useTranslation(['agentflows', 'common'])
 
     const [isLoading, setLoading] = useState(true)
     const [images, setImages] = useState({})
@@ -177,9 +179,9 @@ const Agentflows = () => {
                     <ViewHeader
                         onSearchChange={onSearchChange}
                         search={true}
-                        searchPlaceholder='Search Name or Category'
-                        title='Agentflows'
-                        description='Multi-agent systems, workflow orchestration'
+                        searchPlaceholder={t('agentflows:searchPlaceholder')}
+                        title={t('agentflows:title')}
+                        description={t('agentflows:description')}
                     >
                         <ToggleButtonGroup
                             sx={{ borderRadius: 2, maxHeight: 40 }}
@@ -230,7 +232,7 @@ const Agentflows = () => {
                                 }}
                                 variant='contained'
                                 value='card'
-                                title='Card View'
+                                title={t('agentflows:cardView')}
                             >
                                 <IconLayoutGrid />
                             </ToggleButton>
@@ -242,7 +244,7 @@ const Agentflows = () => {
                                 }}
                                 variant='contained'
                                 value='list'
-                                title='List View'
+                                title={t('agentflows:listView')}
                             >
                                 <IconList />
                             </ToggleButton>
@@ -254,7 +256,7 @@ const Agentflows = () => {
                             startIcon={<IconPlus />}
                             sx={{ borderRadius: 2, height: 40 }}
                         >
-                            Add New
+                            {t('agentflows:addNew')}
                         </StyledPermissionButton>
                     </ViewHeader>
 
@@ -282,8 +284,7 @@ const Agentflows = () => {
                                 }}
                             />
                             <Box sx={{ flex: 1 }}>
-                                <strong>V1 Agentflows are deprecated.</strong> We recommend migrating to V2 for improved performance and
-                                continued support.
+                                <strong>{t('agentflows:v1Deprecated')}</strong> {t('agentflows:v1DeprecatedMessage')}
                             </Box>
                             <IconButton
                                 aria-label='dismiss'
@@ -341,7 +342,7 @@ const Agentflows = () => {
                                     alt='AgentsEmptySVG'
                                 />
                             </Box>
-                            <div>No Agents Yet</div>
+                            <div>{t('agentflows:noAgentsYet')}</div>
                         </Stack>
                     )}
                 </Stack>
