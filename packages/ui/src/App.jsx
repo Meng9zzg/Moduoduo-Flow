@@ -1,7 +1,8 @@
+import { Suspense } from 'react'
 import { useSelector } from 'react-redux'
 
 import { ThemeProvider } from '@mui/material/styles'
-import { CssBaseline, StyledEngineProvider } from '@mui/material'
+import { CssBaseline, StyledEngineProvider, CircularProgress, Box } from '@mui/material'
 
 // i18n
 import '@/i18n/config'
@@ -17,18 +18,34 @@ import NavigationScroll from '@/layout/NavigationScroll'
 
 // ==============================|| APP ||============================== //
 
+const LoadingFallback = () => (
+    <Box
+        sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100vh',
+            width: '100vw'
+        }}
+    >
+        <CircularProgress />
+    </Box>
+)
+
 const App = () => {
     const customization = useSelector((state) => state.customization)
 
     return (
-        <StyledEngineProvider injectFirst>
-            <ThemeProvider theme={themes(customization)}>
-                <CssBaseline />
-                <NavigationScroll>
-                    <Routes />
-                </NavigationScroll>
-            </ThemeProvider>
-        </StyledEngineProvider>
+        <Suspense fallback={<LoadingFallback />}>
+            <StyledEngineProvider injectFirst>
+                <ThemeProvider theme={themes(customization)}>
+                    <CssBaseline />
+                    <NavigationScroll>
+                        <Routes />
+                    </NavigationScroll>
+                </ThemeProvider>
+            </StyledEngineProvider>
+        </Suspense>
     )
 }
 

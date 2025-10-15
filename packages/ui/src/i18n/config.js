@@ -70,9 +70,9 @@ const initI18n = async () => {
                 }
             },
 
-            // 加载翻译文件时立即使用
+            // 使用Suspense等待翻译加载
             react: {
-                useSuspense: false
+                useSuspense: true
             }
         })
 
