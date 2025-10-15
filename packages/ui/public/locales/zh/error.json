@@ -26,8 +26,7 @@
     "maintenanceMode": "系统正在维护中",
     "featureUnavailable": "此功能暂时不可用",
     "boundary": {
-        "title": "抱歉，加载此页面时发生错误",
-        "statusLabel": "状态",
-        "retryMessage": "请稍后重试"
+        "message": "抱歉，加载此页面时发生错误，请稍后重试",
+        "statusLabel": "状态"
     }
 }

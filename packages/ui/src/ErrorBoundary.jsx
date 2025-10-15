@@ -18,7 +18,6 @@ const ErrorBoundary = ({ error }) => {
         <Box sx={{ border: 1, borderColor: theme.palette.grey[900] + 25, borderRadius: 2, padding: '20px', maxWidth: '1280px' }}>
             <Stack flexDirection='column' sx={{ alignItems: 'center', gap: 3 }}>
                 <Box component='img' src={WrongImg} alt='Error' sx={{ width: '120px', height: '120px' }} />
-                <Typography variant='h2'>{t('boundary.title')}</Typography>
                 <Card variant='outlined'>
                     <Box sx={{ position: 'relative', px: 2, py: 3 }}>
                         <IconButton
@@ -34,7 +33,7 @@ const ErrorBoundary = ({ error }) => {
                     </Box>
                 </Card>
                 <Typography variant='body1' sx={{ fontSize: '1.1rem', textAlign: 'center', lineHeight: '1.5' }}>
-                    {t('boundary.retryMessage')}
+                    {t('boundary.message')}
                 </Typography>
             </Stack>
         </Box>
