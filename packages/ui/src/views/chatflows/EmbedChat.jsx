@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 
 import { Tabs, Tab, Box } from '@mui/material'
 import { CopyBlock, atomOneDark } from 'react-code-blocks'
@@ -286,7 +287,8 @@ const App = () => {
 }
 
 const EmbedChat = ({ chatflowid }) => {
-    const codes = ['Popup Html', 'Fullpage Html', 'Popup React', 'Fullpage React']
+    const { t } = useTranslation('chatflows')
+    const codes = [t('embedChat.popupHtml'), t('embedChat.fullpageHtml'), t('embedChat.popupReact'), t('embedChat.fullpageReact')]
     const [value, setValue] = useState(0)
     const [embedChatCheckboxVal, setEmbedChatCheckbox] = useState(false)
 
@@ -300,13 +302,13 @@ const EmbedChat = ({ chatflowid }) => {
 
     const getCode = (codeLang) => {
         switch (codeLang) {
-            case 'Popup Html':
+            case t('embedChat.popupHtml'):
                 return embedPopupHtmlCode(chatflowid)
-            case 'Fullpage Html':
+            case t('embedChat.fullpageHtml'):
                 return embedFullpageHtmlCode(chatflowid)
-            case 'Popup React':
+            case t('embedChat.popupReact'):
                 return embedPopupReactCode(chatflowid)
-            case 'Fullpage React':
+            case t('embedChat.fullpageReact'):
                 return embedFullpageReactCode(chatflowid)
             default:
                 return ''
@@ -315,13 +317,13 @@ const EmbedChat = ({ chatflowid }) => {
 
     const getCodeCustomization = (codeLang) => {
         switch (codeLang) {
-            case 'Popup Html':
+            case t('embedChat.popupHtml'):
                 return embedPopupHtmlCodeCustomization(chatflowid)
-            case 'Fullpage Html':
+            case t('embedChat.fullpageHtml'):
                 return embedFullpageHtmlCodeCustomization(chatflowid)
-            case 'Popup React':
+            case t('embedChat.popupReact'):
                 return embedPopupReactCodeCustomization(chatflowid)
-            case 'Fullpage React':
+            case t('embedChat.fullpageReact'):
                 return embedFullpageReactCodeCustomization(chatflowid)
             default:
                 return embedPopupHtmlCodeCustomization(chatflowid)
@@ -345,7 +347,7 @@ const EmbedChat = ({ chatflowid }) => {
                     {(value === 0 || value === 1) && (
                         <>
                             <span>
-                                Paste this anywhere in the <code>{`<body>`}</code> tag of your html file.
+                                {t('embedChat.instructions')} <code>{`<body>`}</code> tag of your html file.
                                 <p>
                                     You can also specify a&nbsp;
                                     <a
@@ -353,7 +355,7 @@ const EmbedChat = ({ chatflowid }) => {
                                         target='_blank'
                                         href='https://www.npmjs.com/package/flowise-embed?activeTab=versions'
                                     >
-                                        version
+                                        {t('embedChat.version')}
                                     </a>
                                     :&nbsp;<code>{`https://cdn.jsdelivr.net/npm/flowise-embed@<version>/dist/web.js`}</code>
                                 </p>
@@ -363,7 +365,7 @@ const EmbedChat = ({ chatflowid }) => {
                     )}
                     <CopyBlock theme={atomOneDark} text={getCode(codeLang)} language='javascript' showLineNumbers={false} wrapLines />
 
-                    <CheckboxInput label='Show Embed Chat Config' value={embedChatCheckboxVal} onChange={onCheckBoxEmbedChatChanged} />
+                    <CheckboxInput label={t('embedChat.showConfig')} value={embedChatCheckboxVal} onChange={onCheckBoxEmbedChatChanged} />
 
                     {embedChatCheckboxVal && (
                         <CopyBlock

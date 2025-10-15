@@ -64,6 +64,35 @@ import { useError } from '@/store/context/ErrorContext'
 const badges = ['POPULAR', 'NEW']
 const types = ['Chatflow', 'AgentflowV2', 'Tool']
 const framework = ['Langchain', 'LlamaIndex']
+
+// Translation mapping for badges
+const getBadgeTranslationKey = (badge) => {
+    const map = {
+        POPULAR: 'badges.popular',
+        NEW: 'badges.new',
+        DEPRECATED: 'badges.deprecated'
+    }
+    return map[badge] || badge
+}
+
+// Translation mapping for types
+const getTypeTranslationKey = (type) => {
+    const map = {
+        Chatflow: 'types.chatflow',
+        AgentflowV2: 'types.agentflowV2',
+        Tool: 'types.tool'
+    }
+    return map[type] || type
+}
+
+// Translation mapping for frameworks
+const getFrameworkTranslationKey = (framework) => {
+    const map = {
+        Langchain: 'frameworks.langchain',
+        LlamaIndex: 'frameworks.llamaIndex'
+    }
+    return map[framework] || framework
+}
 const MenuProps = {
     PaperProps: {
         style: {
@@ -119,12 +148,12 @@ const Marketplace = () => {
     const share = (template) => {
         const dialogProps = {
             type: 'EDIT',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Share',
+            cancelButtonName: t('actions.cancel'),
+            confirmButtonName: t('actions.share'),
             data: {
                 id: template.id,
                 name: template.name,
-                title: 'Share Custom Template',
+                title: t('dialog.shareTitle'),
                 itemType: 'custom_template'
             }
         }
@@ -220,10 +249,10 @@ const Marketplace = () => {
 
     const onDeleteCustomTemplate = async (template) => {
         const confirmPayload = {
-            title: `Delete`,
-            description: `Delete Custom Template ${template.name}?`,
-            confirmButtonName: 'Delete',
-            cancelButtonName: 'Cancel'
+            title: t('dialog.deleteTitle'),
+            description: t('dialog.deleteDescription', { name: template.name }),
+            confirmButtonName: t('actions.delete'),
+            cancelButtonName: t('actions.cancel')
         }
         const isConfirmed = await confirm(confirmPayload)
 
@@ -232,7 +261,7 @@ const Marketplace = () => {
                 const deleteResp = await marketplacesApi.deleteCustomTemplate(template.id)
                 if (deleteResp.data) {
                     enqueueSnackbar({
-                        message: 'Custom Template deleted successfully!',
+                        message: t('dialog.deleteSuccess'),
                         options: {
                             key: new Date().getTime() + Math.random(),
                             variant: 'success',
@@ -247,9 +276,9 @@ const Marketplace = () => {
                 }
             } catch (error) {
                 enqueueSnackbar({
-                    message: `Failed to delete custom template: ${
-                        typeof error.response.data === 'object' ? error.response.data.message : error.response.data
-                    }`,
+                    message: t('dialog.deleteError', {
+                        error: typeof error.response.data === 'object' ? error.response.data.message : error.response.data
+                    }),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'error',
@@ -323,10 +352,10 @@ const Marketplace = () => {
 
     const onUseTemplate = (selectedTool) => {
         const dialogProp = {
-            title: 'Add New Tool',
+            title: t('actions.addNewTool'),
             type: 'IMPORT',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Add',
+            cancelButtonName: t('actions.cancel'),
+            confirmButtonName: t('actions.add'),
             data: selectedTool
         }
         setToolDialogProps(dialogProp)
@@ -508,7 +537,7 @@ const Marketplace = () => {
                                                     sx={{ display: 'flex', alignItems: 'center', gap: 1, p: 1 }}
                                                 >
                                                     <Checkbox checked={badgeFilter.indexOf(name) > -1} sx={{ p: 0 }} />
-                                                    <ListItemText primary={name} />
+                                                    <ListItemText primary={t(getBadgeTranslationKey(name))} />
                                                 </MenuItem>
                                             ))}
                                         </Select>
@@ -544,7 +573,7 @@ const Marketplace = () => {
                                                     sx={{ display: 'flex', alignItems: 'center', gap: 1, p: 1 }}
                                                 >
                                                     <Checkbox checked={typeFilter.indexOf(name) > -1} sx={{ p: 0 }} />
-                                                    <ListItemText primary={name} />
+                                                    <ListItemText primary={t(getTypeTranslationKey(name))} />
                                                 </MenuItem>
                                             ))}
                                         </Select>
@@ -580,7 +609,7 @@ const Marketplace = () => {
                                                     sx={{ display: 'flex', alignItems: 'center', gap: 1, p: 1 }}
                                                 >
                                                     <Checkbox checked={frameworkFilter.indexOf(name) > -1} sx={{ p: 0 }} />
-                                                    <ListItemText primary={name} />
+                                                    <ListItemText primary={t(getFrameworkTranslationKey(name))} />
                                                 </MenuItem>
                                             ))}
                                         </Select>

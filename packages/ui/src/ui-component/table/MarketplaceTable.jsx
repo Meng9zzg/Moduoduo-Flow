@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import { styled } from '@mui/material/styles'
 import { tableCellClasses } from '@mui/material/TableCell'
 import {
@@ -52,6 +53,7 @@ export const MarketplaceTable = ({
     onDelete,
     onShare
 }) => {
+    const { t } = useTranslation('marketplaces')
     const theme = useTheme()
     const customization = useSelector((state) => state.customization)
 
@@ -75,19 +77,19 @@ export const MarketplaceTable = ({
                     >
                         <TableRow>
                             <StyledTableCell sx={{ minWidth: '150px' }} component='th' scope='row' key='0'>
-                                Name
+                                {t('table.name')}
                             </StyledTableCell>
                             <StyledTableCell sx={{ minWidth: '100px' }} component='th' scope='row' key='1'>
-                                Type
+                                {t('table.type')}
                             </StyledTableCell>
-                            <StyledTableCell key='2'>Description</StyledTableCell>
+                            <StyledTableCell key='2'>{t('table.description')}</StyledTableCell>
                             <StyledTableCell sx={{ minWidth: '100px' }} key='3'>
-                                Framework
+                                {t('table.framework')}
                             </StyledTableCell>
                             <StyledTableCell sx={{ minWidth: '100px' }} key='4'>
-                                Use cases
+                                {t('table.usecases')}
                             </StyledTableCell>
-                            <StyledTableCell key='5'>Badges</StyledTableCell>
+                            <StyledTableCell key='5'>{t('table.badges')}</StyledTableCell>
                             <StyledTableCell component='th' scope='row' key='6'></StyledTableCell>
                         </TableRow>
                     </TableHead>
@@ -209,9 +211,16 @@ export const MarketplaceTable = ({
                                             <StyledTableCell key='5'>
                                                 <Typography>
                                                     {row.badge &&
-                                                        row.badge
-                                                            .split(';')
-                                                            .map((tag, index) => (
+                                                        row.badge.split(';').map((tag, index) => {
+                                                            const badgeKey =
+                                                                tag === 'POPULAR'
+                                                                    ? 'badges.popular'
+                                                                    : tag === 'DEPRECATED'
+                                                                    ? 'badges.deprecated'
+                                                                    : tag === 'NEW'
+                                                                    ? 'badges.new'
+                                                                    : null
+                                                            return (
                                                                 <Chip
                                                                     color={
                                                                         tag === 'POPULAR'
@@ -222,22 +231,23 @@ export const MarketplaceTable = ({
                                                                     }
                                                                     key={index}
                                                                     size='small'
-                                                                    label={tag.toUpperCase()}
+                                                                    label={badgeKey ? t(badgeKey) : tag.toUpperCase()}
                                                                     style={{ marginRight: 5, marginBottom: 5 }}
                                                                 />
-                                                            ))}
+                                                            )
+                                                        })}
                                                 </Typography>
                                             </StyledTableCell>
                                             <StyledTableCell key='6' colSpan={row.shared ? 2 : undefined}>
                                                 {row.shared ? (
-                                                    <Typography>Shared Template</Typography>
+                                                    <Typography>{t('table.sharedTemplate')}</Typography>
                                                 ) : (
                                                     <>
                                                         {onShare && (
                                                             <PermissionIconButton
                                                                 display={'feat:workspaces'}
                                                                 permissionId={'templates:custom-share'}
-                                                                title='Share'
+                                                                title={t('actions.share')}
                                                                 color='primary'
                                                                 onClick={() => onShare(row)}
                                                             >
@@ -247,7 +257,7 @@ export const MarketplaceTable = ({
                                                         {onDelete && (
                                                             <PermissionIconButton
                                                                 permissionId={'templates:custom-delete'}
-                                                                title='Delete'
+                                                                title={t('actions.delete')}
                                                                 color='error'
                                                                 onClick={() => onDelete(row)}
                                                             >
