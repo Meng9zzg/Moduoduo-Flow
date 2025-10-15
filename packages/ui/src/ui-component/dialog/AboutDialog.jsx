@@ -4,8 +4,6 @@ import PropTypes from 'prop-types'
 import { Dialog, DialogContent, DialogTitle, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import moment from 'moment'
-import axios from 'axios'
-import { baseURL } from '@/store/constant'
 
 const AboutDialog = ({ show, onCancel }) => {
     const portalElement = document.getElementById('portal')
@@ -15,23 +13,14 @@ const AboutDialog = ({ show, onCancel }) => {
 
     useEffect(() => {
         if (show) {
-            const latestReleaseReq = axios.get('https://api.github.com/repos/FlowiseAI/Flowise/releases/latest')
-            const currentVersionReq = axios.get(`${baseURL}/api/v1/version`, {
-                withCredentials: true,
-                headers: { 'Content-type': 'application/json', 'x-request-from': 'internal' }
-            })
-
-            Promise.all([latestReleaseReq, currentVersionReq])
-                .then(([latestReleaseData, currentVersionData]) => {
-                    const finalData = {
-                        ...latestReleaseData.data,
-                        currentVersion: currentVersionData.data.version
-                    }
-                    setData(finalData)
-                })
-                .catch((error) => {
-                    console.error('Error fetching data:', error)
-                })
+            // 使用固定的版本信息
+            const finalData = {
+                currentVersion: 'V1.0 Beta',
+                name: 'V1.0 Beta',
+                html_url: '#',
+                published_at: new Date().toISOString()
+            }
+            setData(finalData)
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -66,11 +55,9 @@ const AboutDialog = ({ show, onCancel }) => {
                                         {data.currentVersion}
                                     </TableCell>
                                     <TableCell component='th' scope='row'>
-                                        <a target='_blank' rel='noreferrer' href={data.html_url}>
-                                            {data.name}
-                                        </a>
+                                        {data.name}
                                     </TableCell>
-                                    <TableCell>{moment(data.published_at).fromNow()}</TableCell>
+                                    <TableCell>{moment(data.published_at).format('YYYY-MM-DD')}</TableCell>
                                 </TableRow>
                             </TableBody>
                         </Table>
