@@ -90,7 +90,8 @@ const ItemCard = ({ data, images, icons, onClick }) => {
                                     WebkitLineClamp: 2,
                                     WebkitBoxOrient: 'vertical',
                                     textOverflow: 'ellipsis',
-                                    overflow: 'hidden'
+                                    overflow: 'hidden',
+                                    color: customization.isDarkMode ? theme.palette.grey[50] : 'inherit'
                                 }}
                             >
                                 {data.templateName || data.name}
@@ -105,7 +106,8 @@ const ItemCard = ({ data, images, icons, onClick }) => {
                                     WebkitLineClamp: 3,
                                     WebkitBoxOrient: 'vertical',
                                     textOverflow: 'ellipsis',
-                                    overflow: 'hidden'
+                                    overflow: 'hidden',
+                                    color: customization.isDarkMode ? theme.palette.grey[400] : `${theme.palette.grey[600]}D9`
                                 }}
                             >
                                 {description}
@@ -173,7 +175,10 @@ const ItemCard = ({ data, images, icons, onClick }) => {
                                             alignItems: 'center',
                                             display: 'flex',
                                             fontSize: '.9rem',
-                                            fontWeight: 400
+                                            fontWeight: 400,
+                                            color: customization.isDarkMode
+                                                ? `${theme.palette.grey[200]}99`
+                                                : `${theme.palette.grey[600]}A6`
                                         }}
                                     >
                                         + {(images?.length || 0) + (icons?.length || 0) - 3} {t('more')}

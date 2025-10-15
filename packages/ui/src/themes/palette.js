@@ -56,6 +56,7 @@ export default function themePalette(theme) {
             100: theme.colors?.grey100,
             200: theme.colors?.grey200,
             300: theme.colors?.grey300,
+            400: theme.colors?.grey400,
             500: theme.darkTextSecondary,
             600: theme.heading,
             700: theme.darkTextPrimary,
@@ -79,7 +80,7 @@ export default function themePalette(theme) {
             default: theme.backgroundDefault
         },
         textBackground: {
-            main: theme.customization.isDarkMode ? theme.colors?.darkPrimary800 : theme.colors?.grey50,
+            main: theme.customization.isDarkMode ? theme.colors?.darkLevel2 : theme.colors?.grey50,
             border: theme.customization.isDarkMode ? theme.colors?.transparent : theme.colors?.grey400
         },
         card: {
@@ -88,7 +89,7 @@ export default function themePalette(theme) {
             hover: theme.customization.isDarkMode ? theme.colors?.darkPrimary800 : theme.colors?.paper
         },
         asyncSelect: {
-            main: theme.customization.isDarkMode ? theme.colors?.darkPrimary800 : theme.colors?.grey50
+            main: theme.customization.isDarkMode ? theme.colors?.darkLevel2 : theme.colors?.grey50
         },
         timeMessage: {
             main: theme.customization.isDarkMode ? theme.colors?.darkLevel2 : theme.colors?.grey200

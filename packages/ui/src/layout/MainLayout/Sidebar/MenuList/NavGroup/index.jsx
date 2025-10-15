@@ -100,7 +100,13 @@ const NavGroup = ({ item }) => {
                 return (
                     <Available key={group.id} permission={groupPermissions}>
                         <>
-                            <Divider sx={{ height: '1px', borderColor: theme.palette.grey[900] + 25, my: 0 }} />
+                            <Divider
+                                sx={{
+                                    height: '1px',
+                                    borderColor: theme.customization?.isDarkMode ? theme.palette.grey.dark : theme.palette.grey[900] + 25,
+                                    my: 0
+                                }}
+                            />
                             <List
                                 subheader={
                                     <Typography variant='caption' sx={{ ...theme.typography.subMenuCaption }} display='block' gutterBottom>

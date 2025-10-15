@@ -162,6 +162,7 @@ const Marketplace = () => {
     }
 
     const getSelectStyles = (borderColor, isDarkMode) => ({
+        backgroundColor: isDarkMode ? theme.palette.grey.dark : 'transparent',
         '& .MuiOutlinedInput-notchedOutline': {
             borderRadius: 2,
             borderColor: borderColor
@@ -685,7 +686,19 @@ const Marketplace = () => {
                                             </li>
                                         )
                                     }}
-                                    renderInput={(params) => <TextField {...params} label={t('marketplaces:usecases')} />}
+                                    renderInput={(params) => (
+                                        <TextField
+                                            {...params}
+                                            label={t('marketplaces:usecases')}
+                                            sx={{
+                                                '& .MuiOutlinedInput-root': {
+                                                    backgroundColor: theme.customization?.isDarkMode
+                                                        ? theme.palette.grey.dark
+                                                        : 'transparent'
+                                                }
+                                            }}
+                                        />
+                                    )}
                                     sx={{
                                         width: 300
                                     }}

@@ -113,10 +113,10 @@ const ViewHeader = ({
                                 width: '325px',
                                 height: '100%',
                                 display: { xs: 'none', sm: 'flex' },
-                                borderRadius: 2,
-
+                                borderRadius: `${theme?.customization?.borderRadius}px`,
+                                backgroundColor: theme.customization?.isDarkMode ? theme.palette.grey.dark : 'transparent',
                                 '& .MuiOutlinedInput-notchedOutline': {
-                                    borderRadius: 2
+                                    borderRadius: `${theme?.customization?.borderRadius}px`
                                 }
                             }}
                             variant='outlined'

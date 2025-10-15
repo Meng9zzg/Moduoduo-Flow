@@ -123,17 +123,17 @@ export default function componentStyleOverrides(theme) {
         MuiListItemButton: {
             styleOverrides: {
                 root: {
-                    color: theme.darkTextPrimary,
+                    color: theme?.customization?.isDarkMode ? theme.colors?.grey50 : theme.darkTextPrimary,
                     paddingTop: '10px',
                     paddingBottom: '10px',
                     '&.Mui-selected': {
                         color: theme.menuSelected,
                         backgroundColor: theme?.customization?.isDarkMode
-                            ? `${theme.colors?.grey700}80` // 50% transparency
+                            ? `${theme.colors?.grey700}73` // 45% opacity (73 in hex)
                             : theme.menuSelectedBack,
                         '&:hover': {
                             backgroundColor: theme?.customization?.isDarkMode
-                                ? `${theme.colors?.grey700}80` // Keep 50% transparency on hover when selected
+                                ? `${theme.colors?.grey700}73` // Keep 45% opacity on hover when selected
                                 : theme.menuSelectedBack
                         },
                         '& .MuiListItemIcon-root': {
@@ -142,14 +142,14 @@ export default function componentStyleOverrides(theme) {
                     },
                     '&:hover': {
                         backgroundColor: theme?.customization?.isDarkMode
-                            ? `${theme.colors?.grey700}33` // 20% transparency (33 in hex)
+                            ? `${theme.colors?.grey700}40` // 25% opacity (40 in hex)
                             : theme.menuSelectedBack,
                         color: theme?.customization?.isDarkMode
-                            ? theme.darkTextPrimary // Keep regular sidebar text color
+                            ? theme.colors?.grey50 // Keep regular sidebar text color
                             : theme.menuSelected,
                         '& .MuiListItemIcon-root': {
                             color: theme?.customization?.isDarkMode
-                                ? theme.darkTextPrimary // Keep regular sidebar icon color
+                                ? theme.colors?.grey50 // Keep regular sidebar icon color
                                 : theme.menuSelected
                         }
                     }
@@ -159,7 +159,7 @@ export default function componentStyleOverrides(theme) {
         MuiListItemIcon: {
             styleOverrides: {
                 root: {
-                    color: theme.darkTextPrimary,
+                    color: theme?.customization?.isDarkMode ? theme.colors?.grey50 : theme.darkTextPrimary,
                     minWidth: '36px'
                 }
             }
@@ -167,7 +167,7 @@ export default function componentStyleOverrides(theme) {
         MuiListItemText: {
             styleOverrides: {
                 primary: {
-                    color: theme.textDark
+                    color: theme?.customization?.isDarkMode ? theme.colors?.grey50 : theme.textDark
                 }
             }
         },
@@ -195,7 +195,7 @@ export default function componentStyleOverrides(theme) {
         MuiOutlinedInput: {
             styleOverrides: {
                 root: {
-                    background: theme?.customization?.isDarkMode ? theme.colors?.darkPrimary800 : bgColor,
+                    background: theme?.customization?.isDarkMode ? theme.colors?.darkLevel2 : bgColor,
                     borderRadius: `${theme?.customization?.borderRadius}px`,
                     '& .MuiOutlinedInput-notchedOutline': {
                         borderColor: theme.colors?.grey400
@@ -209,9 +209,7 @@ export default function componentStyleOverrides(theme) {
                 },
                 input: {
                     fontWeight: 500,
-                    background: theme?.customization?.isDarkMode ? theme.colors?.darkPrimary800 : bgColor,
                     padding: '15.5px 14px',
-                    borderRadius: `${theme?.customization?.borderRadius}px`,
                     '&.MuiInputBase-inputSizeSmall': {
                         padding: '10px 14px',
                         '&.MuiInputBase-inputAdornedStart': {

@@ -35,4 +35,7 @@ RUN pnpm build
 
 EXPOSE 3000
 
-CMD [ "pnpm", "start" ]
+# Install flowise globally from the built packages
+RUN cd packages/server && npm install -g .
+
+CMD [ "flowise", "start" ]

@@ -64,7 +64,13 @@ const CloudMenuList = () => {
         <>
             {isCloud && (
                 <Box>
-                    <Divider sx={{ height: '1px', borderColor: theme.palette.grey[900] + 25, my: 0 }} />
+                    <Divider
+                        sx={{
+                            height: '1px',
+                            borderColor: theme.customization?.isDarkMode ? theme.palette.grey.dark : theme.palette.grey[900] + 25,
+                            my: 0
+                        }}
+                    />
                     <List sx={{ p: '16px', py: 2, display: 'flex', flexDirection: 'column', gap: 1 }}>
                         <a href='https://docs.flowiseai.com' target='_blank' rel='noreferrer' style={{ textDecoration: 'none' }}>
                             <ListItemButton
