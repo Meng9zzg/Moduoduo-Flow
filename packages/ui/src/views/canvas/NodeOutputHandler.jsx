@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { Handle, Position, useUpdateNodeInternals } from 'reactflow'
 import { useEffect, useRef, useState, useContext } from 'react'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { useTheme, styled } from '@mui/material/styles'
@@ -19,6 +20,7 @@ const CustomWidthTooltip = styled(({ className, ...props }) => <Tooltip {...prop
 // ===========================|| NodeOutputHandler ||=========================== //
 
 const NodeOutputHandler = ({ outputAnchor, data, disabled = false }) => {
+    const { t } = useTranslation('canvas')
     const theme = useTheme()
     const ref = useRef(null)
     const updateNodeInternals = useUpdateNodeInternals()
@@ -148,7 +150,7 @@ const NodeOutputHandler = ({ outputAnchor, data, disabled = false }) => {
                         </CustomWidthTooltip>
                         <div style={{ flex: 1 }}></div>
                         <Box sx={{ p: 2, textAlign: 'end' }}>
-                            <Typography>True</Typography>
+                            <Typography>{t('nodeOutput.true')}</Typography>
                         </Box>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -175,7 +177,7 @@ const NodeOutputHandler = ({ outputAnchor, data, disabled = false }) => {
                         </CustomWidthTooltip>
                         <div style={{ flex: 1 }}></div>
                         <Box sx={{ p: 2, textAlign: 'end' }}>
-                            <Typography>False</Typography>
+                            <Typography>{t('nodeOutput.false')}</Typography>
                         </Box>
                     </div>
                 </div>
@@ -215,7 +217,7 @@ const NodeOutputHandler = ({ outputAnchor, data, disabled = false }) => {
                                     setDropdownValue(newValue)
                                     data.outputs[outputAnchor.name] = newValue
                                 }}
-                                value={data.outputs[outputAnchor.name] ?? outputAnchor.default ?? 'choose an option'}
+                                value={data.outputs[outputAnchor.name] ?? outputAnchor.default ?? t('nodeInput.chooseAnOption')}
                             />
                         </Box>
                     </>

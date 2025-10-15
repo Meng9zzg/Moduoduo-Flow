@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { useTheme } from '@mui/material/styles'
@@ -35,6 +36,7 @@ import { closeSnackbar as closeSnackbarAction, enqueueSnackbar as enqueueSnackba
 // ==============================|| CANVAS HEADER ||============================== //
 
 const CanvasHeader = ({ chatflow, isAgentCanvas, isAgentflowV2, handleSaveFlow, handleDeleteFlow, handleLoadFlow }) => {
+    const { t } = useTranslation(['canvas', 'common'])
     const theme = useTheme()
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -75,21 +77,21 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, isAgentflowV2, handleSaveFlow, 
             handleDeleteFlow()
         } else if (setting === 'viewMessages') {
             setViewMessagesDialogProps({
-                title: 'View Messages',
+                title: t('header.viewMessages'),
                 chatflow: chatflow,
                 isChatflow: isAgentflowV2 ? false : true
             })
             setViewMessagesDialogOpen(true)
         } else if (setting === 'viewLeads') {
             setViewLeadsDialogProps({
-                title: 'View Leads',
+                title: t('header.viewLeads'),
                 chatflow: chatflow
             })
             setViewLeadsDialogOpen(true)
         } else if (setting === 'saveAsTemplate') {
             if (canvas.isDirty) {
                 enqueueSnackbar({
-                    message: 'Please save the flow before exporting as template',
+                    message: t('header.savePleaseSaveFirst'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'error',
@@ -104,19 +106,19 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, isAgentflowV2, handleSaveFlow, 
                 return
             }
             setExportAsTemplateDialogProps({
-                title: 'Export As Template',
+                title: t('header.exportAsTemplate'),
                 chatflow: chatflow
             })
             setExportAsTemplateDialogOpen(true)
         } else if (setting === 'viewUpsertHistory') {
             setUpsertHistoryDialogProps({
-                title: 'View Upsert History',
+                title: t('header.viewUpsertHistory'),
                 chatflow: chatflow
             })
             setUpsertHistoryDialogOpen(true)
         } else if (setting === 'chatflowConfiguration') {
             setChatflowConfigurationDialogProps({
-                title: `${title} Configuration`,
+                title: isAgentCanvas ? t('header.agentsConfiguration') : t('header.chatflowConfiguration'),
                 chatflow: chatflow
             })
             setChatflowConfigurationDialogOpen(true)
@@ -202,7 +204,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, isAgentflowV2, handleSaveFlow, 
         }
 
         setAPIDialogProps({
-            title: 'Embed in website or use as API',
+            title: t('header.embedInWebsite'),
             chatflowid: chatflow.id,
             chatflowApiKeyId: chatflow.apikeyid,
             isFormDataRequired,
@@ -241,19 +243,19 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, isAgentflowV2, handleSaveFlow, 
             // if configuration dialog is open, update its data
             if (chatflowConfigurationDialogOpen) {
                 setChatflowConfigurationDialogProps({
-                    title: `${title} Configuration`,
+                    title: isAgentCanvas ? t('header.agentsConfiguration') : t('header.chatflowConfiguration'),
                     chatflow
                 })
             }
         }
-    }, [chatflow, title, chatflowConfigurationDialogOpen])
+    }, [chatflow, isAgentCanvas, chatflowConfigurationDialogOpen, t])
 
     return (
         <>
             <Stack flexDirection='row' justifyContent='space-between' sx={{ width: '100%' }}>
                 <Stack flexDirection='row' sx={{ width: '100%', maxWidth: '50%' }}>
                     <Box>
-                        <ButtonBase title='Back' sx={{ borderRadius: '50%' }}>
+                        <ButtonBase title={t('header.back')} sx={{ borderRadius: '50%' }}>
                             <Avatar
                                 variant='rounded'
                                 sx={{
@@ -297,7 +299,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, isAgentflowV2, handleSaveFlow, 
                                 </Typography>
                                 {chatflow?.id && (
                                     <Available permission={savePermission}>
-                                        <ButtonBase title='Edit Name' sx={{ borderRadius: '50%' }}>
+                                        <ButtonBase title={t('header.editName')} sx={{ borderRadius: '50%' }}>
                                             <Avatar
                                                 variant='rounded'
                                                 sx={{
@@ -341,7 +343,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, isAgentflowV2, handleSaveFlow, 
                                         }
                                     }}
                                 />
-                                <ButtonBase title='Save Name' sx={{ borderRadius: '50%' }}>
+                                <ButtonBase title={t('header.saveName')} sx={{ borderRadius: '50%' }}>
                                     <Avatar
                                         variant='rounded'
                                         sx={{
@@ -362,7 +364,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, isAgentflowV2, handleSaveFlow, 
                                         <IconCheck stroke={1.5} size='1.3rem' />
                                     </Avatar>
                                 </ButtonBase>
-                                <ButtonBase title='Cancel' sx={{ borderRadius: '50%' }}>
+                                <ButtonBase title={t('header.cancel')} sx={{ borderRadius: '50%' }}>
                                     <Avatar
                                         variant='rounded'
                                         sx={{
@@ -389,7 +391,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, isAgentflowV2, handleSaveFlow, 
                 </Stack>
                 <Box>
                     {chatflow?.id && (
-                        <ButtonBase title='API Endpoint' sx={{ borderRadius: '50%', mr: 2 }}>
+                        <ButtonBase title={t('header.apiEndpoint')} sx={{ borderRadius: '50%', mr: 2 }}>
                             <Avatar
                                 variant='rounded'
                                 sx={{
@@ -411,7 +413,10 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, isAgentflowV2, handleSaveFlow, 
                         </ButtonBase>
                     )}
                     <Available permission={savePermission}>
-                        <ButtonBase title={`Save ${title}`} sx={{ borderRadius: '50%', mr: 2 }}>
+                        <ButtonBase
+                            title={isAgentCanvas ? t('header.saveAgents') : t('header.saveChatflow')}
+                            sx={{ borderRadius: '50%', mr: 2 }}
+                        >
                             <Avatar
                                 variant='rounded'
                                 sx={{
@@ -432,7 +437,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, isAgentflowV2, handleSaveFlow, 
                             </Avatar>
                         </ButtonBase>
                     </Available>
-                    <ButtonBase ref={settingsRef} title='Settings' sx={{ borderRadius: '50%' }}>
+                    <ButtonBase ref={settingsRef} title={t('canvas:settings')} sx={{ borderRadius: '50%' }}>
                         <Avatar
                             variant='rounded'
                             sx={{
@@ -465,9 +470,9 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, isAgentflowV2, handleSaveFlow, 
             <SaveChatflowDialog
                 show={flowDialogOpen}
                 dialogProps={{
-                    title: `Save New ${title}`,
-                    confirmButtonName: 'Save',
-                    cancelButtonName: 'Cancel'
+                    title: isAgentCanvas ? t('header.saveNewAgents') : t('header.saveNewChatflow'),
+                    confirmButtonName: t('common:save'),
+                    cancelButtonName: t('common:cancel')
                 }}
                 onCancel={() => setFlowDialogOpen(false)}
                 onConfirm={onConfirmSaveName}

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { useContext, useState, useEffect, memo } from 'react'
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { useTheme } from '@mui/material/styles'
@@ -24,6 +25,7 @@ import LlamaindexPNG from '@/assets/images/llamaindex.png'
 // ===========================|| CANVAS NODE ||=========================== //
 
 const CanvasNode = ({ data }) => {
+    const { t } = useTranslation('canvas')
     const theme = useTheme()
     const canvas = useSelector((state) => state.canvas)
     const { deleteNode, duplicateNode } = useContext(flowContext)
@@ -49,16 +51,16 @@ const CanvasNode = ({ data }) => {
         else return !canvas.canvasDialogShow && open
     }
 
-    const nodeOutdatedMessage = (oldVersion, newVersion) => `Node version ${oldVersion} outdated\nUpdate to latest version ${newVersion}`
+    const nodeOutdatedMessage = (oldVersion, newVersion) => t('node.warnings.versionOutdated', { oldVersion, newVersion })
 
-    const nodeVersionEmptyMessage = (newVersion) => `Node outdated\nUpdate to latest version ${newVersion}`
+    const nodeVersionEmptyMessage = (newVersion) => t('node.warnings.nodeOutdated', { newVersion })
 
     const onDialogClicked = () => {
         const dialogProps = {
             data,
             inputParams: data.inputParams.filter((inputParam) => !inputParam.hidden).filter((param) => param.additionalParams),
-            confirmButtonName: 'Save',
-            cancelButtonName: 'Cancel'
+            confirmButtonName: t('save'),
+            cancelButtonName: t('header.cancel')
         }
         setDialogProps(dialogProps)
         setShowDialog(true)
@@ -78,10 +80,7 @@ const CanvasNode = ({ data }) => {
             } else if (data.version && componentNode.version > data.version) {
                 setWarningMessage(nodeOutdatedMessage(data.version, componentNode.version))
             } else if (componentNode.badge === 'DEPRECATING') {
-                setWarningMessage(
-                    componentNode?.deprecateMessage ??
-                        'This node will be deprecated in the next release. Change to a new node tagged with NEW'
-                )
+                setWarningMessage(componentNode?.deprecateMessage ?? t('node.warnings.deprecating'))
             } else if (componentNode.warning) {
                 setWarningMessage(componentNode.warning)
             } else {
@@ -114,7 +113,7 @@ const CanvasNode = ({ data }) => {
                             }}
                         >
                             <IconButton
-                                title='Duplicate'
+                                title={t('duplicate')}
                                 onClick={() => {
                                     duplicateNode(data.id)
                                 }}
@@ -124,7 +123,7 @@ const CanvasNode = ({ data }) => {
                                 <IconCopy />
                             </IconButton>
                             <IconButton
-                                title='Delete'
+                                title={t('delete')}
                                 onClick={() => {
                                     deleteNode(data.id)
                                 }}
@@ -134,7 +133,7 @@ const CanvasNode = ({ data }) => {
                                 <IconTrash />
                             </IconButton>
                             <IconButton
-                                title='Info'
+                                title={t('node.actions.info')}
                                 onClick={() => {
                                     setInfoDialogProps({ data })
                                     setShowInfoDialog(true)
@@ -165,7 +164,7 @@ const CanvasNode = ({ data }) => {
                                     <img
                                         style={{ width: '100%', height: '100%', padding: 5, objectFit: 'contain' }}
                                         src={`${baseURL}/api/v1/node-icon/${data.name}`}
-                                        alt='Notification'
+                                        alt={t('node.iconAlt')}
                                     />
                                 </div>
                             </Box>
@@ -192,7 +191,7 @@ const CanvasNode = ({ data }) => {
                                         <img
                                             style={{ width: '25px', height: '25px', borderRadius: '50%', objectFit: 'contain' }}
                                             src={LlamaindexPNG}
-                                            alt='LlamaIndex'
+                                            alt={t('node.llamaIndexAlt')}
                                         />
                                     </div>
                                 </>
@@ -217,7 +216,7 @@ const CanvasNode = ({ data }) => {
                                             textAlign: 'center'
                                         }}
                                     >
-                                        Inputs
+                                        {t('node.sections.inputs')}
                                     </Typography>
                                 </Box>
                                 <Divider />
@@ -255,7 +254,7 @@ const CanvasNode = ({ data }) => {
                                 }}
                             >
                                 <Button sx={{ borderRadius: 25, width: '90%', mb: 2 }} variant='outlined' onClick={onDialogClicked}>
-                                    Additional Parameters
+                                    {t('node.additionalParameters')}
                                 </Button>
                             </div>
                         )}
@@ -268,7 +267,7 @@ const CanvasNode = ({ data }) => {
                                         textAlign: 'center'
                                     }}
                                 >
-                                    Output
+                                    {t('node.sections.output')}
                                 </Typography>
                             </Box>
                         )}

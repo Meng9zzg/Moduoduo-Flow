@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, memo } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 
 // material-ui
@@ -74,6 +75,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas, isAgentflowv2, onFlowGenerat
     const theme = useTheme()
     const customization = useSelector((state) => state.customization)
     const dispatch = useDispatch()
+    const { t } = useTranslation('canvas')
 
     const [searchValue, setSearchValue] = useState('')
     const [nodes, setNodes] = useState({})
@@ -303,9 +305,8 @@ const AddNodes = ({ nodesData, node, isAgentCanvas, isAgentflowv2, onFlowGenerat
     const handleOpenDialog = () => {
         setOpenDialog(true)
         setDialogProps({
-            title: 'What would you like to build?',
-            description:
-                'Enter your prompt to generate an agentflow. Performance may vary with different models. Only nodes and edges are generated, you will need to fill in the input fields for each node.'
+            title: t('addNodes.dialogTitle'),
+            description: t('addNodes.dialogDescription')
         })
     }
 
@@ -326,7 +327,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas, isAgentflowv2, onFlowGenerat
                 size='small'
                 color='primary'
                 aria-label='add'
-                title='Add Node'
+                title={t('addNodes.addNodeButton')}
                 onClick={handleToggle}
             >
                 {open ? <IconMinus /> : <IconPlus />}
@@ -345,7 +346,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas, isAgentflowv2, onFlowGenerat
                     size='small'
                     color='primary'
                     aria-label='generate'
-                    title='Generate Agentflow'
+                    title={t('addNodes.generateAgentflow')}
                 >
                     <IconSparkles />
                 </StyledFab>
@@ -384,7 +385,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas, isAgentflowv2, onFlowGenerat
                                 <MainCard border={false} elevation={16} content={false} boxShadow shadow={theme.shadows[16]}>
                                     <Box sx={{ p: 2 }}>
                                         <Stack>
-                                            <Typography variant='h4'>Add Nodes</Typography>
+                                            <Typography variant='h4'>{t('addNodes.title')}</Typography>
                                         </Stack>
                                         <OutlinedInput
                                             // eslint-disable-next-line
@@ -393,7 +394,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas, isAgentflowv2, onFlowGenerat
                                             id='input-search-node'
                                             value={searchValue}
                                             onChange={(e) => filterSearch(e.target.value)}
-                                            placeholder='Search nodes'
+                                            placeholder={t('addNodes.searchPlaceholder')}
                                             startAdornment={
                                                 <InputAdornment position='start'>
                                                     <IconSearch stroke={1.5} size='1rem' color={theme.palette.grey[500]} />
@@ -409,7 +410,7 @@ const AddNodes = ({ nodesData, node, isAgentCanvas, isAgentflowv2, onFlowGenerat
                                                             color: theme.palette.grey[900]
                                                         }
                                                     }}
-                                                    title='Clear Search'
+                                                    title={t('addNodes.clearSearch')}
                                                 >
                                                     <IconX
                                                         stroke={1.5}
@@ -434,7 +435,11 @@ const AddNodes = ({ nodesData, node, isAgentCanvas, isAgentflowv2, onFlowGenerat
                                                 onChange={handleTabChange}
                                                 aria-label='tabs'
                                             >
-                                                {['LangChain', 'LlamaIndex', 'Utilities'].map((item, index) => (
+                                                {[
+                                                    t('addNodes.tabs.langchain'),
+                                                    t('addNodes.tabs.llamaindex'),
+                                                    t('addNodes.tabs.utilities')
+                                                ].map((item, index) => (
                                                     <Tab
                                                         icon={
                                                             <div
@@ -637,7 +642,9 @@ const AddNodes = ({ nodesData, node, isAgentCanvas, isAgentflowv2, onFlowGenerat
                                                                                                         fontWeight: 700
                                                                                                     }}
                                                                                                 >
-                                                                                                    By {node.author}
+                                                                                                    {t('addNodes.authorBy', {
+                                                                                                        author: node.author
+                                                                                                    })}
                                                                                                 </span>
                                                                                             )}
                                                                                         </>
