@@ -1,0 +1,13 @@
+{
+    "about": {
+        "title": "Flowise Version",
+        "currentVersion": "Current Version",
+        "latestVersion": "Latest Version",
+        "publishedAt": "Published At"
+    },
+    "confirm": {
+        "defaultTitle": "Confirm",
+        "defaultCancel": "Cancel",
+        "defaultConfirm": "Confirm"
+    }
+}

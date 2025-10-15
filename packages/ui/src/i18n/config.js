@@ -27,6 +27,7 @@ const initI18n = async () => {
                 'header', // 头部组件
                 'validation', // 表单验证
                 'error', // 错误消息
+                'dialog', // 对话框组件
                 'chatflows', // Chatflows页面
                 'agentflows', // Agentflows页面
                 'tools', // Tools页面
