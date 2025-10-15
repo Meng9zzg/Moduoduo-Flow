@@ -5,7 +5,7 @@ services:
         build:
             context: ..
             dockerfile: Dockerfile
-        image: moduoduo-agent-flow-packages-i18ln:latest
+        image: meng9zzg/moduoduo-agent-flow-packages-i18ln:latest
         restart: always
         environment:
             - PORT=3000
