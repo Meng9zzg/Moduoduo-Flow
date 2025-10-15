@@ -79,8 +79,8 @@ const initI18n = async () => {
     console.log('✅ i18n initialized successfully')
     console.log('  Language:', i18n.language)
     console.log('  Loaded namespaces:', Object.keys(i18n.store.data[i18n.language] || {}))
-    console.log('  Sample translation (common.save):', i18n.t('common.save'))
-    console.log('  Sample translation (common.switchLanguage):', i18n.t('common.switchLanguage'))
+    console.log('  Sample translation (save):', i18n.t('save'))
+    console.log('  Sample translation (switchLanguage):', i18n.t('switchLanguage'))
 }
 
 // 立即初始化

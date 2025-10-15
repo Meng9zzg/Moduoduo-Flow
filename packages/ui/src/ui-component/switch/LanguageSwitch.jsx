@@ -160,7 +160,7 @@ const LanguageSwitch = () => {
 
     return (
         <>
-            <Tooltip title={t('common.switchLanguage', '切换语言 / Switch Language')} arrow>
+            <Tooltip title={t('switchLanguage', '切换语言 / Switch Language')} arrow>
                 <ButtonBase sx={{ borderRadius: '12px', overflow: 'hidden' }}>
                     <Avatar
                         variant='rounded'
