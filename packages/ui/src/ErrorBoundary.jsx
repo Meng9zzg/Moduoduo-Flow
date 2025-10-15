@@ -17,7 +17,7 @@ const ErrorBoundary = ({ error }) => {
     return (
         <Box sx={{ border: 1, borderColor: theme.palette.grey[900] + 25, borderRadius: 2, padding: '20px', maxWidth: '1280px' }}>
             <Stack flexDirection='column' sx={{ alignItems: 'center', gap: 3 }}>
-                <Box component='img' src={WrongImg} alt='Error' sx={{ width: '120px', height: '120px' }} />
+                <Box component='img' src={WrongImg} alt='Error' sx={{ width: '240px', height: '240px' }} />
                 <Card variant='outlined' sx={{ minWidth: '180px' }}>
                     <Box sx={{ position: 'relative', px: 3, py: 1.5, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <Typography variant='body1' sx={{ fontSize: '1.1rem', textAlign: 'center' }}>
