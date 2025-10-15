@@ -1,0 +1,16 @@
+{
+    "title": "Marketplace",
+    "description": "Explore and use pre-built templates",
+    "searchPlaceholder": "Search Name/Description/Node",
+    "cardView": "Card View",
+    "listView": "List View",
+    "communityTemplates": "Community Templates",
+    "myTemplates": "My Templates",
+    "usecases": "Usecases",
+    "tag": "Tag",
+    "type": "Type",
+    "framework": "Framework",
+    "clearAll": "Clear All",
+    "noMarketplaceYet": "No Marketplace Yet",
+    "noSavedCustomTemplates": "No Saved Custom Templates"
+}

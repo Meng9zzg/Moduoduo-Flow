@@ -1,0 +1,16 @@
+{
+    "title": "市场",
+    "description": "浏览和使用预构建模板",
+    "searchPlaceholder": "搜索名称/描述/节点",
+    "cardView": "卡片视图",
+    "listView": "列表视图",
+    "communityTemplates": "社区模板",
+    "myTemplates": "我的模板",
+    "usecases": "用例",
+    "tag": "标签",
+    "type": "类型",
+    "framework": "框架",
+    "clearAll": "清空全部",
+    "noMarketplaceYet": "暂无市场模板",
+    "noSavedCustomTemplates": "暂无已保存的自定义模板"
+}
