@@ -2,6 +2,7 @@ import { createPortal } from 'react-dom'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 
 import {
@@ -89,11 +90,18 @@ const APICodeDialog = ({ show, dialogProps, onCancel }) => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const theme = useTheme()
+    const { t } = useTranslation('dialog')
     const chatflow = useSelector((state) => state.canvas.chatflow)
     const apiConfig = chatflow?.apiConfig ? JSON.parse(chatflow.apiConfig) : {}
     const overrideConfigStatus = apiConfig?.overrideConfig?.status !== undefined ? apiConfig.overrideConfig.status : false
 
-    const codes = ['Embed', 'Python', 'JavaScript', 'cURL', 'Share Chatbot']
+    const codes = [
+        t('apiCode.tabs.embed'),
+        t('apiCode.tabs.python'),
+        t('apiCode.tabs.javascript'),
+        t('apiCode.tabs.curl'),
+        t('apiCode.tabs.shareChatbot')
+    ]
     const [value, setValue] = useState(0)
     const [apiKeys, setAPIKeys] = useState([])
     const [chatflowApiKeyId, setChatflowApiKeyId] = useState('')
@@ -118,7 +126,7 @@ const APICodeDialog = ({ show, dialogProps, onCancel }) => {
 
         const options = [
             {
-                label: 'No Authorization',
+                label: t('apiCode.apiKeyDropdown.noAuth'),
                 name: ''
             }
         ]
@@ -132,13 +140,13 @@ const APICodeDialog = ({ show, dialogProps, onCancel }) => {
 
         if (isGlobal || hasPermission('apikeys:create')) {
             options.push({
-                label: '- Add New Key -',
+                label: t('apiCode.apiKeyDropdown.addNewKey'),
                 name: 'addnewkey'
             })
         }
 
         return options
-    }, [getAllAPIKeysApi.data, isGlobal, hasPermission])
+    }, [getAllAPIKeysApi.data, isGlobal, hasPermission, t])
 
     const onCheckBoxChanged = (newVal) => {
         setCheckbox(newVal)
@@ -283,7 +291,7 @@ const APICodeDialog = ({ show, dialogProps, onCancel }) => {
     }
 
     const getCode = (codeLang) => {
-        if (codeLang === 'Python') {
+        if (codeLang === t('apiCode.tabs.python')) {
             return `import requests
 
 API_URL = "${baseURL}/api/v1/prediction/${dialogProps.chatflowid}"
@@ -291,12 +299,12 @@ API_URL = "${baseURL}/api/v1/prediction/${dialogProps.chatflowid}"
 def query(payload):
     response = requests.post(API_URL, json=payload)
     return response.json()
-    
+
 output = query({
     "question": "Hey, how are you?",
 })
 `
-        } else if (codeLang === 'JavaScript') {
+        } else if (codeLang === t('apiCode.tabs.javascript')) {
             return `async function query(data) {
     const response = await fetch(
         "${baseURL}/api/v1/prediction/${dialogProps.chatflowid}",
@@ -316,7 +324,7 @@ query({"question": "Hey, how are you?"}).then((response) => {
     console.log(response);
 });
 `
-        } else if (codeLang === 'cURL') {
+        } else if (codeLang === t('apiCode.tabs.curl')) {
             return `curl ${baseURL}/api/v1/prediction/${dialogProps.chatflowid} \\
      -X POST \\
      -d '{"question": "Hey, how are you?"}' \\
@@ -326,7 +334,7 @@ query({"question": "Hey, how are you?"}).then((response) => {
     }
 
     const getCodeWithAuthorization = (codeLang) => {
-        if (codeLang === 'Python') {
+        if (codeLang === t('apiCode.tabs.python')) {
             return `import requests
 
 API_URL = "${baseURL}/api/v1/prediction/${dialogProps.chatflowid}"
@@ -335,12 +343,12 @@ headers = {"Authorization": "Bearer ${selectedApiKey?.apiKey}"}
 def query(payload):
     response = requests.post(API_URL, headers=headers, json=payload)
     return response.json()
-    
+
 output = query({
     "question": "Hey, how are you?",
 })
 `
-        } else if (codeLang === 'JavaScript') {
+        } else if (codeLang === t('apiCode.tabs.javascript')) {
             return `async function query(data) {
     const response = await fetch(
         "${baseURL}/api/v1/prediction/${dialogProps.chatflowid}",
@@ -361,7 +369,7 @@ query({"question": "Hey, how are you?"}).then((response) => {
     console.log(response);
 });
 `
-        } else if (codeLang === 'cURL') {
+        } else if (codeLang === t('apiCode.tabs.curl')) {
             return `curl ${baseURL}/api/v1/prediction/${dialogProps.chatflowid} \\
      -X POST \\
      -d '{"question": "Hey, how are you?"}' \\
@@ -372,26 +380,26 @@ query({"question": "Hey, how are you?"}).then((response) => {
     }
 
     const getLang = (codeLang) => {
-        if (codeLang === 'Python') {
+        if (codeLang === t('apiCode.tabs.python')) {
             return 'python'
-        } else if (codeLang === 'JavaScript') {
+        } else if (codeLang === t('apiCode.tabs.javascript')) {
             return 'javascript'
-        } else if (codeLang === 'cURL') {
+        } else if (codeLang === t('apiCode.tabs.curl')) {
             return 'bash'
         }
         return 'python'
     }
 
     const getSVG = (codeLang) => {
-        if (codeLang === 'Python') {
+        if (codeLang === t('apiCode.tabs.python')) {
             return pythonSVG
-        } else if (codeLang === 'JavaScript') {
+        } else if (codeLang === t('apiCode.tabs.javascript')) {
             return javascriptSVG
-        } else if (codeLang === 'Embed') {
+        } else if (codeLang === t('apiCode.tabs.embed')) {
             return EmbedSVG
-        } else if (codeLang === 'cURL') {
+        } else if (codeLang === t('apiCode.tabs.curl')) {
             return cURLSVG
-        } else if (codeLang === 'Share Chatbot') {
+        } else if (codeLang === t('apiCode.tabs.shareChatbot')) {
             return ShareChatbotSVG
         } else if (codeLang === 'Configuration') {
             return settingsSVG

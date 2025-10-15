@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction, SET_CHATFLOW } from '@/store/actions'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { Button, IconButton, OutlinedInput, Box, List, InputAdornment } from '@mui/material'
@@ -18,6 +19,7 @@ import chatflowsApi from '@/api/chatflows'
 
 const StarterPrompts = ({ dialogProps }) => {
     const dispatch = useDispatch()
+    const { t } = useTranslation('dialog')
 
     useNotifier()
 
@@ -66,7 +68,7 @@ const StarterPrompts = ({ dialogProps }) => {
             })
             if (saveResp.data) {
                 enqueueSnackbar({
-                    message: 'Conversation Starter Prompts Saved',
+                    message: t('starterPrompts.saveSuccess'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -81,7 +83,7 @@ const StarterPrompts = ({ dialogProps }) => {
             }
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to save Conversation Starter Prompts: ${
+                message: `${t('starterPrompts.saveError')}: ${
                     typeof error.response.data === 'object' ? error.response.data.message : error.response.data
                 }`,
                 options: {
@@ -149,9 +151,7 @@ const StarterPrompts = ({ dialogProps }) => {
                     }}
                 >
                     <IconBulb size={30} color='#2d6a4f' />
-                    <span style={{ color: '#2d6a4f', marginLeft: 10, fontWeight: 500 }}>
-                        Starter prompts will only be shown when there is no messages on the chat
-                    </span>
+                    <span style={{ color: '#2d6a4f', marginLeft: 10, fontWeight: 500 }}>{t('starterPrompts.hint')}</span>
                 </div>
             </div>
             <Box sx={{ '& > :not(style)': { m: 1 }, pt: 2 }}>
@@ -199,7 +199,7 @@ const StarterPrompts = ({ dialogProps }) => {
                 </List>
             </Box>
             <StyledButton variant='contained' onClick={onSave}>
-                Save
+                {t('starterPrompts.saveButton')}
             </StyledButton>
         </>
     )

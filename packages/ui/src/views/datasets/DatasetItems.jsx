@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import {
@@ -55,6 +56,7 @@ const EvalDatasetRows = () => {
     const dispatch = useDispatch()
     useNotifier()
     const { error } = useError()
+    const { t } = useTranslation(['datasets', 'common'])
 
     const [showRowDialog, setShowRowDialog] = useState(false)
     const [showUploadDialog, setShowUploadDialog] = useState(false)
@@ -159,8 +161,8 @@ const EvalDatasetRows = () => {
     const addNew = () => {
         const dialogProp = {
             type: 'ADD',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Add',
+            cancelButtonName: t('common:cancel'),
+            confirmButtonName: t('common:add'),
             data: {
                 datasetId: datasetId,
                 datasetName: dataset.name
@@ -173,8 +175,8 @@ const EvalDatasetRows = () => {
     const uploadCSV = () => {
         const dialogProp = {
             type: 'ADD',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Upload',
+            cancelButtonName: t('common:cancel'),
+            confirmButtonName: t('common:upload'),
             data: {
                 datasetId: datasetId,
                 datasetName: dataset.name
@@ -187,8 +189,8 @@ const EvalDatasetRows = () => {
     const editDs = () => {
         const dialogProp = {
             type: 'EDIT',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Save',
+            cancelButtonName: t('common:cancel'),
+            confirmButtonName: t('common:save'),
             data: dataset
         }
         setDatasetDialogProps(dialogProp)
@@ -198,8 +200,8 @@ const EvalDatasetRows = () => {
     const edit = (item) => {
         const dialogProp = {
             type: 'EDIT',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Save',
+            cancelButtonName: t('common:cancel'),
+            confirmButtonName: t('common:save'),
             data: {
                 datasetName: dataset.name,
                 ...item
@@ -211,10 +213,10 @@ const EvalDatasetRows = () => {
 
     const deleteDatasetItems = async () => {
         const confirmPayload = {
-            title: `Delete`,
-            description: `Delete ${selected.length} dataset items?`,
-            confirmButtonName: 'Delete',
-            cancelButtonName: 'Cancel'
+            title: t('datasets:deleteDatasetItemsTitle'),
+            description: t('datasets:deleteDatasetItemsDescription', { count: selected.length }),
+            confirmButtonName: t('common:delete'),
+            cancelButtonName: t('common:cancel')
         }
         const isConfirmed = await confirm(confirmPayload)
 
@@ -223,7 +225,7 @@ const EvalDatasetRows = () => {
                 const deleteResp = await datasetsApi.deleteDatasetItems(selected)
                 if (deleteResp.data) {
                     enqueueSnackbar({
-                        message: 'Dataset Items deleted',
+                        message: t('datasets:datasetItemsDeleted'),
                         options: {
                             key: new Date().getTime() + Math.random(),
                             variant: 'success',
@@ -238,7 +240,7 @@ const EvalDatasetRows = () => {
                 }
             } catch (error) {
                 enqueueSnackbar({
-                    message: `Failed to delete dataset items: ${
+                    message: `${t('datasets:failedToDeleteDatasetItems')}: ${
                         typeof error.response.data === 'object' ? error.response.data.message : error.response.data
                     }`,
                     options: {
@@ -306,7 +308,7 @@ const EvalDatasetRows = () => {
                                 onClick={uploadCSV}
                                 startIcon={<IconUpload />}
                             >
-                                Upload CSV
+                                {t('datasets:uploadCSV')}
                             </StyledPermissionButton>
                             <StyledPermissionButton
                                 permissionId={'datasets:create,datasets:update'}
@@ -315,7 +317,7 @@ const EvalDatasetRows = () => {
                                 onClick={addNew}
                                 startIcon={<IconPlus />}
                             >
-                                New Item
+                                {t('datasets:newItem')}
                             </StyledPermissionButton>
                         </ViewHeader>
                         {selected.length > 0 && (
@@ -327,7 +329,10 @@ const EvalDatasetRows = () => {
                                 color='error'
                                 startIcon={<IconTrash />}
                             >
-                                Delete {selected.length} {selected.length === 1 ? 'item' : 'items'}
+                                {t('datasets:deleteItemsCount', {
+                                    count: selected.length,
+                                    itemText: selected.length === 1 ? t('datasets:item') : t('datasets:items')
+                                })}
                             </PermissionButton>
                         )}
                         {!isLoading && dataset?.rows?.length <= 0 ? (
@@ -339,7 +344,7 @@ const EvalDatasetRows = () => {
                                         alt='empty_datasetSVG'
                                     />
                                 </Box>
-                                <div>No Dataset Items Yet</div>
+                                <div>{t('datasets:noDatasetItemsYet')}</div>
                                 <StyledPermissionButton
                                     permissionId={'datasets:create,datasets:update'}
                                     variant='contained'
@@ -347,7 +352,7 @@ const EvalDatasetRows = () => {
                                     startIcon={<IconPlus />}
                                     onClick={addNew}
                                 >
-                                    New Item
+                                    {t('datasets:newItem')}
                                 </StyledPermissionButton>
                             </Stack>
                         ) : (
@@ -376,8 +381,8 @@ const EvalDatasetRows = () => {
                                                         }}
                                                     />
                                                 </StyledTableCell>
-                                                <StyledTableCell>Input</StyledTableCell>
-                                                <StyledTableCell>Expected Output</StyledTableCell>
+                                                <StyledTableCell>{t('datasets:input')}</StyledTableCell>
+                                                <StyledTableCell>{t('datasets:expectedOutput')}</StyledTableCell>
                                                 <StyledTableCell style={{ width: '1%' }}>
                                                     <IconArrowsDownUp />
                                                 </StyledTableCell>
@@ -470,7 +475,7 @@ const EvalDatasetRows = () => {
                                     </Table>
                                 </TableContainer>
                                 <Typography sx={{ color: theme.palette.grey[600], marginTop: -2 }} variant='subtitle2'>
-                                    <i>Use the drag icon at (extreme right) to reorder the dataset items</i>
+                                    <i>{t('datasets:dragReorderHint')}</i>
                                 </Typography>
                                 {/* Pagination and Page Size Controls */}
                                 <TablePagination currentPage={currentPage} limit={pageLimit} total={total} onChange={onChange} />

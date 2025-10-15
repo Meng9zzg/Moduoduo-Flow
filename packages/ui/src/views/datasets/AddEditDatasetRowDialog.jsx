@@ -2,6 +2,7 @@ import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction } from '@/store/actions'
 
 // Material
@@ -29,6 +30,7 @@ const AddEditDatasetRowDialog = ({ show, dialogProps, onCancel, onConfirm }) => 
     const portalElement = document.getElementById('portal')
 
     const dispatch = useDispatch()
+    const { t } = useTranslation(['datasets', 'common'])
 
     // ==============================|| Snackbar ||============================== //
 
@@ -83,7 +85,7 @@ const AddEditDatasetRowDialog = ({ show, dialogProps, onCancel, onConfirm }) => 
             const createResp = await datasetApi.createDatasetRow(obj)
             if (createResp.data) {
                 enqueueSnackbar({
-                    message: 'New Row added for the given Dataset',
+                    message: t('datasets:newRowAdded'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -98,7 +100,7 @@ const AddEditDatasetRowDialog = ({ show, dialogProps, onCancel, onConfirm }) => 
             }
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to add new row in the Dataset: ${
+                message: `${t('datasets:failedToAddRow')}: ${
                     typeof error.response.data === 'object' ? error.response.data.message : error.response.data
                 }`,
                 options: {
@@ -126,7 +128,7 @@ const AddEditDatasetRowDialog = ({ show, dialogProps, onCancel, onConfirm }) => 
             const saveResp = await datasetApi.updateDatasetRow(row.id, saveObj)
             if (saveResp.data) {
                 enqueueSnackbar({
-                    message: 'Dataset Row saved',
+                    message: t('datasets:datasetRowSaved'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -141,7 +143,7 @@ const AddEditDatasetRowDialog = ({ show, dialogProps, onCancel, onConfirm }) => 
             }
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to save Dataset Row: ${
+                message: `${t('datasets:failedToSaveRow')}: ${
                     typeof error.response.data === 'object' ? error.response.data.message : error.response.data
                 }`,
                 options: {
@@ -171,14 +173,17 @@ const AddEditDatasetRowDialog = ({ show, dialogProps, onCancel, onConfirm }) => 
             <DialogTitle sx={{ fontSize: '1rem' }} id='alert-dialog-title'>
                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                     <IconDatabase style={{ marginRight: '10px' }} />
-                    {dialogProps.type === 'ADD' ? `Add Item to ${datasetName} Dataset` : `Edit Item in ${datasetName} Dataset`}
+                    {dialogProps.type === 'ADD'
+                        ? t('datasets:addItemToDataset', { name: datasetName })
+                        : t('datasets:editItemInDataset', { name: datasetName })}
                 </div>
             </DialogTitle>
             <DialogContent>
                 <Box sx={{ p: 2 }}>
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                         <Typography>
-                            Input<span style={{ color: 'red' }}>&nbsp;*</span>
+                            {t('datasets:inputRequired')}
+                            <span style={{ color: 'red' }}>&nbsp;*</span>
                         </Typography>
 
                         <div style={{ flexGrow: 1 }}></div>
@@ -198,7 +203,8 @@ const AddEditDatasetRowDialog = ({ show, dialogProps, onCancel, onConfirm }) => 
                 <Box sx={{ p: 2 }}>
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                         <Typography>
-                            Anticipated Output<span style={{ color: 'red' }}>&nbsp;*</span>
+                            {t('datasets:anticipatedOutputRequired')}
+                            <span style={{ color: 'red' }}>&nbsp;*</span>
                         </Typography>
 
                         <div style={{ flexGrow: 1 }}></div>

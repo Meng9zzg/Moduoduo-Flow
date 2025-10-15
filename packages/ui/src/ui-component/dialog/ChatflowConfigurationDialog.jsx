@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
+import { useTranslation } from 'react-i18next'
 import { Box, Dialog, DialogContent, DialogTitle, Tabs, Tab } from '@mui/material'
 import { tabsClasses } from '@mui/material/Tabs'
 import SpeechToText from '@/ui-component/extended/SpeechToText'
@@ -14,45 +15,45 @@ import FollowUpPrompts from '@/ui-component/extended/FollowUpPrompts'
 import FileUpload from '@/ui-component/extended/FileUpload'
 import PostProcessing from '@/ui-component/extended/PostProcessing'
 
-const CHATFLOW_CONFIGURATION_TABS = [
+const CHATFLOW_CONFIGURATION_TABS = (t) => [
     {
-        label: 'Security',
+        label: t('chatflowConfig.tabs.security'),
         id: 'security'
     },
     {
-        label: 'Starter Prompts',
+        label: t('chatflowConfig.tabs.starterPrompts'),
         id: 'conversationStarters'
     },
     {
-        label: 'Follow-up Prompts',
+        label: t('chatflowConfig.tabs.followUpPrompts'),
         id: 'followUpPrompts'
     },
     {
-        label: 'Speech to Text',
+        label: t('chatflowConfig.tabs.speechToText'),
         id: 'speechToText'
     },
     {
-        label: 'Text to Speech',
+        label: t('chatflowConfig.tabs.textToSpeech'),
         id: 'textToSpeech'
     },
     {
-        label: 'Chat Feedback',
+        label: t('chatflowConfig.tabs.chatFeedback'),
         id: 'chatFeedback'
     },
     {
-        label: 'Analyse Chatflow',
+        label: t('chatflowConfig.tabs.analyseChatflow'),
         id: 'analyseChatflow'
     },
     {
-        label: 'Leads',
+        label: t('chatflowConfig.tabs.leads'),
         id: 'leads'
     },
     {
-        label: 'File Upload',
+        label: t('chatflowConfig.tabs.fileUpload'),
         id: 'fileUpload'
     },
     {
-        label: 'Post Processing',
+        label: t('chatflowConfig.tabs.postProcessing'),
         id: 'postProcessing',
         hideInAgentFlow: true
     }
@@ -89,9 +90,10 @@ function a11yProps(index) {
 
 const ChatflowConfigurationDialog = ({ show, isAgentCanvas, dialogProps, onCancel }) => {
     const portalElement = document.getElementById('portal')
+    const { t } = useTranslation('dialog')
     const [tabValue, setTabValue] = useState(0)
 
-    const filteredTabs = CHATFLOW_CONFIGURATION_TABS.filter((tab) => !isAgentCanvas || !tab.hideInAgentFlow)
+    const filteredTabs = CHATFLOW_CONFIGURATION_TABS(t).filter((tab) => !isAgentCanvas || !tab.hideInAgentFlow)
 
     const component = show ? (
         <Dialog

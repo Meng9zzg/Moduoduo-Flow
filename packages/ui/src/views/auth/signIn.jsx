@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { Stack, useTheme, Typography, Box, Alert, Button, Divider, Icon } from '@mui/material'
@@ -37,22 +38,23 @@ import GithubSSOLoginIcon from '@/assets/images/github.svg'
 // ==============================|| SignInPage ||============================== //
 
 const SignInPage = () => {
+    const { t } = useTranslation(['auth'])
     const theme = useTheme()
     useSelector((state) => state.customization)
     useNotifier()
     const { isEnterpriseLicensed, isCloud, isOpenSource } = useConfig()
 
     const usernameInput = {
-        label: 'Username',
+        label: t('auth:email'),
         name: 'username',
         type: 'email',
-        placeholder: 'user@company.com'
+        placeholder: t('auth:placeholders.emailAddress')
     }
     const passwordInput = {
-        label: 'Password',
+        label: t('auth:password'),
         name: 'password',
         type: 'password',
-        placeholder: '********'
+        placeholder: t('auth:placeholders.password')
     }
     const [usernameVal, setUsernameVal] = useState('')
     const [passwordVal, setPasswordVal] = useState('')
@@ -148,12 +150,12 @@ const SignInPage = () => {
     }, [getDefaultProvidersApi.data])
 
     useEffect(() => {
-        if (authError === 'User Email Unverified') {
+        if (authError === t('auth:errors.userEmailUnverified')) {
             setShowResendButton(true)
         } else {
             setShowResendButton(false)
         }
-    }, [authError])
+    }, [authError, t])
 
     const signInWithSSO = (ssoProvider) => {
         window.location.href = `/api/v1/${ssoProvider}/login`
@@ -163,10 +165,10 @@ const SignInPage = () => {
         try {
             await resendVerificationApi.request({ email: usernameVal })
             setAuthError(undefined)
-            setSuccessMessage('Verification email has been sent successfully.')
+            setSuccessMessage(t('auth:success.verificationEmailSent'))
             setShowResendButton(false)
         } catch (error) {
-            setAuthError(error.response?.data?.message || 'Failed to send verification email.')
+            setAuthError(error.response?.data?.message || t('auth:errors.verificationEmailFailed'))
         }
     }
 
@@ -187,26 +189,26 @@ const SignInPage = () => {
                     {showResendButton && (
                         <Stack sx={{ gap: 1 }}>
                             <Button variant='text' onClick={handleResendVerification}>
-                                Resend Verification Email
+                                {t('auth:resendVerificationEmail')}
                             </Button>
                         </Stack>
                     )}
                     <Stack sx={{ gap: 1 }}>
-                        <Typography variant='h1'>Sign In</Typography>
+                        <Typography variant='h1'>{t('auth:signIn')}</Typography>
                         {isCloud && (
                             <Typography variant='body2' sx={{ color: theme.palette.grey[600] }}>
-                                Don&apos;t have an account?{' '}
+                                {t('auth:dontHaveAccount')}{' '}
                                 <Link style={{ color: `${theme.palette.primary.main}` }} to='/register'>
-                                    Sign up for free
+                                    {t('auth:signUpForFree')}
                                 </Link>
                                 .
                             </Typography>
                         )}
                         {isEnterpriseLicensed && (
                             <Typography variant='body2' sx={{ color: theme.palette.grey[600] }}>
-                                Have an invite code?{' '}
+                                {t('auth:haveInviteCode')}{' '}
                                 <Link style={{ color: `${theme.palette.primary.main}` }} to='/register'>
-                                    Sign up for an account
+                                    {t('auth:signUpForAccount')}
                                 </Link>
                                 .
                             </Typography>
@@ -217,7 +219,8 @@ const SignInPage = () => {
                             <Box sx={{ p: 0 }}>
                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                                     <Typography>
-                                        Email<span style={{ color: 'red' }}>&nbsp;*</span>
+                                        {t('auth:email')}
+                                        <span style={{ color: 'red' }}>&nbsp;*</span>
                                     </Typography>
                                     <div style={{ flexGrow: 1 }}></div>
                                 </div>
@@ -231,14 +234,15 @@ const SignInPage = () => {
                             <Box sx={{ p: 0 }}>
                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                                     <Typography>
-                                        Password<span style={{ color: 'red' }}>&nbsp;*</span>
+                                        {t('auth:password')}
+                                        <span style={{ color: 'red' }}>&nbsp;*</span>
                                     </Typography>
                                     <div style={{ flexGrow: 1 }}></div>
                                 </div>
                                 <Input inputParam={passwordInput} onChange={(newValue) => setPasswordVal(newValue)} value={passwordVal} />
                                 <Typography variant='body2' sx={{ color: theme.palette.grey[600], mt: 1, textAlign: 'right' }}>
                                     <Link style={{ color: theme.palette.primary.main }} to='/forgot-password'>
-                                        Forgot password?
+                                        {t('auth:forgotPassword')}
                                     </Link>
                                 </Typography>
                             </Box>
@@ -248,9 +252,11 @@ const SignInPage = () => {
                                 style={{ borderRadius: 12, height: 40, marginRight: 5 }}
                                 type='submit'
                             >
-                                Login
+                                {t('auth:login')}
                             </LoadingButton>
-                            {configuredSsoProviders && configuredSsoProviders.length > 0 && <Divider sx={{ width: '100%' }}>OR</Divider>}
+                            {configuredSsoProviders && configuredSsoProviders.length > 0 && (
+                                <Divider sx={{ width: '100%' }}>{t('auth:sso.or')}</Divider>
+                            )}
                             {configuredSsoProviders &&
                                 configuredSsoProviders.map(
                                     (ssoProvider) =>
@@ -267,7 +273,7 @@ const SignInPage = () => {
                                                     </Icon>
                                                 }
                                             >
-                                                Sign In With Microsoft
+                                                {t('auth:sso.signInWithMicrosoft')}
                                             </Button>
                                         )
                                 )}
@@ -286,7 +292,7 @@ const SignInPage = () => {
                                                     </Icon>
                                                 }
                                             >
-                                                Sign In With Google
+                                                {t('auth:sso.signInWithGoogle')}
                                             </Button>
                                         )
                                 )}
@@ -305,7 +311,7 @@ const SignInPage = () => {
                                                     </Icon>
                                                 }
                                             >
-                                                Sign In With Auth0 by Okta
+                                                {t('auth:sso.signInWithAuth0')}
                                             </Button>
                                         )
                                 )}
@@ -324,7 +330,7 @@ const SignInPage = () => {
                                                     </Icon>
                                                 }
                                             >
-                                                Sign In With Github
+                                                {t('auth:sso.signInWithGithub')}
                                             </Button>
                                         )
                                 )}

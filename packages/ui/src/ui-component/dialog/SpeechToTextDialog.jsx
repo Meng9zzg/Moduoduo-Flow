@@ -2,6 +2,7 @@ import { createPortal } from 'react-dom'
 import { useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { Dialog, DialogContent, DialogTitle } from '@mui/material'
@@ -16,6 +17,7 @@ import SpeechToText from '@/ui-component/extended/SpeechToText'
 const SpeechToTextDialog = ({ show, dialogProps, onCancel }) => {
     const portalElement = document.getElementById('portal')
     const dispatch = useDispatch()
+    const { t } = useTranslation('dialog')
 
     useNotifier()
 
@@ -35,7 +37,7 @@ const SpeechToTextDialog = ({ show, dialogProps, onCancel }) => {
             aria-describedby='alert-dialog-description'
         >
             <DialogTitle sx={{ fontSize: '1rem' }} id='alert-dialog-title'>
-                {dialogProps.title || 'Allowed Domains'}
+                {dialogProps.title || t('speechToText.title')}
             </DialogTitle>
             <DialogContent>
                 <SpeechToText dialogProps={dialogProps} />

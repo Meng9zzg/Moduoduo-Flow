@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction, SET_CHATFLOW } from '@/store/actions'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { Typography, Box, Button, FormControl, ListItem, ListItemAvatar, ListItemText, MenuItem, Select } from '@mui/material'
@@ -241,6 +242,7 @@ const speechToTextProviders = {
 
 const SpeechToText = ({ dialogProps }) => {
     const dispatch = useDispatch()
+    const { t } = useTranslation('dialog')
 
     useNotifier()
     const theme = useTheme()
@@ -259,7 +261,7 @@ const SpeechToText = ({ dialogProps }) => {
             })
             if (saveResp.data) {
                 enqueueSnackbar({
-                    message: 'Speech To Text Configuration Saved',
+                    message: t('speechToText.saveSuccess'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -274,7 +276,7 @@ const SpeechToText = ({ dialogProps }) => {
             }
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to save Speech To Text Configuration: ${
+                message: `${t('speechToText.saveError')}: ${
                     typeof error.response.data === 'object' ? error.response.data.message : error.response.data
                 }`,
                 options: {
@@ -349,7 +351,7 @@ const SpeechToText = ({ dialogProps }) => {
     return (
         <>
             <Box fullWidth sx={{ mb: 1, display: 'flex', flexDirection: 'column', gap: 1 }}>
-                <Typography>Providers</Typography>
+                <Typography>{t('speechToText.providersLabel')}</Typography>
                 <FormControl fullWidth>
                     <Select
                         size='small'
@@ -361,7 +363,7 @@ const SpeechToText = ({ dialogProps }) => {
                             }
                         }}
                     >
-                        <MenuItem value='none'>None</MenuItem>
+                        <MenuItem value='none'>{t('speechToText.noneOption')}</MenuItem>
                         {Object.values(speechToTextProviders).map((provider) => (
                             <MenuItem key={provider.name} value={provider.name}>
                                 {provider.label}
@@ -483,7 +485,7 @@ const SpeechToText = ({ dialogProps }) => {
                 variant='contained'
                 onClick={onSave}
             >
-                Save
+                {t('speechToText.saveButton')}
             </StyledButton>
         </>
     )

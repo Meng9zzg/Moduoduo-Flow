@@ -9,5 +9,300 @@
         "defaultTitle": "Confirm",
         "defaultCancel": "Cancel",
         "defaultConfirm": "Confirm"
+    },
+    "allowedDomains": {
+        "title": "Allowed Domains",
+        "description": "Your chatbot will only work when used from the following domains.",
+        "domainsLabel": "Domains",
+        "domainPlaceholder": "https://example.com",
+        "errorMessageLabel": "Error Message",
+        "errorMessageDescription": "Custom error message that will be shown when for unauthorized domain",
+        "errorMessagePlaceholder": "Unauthorized domain!",
+        "saveButton": "Save",
+        "saveSuccess": "Allowed Origins Saved",
+        "saveError": "Failed to save Allowed Origins"
+    },
+    "chatFeedback": {
+        "title": "Chat Feedback",
+        "enableLabel": "Enable chat feedback",
+        "saveButton": "Save",
+        "saveSuccess": "Chat Feedback Settings Saved",
+        "saveError": "Failed to save Chat Feedback Settings"
+    },
+    "speechToText": {
+        "title": "Speech to Text",
+        "providersLabel": "Providers",
+        "noneOption": "None",
+        "saveButton": "Save",
+        "saveSuccess": "Speech To Text Configuration Saved",
+        "saveError": "Failed to save Speech To Text Configuration",
+        "providers": {
+            "openAIWhisper": {
+                "label": "OpenAI Whisper",
+                "credentialLabel": "Connect Credential",
+                "languageLabel": "Language",
+                "languageDescription": "The language of the input audio. Supplying the input language in ISO-639-1 format will improve accuracy and latency.",
+                "languagePlaceholder": "en",
+                "promptLabel": "Prompt",
+                "promptDescription": "An optional text to guide the model's style or continue a previous audio segment. The prompt should match the audio language.",
+                "temperatureLabel": "Temperature",
+                "temperatureDescription": "The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic."
+            },
+            "assemblyAiTranscribe": {
+                "label": "Assembly AI",
+                "credentialLabel": "Connect Credential"
+            },
+            "localAISTT": {
+                "label": "LocalAi STT",
+                "credentialLabel": "Connect Credential",
+                "baseUrlLabel": "Base URL",
+                "baseUrlDescription": "The base URL of the local AI server",
+                "languageLabel": "Language",
+                "languageDescription": "The language of the input audio. Supplying the input language in ISO-639-1 format will improve accuracy and latency.",
+                "languagePlaceholder": "en",
+                "modelLabel": "Model",
+                "modelDescription": "The STT model to load. Defaults to whisper-1 if left blank.",
+                "modelPlaceholder": "whisper-1",
+                "promptLabel": "Prompt",
+                "promptDescription": "An optional text to guide the model's style or continue a previous audio segment. The prompt should match the audio language.",
+                "temperatureLabel": "Temperature",
+                "temperatureDescription": "The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic."
+            },
+            "azureCognitive": {
+                "label": "Azure Cognitive Services",
+                "credentialLabel": "Connect Credential",
+                "languageLabel": "Language",
+                "languageDescription": "The recognition language (e.g., \"en-US\", \"es-ES\")",
+                "languagePlaceholder": "en-US",
+                "profanityFilterLabel": "Profanity Filter Mode",
+                "profanityFilterDescription": "How to handle profanity in the transcription",
+                "profanityFilterOptions": {
+                    "none": "None",
+                    "masked": "Masked",
+                    "removed": "Removed"
+                },
+                "channelsLabel": "Audio Channels",
+                "channelsDescription": "Comma-separated list of audio channels to process (e.g., \"0,1\")",
+                "channelsPlaceholder": "0,1"
+            },
+            "groqWhisper": {
+                "label": "Groq Whisper",
+                "modelLabel": "Model",
+                "modelDescription": "The STT model to load. Defaults to whisper-large-v3 if left blank.",
+                "modelPlaceholder": "whisper-large-v3",
+                "credentialLabel": "Connect Credential",
+                "languageLabel": "Language",
+                "languageDescription": "The language of the input audio. Supplying the input language in ISO-639-1 format will improve accuracy and latency.",
+                "languagePlaceholder": "en",
+                "temperatureLabel": "Temperature",
+                "temperatureDescription": "The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic."
+            }
+        }
+    },
+    "starterPrompts": {
+        "title": "Conversation Starter Prompts",
+        "hint": "Starter prompts will only be shown when there is no messages on the chat",
+        "saveButton": "Save",
+        "saveSuccess": "Conversation Starter Prompts Saved",
+        "saveError": "Failed to save Conversation Starter Prompts"
+    },
+    "saveChatflow": {
+        "placeholder": "My New Chatflow"
+    },
+    "chatflowConfig": {
+        "tabs": {
+            "security": "Security",
+            "starterPrompts": "Starter Prompts",
+            "followUpPrompts": "Follow-up Prompts",
+            "speechToText": "Speech to Text",
+            "textToSpeech": "Text to Speech",
+            "chatFeedback": "Chat Feedback",
+            "analyseChatflow": "Analyse Chatflow",
+            "leads": "Leads",
+            "fileUpload": "File Upload",
+            "postProcessing": "Post Processing"
+        }
+    },
+    "apiCode": {
+        "tabs": {
+            "embed": "Embed",
+            "python": "Python",
+            "javascript": "JavaScript",
+            "curl": "cURL",
+            "shareChatbot": "Share Chatbot"
+        },
+        "apiKeyDropdown": {
+            "noAuth": "No Authorization",
+            "addNewKey": "- Add New Key -",
+            "chooseKey": "Choose an API key"
+        },
+        "warnings": {
+            "noAuthForEmbed": "You cannot use API key while embedding/sharing chatbot.",
+            "selectNoAuth": "Please select \"No Authorization\" from the dropdown at the top right corner."
+        },
+        "overrideConfig": {
+            "checkboxLabel": "Show Override Config",
+            "description": "You can override existing input configuration of the chatflow with overrideConfig property.",
+            "securityWarning": "For security reason, override config is disabled by default. You can change this by going into Chatflow Configuration -> Security tab, and enable the property you want to override.",
+            "referLink": "here",
+            "referText": "Refer",
+            "moreDetails": "for more details",
+            "nodes": "Nodes",
+            "variables": "Variables",
+            "multiValueTip": "You can also specify multiple values for a config parameter by specifying the node id"
+        },
+        "streaming": {
+            "readText": "Read",
+            "linkText": "here",
+            "onText": "on how to stream response back to application"
+        }
+    },
+    "createEvaluation": {
+        "title": "Start New Evaluation",
+        "validationError": "Fill all the mandatory fields",
+        "steps": {
+            "datasets": "Datasets",
+            "evaluators": "Evaluators",
+            "llmGradedMetrics": "LLM Graded Metrics"
+        },
+        "step1": {
+            "title": "Select dataset to be tested on flows",
+            "description1": "Uses the",
+            "description2": "input",
+            "description3": "column from the dataset to execute selected Chatflow(s), and compares the results with the output column.",
+            "description4": "The following metrics will be computed:"
+        },
+        "step2": {
+            "title": "Unit Test your flows by adding custom evaluators",
+            "description": "Post execution, all the chosen evaluators will be executed on the results. Each evaluator will grade the results based on the criteria defined and return a pass/fail indicator.",
+            "pass": "pass",
+            "fail": "fail"
+        },
+        "step3": {
+            "title": "Grade flows using an LLM",
+            "description": "Post execution, grades the answers by using an LLM. Used to generate comparative scores or reasoning or other custom defined criteria."
+        },
+        "fields": {
+            "name": "Name",
+            "datasetToUse": "Dataset to use",
+            "selectDataset": "Select Dataset",
+            "treatAsConversation": "Treat all dataset rows as one conversation ?",
+            "selectFlows": "Select your flows to Evaluate",
+            "chatflows": "Chatflows",
+            "agentflows": "Agentflows (v2)",
+            "customAssistants": "Custom Assistants",
+            "selectEvaluators": "Select the Evaluators",
+            "useLLM": "Use an LLM to grade the results ?",
+            "noGrading": "No Grading",
+            "selectModel": "Select Model",
+            "enterModelName": "Enter the Model Name",
+            "modelName": "Model Name",
+            "selectCredential": "Select Credential",
+            "connectCredential": "Connect Credential"
+        },
+        "buttons": {
+            "previousStep": "Previous Step",
+            "skip": "Skip",
+            "skipEvaluators": "Skip Evaluators",
+            "next": "Next",
+            "startEvaluation": "Start Evaluation"
+        },
+        "placeholders": {
+            "evaluation": "Evaluation"
+        }
+    },
+    "credential": {
+        "title": "Credential",
+        "cannotEdit": "Cannot edit shared credential.",
+        "fields": {
+            "credentialName": "Credential Name",
+            "oauthRedirectUrl": "OAuth Redirect URL"
+        },
+        "buttons": {
+            "authenticate": "Authenticate"
+        },
+        "messages": {
+            "newCredentialAdded": "New Credential added",
+            "credentialSaved": "Credential saved",
+            "failedToAdd": "Failed to add new Credential: {{error}}",
+            "failedToSave": "Failed to save Credential: {{error}}",
+            "oauth2Success": "OAuth2 authorization completed successfully",
+            "oauth2Failed": "OAuth2 authorization failed",
+            "oauth2Error": "OAuth2 authorization failed: {{error}}",
+            "popupBlocked": "Failed to open authorization window. Please check if popups are blocked.",
+            "invalidResponse": "Invalid response from authorization endpoint",
+            "failedToSaveCredential": "Failed to save credential"
+        }
+    },
+    "credentialList": {
+        "searchPlaceholder": "Search credential",
+        "clearSearch": "Clear Search"
+    },
+    "tool": {
+        "columns": {
+            "property": "Property",
+            "type": "Type",
+            "description": "Description",
+            "required": "Required",
+            "delete": "Delete"
+        },
+        "nameLabel": "Tool Name",
+        "nameTooltip": "Tool name must be small capital letter with underscore. Ex: my_tool",
+        "namePlaceholder": "My New Tool",
+        "descriptionLabel": "Tool Description",
+        "descriptionTooltip": "Description of what the tool does. This is for ChatGPT to determine when to use this tool.",
+        "descriptionPlaceholder": "Description of what the tool does. This is for ChatGPT to determine when to use this tool.",
+        "iconLabel": "Tool Icon Source",
+        "iconPlaceholder": "https://raw.githubusercontent.com/gilbarbara/logos/main/logos/airtable.svg",
+        "schemaLabel": "Input Schema",
+        "schemaTooltip": "What is the input format in JSON?",
+        "pasteJsonButton": "Paste JSON",
+        "addItemButton": "Add Item",
+        "functionLabel": "Javascript Function",
+        "functionTooltip": "Function to execute when tool is being used. You can use properties specified in Input Schema as variables. For example, if the property is <code>userid</code>, you can use as <code>$userid</code>. Return value must be a string. You can also override the code from API by following this <a target=\"_blank\" href=\"https://docs.flowiseai.com/tools/custom-tool#override-function-from-api\">guide</a>",
+        "howToUseButton": "How to use Function",
+        "seeExampleButton": "See Example",
+        "saveAsTemplateButton": "Save As Template",
+        "exportButton": "Export",
+        "exportAsTemplate": "Export As Template",
+        "deleteButton": "Delete",
+        "deleteTitle": "Delete Tool",
+        "deleteDescription": "Delete tool {{name}}?",
+        "useTemplateButton": "Use Template",
+        "addSuccess": "New Tool added",
+        "addError": "Failed to add new Tool: {{error}}",
+        "saveSuccess": "Tool saved",
+        "saveError": "Failed to save Tool: {{error}}",
+        "deleteSuccess": "Tool deleted",
+        "deleteError": "Failed to delete Tool: {{error}}",
+        "exportError": "Failed to export Tool: {{error}}"
+    },
+    "apiKey": {
+        "apiKeyLabel": "API Key",
+        "keyNameLabel": "Key Name",
+        "keyNamePlaceholder": "My New Key",
+        "copyTooltip": "Copy API Key",
+        "copiedMessage": "Copied!",
+        "addSuccess": "New API key added",
+        "addError": "Failed to add new API key: {{error}}",
+        "saveSuccess": "API Key saved",
+        "saveError": "Failed to save API key: {{error}}"
+    },
+    "tag": {
+        "title": "Set Chatflow Category Tags",
+        "inputLabel": "Add a tag",
+        "hint": "Enter a tag and press enter to add it to the list. You can add as many tags as you want."
+    },
+    "exportTemplate": {
+        "title": "Export As Template",
+        "nameLabel": "Name",
+        "nameRequired": "Template Name is mandatory!",
+        "descriptionLabel": "Description",
+        "badgeLabel": "Badge",
+        "usecasesLabel": "Usecases",
+        "usecasesHint": "Type a usecase and press enter to add it to the list. You can add as many items as you want.",
+        "saveButton": "Save Template",
+        "saveSuccess": "Saved as template successfully!",
+        "saveError": "Failed to save as template!"
     }
 }
