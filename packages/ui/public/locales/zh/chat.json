@@ -1,0 +1,23 @@
+{
+    "greeting": "你好！有什么可以帮到您？",
+    "messageStopped": "消息已停止",
+    "unableToUpload": "无法上传文档",
+    "thankYouForSubmitting": "感谢您提交联系信息。",
+    "formTitle": "请填写表单",
+    "formDescription": "完成下面所有字段以继续",
+    "submit": "提交",
+    "submitting": "提交中...",
+    "save": "保存",
+    "saving": "保存中...",
+    "stop": "停止",
+    "stopping": "停止中...",
+    "feedback": "反馈",
+    "usedTools": "已使用工具",
+    "yes": "是",
+    "no": "否",
+    "placeholders": {
+        "name": "姓名",
+        "emailAddress": "邮箱地址",
+        "phoneNumber": "电话号码"
+    }
+}

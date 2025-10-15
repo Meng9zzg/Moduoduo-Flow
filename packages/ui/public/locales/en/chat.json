@@ -1,0 +1,23 @@
+{
+    "greeting": "Hi there! How can I help?",
+    "messageStopped": "Message stopped",
+    "unableToUpload": "Unable to upload documents",
+    "thankYouForSubmitting": "Thank you for submitting your contact information.",
+    "formTitle": "Please Fill Out The Form",
+    "formDescription": "Complete all fields below to continue",
+    "submit": "Submit",
+    "submitting": "Submitting...",
+    "save": "Save",
+    "saving": "Saving...",
+    "stop": "Stop",
+    "stopping": "Stopping...",
+    "feedback": "Feedback",
+    "usedTools": "Used Tools",
+    "yes": "Yes",
+    "no": "No",
+    "placeholders": {
+        "name": "Name",
+        "emailAddress": "Email Address",
+        "phoneNumber": "Phone Number"
+    }
+}

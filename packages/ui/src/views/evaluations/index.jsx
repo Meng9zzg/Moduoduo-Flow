@@ -805,8 +805,10 @@ function EvaluationRunRow(props) {
                                                                         color='info'
                                                                         label={
                                                                             childItem.average_metrics?.totalRuns
-                                                                                ? 'Total Runs: ' + childItem.average_metrics?.totalRuns
-                                                                                : 'Total Runs: N/A'
+                                                                                ? props.t('evaluations:totalRuns') +
+                                                                                  ': ' +
+                                                                                  childItem.average_metrics?.totalRuns
+                                                                                : props.t('evaluations:totalRuns') + ': N/A'
                                                                         }
                                                                     />
                                                                     {childItem.average_metrics?.averageCost && (
@@ -823,10 +825,11 @@ function EvaluationRunRow(props) {
                                                                         color='info'
                                                                         label={
                                                                             childItem.average_metrics?.averageLatency
-                                                                                ? 'Avg Latency: ' +
+                                                                                ? props.t('evaluations:avgLatency') +
+                                                                                  ': ' +
                                                                                   childItem.average_metrics?.averageLatency +
                                                                                   'ms'
-                                                                                : 'Avg Latency: N/A'
+                                                                                : props.t('evaluations:avgLatency') + ': N/A'
                                                                         }
                                                                     />
                                                                     {childItem.average_metrics?.passPcnt >= 0 && (
