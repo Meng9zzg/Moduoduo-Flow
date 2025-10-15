@@ -173,7 +173,7 @@ const ItemCard = ({ data, images, icons, onClick }) => {
                                             alignItems: 'center',
                                             display: 'flex',
                                             fontSize: '.9rem',
-                                            fontWeight: 200
+                                            fontWeight: 400
                                         }}
                                     >
                                         + {(images?.length || 0) + (icons?.length || 0) - 3} {t('more')}
