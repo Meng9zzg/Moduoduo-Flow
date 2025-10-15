@@ -33,8 +33,6 @@ const ErrorBoundary = ({ error }) => {
                 </Card>
                 <Typography variant='body1' sx={{ fontSize: '1.1rem', textAlign: 'center', lineHeight: '1.5' }}>
                     {t('boundary.retryMessage')}
-                    <br />
-                    {t('boundary.githubMessage')}
                 </Typography>
             </Stack>
         </Box>

@@ -28,7 +28,6 @@
     "boundary": {
         "title": "抱歉，加载此页面时发生错误。",
         "statusLabel": "状态",
-        "retryMessage": "请稍后重试。如果问题仍然存在，请在我们的 Discord 服务器上联系我们。",
-        "githubMessage": "或者，您可以在 Github 上提出问题。"
+        "retryMessage": "请稍后重试。"
     }
 }
