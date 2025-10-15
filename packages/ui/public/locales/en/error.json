@@ -26,9 +26,8 @@
     "maintenanceMode": "System is under maintenance",
     "featureUnavailable": "This feature is currently unavailable",
     "boundary": {
-        "title": "Oh snap!",
-        "subtitle": "The following error occurred when loading this page.",
-        "statusLabel": "Status:",
+        "title": "Sorry, an error occurred while loading this page.",
+        "statusLabel": "Status",
         "retryMessage": "Please retry after some time. If the issue persists, reach out to us on our Discord server.",
         "githubMessage": "Alternatively, you can raise an issue on Github."
     }

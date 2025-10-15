@@ -16,10 +16,7 @@ const ErrorBoundary = ({ error }) => {
     return (
         <Box sx={{ border: 1, borderColor: theme.palette.grey[900] + 25, borderRadius: 2, padding: '20px', maxWidth: '1280px' }}>
             <Stack flexDirection='column' sx={{ alignItems: 'center', gap: 3 }}>
-                <Stack flexDirection='column' sx={{ alignItems: 'center', gap: 1 }}>
-                    <Typography variant='h2'>{t('boundary.title')}</Typography>
-                    <Typography variant='h3'>{t('boundary.subtitle')}</Typography>
-                </Stack>
+                <Typography variant='h2'>{t('boundary.title')}</Typography>
                 <Card variant='outlined'>
                     <Box sx={{ position: 'relative', px: 2, py: 3 }}>
                         <IconButton
@@ -31,8 +28,6 @@ const ErrorBoundary = ({ error }) => {
                         </IconButton>
                         <pre style={{ margin: 0, overflowWrap: 'break-word', whiteSpace: 'pre-wrap', textAlign: 'center' }}>
                             <code>{`${t('boundary.statusLabel')} ${error.response.status}`}</code>
-                            <br />
-                            <code>{error.response?.data?.message}</code>
                         </pre>
                     </Box>
                 </Card>
