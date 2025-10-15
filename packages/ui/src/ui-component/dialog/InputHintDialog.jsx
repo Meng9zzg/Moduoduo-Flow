@@ -1,10 +1,12 @@
 import { createPortal } from 'react-dom'
+import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 import { MemoizedReactMarkdown } from '@/ui-component/markdown/MemoizedReactMarkdown'
 import { Dialog, DialogContent, DialogTitle } from '@mui/material'
 
 const InputHintDialog = ({ show, dialogProps, onCancel }) => {
     const portalElement = document.getElementById('portal')
+    const { t } = useTranslation('dialog')
 
     const component = show ? (
         <Dialog

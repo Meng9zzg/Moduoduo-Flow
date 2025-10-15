@@ -1,9 +1,11 @@
 import { createPortal } from 'react-dom'
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material'
+import { useTranslation } from 'react-i18next'
 import useConfirm from '@/hooks/useConfirm'
 import { StyledButton } from '@/ui-component/button/StyledButton'
 
 const ConfirmDialog = () => {
+    const { t } = useTranslation('dialog')
     const { onConfirm, onCancel, confirmState } = useConfirm()
     const portalElement = document.getElementById('portal')
 

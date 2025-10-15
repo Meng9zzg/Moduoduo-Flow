@@ -621,5 +621,221 @@
             "description": "描述",
             "required": "必填"
         }
+    },
+    "chatExpand": {
+        "clearConversation": "清空对话",
+        "clearChat": "清空聊天"
+    },
+    "viewMessages": {
+        "fromDate": "开始日期",
+        "toDate": "结束日期",
+        "source": "来源",
+        "sourceUI": "UI",
+        "sourceAPI": "API/嵌入",
+        "sourceEvaluation": "评估",
+        "feedback": "反馈",
+        "feedbackPositive": "正面",
+        "feedbackNegative": "负面",
+        "moreActions": "更多操作",
+        "exportToJSON": "导出为 JSON",
+        "deleteAll": "全部删除",
+        "totalSessions": "总会话数",
+        "totalMessages": "总消息数",
+        "totalFeedbackReceived": "总反馈数",
+        "positiveFeedback": "正面反馈",
+        "noMessages": "暂无消息",
+        "sessions": "会话",
+        "sessionId": "会话 ID",
+        "memory": "内存",
+        "email": "邮箱",
+        "clearMessage": "清空消息",
+        "clearMessageTooltip": "在左侧，您将看到此对话中使用的内存节点。要删除存储在该内存节点上的会话对话，您必须在画布中有一个具有相同参数的匹配内存节点。",
+        "deleteMessages": "删除消息",
+        "deleteMessagesDescription": "确定要删除消息吗？此操作无法撤销。",
+        "deleteButton": "删除",
+        "cancelButton": "取消",
+        "clearSession": "清空会话",
+        "clearSessionDescription": "确定要从 {{memoryType}} 中清空会话 ID：{{sessionId}} 吗？",
+        "clearMessagesDescription": "确定要清空消息吗？",
+        "clearButton": "清空",
+        "successDeleted": "成功删除消息",
+        "successCleared": "成功从 {{memoryType}} 中清空会话 ID：{{sessionId}}",
+        "successClearedMessages": "成功清空消息",
+        "removeFromMemory": "从第三方内存节点中删除消息",
+        "usedTools": "使用的工具",
+        "state": "状态",
+        "finished": "已完成"
+    },
+    "viewLeads": {
+        "searchPlaceholder": "搜索姓名、邮箱或电话",
+        "export": "导出",
+        "noLeads": "暂无线索",
+        "name": "姓名",
+        "emailAddress": "邮箱地址",
+        "phone": "电话",
+        "createdDate": "创建日期"
+    },
+    "chatFeedbackContent": {
+        "title": "提供额外反馈",
+        "placeholder": "您对响应有什么看法？",
+        "cancel": "取消",
+        "submit": "提交反馈"
+    },
+    "expandText": {
+        "executeButton": "执行"
+    },
+    "nodeInfo": {
+        "documentation": "文档",
+        "openDocumentation": "打开文档"
+    },
+    "sourceDoc": {
+        "title": "源文档",
+        "errorLabel": "错误："
+    },
+    "manageScrapedLinks": {
+        "title": "管理抓取的链接 - {{url}}",
+        "fetchButton": "获取链接",
+        "scrapedLinksLabel": "抓取的链接",
+        "clearAllTitle": "清除所有链接",
+        "clearAllButton": "全部清除",
+        "emptyMessage": "从 URL 抓取的链接将显示在这里",
+        "cancelButton": "取消",
+        "saveButton": "保存",
+        "fetchSuccess": "成功获取链接",
+        "fetchError": "获取链接失败：{{error}}"
+    },
+    "nvidiaNIM": {
+        "title": "NIM 设置",
+        "steps": {
+            "downloadInstaller": "下载安装程序",
+            "pullImage": "拉取镜像",
+            "startContainer": "启动容器"
+        },
+        "step0": {
+            "description": "您想下载 NIM 安装程序吗？如果已安装，请点击下一步"
+        },
+        "step1": {
+            "modelLabel": "模型",
+            "viewLicense": "查看许可证",
+            "pullingImage": "正在拉取镜像..."
+        },
+        "step2": {
+            "relaxMemLabel": "放宽内存限制",
+            "yesOption": "是",
+            "noOption": "否",
+            "hostPortLabel": "主机端口",
+            "description": "点击下一步启动容器。",
+            "startingContainer": "正在启动容器..."
+        },
+        "cancelButton": "取消",
+        "nextButton": "下一步",
+        "downloadButton": "下载",
+        "containerExists": {
+            "title": "容器已存在",
+            "description": "此镜像的容器已存在：",
+            "nameLabel": "名称：",
+            "statusLabel": "状态：",
+            "options": "您可以：",
+            "useExisting": "使用现有容器（推荐）",
+            "changePort": "更改端口并重试",
+            "useExistingButton": "使用现有"
+        },
+        "alerts": {
+            "enterImageTag": "请输入镜像标签",
+            "enterValidPort": "请输入 1 到 65535 之间的有效端口号",
+            "portInUse": "端口 {{port}} 已被另一个容器使用。请选择其他端口。",
+            "downloadFailed": "下载安装程序失败：{{error}}",
+            "preloadFailed": "预加载失败：{{error}}",
+            "pullImageFailed": "拉取镜像失败：{{error}}",
+            "checkImageFailed": "检查镜像状态失败：{{error}}",
+            "startContainerFailed": "启动容器失败：{{error}}",
+            "checkContainerFailed": "检查容器状态失败：{{error}}"
+        }
+    },
+    "uploadJSON": {
+        "title": "导入 API 密钥",
+        "fileLabel": "导入 api.json 文件",
+        "filePlaceholder": "选择要上传的文件",
+        "importModeLabel": "导入模式",
+        "importModePlaceholder": "选择一个选项",
+        "importModes": {
+            "addOverwrite": {
+                "label": "添加并覆盖",
+                "description": "添加密钥并覆盖同名的现有密钥"
+            },
+            "addIgnore": {
+                "label": "添加并忽略",
+                "description": "添加密钥并忽略同名的现有密钥"
+            },
+            "addVerify": {
+                "label": "添加并验证",
+                "description": "添加密钥，如果存在同名密钥则抛出错误"
+            },
+            "replaceAll": {
+                "label": "全部替换",
+                "description": "用导入的密钥替换所有密钥"
+            }
+        },
+        "importSuccess": "成功导入密钥！",
+        "importError": "导入密钥失败：{{error}}"
+    },
+    "pricing": {
+        "title": "定价方案",
+        "currentPlan": "当前方案",
+        "mostPopular": "最受欢迎",
+        "firstMonthFree": "首月免费",
+        "contactUs": "联系我们",
+        "getStarted": "开始使用",
+        "confirmTitle": "确认方案变更",
+        "paymentMethod": "支付方式",
+        "expiresLabel": "过期",
+        "noPaymentMethod": "未找到支付方式",
+        "addPaymentButton": "在账单门户中添加支付方式",
+        "openingBillingPortal": "正在打开账单门户...",
+        "dateRange": "{{startDate}} - {{endDate}}",
+        "firstMonthNotice": "您有资格享受首月免费！",
+        "basePlan": "{{plan}} 方案",
+        "firstMonthDiscount": "首月折扣",
+        "appliedBalance": "已应用账户余额",
+        "creditBalance": "余额信用",
+        "dueToday": "今日应付",
+        "creditNote": "您的可用信用额度将自动应用于下一张发票。",
+        "removeSeatsWarning": "在更改方案之前，您必须删除额外的席位和用户。",
+        "removeWorkspacesWarning": "在更改方案之前，您必须删除除默认工作区之外的所有工作区。",
+        "cancelButton": "取消",
+        "confirmButton": "确认更改",
+        "updatingPlan": "正在更新方案..."
+    },
+    "promptGenerator": {
+        "examples": {
+            "summarizeDocument": "总结文档",
+            "translateLanguage": "翻译语言",
+            "writeEmail": "写邮件",
+            "convertCode": "将代码转换为另一种语言",
+            "generateReport": "研究并生成报告",
+            "planTrip": "计划旅行"
+        },
+        "placeholder": "在此描述您的任务",
+        "generateButton": "生成",
+        "backButton": "返回",
+        "applyButton": "应用"
+    },
+    "langsmithHub": {
+        "title": "Langchain Hub ({{type}})",
+        "modelLabel": "模型",
+        "usecaseLabel": "用例",
+        "languageLabel": "语言",
+        "searchButton": "搜索",
+        "loadingMessage": "请稍候....正在加载提示词",
+        "noPromptsMessage": "无可用提示词",
+        "availablePrompts": "可用提示词",
+        "promptSection": "提示词",
+        "descriptionSection": "描述",
+        "readmeSection": "说明文档",
+        "cancelButton": "取消",
+        "loadButton": "加载"
+    },
+    "formatPromptValues": {
+        "defaultTitle": "格式化提示词值"
     }
 }

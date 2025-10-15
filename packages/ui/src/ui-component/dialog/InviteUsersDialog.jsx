@@ -2,6 +2,7 @@ import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 // Material
 import {
@@ -94,6 +95,7 @@ const InviteUsersDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
     const portalElement = document.getElementById('portal')
 
     const dispatch = useDispatch()
+    const { t } = useTranslation('dialog')
 
     // ==============================|| Snackbar ||============================== //
 
@@ -291,7 +293,7 @@ const InviteUsersDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
             }
             if (existingEmails.length > 0) {
                 enqueueSnackbar({
-                    message: `The following users are already in the workspace or organization: ${existingEmails.join(', ')}`,
+                    message: t('inviteUsers.alreadyExistsError', { emails: existingEmails.join(', ') }),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'error',
@@ -341,7 +343,7 @@ const InviteUsersDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
             )
             if (responses.length > 0) {
                 enqueueSnackbar({
-                    message: 'Users invited to workspace',
+                    message: t('inviteUsers.inviteSuccess'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -358,8 +360,9 @@ const InviteUsersDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
             }
         } catch (error) {
             console.error('Error in saveInvite:', error)
+            const errorMessage = error.response?.data?.message || error.message || 'Unknown error'
             enqueueSnackbar({
-                message: `Failed to invite users to workspace: ${error.response?.data?.message || error.message || 'Unknown error'}`,
+                message: t('inviteUsers.inviteError', { error: errorMessage }),
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -421,7 +424,7 @@ const InviteUsersDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
         // If any invalid emails were filtered out, show a notification
         if (updatedUsers.length < newValue.length) {
             enqueueSnackbar({
-                message: 'One or more invalid emails were removed.',
+                message: t('inviteUsers.invalidEmailRemoved'),
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'warning',
@@ -480,19 +483,19 @@ const InviteUsersDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
             )
 
             if (!isAlreadySelected) {
-                return [{ name: `Invite ${inviteEmail}`, email: inviteEmail, isNewUser: true }]
+                return [{ name: `${t('inviteUsers.invitePrefix')} ${inviteEmail}`, email: inviteEmail, isNewUser: true }]
             }
         }
 
         if (filterByNameOrEmail.length === 0) {
-            return [{ name: 'No results found', email: '', isNoResult: true, disabled: true }]
+            return [{ name: t('inviteUsers.noResults'), email: '', isNoResult: true, disabled: true }]
         }
 
         return filterByNameOrEmail
     }
 
     const renderUserSearchInput = (params) => (
-        <TextField {...params} variant='outlined' placeholder={selectedUsers.length > 0 ? '' : 'Invite users by name or email'} />
+        <TextField {...params} variant='outlined' placeholder={selectedUsers.length > 0 ? '' : t('inviteUsers.selectUsersPlaceholder')} />
     )
 
     const renderUserSearchOptions = (props, option) => {
@@ -511,7 +514,7 @@ const InviteUsersDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
                             py: 0.5
                         }}
                     >
-                        <Typography color='text.secondary'>No results found</Typography>
+                        <Typography color='text.secondary'>{t('inviteUsers.noResults')}</Typography>
                     </Box>
                 ) : option.isNewUser ? (
                     <Box
@@ -561,9 +564,9 @@ const InviteUsersDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
             )
 
             const tooltipTitle = option.alreadyInWorkspace
-                ? `${option.user.name || option.user.email} is already a member of this workspace and won't be invited again.`
+                ? t('inviteUsers.alreadyInWorkspace', { name: option.user.name || option.user.email })
                 : option.isNewUser
-                ? 'An invitation will be sent to this email address'
+                ? t('inviteUsers.newUserTooltip')
                 : ''
 
             return tooltipTitle ? (
@@ -634,13 +637,14 @@ const InviteUsersDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
             <DialogTitle sx={{ fontSize: '1rem' }} id='alert-dialog-title'>
                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                     <IconUser style={{ marginRight: '10px' }} />
-                    Invite Users
+                    {t('inviteUsers.title')}
                 </div>
             </DialogTitle>
             <DialogContent sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <Box>
                     <Typography>
-                        Select Users<span style={{ color: 'red' }}>&nbsp;*</span>
+                        {t('inviteUsers.selectUsersLabel')}
+                        <span style={{ color: 'red' }}>&nbsp;*</span>
                     </Typography>
                     <Autocomplete
                         multiple
@@ -671,14 +675,17 @@ const InviteUsersDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
                 <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 2 }}>
                     <Box sx={{ gridColumn: 'span 1' }}>
                         <Typography>
-                            Workspace<span style={{ color: 'red' }}>&nbsp;*</span>
+                            {t('inviteUsers.workspaceLabel')}
+                            <span style={{ color: 'red' }}>&nbsp;*</span>
                         </Typography>
                         <Autocomplete
                             disabled={checkWorkspaceDisabled()}
                             getOptionLabel={(option) => option.label || ''}
                             onChange={handleWorkspaceChange}
                             options={workspaces}
-                            renderInput={(params) => <TextField {...params} variant='outlined' placeholder='Select Workspace' />}
+                            renderInput={(params) => (
+                                <TextField {...params} variant='outlined' placeholder={t('inviteUsers.workspacePlaceholder')} />
+                            )}
                             sx={{ mt: 0.5 }}
                             value={getWorkspaceValue()}
                             PopperComponent={StyledPopper}
@@ -686,13 +693,16 @@ const InviteUsersDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
                     </Box>
                     <Box sx={{ gridColumn: 'span 1' }}>
                         <Typography>
-                            Role to Assign<span style={{ color: 'red' }}>&nbsp;*</span>
+                            {t('inviteUsers.roleLabel')}
+                            <span style={{ color: 'red' }}>&nbsp;*</span>
                         </Typography>
                         <Autocomplete
                             getOptionLabel={(option) => option.label || ''}
                             onChange={handleRoleChange}
                             options={availableRoles}
-                            renderInput={(params) => <TextField {...params} variant='outlined' placeholder='Select Role' />}
+                            renderInput={(params) => (
+                                <TextField {...params} variant='outlined' placeholder={t('inviteUsers.rolePlaceholder')} />
+                            )}
                             sx={{ mt: 0.5 }}
                             value={getRoleValue()}
                             PopperComponent={StyledPopper}

@@ -1,6 +1,7 @@
 import { createPortal } from 'react-dom'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
@@ -108,6 +109,7 @@ const extensions = (availableNodesForVariable, availableState, acceptNodeOutputA
 
 const ExpandRichInputDialog = ({ show, dialogProps, onCancel, onInputHintDialogClicked, onConfirm }) => {
     const portalElement = document.getElementById('portal')
+    const { t } = useTranslation('dialog')
 
     const dispatch = useDispatch()
     const customization = useSelector((state) => state.customization)

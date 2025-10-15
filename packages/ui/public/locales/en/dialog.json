@@ -623,5 +623,221 @@
             "description": "Description",
             "required": "Required"
         }
+    },
+    "chatExpand": {
+        "clearConversation": "Clear Conversation",
+        "clearChat": "Clear Chat"
+    },
+    "viewMessages": {
+        "fromDate": "From Date",
+        "toDate": "To Date",
+        "source": "Source",
+        "sourceUI": "UI",
+        "sourceAPI": "API/Embed",
+        "sourceEvaluation": "Evaluations",
+        "feedback": "Feedback",
+        "feedbackPositive": "Positive",
+        "feedbackNegative": "Negative",
+        "moreActions": "More Actions",
+        "exportToJSON": "Export to JSON",
+        "deleteAll": "Delete All",
+        "totalSessions": "Total Sessions",
+        "totalMessages": "Total Messages",
+        "totalFeedbackReceived": "Total Feedback Received",
+        "positiveFeedback": "Positive Feedback",
+        "noMessages": "No Messages",
+        "sessions": "Sessions",
+        "sessionId": "Session Id",
+        "memory": "Memory",
+        "email": "Email",
+        "clearMessage": "Clear Message",
+        "clearMessageTooltip": "On the left, you'll see the Memory node used in this conversation. To delete the session conversations stored on that Memory node, you must have a matching Memory node with identical parameters in the canvas.",
+        "deleteMessages": "Delete Messages",
+        "deleteMessagesDescription": "Are you sure you want to delete messages? This action cannot be undone.",
+        "deleteButton": "Delete",
+        "cancelButton": "Cancel",
+        "clearSession": "Clear Session",
+        "clearSessionDescription": "Are you sure you want to clear session id: {{sessionId}} from {{memoryType}}?",
+        "clearMessagesDescription": "Are you sure you want to clear messages?",
+        "clearButton": "Clear",
+        "successDeleted": "Successfully deleted messages",
+        "successCleared": "Successfully cleared session id: {{sessionId}} from {{memoryType}}",
+        "successClearedMessages": "Successfully cleared messages",
+        "removeFromMemory": "Remove messages from 3rd party Memory Node",
+        "usedTools": "Used Tools",
+        "state": "State",
+        "finished": "Finished"
+    },
+    "viewLeads": {
+        "searchPlaceholder": "Search Name or Email or Phone",
+        "export": "Export",
+        "noLeads": "No Leads",
+        "name": "Name",
+        "emailAddress": "Email Address",
+        "phone": "Phone",
+        "createdDate": "Created Date"
+    },
+    "chatFeedbackContent": {
+        "title": "Provide additional feedback",
+        "placeholder": "What do you think of the response?",
+        "cancel": "Cancel",
+        "submit": "Submit Feedback"
+    },
+    "expandText": {
+        "executeButton": "Execute"
+    },
+    "nodeInfo": {
+        "documentation": "Documentation",
+        "openDocumentation": "Open Documentation"
+    },
+    "sourceDoc": {
+        "title": "Source Documents",
+        "errorLabel": "Error:"
+    },
+    "manageScrapedLinks": {
+        "title": "Manage Scraped Links - {{url}}",
+        "fetchButton": "Fetch Links",
+        "scrapedLinksLabel": "Scraped Links",
+        "clearAllTitle": "Clear All Links",
+        "clearAllButton": "Clear All",
+        "emptyMessage": "Links scraped from the URL will appear here",
+        "cancelButton": "Cancel",
+        "saveButton": "Save",
+        "fetchSuccess": "Successfully fetched links",
+        "fetchError": "Failed to fetch links: {{error}}"
+    },
+    "nvidiaNIM": {
+        "title": "NIM Setup",
+        "steps": {
+            "downloadInstaller": "Download Installer",
+            "pullImage": "Pull Image",
+            "startContainer": "Start Container"
+        },
+        "step0": {
+            "description": "Would you like to download the NIM installer? Click Next if it has been installed"
+        },
+        "step1": {
+            "modelLabel": "Model",
+            "viewLicense": "View License",
+            "pullingImage": "Pulling image..."
+        },
+        "step2": {
+            "relaxMemLabel": "Relax Memory Constraints",
+            "yesOption": "Yes",
+            "noOption": "No",
+            "hostPortLabel": "Host Port",
+            "description": "Click Next to start the container.",
+            "startingContainer": "Starting container..."
+        },
+        "cancelButton": "Cancel",
+        "nextButton": "Next",
+        "downloadButton": "Download",
+        "containerExists": {
+            "title": "Container Already Exists",
+            "description": "A container for this image already exists:",
+            "nameLabel": "Name:",
+            "statusLabel": "Status:",
+            "options": "You can:",
+            "useExisting": "Use the existing container (recommended)",
+            "changePort": "Change the port and try again",
+            "useExistingButton": "Use Existing"
+        },
+        "alerts": {
+            "enterImageTag": "Please enter an image tag",
+            "enterValidPort": "Please enter a valid port number between 1 and 65535",
+            "portInUse": "Port {{port}} is already in use by another container. Please choose a different port.",
+            "downloadFailed": "Failed to download installer: {{error}}",
+            "preloadFailed": "Failed to preload: {{error}}",
+            "pullImageFailed": "Failed to pull image: {{error}}",
+            "checkImageFailed": "Failed to check image status: {{error}}",
+            "startContainerFailed": "Failed to start container: {{error}}",
+            "checkContainerFailed": "Failed to check container status: {{error}}"
+        }
+    },
+    "uploadJSON": {
+        "title": "Import API Keys",
+        "fileLabel": "Import api.json file",
+        "filePlaceholder": "Choose a file to upload",
+        "importModeLabel": "Import Mode",
+        "importModePlaceholder": "choose an option",
+        "importModes": {
+            "addOverwrite": {
+                "label": "Add & Overwrite",
+                "description": "Add keys and overwrite existing keys with the same name"
+            },
+            "addIgnore": {
+                "label": "Add & Ignore",
+                "description": "Add keys and ignore existing keys with the same name"
+            },
+            "addVerify": {
+                "label": "Add & Verify",
+                "description": "Add Keys and throw error if key with same name exists"
+            },
+            "replaceAll": {
+                "label": "Replace All",
+                "description": "Replace all keys with the imported keys"
+            }
+        },
+        "importSuccess": "Imported keys successfully!",
+        "importError": "Failed to import keys: {{error}}"
+    },
+    "pricing": {
+        "title": "Pricing Plans",
+        "currentPlan": "Current Plan",
+        "mostPopular": "Most Popular",
+        "firstMonthFree": "First Month Free",
+        "contactUs": "Contact Us",
+        "getStarted": "Get Started",
+        "confirmTitle": "Confirm Plan Change",
+        "paymentMethod": "Payment Method",
+        "expiresLabel": "expires",
+        "noPaymentMethod": "No payment method found",
+        "addPaymentButton": "Add Payment Method in Billing Portal",
+        "openingBillingPortal": "Opening Billing Portal...",
+        "dateRange": "{{startDate}} - {{endDate}}",
+        "firstMonthNotice": "You're eligible for your first month free!",
+        "basePlan": "{{plan}} Plan",
+        "firstMonthDiscount": "First Month Discount",
+        "appliedBalance": "Applied account balance",
+        "creditBalance": "Credit balance",
+        "dueToday": "Due today",
+        "creditNote": "Your available credit will automatically apply to your next invoice.",
+        "removeSeatsWarning": "You must remove additional seats and users before changing your plan.",
+        "removeWorkspacesWarning": "You must remove all workspaces except the default workspace before changing your plan.",
+        "cancelButton": "Cancel",
+        "confirmButton": "Confirm Change",
+        "updatingPlan": "Updating Plan..."
+    },
+    "promptGenerator": {
+        "examples": {
+            "summarizeDocument": "Summarize a document",
+            "translateLanguage": "Translate the language",
+            "writeEmail": "Write me an email",
+            "convertCode": "Convert the code to another language",
+            "generateReport": "Research and generate a report",
+            "planTrip": "Plan a trip"
+        },
+        "placeholder": "Describe your task here",
+        "generateButton": "Generate",
+        "backButton": "Back",
+        "applyButton": "Apply"
+    },
+    "langsmithHub": {
+        "title": "Langchain Hub ({{type}})",
+        "modelLabel": "Model",
+        "usecaseLabel": "Usecase",
+        "languageLabel": "Language",
+        "searchButton": "Search",
+        "loadingMessage": "Please wait....loading Prompts",
+        "noPromptsMessage": "No Available Prompts",
+        "availablePrompts": "Available Prompts",
+        "promptSection": "Prompt",
+        "descriptionSection": "Description",
+        "readmeSection": "Readme",
+        "cancelButton": "Cancel",
+        "loadButton": "Load"
+    },
+    "formatPromptValues": {
+        "defaultTitle": "Format Prompt Values"
     }
 }

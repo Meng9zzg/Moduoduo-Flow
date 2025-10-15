@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { useSelector, useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 import { Dialog, DialogContent, DialogTitle } from '@mui/material'
 import PerfectScrollbar from 'react-perfect-scrollbar'
@@ -9,6 +10,7 @@ import { HIDE_CANVAS_DIALOG, SHOW_CANVAS_DIALOG } from '@/store/actions'
 
 const FormatPromptValuesDialog = ({ show, dialogProps, onChange, onCancel }) => {
     const portalElement = document.getElementById('portal')
+    const { t } = useTranslation('dialog')
     const customization = useSelector((state) => state.customization)
     const dispatch = useDispatch()
 
@@ -28,7 +30,7 @@ const FormatPromptValuesDialog = ({ show, dialogProps, onChange, onCancel }) => 
             aria-describedby='alert-dialog-description'
         >
             <DialogTitle sx={{ fontSize: '1rem' }} id='alert-dialog-title'>
-                {dialogProps.inputParam.label ?? 'Format Prompt Values'}
+                {dialogProps.inputParam.label ?? t('formatPromptValues.defaultTitle')}
             </DialogTitle>
             <DialogContent>
                 <PerfectScrollbar

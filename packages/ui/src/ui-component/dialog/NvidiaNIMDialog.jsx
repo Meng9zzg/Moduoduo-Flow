@@ -18,9 +18,11 @@ import axios from 'axios'
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
+import { useTranslation } from 'react-i18next'
 
 const NvidiaNIMDialog = ({ open, onClose, onComplete }) => {
     const portalElement = document.getElementById('portal')
+    const { t } = useTranslation('dialog')
 
     const modelOptions = {
         'nvcr.io/nim/meta/llama-3.1-8b-instruct:1.8.0-RTX': {
@@ -46,7 +48,7 @@ const NvidiaNIMDialog = ({ open, onClose, onComplete }) => {
     const [showContainerConfirm, setShowContainerConfirm] = useState(false)
     const [existingContainer, setExistingContainer] = useState(null)
 
-    const steps = ['Download Installer', 'Pull Image', 'Start Container']
+    const steps = [t('nvidiaNIM.steps.downloadInstaller'), t('nvidiaNIM.steps.pullImage'), t('nvidiaNIM.steps.startContainer')]
 
     const handleDownloadInstaller = async () => {
         try {

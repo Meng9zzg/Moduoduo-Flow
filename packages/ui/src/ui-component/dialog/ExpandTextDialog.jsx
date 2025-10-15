@@ -1,6 +1,7 @@
 import { createPortal } from 'react-dom'
 import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import PropTypes from 'prop-types'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
@@ -24,6 +25,7 @@ import './ExpandTextDialog.css'
 
 const ExpandTextDialog = ({ show, dialogProps, onCancel, onInputHintDialogClicked, onConfirm }) => {
     const portalElement = document.getElementById('portal')
+    const { t } = useTranslation('dialog')
 
     const theme = useTheme()
     const dispatch = useDispatch()
@@ -168,7 +170,7 @@ const ExpandTextDialog = ({ show, dialogProps, onCancel, onInputHintDialogClicke
                             executeCustomFunctionNodeApi.request({ javascriptFunction: inputValue })
                         }}
                     >
-                        Execute
+                        {t('expandText.executeButton')}
                     </LoadingButton>
                 )}
                 {codeExecutedResult && (
