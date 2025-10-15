@@ -837,5 +837,68 @@
     },
     "formatPromptValues": {
         "defaultTitle": "格式化提示词值"
+    },
+    "analyseFlow": {
+        "connectCredential": "连接凭证",
+        "projectName": "项目名称",
+        "onOff": "开/关",
+        "release": "版本",
+        "saveButton": "保存",
+        "saveSuccess": "分析配置已保存",
+        "saveError": "保存分析配置失败",
+        "onStatus": "开启"
+    },
+    "textToSpeech": {
+        "title": "文字转语音",
+        "providersLabel": "提供商",
+        "noneOption": "无",
+        "connectCredential": "连接凭证",
+        "voice": "语音",
+        "loadingVoices": "正在加载语音...",
+        "chooseVoice": "选择语音",
+        "autoPlayLabel": "自动播放音频",
+        "autoPlayTooltip": "启用后，机器人的响应将自动转换为语音并播放",
+        "testVoiceTitle": "测试语音",
+        "testText": "今天是用 Flowise 构建东西的美好一天！",
+        "saveButton": "保存",
+        "saveSuccess": "文字转语音配置已保存",
+        "saveError": "保存文字转语音配置失败",
+        "selectProviderFirst": "请先选择提供商并配置凭证"
+    },
+    "followUpPrompts": {
+        "enableLabel": "启用跟进提示",
+        "providersLabel": "提供商",
+        "connectCredential": "连接凭证",
+        "modelName": "模型名称",
+        "prompt": "提示词",
+        "temperature": "温度",
+        "baseUrl": "基础 URL",
+        "saveButton": "保存",
+        "saveSuccess": "跟进提示配置已保存",
+        "saveError": "保存跟进提示配置失败"
+    },
+    "fileUpload": {
+        "enableLabel": "启用完整文件上传",
+        "allowedTypesLabel": "允许上传的类型",
+        "pdfConfigTitle": "PDF 配置",
+        "pdfUsageLabel": "PDF 使用方式",
+        "pdfUsageOptions": {
+            "perPage": "每页一个文档",
+            "perFile": "每个文件一个文档"
+        },
+        "legacyBuildLabel": "使用旧版构建（用于 PDF 兼容性问题）",
+        "saveButton": "保存",
+        "saveSuccess": "文件上传配置已保存",
+        "saveError": "保存文件上传配置失败"
+    },
+    "rateLimit": {
+        "title": "速率限制",
+        "enableLabel": "启用速率限制",
+        "limitMaxLabel": "每个时段的消息限制",
+        "limitDurationLabel": "时段（秒）",
+        "limitMsgLabel": "限制消息",
+        "saveButton": "保存",
+        "saveSuccess": "速率限制配置已保存",
+        "saveError": "保存速率限制配置失败"
     }
 }

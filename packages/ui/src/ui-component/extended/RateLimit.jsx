@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction, SET_CHATFLOW } from '@/store/actions'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 
 import { Typography, Button, OutlinedInput, Stack } from '@mui/material'
 
@@ -21,6 +22,7 @@ import useNotifier from '@/utils/useNotifier'
 
 const RateLimit = ({ dialogProps }) => {
     const dispatch = useDispatch()
+    const { t } = useTranslation('dialog')
     const chatflow = useSelector((state) => state.canvas.chatflow)
     const chatflowid = chatflow.id
     const apiConfig = chatflow.apiConfig ? JSON.parse(chatflow.apiConfig) : {}
@@ -80,7 +82,7 @@ const RateLimit = ({ dialogProps }) => {
             })
             if (saveResp.data) {
                 enqueueSnackbar({
-                    message: 'Rate Limit Configuration Saved',
+                    message: t('rateLimit.saveSuccess'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -95,7 +97,7 @@ const RateLimit = ({ dialogProps }) => {
             }
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to save Rate Limit Configuration: ${
+                message: `${t('rateLimit.saveError')}: ${
                     typeof error.response.data === 'object' ? error.response.data.message : error.response.data
                 }`,
                 options: {
@@ -149,7 +151,7 @@ const RateLimit = ({ dialogProps }) => {
     return (
         <Stack direction='column' spacing={2} sx={{ alignItems: 'start' }}>
             <Typography variant='h3'>
-                Rate Limit{' '}
+                {t('rateLimit.title')}{' '}
                 <TooltipWithParser
                     style={{ marginLeft: 10 }}
                     title={
@@ -158,17 +160,17 @@ const RateLimit = ({ dialogProps }) => {
                 />
             </Typography>
             <Stack direction='column' spacing={2} sx={{ width: '100%' }}>
-                <SwitchInput label='Enable Rate Limit' onChange={handleChange} value={rateLimitStatus} />
+                <SwitchInput label={t('rateLimit.enableLabel')} onChange={handleChange} value={rateLimitStatus} />
                 {rateLimitStatus && (
                     <Stack direction='column' spacing={2} sx={{ width: '100%' }}>
-                        {textField(limitMax, 'limitMax', 'Message Limit per Duration', 'number', '5')}
-                        {textField(limitDuration, 'limitDuration', 'Duration in Second', 'number', '60')}
-                        {textField(limitMsg, 'limitMsg', 'Limit Message', 'string', 'You have reached the quota')}
+                        {textField(limitMax, 'limitMax', t('rateLimit.limitMaxLabel'), 'number', '5')}
+                        {textField(limitDuration, 'limitDuration', t('rateLimit.limitDurationLabel'), 'number', '60')}
+                        {textField(limitMsg, 'limitMsg', t('rateLimit.limitMsgLabel'), 'string', 'You have reached the quota')}
                     </Stack>
                 )}
             </Stack>
             <StyledButton disabled={checkDisabled()} variant='contained' onClick={() => onSave()} sx={{ width: 'auto' }}>
-                Save
+                {t('rateLimit.saveButton')}
             </StyledButton>
         </Stack>
     )

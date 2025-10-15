@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction, SET_CHATFLOW } from '@/store/actions'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import {
@@ -38,7 +39,7 @@ import useNotifier from '@/utils/useNotifier'
 // API
 import chatflowsApi from '@/api/chatflows'
 
-const analyticProviders = [
+const getAnalyticProviders = (t) => [
     {
         label: 'LangSmith',
         name: 'langSmith',
@@ -46,13 +47,13 @@ const analyticProviders = [
         url: 'https://smith.langchain.com',
         inputs: [
             {
-                label: 'Connect Credential',
+                label: t('analyseFlow.connectCredential'),
                 name: 'credential',
                 type: 'credential',
                 credentialNames: ['langsmithApi']
             },
             {
-                label: 'Project Name',
+                label: t('analyseFlow.projectName'),
                 name: 'projectName',
                 type: 'string',
                 optional: true,
@@ -60,7 +61,7 @@ const analyticProviders = [
                 placeholder: 'default'
             },
             {
-                label: 'On/Off',
+                label: t('analyseFlow.onOff'),
                 name: 'status',
                 type: 'boolean',
                 optional: true
@@ -74,20 +75,20 @@ const analyticProviders = [
         url: 'https://langfuse.com',
         inputs: [
             {
-                label: 'Connect Credential',
+                label: t('analyseFlow.connectCredential'),
                 name: 'credential',
                 type: 'credential',
                 credentialNames: ['langfuseApi']
             },
             {
-                label: 'Release',
+                label: t('analyseFlow.release'),
                 name: 'release',
                 type: 'string',
                 optional: true,
                 description: 'The release number/hash of the application to provide analytics grouped by release'
             },
             {
-                label: 'On/Off',
+                label: t('analyseFlow.onOff'),
                 name: 'status',
                 type: 'boolean',
                 optional: true
@@ -101,13 +102,13 @@ const analyticProviders = [
         url: 'https://lunary.ai',
         inputs: [
             {
-                label: 'Connect Credential',
+                label: t('analyseFlow.connectCredential'),
                 name: 'credential',
                 type: 'credential',
                 credentialNames: ['lunaryApi']
             },
             {
-                label: 'On/Off',
+                label: t('analyseFlow.onOff'),
                 name: 'status',
                 type: 'boolean',
                 optional: true
@@ -121,13 +122,13 @@ const analyticProviders = [
         url: 'https://langwatch.ai',
         inputs: [
             {
-                label: 'Connect Credential',
+                label: t('analyseFlow.connectCredential'),
                 name: 'credential',
                 type: 'credential',
                 credentialNames: ['langwatchApi']
             },
             {
-                label: 'On/Off',
+                label: t('analyseFlow.onOff'),
                 name: 'status',
                 type: 'boolean',
                 optional: true
@@ -141,13 +142,13 @@ const analyticProviders = [
         url: 'https://arize.com',
         inputs: [
             {
-                label: 'Connect Credential',
+                label: t('analyseFlow.connectCredential'),
                 name: 'credential',
                 type: 'credential',
                 credentialNames: ['arizeApi']
             },
             {
-                label: 'Project Name',
+                label: t('analyseFlow.projectName'),
                 name: 'projectName',
                 type: 'string',
                 optional: true,
@@ -155,7 +156,7 @@ const analyticProviders = [
                 placeholder: 'default'
             },
             {
-                label: 'On/Off',
+                label: t('analyseFlow.onOff'),
                 name: 'status',
                 type: 'boolean',
                 optional: true
@@ -169,13 +170,13 @@ const analyticProviders = [
         url: 'https://phoenix.arize.com',
         inputs: [
             {
-                label: 'Connect Credential',
+                label: t('analyseFlow.connectCredential'),
                 name: 'credential',
                 type: 'credential',
                 credentialNames: ['phoenixApi']
             },
             {
-                label: 'Project Name',
+                label: t('analyseFlow.projectName'),
                 name: 'projectName',
                 type: 'string',
                 optional: true,
@@ -183,7 +184,7 @@ const analyticProviders = [
                 placeholder: 'default'
             },
             {
-                label: 'On/Off',
+                label: t('analyseFlow.onOff'),
                 name: 'status',
                 type: 'boolean',
                 optional: true
@@ -197,20 +198,20 @@ const analyticProviders = [
         url: 'https://www.comet.com/opik',
         inputs: [
             {
-                label: 'Connect Credential',
+                label: t('analyseFlow.connectCredential'),
                 name: 'credential',
                 type: 'credential',
                 credentialNames: ['opikApi']
             },
             {
-                label: 'Project Name',
+                label: t('analyseFlow.projectName'),
                 name: 'opikProjectName',
                 type: 'string',
                 description: 'Name of your Opik project',
                 placeholder: 'default'
             },
             {
-                label: 'On/Off',
+                label: t('analyseFlow.onOff'),
                 name: 'status',
                 type: 'boolean',
                 optional: true
@@ -221,6 +222,7 @@ const analyticProviders = [
 
 const AnalyseFlow = ({ dialogProps }) => {
     const dispatch = useDispatch()
+    const { t } = useTranslation('dialog')
 
     useNotifier()
 
@@ -229,6 +231,7 @@ const AnalyseFlow = ({ dialogProps }) => {
 
     const [analytic, setAnalytic] = useState({})
     const [providerExpanded, setProviderExpanded] = useState({})
+    const analyticProviders = getAnalyticProviders(t)
 
     const onSave = async () => {
         try {
@@ -237,7 +240,7 @@ const AnalyseFlow = ({ dialogProps }) => {
             })
             if (saveResp.data) {
                 enqueueSnackbar({
-                    message: 'Analytic Configuration Saved',
+                    message: t('analyseFlow.saveSuccess'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -252,7 +255,7 @@ const AnalyseFlow = ({ dialogProps }) => {
             }
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to save Analytic Configuration: ${
+                message: `${t('analyseFlow.saveError')}: ${
                     typeof error.response.data === 'object' ? error.response.data.message : error.response.data
                 }`,
                 options: {
@@ -367,7 +370,7 @@ const AnalyseFlow = ({ dialogProps }) => {
                                             backgroundColor: '#70e000'
                                         }}
                                     />
-                                    <span style={{ color: '#006400', marginLeft: 10 }}>ON</span>
+                                    <span style={{ color: '#006400', marginLeft: 10 }}>{t('analyseFlow.onStatus')}</span>
                                 </div>
                             )}
                         </ListItem>
@@ -417,7 +420,7 @@ const AnalyseFlow = ({ dialogProps }) => {
                 </Accordion>
             ))}
             <StyledButton style={{ marginBottom: 10, marginTop: 10 }} variant='contained' onClick={onSave}>
-                Save
+                {t('analyseFlow.saveButton')}
             </StyledButton>
         </>
     )

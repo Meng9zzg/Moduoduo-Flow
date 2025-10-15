@@ -839,5 +839,68 @@
     },
     "formatPromptValues": {
         "defaultTitle": "Format Prompt Values"
+    },
+    "analyseFlow": {
+        "connectCredential": "Connect Credential",
+        "projectName": "Project Name",
+        "onOff": "On/Off",
+        "release": "Release",
+        "saveButton": "Save",
+        "saveSuccess": "Analytic Configuration Saved",
+        "saveError": "Failed to save Analytic Configuration",
+        "onStatus": "ON"
+    },
+    "textToSpeech": {
+        "title": "Text to Speech",
+        "providersLabel": "Providers",
+        "noneOption": "None",
+        "connectCredential": "Connect Credential",
+        "voice": "Voice",
+        "loadingVoices": "Loading voices...",
+        "chooseVoice": "Choose a voice",
+        "autoPlayLabel": "Automatically play audio",
+        "autoPlayTooltip": "When enabled, bot responses will be automatically converted to speech and played",
+        "testVoiceTitle": "Test Voice",
+        "testText": "Today is a wonderful day to build something with Flowise!",
+        "saveButton": "Save",
+        "saveSuccess": "Text To Speech Configuration Saved",
+        "saveError": "Failed to save Text To Speech Configuration",
+        "selectProviderFirst": "Please select a provider and configure credentials first"
+    },
+    "followUpPrompts": {
+        "enableLabel": "Enable Follow-up Prompts",
+        "providersLabel": "Providers",
+        "connectCredential": "Connect Credential",
+        "modelName": "Model Name",
+        "prompt": "Prompt",
+        "temperature": "Temperature",
+        "baseUrl": "Base URL",
+        "saveButton": "Save",
+        "saveSuccess": "Follow-up Prompts configuration saved",
+        "saveError": "Failed to save follow-up prompts configuration"
+    },
+    "fileUpload": {
+        "enableLabel": "Enable Full File Upload",
+        "allowedTypesLabel": "Allow Uploads of Type",
+        "pdfConfigTitle": "PDF Configuration",
+        "pdfUsageLabel": "PDF Usage",
+        "pdfUsageOptions": {
+            "perPage": "One document per page",
+            "perFile": "One document per file"
+        },
+        "legacyBuildLabel": "Use Legacy Build (for PDF compatibility issues)",
+        "saveButton": "Save",
+        "saveSuccess": "File Upload Configuration Saved",
+        "saveError": "Failed to save File Upload Configuration"
+    },
+    "rateLimit": {
+        "title": "Rate Limit",
+        "enableLabel": "Enable Rate Limit",
+        "limitMaxLabel": "Message Limit per Duration",
+        "limitDurationLabel": "Duration in Second",
+        "limitMsgLabel": "Limit Message",
+        "saveButton": "Save",
+        "saveSuccess": "Rate Limit Configuration Saved",
+        "saveError": "Failed to save Rate Limit Configuration"
     }
 }

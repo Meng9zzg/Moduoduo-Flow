@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux'
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction, SET_CHATFLOW } from '@/store/actions'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import {
@@ -45,7 +46,7 @@ const TextToSpeechType = {
 }
 
 // Weird quirk - the key must match the name property value.
-const textToSpeechProviders = {
+const getTextToSpeechProviders = (t) => ({
     [TextToSpeechType.OPENAI_TTS]: {
         label: 'OpenAI TTS',
         name: TextToSpeechType.OPENAI_TTS,
@@ -53,13 +54,13 @@ const textToSpeechProviders = {
         url: 'https://platform.openai.com/docs/guides/text-to-speech',
         inputs: [
             {
-                label: 'Connect Credential',
+                label: t('textToSpeech.connectCredential'),
                 name: 'credential',
                 type: 'credential',
                 credentialNames: ['openAIApi']
             },
             {
-                label: 'Voice',
+                label: t('textToSpeech.voice'),
                 name: 'voice',
                 type: 'voice_select',
                 description: 'The voice to use when generating the audio',
@@ -75,13 +76,13 @@ const textToSpeechProviders = {
         url: 'https://elevenlabs.io/',
         inputs: [
             {
-                label: 'Connect Credential',
+                label: t('textToSpeech.connectCredential'),
                 name: 'credential',
                 type: 'credential',
                 credentialNames: ['elevenLabsApi']
             },
             {
-                label: 'Voice',
+                label: t('textToSpeech.voice'),
                 name: 'voice',
                 type: 'voice_select',
                 description: 'The voice to use for text-to-speech',
@@ -90,10 +91,11 @@ const textToSpeechProviders = {
             }
         ]
     }
-}
+})
 
 const TextToSpeech = ({ dialogProps }) => {
     const dispatch = useDispatch()
+    const { t } = useTranslation('dialog')
 
     useNotifier()
     const theme = useTheme()
@@ -101,6 +103,7 @@ const TextToSpeech = ({ dialogProps }) => {
     const enqueueSnackbar = (...args) => dispatch(enqueueSnackbarAction(...args))
     const closeSnackbar = (...args) => dispatch(closeSnackbarAction(...args))
 
+    const textToSpeechProviders = getTextToSpeechProviders(t)
     const [textToSpeech, setTextToSpeech] = useState(null)
     const [selectedProvider, setSelectedProvider] = useState('none')
     const [voices, setVoices] = useState([])
@@ -129,7 +132,7 @@ const TextToSpeech = ({ dialogProps }) => {
             })
             if (saveResp.data) {
                 enqueueSnackbar({
-                    message: 'Text To Speech Configuration Saved',
+                    message: t('textToSpeech.saveSuccess'),
                     options: {
                         key: Date.now() + Math.random(),
                         variant: 'success',
@@ -144,7 +147,7 @@ const TextToSpeech = ({ dialogProps }) => {
             }
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to save Text To Speech Configuration: ${
+                message: `${t('textToSpeech.saveError')}: ${
                     typeof error.response.data === 'object' ? error.response.data.message : error.response.data
                 }`,
                 options: {
@@ -233,7 +236,7 @@ const TextToSpeech = ({ dialogProps }) => {
     const testTTS = async () => {
         if (selectedProvider === 'none' || !textToSpeech?.[selectedProvider]?.credentialId) {
             enqueueSnackbar({
-                message: 'Please select a provider and configure credentials first',
+                message: t('textToSpeech.selectProviderFirst'),
                 options: { variant: 'warning' }
             })
             return
@@ -244,7 +247,7 @@ const TextToSpeech = ({ dialogProps }) => {
         try {
             const providerConfig = textToSpeech?.[selectedProvider] || {}
             const body = {
-                text: 'Today is a wonderful day to build something with Flowise!',
+                text: t('textToSpeech.testText'),
                 provider: selectedProvider,
                 credentialId: providerConfig.credentialId,
                 voice: providerConfig.voice,
@@ -419,7 +422,7 @@ const TextToSpeech = ({ dialogProps }) => {
     return (
         <>
             <Box fullWidth sx={{ mb: 1, display: 'flex', flexDirection: 'column', gap: 1 }}>
-                <Typography>Providers</Typography>
+                <Typography>{t('textToSpeech.providersLabel')}</Typography>
                 <FormControl fullWidth>
                     <Select
                         size='small'
@@ -431,7 +434,7 @@ const TextToSpeech = ({ dialogProps }) => {
                             }
                         }}
                     >
-                        <MenuItem value='none'>None</MenuItem>
+                        <MenuItem value='none'>{t('textToSpeech.noneOption')}</MenuItem>
                         {Object.values(textToSpeechProviders).map((provider) => (
                             <MenuItem key={provider.name} value={provider.name}>
                                 {provider.label}
@@ -567,7 +570,7 @@ const TextToSpeech = ({ dialogProps }) => {
                                     renderInput={(params) => (
                                         <TextField
                                             {...params}
-                                            placeholder={loadingVoices ? 'Loading voices...' : 'Choose a voice'}
+                                            placeholder={loadingVoices ? t('textToSpeech.loadingVoices') : t('textToSpeech.chooseVoice')}
                                             InputProps={{
                                                 ...params.InputProps,
                                                 endAdornment: (
@@ -589,11 +592,8 @@ const TextToSpeech = ({ dialogProps }) => {
                     <Box sx={{ p: 2 }}>
                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                             <Typography>
-                                Automatically play audio
-                                <TooltipWithParser
-                                    style={{ marginLeft: 10 }}
-                                    title='When enabled, bot responses will be automatically converted to speech and played'
-                                />
+                                {t('textToSpeech.autoPlayLabel')}
+                                <TooltipWithParser style={{ marginLeft: 10 }} title={t('textToSpeech.autoPlayTooltip')} />
                             </Typography>
                         </div>
                         <SwitchInput
@@ -606,11 +606,11 @@ const TextToSpeech = ({ dialogProps }) => {
                     <Box sx={{ p: 2 }}>
                         <Typography variant='h6' sx={{ mb: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
                             <IconVolume size={20} />
-                            Test Voice
+                            {t('textToSpeech.testVoiceTitle')}
                         </Typography>
 
                         <Typography variant='body2' color='textSecondary' sx={{ mb: 2 }}>
-                            Test text: &quot;Today is a wonderful day to build something with Flowise!&quot;
+                            Test text: &quot;{t('textToSpeech.testText')}&quot;
                         </Typography>
 
                         <AudioWaveform
@@ -647,7 +647,7 @@ const TextToSpeech = ({ dialogProps }) => {
                 variant='contained'
                 onClick={onSave}
             >
-                Save
+                {t('textToSpeech.saveButton')}
             </StyledButton>
         </>
     )

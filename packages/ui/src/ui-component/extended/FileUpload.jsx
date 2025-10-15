@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction, SET_CHATFLOW } from '@/store/actions'
 import parser from 'html-react-parser'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { Button, Box, Typography, FormControl, RadioGroup, FormControlLabel, Radio } from '@mui/material'
@@ -42,6 +43,7 @@ const availableFileTypes = [
 const FileUpload = ({ dialogProps }) => {
     const dispatch = useDispatch()
     const customization = useSelector((state) => state.customization)
+    const { t } = useTranslation('dialog')
 
     useNotifier()
 
@@ -92,7 +94,7 @@ const FileUpload = ({ dialogProps }) => {
             })
             if (saveResp.data) {
                 enqueueSnackbar({
-                    message: 'File Upload Configuration Saved',
+                    message: t('fileUpload.saveSuccess'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -107,7 +109,7 @@ const FileUpload = ({ dialogProps }) => {
             }
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to save File Upload Configuration: ${
+                message: `${t('fileUpload.saveError')}: ${
                     typeof error.response.data === 'object' ? error.response.data.message : error.response.data
                 }`,
                 options: {
@@ -191,10 +193,10 @@ const FileUpload = ({ dialogProps }) => {
                         <span style={{ color: '#2d6a4f', marginLeft: 10, fontWeight: 500 }}>{parser(message)}</span>
                     </div>
                 </div>
-                <SwitchInput label='Enable Full File Upload' onChange={handleChange} value={fullFileUpload} />
+                <SwitchInput label={t('fileUpload.enableLabel')} onChange={handleChange} value={fullFileUpload} />
             </Box>
 
-            <Typography sx={{ fontSize: 14, fontWeight: 500, marginBottom: 1 }}>Allow Uploads of Type</Typography>
+            <Typography sx={{ fontSize: 14, fontWeight: 500, marginBottom: 1 }}>{t('fileUpload.allowedTypesLabel')}</Typography>
             <div
                 style={{
                     display: 'grid',
@@ -245,22 +247,22 @@ const FileUpload = ({ dialogProps }) => {
                     <Typography
                         sx={{ fontSize: 16, fontWeight: 600, marginBottom: 2, color: customization.isDarkMode ? '#ffffff' : '#424242' }}
                     >
-                        PDF Configuration
+                        {t('fileUpload.pdfConfigTitle')}
                     </Typography>
 
                     <Box>
-                        <Typography sx={{ fontSize: 14, fontWeight: 500, marginBottom: 1 }}>PDF Usage</Typography>
+                        <Typography sx={{ fontSize: 14, fontWeight: 500, marginBottom: 1 }}>{t('fileUpload.pdfUsageLabel')}</Typography>
                         <FormControl disabled={!fullFileUpload}>
                             <RadioGroup name='pdf-usage' value={pdfUsage} onChange={handlePdfUsageChange}>
-                                <FormControlLabel value='perPage' control={<Radio />} label='One document per page' />
-                                <FormControlLabel value='perFile' control={<Radio />} label='One document per file' />
+                                <FormControlLabel value='perPage' control={<Radio />} label={t('fileUpload.pdfUsageOptions.perPage')} />
+                                <FormControlLabel value='perFile' control={<Radio />} label={t('fileUpload.pdfUsageOptions.perFile')} />
                             </RadioGroup>
                         </FormControl>
                     </Box>
 
                     <Box>
                         <SwitchInput
-                            label='Use Legacy Build (for PDF compatibility issues)'
+                            label={t('fileUpload.legacyBuildLabel')}
                             onChange={handleLegacyBuildChange}
                             value={pdfLegacyBuild}
                             disabled={!fullFileUpload}
@@ -270,7 +272,7 @@ const FileUpload = ({ dialogProps }) => {
             )}
 
             <StyledButton style={{ marginBottom: 10, marginTop: 20 }} variant='contained' onClick={onSave}>
-                Save
+                {t('fileUpload.saveButton')}
             </StyledButton>
         </>
     )
