@@ -1,0 +1,11 @@
+{
+    "title": "助手",
+    "description": "使用指令、工具和文件创建聊天助手以响应用户查询",
+    "customAssistantTitle": "自定义助手",
+    "customAssistantDescription": "使用你选择的LLM创建自定义助手",
+    "openaiAssistantTitle": "OpenAI助手",
+    "openaiAssistantDescription": "使用OpenAI助手API创建助手",
+    "azureAssistantTitle": "Azure助手（即将推出）",
+    "azureAssistantDescription": "使用Azure助手API创建助手",
+    "underDevelopment": "开发中"
+}

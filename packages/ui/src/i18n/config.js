@@ -31,7 +31,12 @@ const initI18n = async () => {
                 'agentflows', // Agentflows页面
                 'tools', // Tools页面
                 'credentials', // Credentials页面
-                'marketplaces' // Marketplaces页面
+                'marketplaces', // Marketplaces页面
+                'assistants', // Assistants页面
+                'variables', // Variables页面
+                'executions', // Executions页面
+                'docstores', // Document Stores页面
+                'apikeys' // API Keys页面
             ],
             defaultNS: 'common',
 

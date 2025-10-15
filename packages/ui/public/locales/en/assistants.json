@@ -1,0 +1,11 @@
+{
+    "title": "Assistants",
+    "description": "Chat assistants with instructions, tools, and files to respond to user queries",
+    "customAssistantTitle": "Custom Assistant",
+    "customAssistantDescription": "Create custom assistant using your choice of LLMs",
+    "openaiAssistantTitle": "OpenAI Assistant",
+    "openaiAssistantDescription": "Create assistant using OpenAI Assistant API",
+    "azureAssistantTitle": "Azure Assistant (Coming Soon)",
+    "azureAssistantDescription": "Create assistant using Azure Assistant API",
+    "underDevelopment": "Under Development"
+}
