@@ -1,0 +1,181 @@
+{
+    "save": "保存",
+    "test": "测试",
+    "deploy": "部署",
+    "share": "分享",
+    "version": "版本",
+    "settings": "设置",
+    "export": "导出",
+    "import": "导入",
+    "delete": "删除",
+    "duplicate": "复制",
+    "rename": "重命名",
+    "addNode": "添加节点",
+    "deleteNode": "删除节点",
+    "copyNode": "复制节点",
+    "pasteNode": "粘贴节点",
+    "selectAll": "全选",
+    "undo": "撤销",
+    "redo": "重做",
+    "zoomIn": "放大",
+    "zoomOut": "缩小",
+    "fitView": "适应画布",
+    "resetZoom": "重置缩放",
+    "loading": "加载中...",
+    "saving": "保存中...",
+    "saved": "已保存",
+    "saveFailed": "保存失败",
+    "deleteConfirm": "确定要删除吗？",
+    "nodeConfiguration": "节点配置",
+    "connections": "连接",
+    "properties": "属性",
+    "untitled": "未命名{{type}}",
+    "header": {
+        "back": "返回",
+        "editName": "编辑名称",
+        "saveName": "保存名称",
+        "cancel": "取消",
+        "apiEndpoint": "API 接口",
+        "saveChatflow": "保存对话流",
+        "saveAgents": "保存智能体",
+        "viewMessages": "查看消息",
+        "viewLeads": "查看线索",
+        "exportAsTemplate": "导出为模板",
+        "viewUpsertHistory": "查看更新历史",
+        "configuration": "配置",
+        "chatflowConfiguration": "对话流配置",
+        "agentsConfiguration": "智能体配置",
+        "embedInWebsite": "嵌入网站或用作 API",
+        "saveNew": "保存新建",
+        "saveNewChatflow": "保存新对话流",
+        "saveNewAgents": "保存新智能体",
+        "savePleaseSaveFirst": "导出为模板前请先保存流程"
+    },
+    "dialog": {
+        "delete": {
+            "title": "删除",
+            "description": "删除{{type}} {{name}}？",
+            "confirm": "删除",
+            "cancel": "取消"
+        },
+        "confirmChange": {
+            "title": "确认更改",
+            "description": "{{type}} {{name}} 自您打开以来已更改，是否覆盖更改？",
+            "confirm": "确认",
+            "cancel": "取消"
+        }
+    },
+    "messages": {
+        "saved": "{{type}}已保存",
+        "retrieveFailed": "获取{{type}}失败：{{error}}",
+        "unsavedChanges": "您有未保存的更改！是否要离开？"
+    },
+    "controls": {
+        "toggleSnapping": "切换对齐网格",
+        "toggleBackground": "切换背景",
+        "syncNodes": "同步节点"
+    },
+    "nodeInput": {
+        "save": "保存",
+        "cancel": "取消",
+        "add": "添加",
+        "edit": "编辑",
+        "refresh": "刷新",
+        "confirm": "确认",
+        "expand": "展开",
+        "editTool": "编辑工具",
+        "editAssistant": "编辑助手",
+        "addNewTool": "添加新工具",
+        "addNewAssistant": "添加新助手",
+        "pleaseSelectKnowledgeBase": "请选择知识库",
+        "pleaseFillMandatoryFields": "请填写所有必填字段。",
+        "docStoreDescriptionGenerated": "文档库工具描述生成成功",
+        "errorSettingInstruction": "设置生成指令时出错",
+        "generateInstructions": "生成指令",
+        "generateInstructionsDesc": "您可以通过分享任务的基本详情来生成提示词模板。",
+        "langchainHub": "Langchain Hub",
+        "setupNIMLocally": "本地设置 NIM",
+        "typeToSelectVariables": "输入 {{ 来选择变量",
+        "generateKnowledgeBaseDesc": "生成知识库描述",
+        "generateInstructionsTooltip": "生成指令",
+        "chooseFileToUpload": "选择要上传的文件",
+        "seeExample": "查看示例",
+        "chooseAnOption": "选择一个选项",
+        "manageLinks": "管理链接",
+        "selectModel": "选择模型"
+    },
+    "node": {
+        "actions": {
+            "info": "信息"
+        },
+        "sections": {
+            "inputs": "输入",
+            "output": "输出"
+        },
+        "additionalParameters": "附加参数",
+        "iconAlt": "节点图标",
+        "llamaIndexAlt": "LlamaIndex",
+        "warnings": {
+            "versionOutdated": "节点版本 {{oldVersion}} 已过时\n请更新到最新版本 {{newVersion}}",
+            "nodeOutdated": "节点已过时\n请更新到最新版本 {{newVersion}}",
+            "deprecating": "此节点将在下一个版本中弃用。请切换到标记为 NEW 的新节点"
+        }
+    },
+    "addNodes": {
+        "title": "添加节点",
+        "addNodeButton": "添加节点",
+        "generateAgentflow": "生成智能体流",
+        "searchPlaceholder": "搜索节点",
+        "clearSearch": "清除搜索",
+        "dialogTitle": "您想构建什么？",
+        "dialogDescription": "输入您的提示以生成智能体流。不同模型的性能可能有所不同。仅生成节点和连接，您需要为每个节点填写输入字段。",
+        "authorBy": "作者：{{author}}",
+        "tabs": {
+            "langchain": "LangChain",
+            "llamaindex": "LlamaIndex",
+            "utilities": "实用工具"
+        }
+    },
+    "nodeOutput": {
+        "true": "真",
+        "false": "假"
+    },
+    "credentialInput": {
+        "cancel": "取消",
+        "save": "保存",
+        "add": "添加",
+        "edit": "编辑",
+        "addNewCredential": "添加新凭证"
+    },
+    "stickyNote": {
+        "duplicate": "复制",
+        "delete": "删除"
+    },
+    "agentflowV2": {
+        "errors": {
+            "onlyOneStartNode": "只允许一个开始节点",
+            "nestedIterationNotSupported": "暂不支持嵌套迭代节点",
+            "humanInputInIterationNotSupported": "迭代节点内不支持人工输入节点",
+            "failedToRetrieve": "获取{{type}}失败：{{error}}",
+            "failedToSave": "保存{{type}}失败：{{error}}"
+        },
+        "messages": {
+            "saved": "{{type}}已保存",
+            "unsavedChanges": "您有未保存的更改！是否要离开？"
+        },
+        "dialog": {
+            "delete": "删除",
+            "deleteConfirm": "删除{{type}} {{name}}？",
+            "cancel": "取消"
+        },
+        "controls": {
+            "toggleSnapping": "切换对齐网格",
+            "toggleBackground": "切换背景",
+            "syncNodes": "同步节点"
+        },
+        "nodes": {
+            "startLabel": "开始"
+        },
+        "untitled": "未命名{{type}}"
+    }
+}

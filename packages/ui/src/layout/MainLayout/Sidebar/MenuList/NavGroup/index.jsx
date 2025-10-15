@@ -78,7 +78,12 @@ const NavGroup = ({ item }) => {
                         <Typography variant='caption' sx={{ ...theme.typography.menuCaption }} display='block' gutterBottom>
                             {t(item.id, item.title)}
                             {item.caption && (
-                                <Typography variant='caption' sx={{ ...theme.typography.subMenuCaption }} display='block' gutterBottom>
+                                <Typography
+                                    variant='caption'
+                                    sx={{ ...theme.typography.subMenuCaption, fontWeight: 400 }}
+                                    display='block'
+                                    gutterBottom
+                                >
                                     {item.caption}
                                 </Typography>
                             )}

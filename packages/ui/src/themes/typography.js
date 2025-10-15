@@ -12,9 +12,9 @@ export default function themeTypography(theme) {
             fontSize: '0.75rem'
         },
         h5: {
-            fontSize: '0.875rem',
+            fontSize: '0.9375rem',
             color: theme.heading,
-            fontWeight: 500
+            fontWeight: 600
         },
         h4: {
             fontSize: '1rem',
@@ -52,7 +52,7 @@ export default function themeTypography(theme) {
             fontWeight: 400
         },
         body1: {
-            fontSize: '0.875rem',
+            fontSize: '0.9375rem',
             fontWeight: 400,
             lineHeight: '1.334em'
         },
@@ -106,7 +106,7 @@ export default function themeTypography(theme) {
         },
         subMenuCaption: {
             fontSize: '0.6875rem',
-            fontWeight: 500,
+            fontWeight: 400,
             color: theme.darkTextSecondary,
             textTransform: 'capitalize'
         },

@@ -118,7 +118,7 @@ const NavItem = ({ item, level, navType, onClick, onUploadFile }) => {
                     <Typography
                         variant={customization.isOpen.findIndex((id) => id === item.id) > -1 ? 'h5' : 'body1'}
                         color='inherit'
-                        sx={{ my: 0.5 }}
+                        sx={{ my: 0.5, fontWeight: customization.isOpen.findIndex((id) => id === item.id) > -1 ? 600 : 450 }}
                     >
                         {t(item.id, item.title)}
                     </Typography>

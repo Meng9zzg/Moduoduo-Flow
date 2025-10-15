@@ -1,0 +1,181 @@
+{
+    "save": "Save",
+    "test": "Test",
+    "deploy": "Deploy",
+    "share": "Share",
+    "version": "Version",
+    "settings": "Settings",
+    "export": "Export",
+    "import": "Import",
+    "delete": "Delete",
+    "duplicate": "Duplicate",
+    "rename": "Rename",
+    "addNode": "Add Node",
+    "deleteNode": "Delete Node",
+    "copyNode": "Copy Node",
+    "pasteNode": "Paste Node",
+    "selectAll": "Select All",
+    "undo": "Undo",
+    "redo": "Redo",
+    "zoomIn": "Zoom In",
+    "zoomOut": "Zoom Out",
+    "fitView": "Fit View",
+    "resetZoom": "Reset Zoom",
+    "loading": "Loading...",
+    "saving": "Saving...",
+    "saved": "Saved",
+    "saveFailed": "Save failed",
+    "deleteConfirm": "Are you sure you want to delete this?",
+    "nodeConfiguration": "Node Configuration",
+    "connections": "Connections",
+    "properties": "Properties",
+    "untitled": "Untitled {{type}}",
+    "header": {
+        "back": "Back",
+        "editName": "Edit Name",
+        "saveName": "Save Name",
+        "cancel": "Cancel",
+        "apiEndpoint": "API Endpoint",
+        "saveChatflow": "Save Chatflow",
+        "saveAgents": "Save Agents",
+        "viewMessages": "View Messages",
+        "viewLeads": "View Leads",
+        "exportAsTemplate": "Export As Template",
+        "viewUpsertHistory": "View Upsert History",
+        "configuration": "Configuration",
+        "chatflowConfiguration": "Chatflow Configuration",
+        "agentsConfiguration": "Agents Configuration",
+        "embedInWebsite": "Embed in website or use as API",
+        "saveNew": "Save New",
+        "saveNewChatflow": "Save New Chatflow",
+        "saveNewAgents": "Save New Agents",
+        "savePleaseSaveFirst": "Please save the flow before exporting as template"
+    },
+    "dialog": {
+        "delete": {
+            "title": "Delete",
+            "description": "Delete {{type}} {{name}}?",
+            "confirm": "Delete",
+            "cancel": "Cancel"
+        },
+        "confirmChange": {
+            "title": "Confirm Change",
+            "description": "{{type}} {{name}} has changed since you have opened, overwrite changes?",
+            "confirm": "Confirm",
+            "cancel": "Cancel"
+        }
+    },
+    "messages": {
+        "saved": "{{type}} saved",
+        "retrieveFailed": "Failed to retrieve {{type}}: {{error}}",
+        "unsavedChanges": "You have unsaved changes! Do you want to navigate away?"
+    },
+    "controls": {
+        "toggleSnapping": "Toggle snapping",
+        "toggleBackground": "Toggle background",
+        "syncNodes": "Sync Nodes"
+    },
+    "nodeInput": {
+        "save": "Save",
+        "cancel": "Cancel",
+        "add": "Add",
+        "edit": "Edit",
+        "refresh": "Refresh",
+        "confirm": "Confirm",
+        "expand": "Expand",
+        "editTool": "Edit Tool",
+        "editAssistant": "Edit Assistant",
+        "addNewTool": "Add New Tool",
+        "addNewAssistant": "Add New Assistant",
+        "pleaseSelectKnowledgeBase": "Please select a knowledge base",
+        "pleaseFillMandatoryFields": "Please fill in all mandatory fields.",
+        "docStoreDescriptionGenerated": "Document Store Tool Description generated successfully",
+        "errorSettingInstruction": "Error setting generated instruction",
+        "generateInstructions": "Generate Instructions",
+        "generateInstructionsDesc": "You can generate a prompt template by sharing basic details about your task.",
+        "langchainHub": "Langchain Hub",
+        "setupNIMLocally": "Setup NIM Locally",
+        "typeToSelectVariables": "Type {{ to select variables",
+        "generateKnowledgeBaseDesc": "Generate knowledge base description",
+        "generateInstructionsTooltip": "Generate instructions",
+        "chooseFileToUpload": "Choose a file to upload",
+        "seeExample": "See Example",
+        "chooseAnOption": "choose an option",
+        "manageLinks": "Manage Links",
+        "selectModel": "Select Model"
+    },
+    "node": {
+        "actions": {
+            "info": "Info"
+        },
+        "sections": {
+            "inputs": "Inputs",
+            "output": "Output"
+        },
+        "additionalParameters": "Additional Parameters",
+        "iconAlt": "Node icon",
+        "llamaIndexAlt": "LlamaIndex",
+        "warnings": {
+            "versionOutdated": "Node version {{oldVersion}} outdated\nUpdate to latest version {{newVersion}}",
+            "nodeOutdated": "Node outdated\nUpdate to latest version {{newVersion}}",
+            "deprecating": "This node will be deprecated in the next release. Change to a new node tagged with NEW"
+        }
+    },
+    "addNodes": {
+        "title": "Add Nodes",
+        "addNodeButton": "Add Node",
+        "generateAgentflow": "Generate Agentflow",
+        "searchPlaceholder": "Search nodes",
+        "clearSearch": "Clear Search",
+        "dialogTitle": "What would you like to build?",
+        "dialogDescription": "Enter your prompt to generate an agentflow. Performance may vary with different models. Only nodes and edges are generated, you will need to fill in the input fields for each node.",
+        "authorBy": "By {{author}}",
+        "tabs": {
+            "langchain": "LangChain",
+            "llamaindex": "LlamaIndex",
+            "utilities": "Utilities"
+        }
+    },
+    "nodeOutput": {
+        "true": "True",
+        "false": "False"
+    },
+    "credentialInput": {
+        "cancel": "Cancel",
+        "save": "Save",
+        "add": "Add",
+        "edit": "Edit",
+        "addNewCredential": "Add New Credential"
+    },
+    "stickyNote": {
+        "duplicate": "Duplicate",
+        "delete": "Delete"
+    },
+    "agentflowV2": {
+        "errors": {
+            "onlyOneStartNode": "Only one start node is allowed",
+            "nestedIterationNotSupported": "Nested iteration node is not supported yet",
+            "humanInputInIterationNotSupported": "Human input node is not supported inside Iteration node",
+            "failedToRetrieve": "Failed to retrieve {{type}}: {{error}}",
+            "failedToSave": "Failed to save {{type}}: {{error}}"
+        },
+        "messages": {
+            "saved": "{{type}} saved",
+            "unsavedChanges": "You have unsaved changes! Do you want to navigate away?"
+        },
+        "dialog": {
+            "delete": "Delete",
+            "deleteConfirm": "Delete {{type}} {{name}}?",
+            "cancel": "Cancel"
+        },
+        "controls": {
+            "toggleSnapping": "toggle snapping",
+            "toggleBackground": "toggle background",
+            "syncNodes": "Sync Nodes"
+        },
+        "nodes": {
+            "startLabel": "Start"
+        },
+        "untitled": "Untitled {{type}}"
+    }
+}

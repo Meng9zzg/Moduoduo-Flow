@@ -3,6 +3,7 @@ import ReactFlow, { addEdge, Controls, MiniMap, Background, useNodesState, useEd
 import 'reactflow/dist/style.css'
 import './index.css'
 import { useReward } from 'react-rewards'
+import { useTranslation } from 'react-i18next'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useLocation } from 'react-router-dom'
@@ -65,6 +66,7 @@ const edgeTypes = { agentFlow: AgentFlowEdge }
 // ==============================|| CANVAS ||============================== //
 
 const AgentflowCanvas = () => {
+    const { t } = useTranslation('canvas')
     const theme = useTheme()
     const navigate = useNavigate()
     const customization = useSelector((state) => state.customization)
@@ -172,10 +174,10 @@ const AgentflowCanvas = () => {
 
     const handleDeleteFlow = async () => {
         const confirmPayload = {
-            title: `Delete`,
-            description: `Delete ${canvasTitle} ${chatflow.name}?`,
-            confirmButtonName: 'Delete',
-            cancelButtonName: 'Cancel'
+            title: t('agentflowV2.dialog.delete'),
+            description: t('agentflowV2.dialog.deleteConfirm', { type: canvasTitle, name: chatflow.name }),
+            confirmButtonName: t('agentflowV2.dialog.delete'),
+            cancelButtonName: t('agentflowV2.dialog.cancel')
         }
         const isConfirmed = await confirm(confirmPayload)
 
@@ -305,7 +307,7 @@ const AgentflowCanvas = () => {
 
             if (nodeData.name === 'startAgentflow' && nodes.find((node) => node.data.name === 'startAgentflow')) {
                 enqueueSnackbar({
-                    message: 'Only one start node is allowed',
+                    message: t('agentflowV2.errors.onlyOneStartNode'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'error',
@@ -359,7 +361,7 @@ const AgentflowCanvas = () => {
                     // We can't have nested iteration nodes
                     if (nodeData.name === 'iterationAgentflow') {
                         enqueueSnackbar({
-                            message: 'Nested iteration node is not supported yet',
+                            message: t('agentflowV2.errors.nestedIterationNotSupported'),
                             options: {
                                 key: new Date().getTime() + Math.random(),
                                 variant: 'error',
@@ -377,7 +379,7 @@ const AgentflowCanvas = () => {
                     // We can't have human input node inside iteration node
                     if (nodeData.name === 'humanInputAgentflow') {
                         enqueueSnackbar({
-                            message: 'Human input node is not supported inside Iteration node',
+                            message: t('agentflowV2.errors.humanInputInIterationNotSupported'),
                             options: {
                                 key: new Date().getTime() + Math.random(),
                                 variant: 'error',
@@ -473,7 +475,7 @@ const AgentflowCanvas = () => {
     const saveChatflowSuccess = () => {
         dispatch({ type: REMOVE_DIRTY })
         enqueueSnackbar({
-            message: `${canvasTitle} saved`,
+            message: t('agentflowV2.messages.saved', { type: canvasTitle }),
             options: {
                 key: new Date().getTime() + Math.random(),
                 variant: 'success',
@@ -532,7 +534,9 @@ const AgentflowCanvas = () => {
             setEdges(initialFlow.edges || [])
             dispatch({ type: SET_CHATFLOW, chatflow })
         } else if (getSpecificChatflowApi.error) {
-            errorFailed(`Failed to retrieve ${canvasTitle}: ${getSpecificChatflowApi.error.response.data.message}`)
+            errorFailed(
+                t('agentflowV2.errors.failedToRetrieve', { type: canvasTitle, error: getSpecificChatflowApi.error.response.data.message })
+            )
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -546,7 +550,9 @@ const AgentflowCanvas = () => {
             saveChatflowSuccess()
             window.history.replaceState(state, null, `/v2/agentcanvas/${chatflow.id}`)
         } else if (createNewChatflowApi.error) {
-            errorFailed(`Failed to save ${canvasTitle}: ${createNewChatflowApi.error.response.data.message}`)
+            errorFailed(
+                t('agentflowV2.errors.failedToSave', { type: canvasTitle, error: createNewChatflowApi.error.response.data.message })
+            )
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -558,7 +564,7 @@ const AgentflowCanvas = () => {
             dispatch({ type: SET_CHATFLOW, chatflow: updateChatflowApi.data })
             saveChatflowSuccess()
         } else if (updateChatflowApi.error) {
-            errorFailed(`Failed to save ${canvasTitle}: ${updateChatflowApi.error.response.data.message}`)
+            errorFailed(t('agentflowV2.errors.failedToSave', { type: canvasTitle, error: updateChatflowApi.error.response.data.message }))
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -590,7 +596,7 @@ const AgentflowCanvas = () => {
             dispatch({
                 type: SET_CHATFLOW,
                 chatflow: {
-                    name: `Untitled ${canvasTitle}`
+                    name: t('agentflowV2.untitled', { type: canvasTitle })
                 }
             })
         }
@@ -635,7 +641,7 @@ const AgentflowCanvas = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [templateFlowData])
 
-    usePrompt('You have unsaved changes! Do you want to navigate away?', canvasDataStore.isDirty)
+    usePrompt(t('agentflowV2.messages.unsavedChanges'), canvasDataStore.isDirty)
 
     const [chatPopupOpen, setChatPopupOpen] = useState(false)
 
@@ -651,7 +657,7 @@ const AgentflowCanvas = () => {
                     position: { x: 100, y: 100 },
                     data: {
                         ...initNode(clonedStartNodeData, 'startAgentflow_0', true),
-                        label: 'Start'
+                        label: t('agentflowV2.nodes.startLabel')
                     }
                 }
                 setNodes([startNode])
@@ -738,8 +744,8 @@ const AgentflowCanvas = () => {
                                         onClick={() => {
                                             setIsSnappingEnabled(!isSnappingEnabled)
                                         }}
-                                        title='toggle snapping'
-                                        aria-label='toggle snapping'
+                                        title={t('agentflowV2.controls.toggleSnapping')}
+                                        aria-label={t('agentflowV2.controls.toggleSnapping')}
                                     >
                                         {isSnappingEnabled ? <IconMagnetFilled /> : <IconMagnetOff />}
                                     </button>
@@ -748,8 +754,8 @@ const AgentflowCanvas = () => {
                                         onClick={() => {
                                             setIsBackgroundEnabled(!isBackgroundEnabled)
                                         }}
-                                        title='toggle background'
-                                        aria-label='toggle background'
+                                        title={t('agentflowV2.controls.toggleBackground')}
+                                        aria-label={t('agentflowV2.controls.toggleBackground')}
                                     >
                                         {isBackgroundEnabled ? <IconArtboard /> : <IconArtboardOff />}
                                     </button>
@@ -790,7 +796,7 @@ const AgentflowCanvas = () => {
                                         }}
                                         size='small'
                                         aria-label='sync'
-                                        title='Sync Nodes'
+                                        title={t('agentflowV2.controls.syncNodes')}
                                         onClick={() => syncNodes()}
                                     >
                                         <IconRefreshAlert />
