@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import { useContext, memo, useRef, useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { Handle, Position, useUpdateNodeInternals, NodeToolbar } from 'reactflow'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { styled, useTheme, alpha, darken, lighten } from '@mui/material/styles'
@@ -56,6 +57,7 @@ const StyledNodeToolbar = styled(NodeToolbar)(({ theme }) => ({
 
 const AgentFlowNode = ({ data }) => {
     const theme = useTheme()
+    const { t } = useTranslation('canvas')
     const customization = useSelector((state) => state.customization)
     const canvas = useSelector((state) => state.canvas)
     const ref = useRef(null)
@@ -176,9 +178,8 @@ const AgentFlowNode = ({ data }) => {
     }, [data, ref, updateNodeInternals])
 
     useEffect(() => {
-        const nodeOutdatedMessage = (oldVersion, newVersion) =>
-            `Node version ${oldVersion} outdated\nUpdate to latest version ${newVersion}`
-        const nodeVersionEmptyMessage = (newVersion) => `Node outdated\nUpdate to latest version ${newVersion}`
+        const nodeOutdatedMessage = (oldVersion, newVersion) => t('node.warnings.versionOutdated', { oldVersion, newVersion })
+        const nodeVersionEmptyMessage = (newVersion) => t('node.warnings.nodeOutdated', { newVersion })
 
         const componentNode = canvas.componentNodes.find((nd) => nd.name === data.name)
         if (componentNode) {
@@ -187,17 +188,14 @@ const AgentFlowNode = ({ data }) => {
             } else if (data.version && componentNode.version > data.version) {
                 setWarningMessage(nodeOutdatedMessage(data.version, componentNode.version))
             } else if (componentNode.badge === 'DEPRECATING') {
-                setWarningMessage(
-                    componentNode?.deprecateMessage ??
-                        'This node will be deprecated in the next release. Change to a new node tagged with NEW'
-                )
+                setWarningMessage(componentNode?.deprecateMessage ?? t('node.warnings.deprecating'))
             } else if (componentNode.warning) {
                 setWarningMessage(componentNode.warning)
             } else {
                 setWarningMessage('')
             }
         }
-    }, [canvas.componentNodes, data.name, data.version])
+    }, [canvas.componentNodes, data.name, data.version, t])
 
     return (
         <div ref={ref} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
@@ -206,7 +204,7 @@ const AgentFlowNode = ({ data }) => {
                     {data.name !== 'startAgentflow' && (
                         <IconButton
                             size={'small'}
-                            title='Duplicate'
+                            title={t('duplicate')}
                             onClick={() => {
                                 duplicateNode(data.id)
                             }}
@@ -222,7 +220,7 @@ const AgentFlowNode = ({ data }) => {
                     )}
                     <IconButton
                         size={'small'}
-                        title='Delete'
+                        title={t('delete')}
                         onClick={() => {
                             deleteNode(data.id)
                         }}
@@ -237,7 +235,7 @@ const AgentFlowNode = ({ data }) => {
                     </IconButton>
                     <IconButton
                         size={'small'}
-                        title='Info'
+                        title={t('node.actions.info')}
                         onClick={() => {
                             setInfoDialogProps({ data })
                             setShowInfoDialog(true)
@@ -271,7 +269,7 @@ const AgentFlowNode = ({ data }) => {
                 border={false}
             >
                 {data && data.status && (
-                    <Tooltip title={data.status === 'ERROR' ? data.error || 'Error' : ''}>
+                    <Tooltip title={data.status === 'ERROR' ? data.error || t('node.error', 'Error') : ''}>
                         <Avatar
                             variant='rounded'
                             sx={{

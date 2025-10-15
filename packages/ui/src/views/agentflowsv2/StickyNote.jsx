@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import { useRef, useContext, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { NodeToolbar } from 'reactflow'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { styled, useTheme, alpha, darken, lighten } from '@mui/material/styles'
@@ -35,6 +36,7 @@ const StyledNodeToolbar = styled(NodeToolbar)(({ theme }) => ({
 
 const StickyNote = ({ data }) => {
     const theme = useTheme()
+    const { t } = useTranslation('canvas')
     const customization = useSelector((state) => state.customization)
     const ref = useRef(null)
 
@@ -65,7 +67,7 @@ const StickyNote = ({ data }) => {
                 <ButtonGroup sx={{ gap: 1 }} variant='outlined' aria-label='Basic button group'>
                     <IconButton
                         size={'small'}
-                        title='Duplicate'
+                        title={t('stickyNote.duplicate')}
                         onClick={() => {
                             duplicateNode(data.id)
                         }}
@@ -80,7 +82,7 @@ const StickyNote = ({ data }) => {
                     </IconButton>
                     <IconButton
                         size={'small'}
-                        title='Delete'
+                        title={t('stickyNote.delete')}
                         onClick={() => {
                             deleteNode(data.id)
                         }}

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import { useContext, memo, useRef, useState, useEffect, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import { Background, Handle, Position, useUpdateNodeInternals, NodeToolbar, NodeResizer } from 'reactflow'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { styled, useTheme, alpha, darken, lighten } from '@mui/material/styles'
@@ -50,6 +51,7 @@ const StyledNodeToolbar = styled(NodeToolbar)(({ theme }) => ({
 
 const IterationNode = ({ data }) => {
     const theme = useTheme()
+    const { t } = useTranslation('canvas')
     const customization = useSelector((state) => state.customization)
     const ref = useRef(null)
     const reactFlowWrapper = useRef(null)
@@ -217,7 +219,7 @@ const IterationNode = ({ data }) => {
                 <ButtonGroup sx={{ gap: 1 }} variant='outlined' aria-label='Basic button group'>
                     <IconButton
                         size={'small'}
-                        title='Duplicate'
+                        title={t('duplicate')}
                         onClick={() => {
                             duplicateNode(data.id)
                         }}
@@ -232,7 +234,7 @@ const IterationNode = ({ data }) => {
                     </IconButton>
                     <IconButton
                         size={'small'}
-                        title='Delete'
+                        title={t('delete')}
                         onClick={() => {
                             deleteNode(data.id)
                         }}
@@ -247,7 +249,7 @@ const IterationNode = ({ data }) => {
                     </IconButton>
                     <IconButton
                         size={'small'}
-                        title='Info'
+                        title={t('node.actions.info')}
                         onClick={() => {
                             setInfoDialogProps({ data })
                             setShowInfoDialog(true)
@@ -283,7 +285,7 @@ const IterationNode = ({ data }) => {
                 border={false}
             >
                 {data && data.status && (
-                    <Tooltip title={data.status === 'ERROR' ? data.error || 'Error' : ''}>
+                    <Tooltip title={data.status === 'ERROR' ? data.error || t('node.error', 'Error') : ''}>
                         <Avatar
                             variant='rounded'
                             sx={{
