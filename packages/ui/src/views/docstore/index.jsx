@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { Box, Stack, ToggleButton, ToggleButtonGroup } from '@mui/material'
@@ -30,6 +31,7 @@ import { DocumentStoreTable } from '@/ui-component/table/DocumentStoreTable'
 // ==============================|| DOCUMENTS ||============================== //
 
 const Documents = () => {
+    const { t } = useTranslation(['docstores', 'common'])
     const theme = useTheme()
 
     const navigate = useNavigate()
@@ -66,10 +68,10 @@ const Documents = () => {
 
     const addNew = () => {
         const dialogProp = {
-            title: 'Add New Document Store',
+            title: t('addNewStore'),
             type: 'ADD',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Add'
+            cancelButtonName: t('cancel'),
+            confirmButtonName: t('add')
         }
         setDialogProps(dialogProp)
         setShowDialog(true)
@@ -154,9 +156,9 @@ const Documents = () => {
                     <ViewHeader
                         onSearchChange={onSearchChange}
                         search={hasDocStores}
-                        searchPlaceholder='Search Name'
-                        title='Document Store'
-                        description='Store and upsert documents for LLM retrieval (RAG)'
+                        searchPlaceholder={t('searchPlaceholder')}
+                        title={t('title')}
+                        description={t('description')}
                     >
                         {hasDocStores && (
                             <ToggleButtonGroup
@@ -174,7 +176,7 @@ const Documents = () => {
                                     }}
                                     variant='contained'
                                     value='card'
-                                    title='Card View'
+                                    title={t('cardView')}
                                 >
                                     <IconLayoutGrid />
                                 </ToggleButton>
@@ -186,7 +188,7 @@ const Documents = () => {
                                     }}
                                     variant='contained'
                                     value='list'
-                                    title='List View'
+                                    title={t('listView')}
                                 >
                                     <IconList />
                                 </ToggleButton>
@@ -200,7 +202,7 @@ const Documents = () => {
                             startIcon={<IconPlus />}
                             id='btn_createVariable'
                         >
-                            Add New
+                            {t('addNew')}
                         </StyledPermissionButton>
                     </ViewHeader>
                     {!hasDocStores ? (
@@ -212,7 +214,7 @@ const Documents = () => {
                                     alt='doc_store_empty'
                                 />
                             </Box>
-                            <div>No Document Stores Created Yet</div>
+                            <div>{t('noDocStoresYet')}</div>
                         </Stack>
                     ) : (
                         <React.Fragment>

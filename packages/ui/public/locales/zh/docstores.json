@@ -1,0 +1,21 @@
+{
+    "title": "文档存储",
+    "description": "存储和管理文档以供LLM检索（RAG）",
+    "searchPlaceholder": "搜索名称",
+    "addNew": "新建",
+    "cardView": "卡片视图",
+    "listView": "列表视图",
+    "noDocStoresYet": "暂无文档存储",
+    "addNewStore": "添加新文档存储",
+    "editStore": "编辑文档存储",
+    "name": "名称",
+    "nameRequired": "名称为必填项",
+    "description_label": "描述",
+    "cancel": "取消",
+    "add": "添加",
+    "save": "保存",
+    "newStoreCreated": "新文档存储已创建。",
+    "storeUpdated": "文档存储已更新！",
+    "failedToAdd": "添加新文档存储失败",
+    "failedToUpdate": "更新文档存储失败"
+}

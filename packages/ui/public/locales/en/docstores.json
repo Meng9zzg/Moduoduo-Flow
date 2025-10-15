@@ -1,0 +1,21 @@
+{
+    "title": "Document Stores",
+    "description": "Store and upsert documents for LLM retrieval (RAG)",
+    "searchPlaceholder": "Search Name",
+    "addNew": "Add New",
+    "cardView": "Card View",
+    "listView": "List View",
+    "noDocStoresYet": "No Document Stores Created Yet",
+    "addNewStore": "Add New Document Store",
+    "editStore": "Edit Document Store",
+    "name": "Name",
+    "nameRequired": "Name is required",
+    "description_label": "Description",
+    "cancel": "Cancel",
+    "add": "Add",
+    "save": "Save",
+    "newStoreCreated": "New Document Store created.",
+    "storeUpdated": "Document Store Updated!",
+    "failedToAdd": "Failed to add new Document Store",
+    "failedToUpdate": "Failed to update Document Store"
+}
