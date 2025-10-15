@@ -26,9 +26,9 @@ const ErrorBoundary = ({ error }) => {
                         >
                             <IconCopy />
                         </IconButton>
-                        <pre style={{ margin: 0, overflowWrap: 'break-word', whiteSpace: 'pre-wrap', textAlign: 'center' }}>
-                            <code>{`${t('boundary.statusLabel')} ${error.response.status}`}</code>
-                        </pre>
+                        <Typography variant='h3' sx={{ textAlign: 'center' }}>
+                            {`${t('boundary.statusLabel')} ${error.response.status}`}
+                        </Typography>
                     </Box>
                 </Card>
                 <Typography variant='body1' sx={{ fontSize: '1.1rem', textAlign: 'center', lineHeight: '1.5' }}>
