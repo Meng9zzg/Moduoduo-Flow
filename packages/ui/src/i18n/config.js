@@ -19,34 +19,19 @@ const initI18n = async () => {
             // 开发模式显示调试信息
             debug: true,
 
-            // 命名空间配置
+            // 命名空间配置 - 只加载已创建的文件
             ns: [
                 'common', // 通用文案
                 'menu', // 菜单导航
                 'workspace', // 工作区
                 'header', // 头部组件
-                'chatflows', // Chatflows模块
-                'agentflows', // Agentflows模块
-                'executions', // 执行记录
-                'assistants', // 助手
-                'credentials', // 凭证
-                'tools', // 工具
-                'apikey', // API密钥
-                'docstore', // 文档存储
-                'variables', // 变量
-                'datasets', // 数据集
-                'evaluations', // 评估
-                'evaluators', // 评估器
-                'users', // 用户管理
-                'roles', // 角色管理
-                'settings', // 设置
-                'auth', // 认证
                 'validation', // 表单验证
-                'error', // 错误消息
-                'dialog', // 对话框
-                'table' // 表格
+                'error' // 错误消息
             ],
             defaultNS: 'common',
+
+            // 预加载所有命名空间
+            preload: ['en', 'zh'],
 
             // React已经处理XSS，不需要转义
             interpolation: {
@@ -91,8 +76,11 @@ const initI18n = async () => {
             }
         })
 
-    console.log('i18n initialized with language:', i18n.language)
-    console.log('i18n loaded namespaces:', Object.keys(i18n.store.data[i18n.language] || {}))
+    console.log('✅ i18n initialized successfully')
+    console.log('  Language:', i18n.language)
+    console.log('  Loaded namespaces:', Object.keys(i18n.store.data[i18n.language] || {}))
+    console.log('  Sample translation (common.save):', i18n.t('common.save'))
+    console.log('  Sample translation (common.switchLanguage):', i18n.t('common.switchLanguage'))
 }
 
 // 立即初始化
