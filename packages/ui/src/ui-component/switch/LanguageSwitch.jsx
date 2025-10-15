@@ -161,7 +161,7 @@ const LanguageSwitch = () => {
     return (
         <>
             <Tooltip title={t('switchLanguage', '切换语言 / Switch Language')} arrow>
-                <ButtonBase sx={{ borderRadius: '12px', overflow: 'hidden' }}>
+                <ButtonBase sx={{ borderRadius: '12px', overflow: 'hidden' }} onClick={handleClick}>
                     <Avatar
                         variant='rounded'
                         sx={{
@@ -175,7 +175,6 @@ const LanguageSwitch = () => {
                                 color: theme.palette.secondary.light
                             }
                         }}
-                        onClick={handleClick}
                         color='inherit'
                     >
                         <LanguagesIcon size={18} color='currentColor' />
