@@ -1,0 +1,9 @@
+{
+    "title": "聊天流",
+    "description": "构建单代理系统、聊天机器人和简单的LLM流程",
+    "searchPlaceholder": "搜索名称或分类",
+    "addNew": "新建",
+    "cardView": "卡片视图",
+    "listView": "列表视图",
+    "noChatflowsYet": "暂无聊天流"
+}

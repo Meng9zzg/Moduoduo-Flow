@@ -1,0 +1,9 @@
+{
+    "title": "Chatflows",
+    "description": "Build single-agent systems, chatbots and simple LLM flows",
+    "searchPlaceholder": "Search Name or Category",
+    "addNew": "Add New",
+    "cardView": "Card View",
+    "listView": "List View",
+    "noChatflowsYet": "No Chatflows Yet"
+}

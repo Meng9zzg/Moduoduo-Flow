@@ -26,7 +26,8 @@ const initI18n = async () => {
                 'workspace', // 工作区
                 'header', // 头部组件
                 'validation', // 表单验证
-                'error' // 错误消息
+                'error', // 错误消息
+                'chatflows' // Chatflows页面
             ],
             defaultNS: 'common',
 
