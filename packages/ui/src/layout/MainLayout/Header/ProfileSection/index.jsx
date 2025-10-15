@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 import { closeSnackbar as closeSnackbarAction, enqueueSnackbar as enqueueSnackbarAction, REMOVE_DIRTY } from '@/store/actions'
 import { exportData, stringify } from '@/utils/exportImport'
@@ -73,6 +74,7 @@ const dataToExport = [
 
 const ExportDialog = ({ show, onCancel, onExport }) => {
     const portalElement = document.getElementById('portal')
+    const { t } = useTranslation('header')
 
     const [selectedData, setSelectedData] = useState(dataToExport)
     const [isExporting, setIsExporting] = useState(false)
@@ -97,7 +99,7 @@ const ExportDialog = ({ show, onCancel, onExport }) => {
             aria-describedby='export-dialog-description'
         >
             <DialogTitle sx={{ fontSize: '1rem' }} id='export-dialog-title'>
-                {!isExporting ? 'Select Data to Export' : 'Exporting..'}
+                {!isExporting ? t('selectDataToExport') : t('exporting')}
             </DialogTitle>
             <DialogContent>
                 {!isExporting && (
@@ -143,14 +145,14 @@ const ExportDialog = ({ show, onCancel, onExport }) => {
                                 src={ExportingGIF}
                                 alt='ExportingGIF'
                             />
-                            <span>Exporting data might takes a while</span>
+                            <span>{t('exportingMessage')}</span>
                         </div>
                     </Box>
                 )}
             </DialogContent>
             {!isExporting && (
                 <DialogActions>
-                    <Button onClick={onCancel}>Cancel</Button>
+                    <Button onClick={onCancel}>{t('cancel')}</Button>
                     <Button
                         disabled={selectedData.length === 0}
                         variant='contained'
@@ -159,7 +161,7 @@ const ExportDialog = ({ show, onCancel, onExport }) => {
                             onExport(selectedData)
                         }}
                     >
-                        Export
+                        {t('export')}
                     </Button>
                 </DialogActions>
             )}
@@ -177,11 +179,12 @@ ExportDialog.propTypes = {
 
 const ImportDialog = ({ show }) => {
     const portalElement = document.getElementById('portal')
+    const { t } = useTranslation('header')
 
     const component = show ? (
         <Dialog open={show} fullWidth maxWidth='sm' aria-labelledby='import-dialog-title' aria-describedby='import-dialog-description'>
             <DialogTitle sx={{ fontSize: '1rem' }} id='import-dialog-title'>
-                Importing...
+                {t('importing')}
             </DialogTitle>
             <DialogContent>
                 <Box sx={{ height: 'auto', display: 'flex', justifyContent: 'center', mb: 3 }}>
@@ -195,7 +198,7 @@ const ImportDialog = ({ show }) => {
                             src={ExportingGIF}
                             alt='ImportingGIF'
                         />
-                        <span>Importing data might takes a while</span>
+                        <span>{t('importingMessage')}</span>
                     </div>
                 </Box>
             </DialogContent>
@@ -213,6 +216,7 @@ ImportDialog.propTypes = {
 
 const ProfileSection = ({ handleLogout }) => {
     const theme = useTheme()
+    const { t } = useTranslation('header')
 
     const customization = useSelector((state) => state.customization)
     const { isCloud } = useConfig()
@@ -289,7 +293,7 @@ const ProfileSection = ({ handleLogout }) => {
         setImportDialogOpen(false)
         dispatch({ type: REMOVE_DIRTY })
         enqueueSnackbar({
-            message: `Import All successful`,
+            message: t('importAllSuccessful'),
             options: {
                 key: new Date().getTime() + Math.random(),
                 variant: 'success',
@@ -336,12 +340,12 @@ const ProfileSection = ({ handleLogout }) => {
     useEffect(() => {
         if (importAllApi.error) {
             setImportDialogOpen(false)
-            let errMsg = 'Invalid Imported File'
+            let errMsg = t('invalidImportedFile')
             let error = importAllApi.error
             if (error?.response?.data) {
                 errMsg = typeof error.response.data === 'object' ? error.response.data.message : error.response.data
             }
-            errorFailed(`Failed to import: ${errMsg}`)
+            errorFailed(`${t('failedToImport')}: ${errMsg}`)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [importAllApi.error])
@@ -369,12 +373,12 @@ const ProfileSection = ({ handleLogout }) => {
     useEffect(() => {
         if (exportAllApi.error) {
             setExportDialogOpen(false)
-            let errMsg = 'Internal Server Error'
+            let errMsg = t('internalServerError')
             let error = exportAllApi.error
             if (error?.response?.data) {
                 errMsg = typeof error.response.data === 'object' ? error.response.data.message : error.response.data
             }
-            errorFailed(`Failed to export: ${errMsg}`)
+            errorFailed(`${t('failedToExport')}: ${errMsg}`)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [exportAllApi.error])
@@ -389,31 +393,31 @@ const ProfileSection = ({ handleLogout }) => {
     return (
         <>
             <ButtonBase ref={anchorRef} sx={{ borderRadius: '12px', overflow: 'hidden' }}>
-                    <Avatar
-                        variant='rounded'
-                        sx={{
-                            ...theme.typography.commonAvatar,
-                            ...theme.typography.mediumAvatar,
-                            transition: 'all .2s ease-in-out',
-                            background: theme.palette.secondary.light,
-                            color: theme.palette.secondary.dark,
-                            '&:hover': {
-                                background: theme.palette.secondary.dark,
-                                color: theme.palette.secondary.light,
-                                '& svg': {
-                                    transform: 'rotate(180deg)',
-                                    transition: 'transform 0.3s ease-in-out'
-                                }
-                            },
+                <Avatar
+                    variant='rounded'
+                    sx={{
+                        ...theme.typography.commonAvatar,
+                        ...theme.typography.mediumAvatar,
+                        transition: 'all .2s ease-in-out',
+                        background: theme.palette.secondary.light,
+                        color: theme.palette.secondary.dark,
+                        '&:hover': {
+                            background: theme.palette.secondary.dark,
+                            color: theme.palette.secondary.light,
                             '& svg': {
+                                transform: 'rotate(180deg)',
                                 transition: 'transform 0.3s ease-in-out'
                             }
-                        }}
-                        onClick={handleToggle}
-                        color='inherit'
-                    >
-                        <IconSettings stroke={1.5} size='1.3rem' />
-                    </Avatar>
+                        },
+                        '& svg': {
+                            transition: 'transform 0.3s ease-in-out'
+                        }
+                    }}
+                    onClick={handleToggle}
+                    color='inherit'
+                >
+                    <IconSettings stroke={1.5} size='1.3rem' />
+                </Avatar>
             </ButtonBase>
             <Popper
                 placement='bottom-end'
@@ -447,7 +451,7 @@ const ProfileSection = ({ handleLogout }) => {
                                     ) : (
                                         <Box sx={{ p: 2 }}>
                                             <Typography component='span' variant='h4'>
-                                                User
+                                                {t('user')}
                                             </Typography>
                                         </Box>
                                     )}
@@ -480,7 +484,7 @@ const ProfileSection = ({ handleLogout }) => {
                                                     <ListItemIcon>
                                                         <IconFileExport stroke={1.5} size='1.3rem' />
                                                     </ListItemIcon>
-                                                    <ListItemText primary={<Typography variant='body2'>Export</Typography>} />
+                                                    <ListItemText primary={<Typography variant='body2'>{t('export')}</Typography>} />
                                                 </PermissionListItemButton>
                                                 <PermissionListItemButton
                                                     permissionId='workspace:import'
@@ -492,7 +496,7 @@ const ProfileSection = ({ handleLogout }) => {
                                                     <ListItemIcon>
                                                         <IconFileUpload stroke={1.5} size='1.3rem' />
                                                     </ListItemIcon>
-                                                    <ListItemText primary={<Typography variant='body2'>Import</Typography>} />
+                                                    <ListItemText primary={<Typography variant='body2'>{t('import')}</Typography>} />
                                                 </PermissionListItemButton>
                                                 <input ref={inputRef} type='file' hidden onChange={fileChange} accept='.json' />
                                                 <ListItemButton
@@ -505,7 +509,7 @@ const ProfileSection = ({ handleLogout }) => {
                                                     <ListItemIcon>
                                                         <IconInfoCircle stroke={1.5} size='1.3rem' />
                                                     </ListItemIcon>
-                                                    <ListItemText primary={<Typography variant='body2'>Version</Typography>} />
+                                                    <ListItemText primary={<Typography variant='body2'>{t('version')}</Typography>} />
                                                 </ListItemButton>
                                                 {isAuthenticated && !currentUser.isSSO && !isCloud && (
                                                     <ListItemButton
@@ -518,7 +522,9 @@ const ProfileSection = ({ handleLogout }) => {
                                                         <ListItemIcon>
                                                             <IconUserEdit stroke={1.5} size='1.3rem' />
                                                         </ListItemIcon>
-                                                        <ListItemText primary={<Typography variant='body2'>Update Profile</Typography>} />
+                                                        <ListItemText
+                                                            primary={<Typography variant='body2'>{t('updateProfile')}</Typography>}
+                                                        />
                                                     </ListItemButton>
                                                 )}
                                                 <ListItemButton
@@ -528,7 +534,7 @@ const ProfileSection = ({ handleLogout }) => {
                                                     <ListItemIcon>
                                                         <IconLogout stroke={1.5} size='1.3rem' />
                                                     </ListItemIcon>
-                                                    <ListItemText primary={<Typography variant='body2'>Logout</Typography>} />
+                                                    <ListItemText primary={<Typography variant='body2'>{t('logout')}</Typography>} />
                                                 </ListItemButton>
                                             </List>
                                         </Box>
