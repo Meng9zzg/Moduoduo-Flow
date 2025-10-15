@@ -1,0 +1,21 @@
+{
+    "pageTitle": "Roles",
+    "addRole": "Add Role",
+    "searchPlaceholder": "Search Roles",
+    "noRolesYet": "No Roles Yet",
+    "name": "Name",
+    "description": "Description",
+    "permissions": "Permissions",
+    "assignedUsers": "Assigned Users",
+    "assignedUsersDrawerTitle": "Assigned Users",
+    "user": "User",
+    "workspace": "Workspace",
+    "viewTooltip": "View",
+    "editTooltip": "Edit",
+    "deleteTooltip": "Delete",
+    "deleteDisabledTooltip": "Remove users with the role from Workspace first",
+    "deleteTitle": "Delete",
+    "deleteDescription": "Delete Role {{name}}?",
+    "deleteSuccess": "Role deleted",
+    "deleteError": "Failed to delete Role: {{message}}"
+}

@@ -1,0 +1,18 @@
+{
+    "title": "Evaluators",
+    "newEvaluator": "New Evaluator",
+    "noEvaluators": "No Evaluators Yet",
+    "lastUpdated": "Last Updated",
+    "evaluatorDeleted": "Evaluator deleted",
+    "deleteEvaluatorTitle": "Delete",
+    "deleteEvaluatorDescription": "Delete Evaluator {{name}}?",
+    "deleteEvaluatorFailed": "Failed to delete Evaluator",
+    "typeNumeric": "Numeric",
+    "typeTextBased": "Text Based",
+    "typeJsonBased": "JSON Based",
+    "typeLlmBased": "LLM Based",
+    "measure": "Measure",
+    "operator": "Operator",
+    "prompt": "Prompt",
+    "outputSchemaElements": "Output Schema Elements"
+}

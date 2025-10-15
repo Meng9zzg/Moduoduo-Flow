@@ -1,0 +1,18 @@
+{
+    "title": "评估器",
+    "newEvaluator": "新建评估器",
+    "noEvaluators": "暂无评估器",
+    "lastUpdated": "最后更新",
+    "evaluatorDeleted": "评估器已删除",
+    "deleteEvaluatorTitle": "删除",
+    "deleteEvaluatorDescription": "删除评估器{{name}}？",
+    "deleteEvaluatorFailed": "删除评估器失败",
+    "typeNumeric": "数值类型",
+    "typeTextBased": "文本类型",
+    "typeJsonBased": "JSON类型",
+    "typeLlmBased": "LLM类型",
+    "measure": "测量",
+    "operator": "操作符",
+    "prompt": "提示词",
+    "outputSchemaElements": "输出模式元素"
+}

@@ -38,7 +38,13 @@ const initI18n = async () => {
                 'variables', // Variables页面
                 'executions', // Executions页面
                 'docstores', // Document Stores页面
-                'apikeys' // API Keys页面
+                'apikeys', // API Keys页面
+                'datasets', // Datasets页面
+                'evaluators', // Evaluators页面
+                'evaluations', // Evaluations页面
+                'users', // Users页面
+                'roles', // Roles页面
+                'organization' // Organization页面
             ],
             defaultNS: 'common',
 

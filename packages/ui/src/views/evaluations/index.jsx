@@ -3,6 +3,7 @@ import * as PropTypes from 'prop-types'
 import moment from 'moment/moment'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import {
@@ -68,6 +69,7 @@ const EvalsEvaluation = () => {
     const dispatch = useDispatch()
     useNotifier()
     const { error } = useError()
+    const { t } = useTranslation(['evaluations', 'common'])
 
     const enqueueSnackbar = (...args) => dispatch(enqueueSnackbarAction(...args))
     const closeSnackbar = (...args) => dispatch(closeSnackbarAction(...args))
@@ -129,8 +131,8 @@ const EvalsEvaluation = () => {
     const createEvaluation = () => {
         const dialogProp = {
             type: 'ADD',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Start New Evaluation',
+            cancelButtonName: t('common:cancel'),
+            confirmButtonName: t('evaluations:startNewEvaluation'),
             data: {}
         }
         setDialogProps(dialogProp)
@@ -138,13 +140,12 @@ const EvalsEvaluation = () => {
     }
 
     const deleteEvaluationsAllVersions = async () => {
+        const type = selected.length > 1 ? t('evaluations:evaluations') : t('evaluations:evaluation')
         const confirmPayload = {
-            title: `Delete`,
-            description: `Delete ${selected.length} ${
-                selected.length > 1 ? 'evaluations' : 'evaluation'
-            }? This will delete all versions of the evaluation.`,
-            confirmButtonName: 'Delete',
-            cancelButtonName: 'Cancel'
+            title: t('common:delete'),
+            description: t('evaluations:deleteEvaluationsDesc', { count: selected.length, type }),
+            confirmButtonName: t('common:delete'),
+            cancelButtonName: t('common:cancel')
         }
         const isConfirmed = await confirm(confirmPayload)
 
@@ -154,7 +155,7 @@ const EvalsEvaluation = () => {
                 const deleteResp = await evaluationApi.deleteEvaluations(selected, isDeleteAllVersion)
                 if (deleteResp.data) {
                     enqueueSnackbar({
-                        message: `${selected.length} ${selected.length > 1 ? 'evaluations' : 'evaluation'} deleted`,
+                        message: t('evaluations:evaluationsDeleted', { count: selected.length }),
                         options: {
                             key: new Date().getTime() + Math.random(),
                             variant: 'success',
@@ -168,8 +169,9 @@ const EvalsEvaluation = () => {
                     onRefresh()
                 }
             } catch (error) {
+                const type = selected.length > 1 ? t('evaluations:evaluations') : t('evaluations:evaluation')
                 enqueueSnackbar({
-                    message: `Failed to delete ${selected.length > 1 ? 'evaluations' : 'evaluation'}: ${
+                    message: `${t('evaluations:deleteEvaluationsFailed', { type })}: ${
                         typeof error.response.data === 'object' ? error.response.data.message : error.response.data
                     }`,
                     options: {
@@ -298,7 +300,7 @@ const EvalsEvaluation = () => {
                     <ErrorBoundary error={error} />
                 ) : (
                     <Stack flexDirection='column' sx={{ gap: 3 }}>
-                        <ViewHeader isBackButton={false} isEditButton={false} search={false} title={'Evaluations'} description=''>
+                        <ViewHeader isBackButton={false} isEditButton={false} search={false} title={t('evaluations:title')} description=''>
                             <ToggleButton
                                 value='auto-refresh'
                                 selected={autoRefresh}
@@ -326,7 +328,7 @@ const EvalsEvaluation = () => {
                                         }
                                     }
                                 }}
-                                title={autoRefresh ? 'Disable auto-refresh' : 'Enable auto-refresh (every 5s)'}
+                                title={autoRefresh ? t('evaluations:disableAutoRefresh') : t('evaluations:enableAutoRefresh')}
                             >
                                 {autoRefresh ? <IconPlayerPause /> : <IconPlayerPlay />}
                             </ToggleButton>
@@ -341,7 +343,7 @@ const EvalsEvaluation = () => {
                                     }
                                 }}
                                 onClick={onRefresh}
-                                title='Refresh'
+                                title={t('common:refresh')}
                             >
                                 <IconRefresh />
                             </IconButton>
@@ -351,7 +353,7 @@ const EvalsEvaluation = () => {
                                 onClick={createEvaluation}
                                 startIcon={<IconPlus />}
                             >
-                                New Evaluation
+                                {t('evaluations:newEvaluation')}
                             </StyledPermissionButton>
                         </ViewHeader>
                         {selected.length > 0 && (
@@ -363,7 +365,7 @@ const EvalsEvaluation = () => {
                                 color='error'
                                 startIcon={<IconTrash />}
                             >
-                                Delete {selected.length} {selected.length === 1 ? 'evaluation' : 'evaluations'}
+                                {t('evaluations:deleteEvaluations', { count: selected.length })}
                             </StyledPermissionButton>
                         )}
                         {!isTableLoading && rows.length <= 0 ? (
@@ -375,7 +377,7 @@ const EvalsEvaluation = () => {
                                         alt='empty_evalSVG'
                                     />
                                 </Box>
-                                <div>No Evaluations Yet</div>
+                                <div>{t('evaluations:noEvaluations')}</div>
                             </Stack>
                         ) : (
                             <>
@@ -404,12 +406,12 @@ const EvalsEvaluation = () => {
                                                     />
                                                 </TableCell>
                                                 <TableCell width={10}> </TableCell>
-                                                <TableCell>Name</TableCell>
-                                                <TableCell>Latest Version</TableCell>
-                                                <TableCell>Average Metrics</TableCell>
-                                                <TableCell>Last Evaluated</TableCell>
-                                                <TableCell>Flow(s)</TableCell>
-                                                <TableCell>Dataset</TableCell>
+                                                <TableCell>{t('common:name')}</TableCell>
+                                                <TableCell>{t('evaluations:latestVersion')}</TableCell>
+                                                <TableCell>{t('evaluations:averageMetrics')}</TableCell>
+                                                <TableCell>{t('evaluations:lastEvaluated')}</TableCell>
+                                                <TableCell>{t('evaluations:flows')}</TableCell>
+                                                <TableCell>{t('evaluations:dataset')}</TableCell>
                                                 <TableCell> </TableCell>
                                             </TableRow>
                                         </TableHead>
@@ -477,6 +479,7 @@ const EvalsEvaluation = () => {
                                                                 customization={customization}
                                                                 onRefresh={onRefresh}
                                                                 handleSelect={handleSelect}
+                                                                t={t}
                                                             />
                                                         ))}
                                                 </>
@@ -551,11 +554,12 @@ function EvaluationRunRow(props) {
     }
 
     const deleteChildEvaluations = async () => {
+        const type = childSelected.length > 1 ? props.t('evaluations:evaluations') : props.t('evaluations:evaluation')
         const confirmPayload = {
-            title: `Delete`,
-            description: `Delete ${childSelected.length} ${childSelected.length > 1 ? 'evaluations' : 'evaluation'}?`,
-            confirmButtonName: 'Delete',
-            cancelButtonName: 'Cancel'
+            title: props.t('common:delete'),
+            description: props.t('evaluations:deleteEvaluationsDescSimple', { count: childSelected.length, type }),
+            confirmButtonName: props.t('common:delete'),
+            cancelButtonName: props.t('common:cancel')
         }
         const isConfirmed = await confirm(confirmPayload)
 
@@ -564,7 +568,7 @@ function EvaluationRunRow(props) {
                 const deleteResp = await evaluationApi.deleteEvaluations(childSelected)
                 if (deleteResp.data) {
                     enqueueSnackbar({
-                        message: `${childSelected.length} evaluations deleted.`,
+                        message: props.t('evaluations:evaluationsDeleted', { count: childSelected.length }),
                         options: {
                             key: new Date().getTime() + Math.random(),
                             variant: 'success',
@@ -578,8 +582,9 @@ function EvaluationRunRow(props) {
                     props.onRefresh()
                 }
             } catch (error) {
+                const type = childSelected.length > 1 ? props.t('evaluations:evaluations') : props.t('evaluations:evaluation')
                 enqueueSnackbar({
-                    message: `Failed to delete Evaluation: ${
+                    message: `${props.t('evaluations:deleteEvaluationsFailed', { type })}: ${
                         typeof error.response.data === 'object' ? error.response.data.message : error.response.data
                     }`,
                     options: {
@@ -659,8 +664,8 @@ function EvaluationRunRow(props) {
                             color='info'
                             label={
                                 props.item.average_metrics?.totalRuns
-                                    ? 'Total Runs: ' + props.item.average_metrics?.totalRuns
-                                    : 'Total Runs: N/A'
+                                    ? props.t('evaluations:totalRuns') + ': ' + props.item.average_metrics?.totalRuns
+                                    : props.t('evaluations:totalRuns') + ': N/A'
                             }
                         />
                         {props.item.average_metrics?.averageCost && (
@@ -672,8 +677,8 @@ function EvaluationRunRow(props) {
                             color='info'
                             label={
                                 props.item.average_metrics?.averageLatency
-                                    ? 'Avg Latency: ' + props.item.average_metrics?.averageLatency + 'ms'
-                                    : 'Avg Latency: N/A'
+                                    ? props.t('evaluations:avgLatency') + ': ' + props.item.average_metrics?.averageLatency + 'ms'
+                                    : props.t('evaluations:avgLatency') + ': N/A'
                             }
                         />
                         {props.item.average_metrics?.passPcnt >= 0 && (
@@ -686,8 +691,8 @@ function EvaluationRunRow(props) {
                                 }}
                                 label={
                                     props.item.average_metrics?.passPcnt
-                                        ? 'Pass Rate: ' + props.item.average_metrics.passPcnt + '%'
-                                        : 'Pass Rate: N/A'
+                                        ? props.t('evaluations:passRate') + ': ' + props.item.average_metrics.passPcnt + '%'
+                                        : props.t('evaluations:passRate') + ': N/A'
                                 }
                             />
                         )}
@@ -726,7 +731,7 @@ function EvaluationRunRow(props) {
                 </StyledTableCell>
                 <TableCell>
                     <IconButton
-                        title='View Results'
+                        title={props.t('evaluations:viewResults')}
                         color='primary'
                         disabled={props.item.status === 'pending'}
                         onClick={() => showResults(props.item)}
@@ -745,7 +750,7 @@ function EvaluationRunRow(props) {
                             color='error'
                             startIcon={<IconTrash />}
                         >
-                            Delete {childSelected.length} {childSelected.length === 1 ? 'evaluation' : 'evaluations'}
+                            {props.t('evaluations:deleteEvaluations', { count: childSelected.length })}
                         </Button>
                     </StyledTableCell>
                 </TableRow>
@@ -766,10 +771,10 @@ function EvaluationRunRow(props) {
                                                         onChange={onSelectAllChildClick}
                                                     />
                                                 </TableCell>
-                                                <TableCell>Version</TableCell>
-                                                <TableCell>Last Run</TableCell>
-                                                <TableCell>Average Metrics</TableCell>
-                                                <TableCell>Status</TableCell>
+                                                <TableCell>{props.t('evaluations:version')}</TableCell>
+                                                <TableCell>{props.t('evaluations:lastRun')}</TableCell>
+                                                <TableCell>{props.t('evaluations:averageMetrics')}</TableCell>
+                                                <TableCell>{props.t('common:status')}</TableCell>
                                                 <TableCell> </TableCell>
                                             </TableRow>
                                         </TableHead>
@@ -836,10 +841,11 @@ function EvaluationRunRow(props) {
                                                                             }}
                                                                             label={
                                                                                 childItem.average_metrics?.passPcnt
-                                                                                    ? 'Pass rate: ' +
+                                                                                    ? props.t('evaluations:passRateLower') +
+                                                                                      ': ' +
                                                                                       childItem.average_metrics.passPcnt +
                                                                                       '%'
-                                                                                    : 'Pass rate: N/A'
+                                                                                    : props.t('evaluations:passRateLower') + ': N/A'
                                                                             }
                                                                         />
                                                                     )}
@@ -861,7 +867,7 @@ function EvaluationRunRow(props) {
                                                             </StyledTableCell>
                                                             <StyledTableCell>
                                                                 <IconButton
-                                                                    title='View Results'
+                                                                    title={props.t('evaluations:viewResults')}
                                                                     color='primary'
                                                                     disabled={childItem.status === 'pending'}
                                                                     onClick={() => showResults(childItem)}
@@ -890,6 +896,7 @@ EvaluationRunRow.propTypes = {
     theme: PropTypes.any,
     customization: PropTypes.object,
     onRefresh: PropTypes.func,
-    handleSelect: PropTypes.func
+    handleSelect: PropTypes.func,
+    t: PropTypes.func
 }
 export default EvalsEvaluation

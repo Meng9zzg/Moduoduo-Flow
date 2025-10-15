@@ -1,0 +1,11 @@
+{
+    "title": "Datasets",
+    "addNew": "Add New",
+    "noDatasets": "No Datasets Yet",
+    "rows": "Rows",
+    "lastUpdated": "Last Updated",
+    "datasetDeleted": "Dataset deleted",
+    "deleteDatasetTitle": "Delete",
+    "deleteDatasetDescription": "Delete dataset {{name}}?",
+    "deleteDatasetFailed": "Failed to delete dataset"
+}

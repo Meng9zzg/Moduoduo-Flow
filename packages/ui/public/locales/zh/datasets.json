@@ -1,0 +1,11 @@
+{
+    "title": "数据集",
+    "addNew": "新建",
+    "noDatasets": "暂无数据集",
+    "rows": "行数",
+    "lastUpdated": "最后更新",
+    "datasetDeleted": "数据集已删除",
+    "deleteDatasetTitle": "删除",
+    "deleteDatasetDescription": "删除数据集{{name}}？",
+    "deleteDatasetFailed": "删除数据集失败"
+}

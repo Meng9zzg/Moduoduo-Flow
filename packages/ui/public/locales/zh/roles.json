@@ -1,0 +1,21 @@
+{
+    "pageTitle": "角色",
+    "addRole": "添加角色",
+    "searchPlaceholder": "搜索角色",
+    "noRolesYet": "暂无角色",
+    "name": "名称",
+    "description": "描述",
+    "permissions": "权限",
+    "assignedUsers": "已分配用户",
+    "assignedUsersDrawerTitle": "已分配用户",
+    "user": "用户",
+    "workspace": "工作区",
+    "viewTooltip": "查看",
+    "editTooltip": "编辑",
+    "deleteTooltip": "删除",
+    "deleteDisabledTooltip": "请先从工作区移除具有该角色的用户",
+    "deleteTitle": "删除",
+    "deleteDescription": "删除角色 {{name}}？",
+    "deleteSuccess": "角色已删除",
+    "deleteError": "删除角色失败：{{message}}"
+}
