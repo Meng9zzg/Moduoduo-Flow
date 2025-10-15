@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { Box, Stack, ButtonGroup, Skeleton, ToggleButtonGroup, ToggleButton } from '@mui/material'
@@ -29,6 +30,7 @@ import ToolEmptySVG from '@/assets/images/tools_empty.svg'
 // ==============================|| TOOLS ||============================== //
 
 const Tools = () => {
+    const { t } = useTranslation(['tools', 'common'])
     const theme = useTheme()
     const getAllToolsApi = useApi(toolsApi.getAllTools)
     const { error, setError } = useError()
@@ -68,10 +70,10 @@ const Tools = () => {
     const onUploadFile = (file) => {
         try {
             const dialogProp = {
-                title: 'Add New Tool',
+                title: t('tools:addNewTool'),
                 type: 'IMPORT',
-                cancelButtonName: 'Cancel',
-                confirmButtonName: 'Save',
+                cancelButtonName: t('tools:cancel'),
+                confirmButtonName: t('tools:save'),
                 data: JSON.parse(file)
             }
             setDialogProps(dialogProp)
@@ -99,10 +101,10 @@ const Tools = () => {
 
     const addNew = () => {
         const dialogProp = {
-            title: 'Add New Tool',
+            title: t('tools:addNewTool'),
             type: 'ADD',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Add'
+            cancelButtonName: t('tools:cancel'),
+            confirmButtonName: t('tools:add')
         }
         setDialogProps(dialogProp)
         setShowDialog(true)
@@ -110,10 +112,10 @@ const Tools = () => {
 
     const edit = (selectedTool) => {
         const dialogProp = {
-            title: 'Edit Tool',
+            title: t('tools:editTool'),
             type: 'EDIT',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Save',
+            cancelButtonName: t('tools:cancel'),
+            confirmButtonName: t('tools:save'),
             data: selectedTool
         }
         setDialogProps(dialogProp)
@@ -161,9 +163,9 @@ const Tools = () => {
                         <ViewHeader
                             onSearchChange={onSearchChange}
                             search={true}
-                            searchPlaceholder='Search Tools'
-                            title='Tools'
-                            description='External functions or APIs the agent can use to take action'
+                            searchPlaceholder={t('tools:searchPlaceholder')}
+                            title={t('tools:title')}
+                            description={t('tools:description')}
                         >
                             <ToggleButtonGroup
                                 sx={{ borderRadius: 2, maxHeight: 40 }}
@@ -181,7 +183,7 @@ const Tools = () => {
                                     }}
                                     variant='contained'
                                     value='card'
-                                    title='Card View'
+                                    title={t('tools:cardView')}
                                 >
                                     <IconLayoutGrid />
                                 </ToggleButton>
@@ -193,7 +195,7 @@ const Tools = () => {
                                     }}
                                     variant='contained'
                                     value='list'
-                                    title='List View'
+                                    title={t('tools:listView')}
                                 >
                                     <IconList />
                                 </ToggleButton>
@@ -206,7 +208,7 @@ const Tools = () => {
                                     startIcon={<IconFileUpload />}
                                     sx={{ borderRadius: 2, height: 40 }}
                                 >
-                                    Load
+                                    {t('tools:load')}
                                 </PermissionButton>
                                 <input
                                     style={{ display: 'none' }}
@@ -225,7 +227,7 @@ const Tools = () => {
                                     startIcon={<IconPlus />}
                                     sx={{ borderRadius: 2, height: 40 }}
                                 >
-                                    Create
+                                    {t('tools:create')}
                                 </StyledPermissionButton>
                             </ButtonGroup>
                         </ViewHeader>
@@ -260,7 +262,7 @@ const Tools = () => {
                                         alt='ToolEmptySVG'
                                     />
                                 </Box>
-                                <div>No Tools Created Yet</div>
+                                <div>{t('tools:noToolsYet')}</div>
                             </Stack>
                         )}
                     </Stack>

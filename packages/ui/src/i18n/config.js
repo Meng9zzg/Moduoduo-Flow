@@ -28,7 +28,10 @@ const initI18n = async () => {
                 'validation', // 表单验证
                 'error', // 错误消息
                 'chatflows', // Chatflows页面
-                'agentflows' // Agentflows页面
+                'agentflows', // Agentflows页面
+                'tools', // Tools页面
+                'credentials', // Credentials页面
+                'marketplaces' // Marketplaces页面
             ],
             defaultNS: 'common',
 

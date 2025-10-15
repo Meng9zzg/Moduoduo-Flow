@@ -1,0 +1,15 @@
+{
+    "title": "工具",
+    "description": "代理可以使用的外部函数或API来执行操作",
+    "searchPlaceholder": "搜索工具",
+    "create": "创建",
+    "load": "加载",
+    "cardView": "卡片视图",
+    "listView": "列表视图",
+    "noToolsYet": "暂无工具",
+    "addNewTool": "新建工具",
+    "editTool": "编辑工具",
+    "cancel": "取消",
+    "save": "保存",
+    "add": "添加"
+}

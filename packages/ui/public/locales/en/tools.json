@@ -1,0 +1,15 @@
+{
+    "title": "Tools",
+    "description": "External functions or APIs the agent can use to take action",
+    "searchPlaceholder": "Search Tools",
+    "create": "Create",
+    "load": "Load",
+    "cardView": "Card View",
+    "listView": "List View",
+    "noToolsYet": "No Tools Created Yet",
+    "addNewTool": "Add New Tool",
+    "editTool": "Edit Tool",
+    "cancel": "Cancel",
+    "save": "Save",
+    "add": "Add"
+}
