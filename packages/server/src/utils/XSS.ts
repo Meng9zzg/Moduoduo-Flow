@@ -33,7 +33,9 @@ export function getCorsOptions(): any {
             } else {
                 callback(null, false)
             }
-        }
+        },
+        credentials: true,
+        optionsSuccessStatus: 204
     }
     return corsOptions
 }

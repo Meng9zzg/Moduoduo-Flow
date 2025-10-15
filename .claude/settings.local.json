@@ -1,0 +1,18 @@
+{
+    "permissions": {
+        "allow": [
+            "Bash(git checkout:*)",
+            "Bash(mkdir:*)",
+            "Bash(pnpm add:*)",
+            "Bash(git add:*)",
+            "Bash(git commit -m \"$(cat <<''EOF''\nfeat(i18n): 阶段1完成 - 搭建i18n基础设施\n\n- 安装i18next依赖 (i18next, react-i18next, i18next-http-backend, i18next-browser-languagedetector)\n- 创建i18n配置文件 (packages/ui/src/i18n/config.js)\n- 建立翻译资源目录结构 (packages/ui/public/locales/en 和 zh)\n- 集成i18n到App.jsx入口\n- 更新LanguageSwitch组件使用i18n API\n- 添加开发文档 (术语表、开发指南、翻译清单)\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+            "Bash(git commit:*)",
+            "Bash(curl:*)",
+            "Bash(git log:*)",
+            "Bash(git reset:*)",
+            "Bash(git diff:*)"
+        ],
+        "deny": [],
+        "ask": []
+    }
+}

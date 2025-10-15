@@ -1,0 +1,22 @@
+{
+    "options": "选项",
+    "rename": "重命名",
+    "duplicate": "复制",
+    "export": "导出",
+    "saveAsTemplate": "保存为模板",
+    "starterPrompts": "启动提示词",
+    "chatFeedback": "聊天反馈",
+    "allowedDomains": "允许的域名",
+    "speechToText": "语音转文字",
+    "updateCategory": "更新分类",
+    "delete": "删除",
+    "renameTitle": "重命名",
+    "deleteTitle": "删除",
+    "deleteConfirm": "删除{{title}}{{name}}？",
+    "starterPromptsTitle": "启动提示词 - {{name}}",
+    "chatFeedbackTitle": "聊天反馈 - {{name}}",
+    "allowedDomainsTitle": "允许的域名 - {{name}}",
+    "speechToTextTitle": "语音转文字 - {{name}}",
+    "chatflowType": "聊天流",
+    "agentflowType": "代理流"
+}

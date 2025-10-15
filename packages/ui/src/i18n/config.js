@@ -28,6 +28,7 @@ const initI18n = async () => {
                 'validation', // 表单验证
                 'error', // 错误消息
                 'dialog', // 对话框组件
+                'flowmenu', // 流程列表菜单
                 'chatflows', // Chatflows页面
                 'agentflows', // Agentflows页面
                 'tools', // Tools页面

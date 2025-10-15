@@ -1,0 +1,22 @@
+{
+    "options": "Options",
+    "rename": "Rename",
+    "duplicate": "Duplicate",
+    "export": "Export",
+    "saveAsTemplate": "Save As Template",
+    "starterPrompts": "Starter Prompts",
+    "chatFeedback": "Chat Feedback",
+    "allowedDomains": "Allowed Domains",
+    "speechToText": "Speech To Text",
+    "updateCategory": "Update Category",
+    "delete": "Delete",
+    "renameTitle": "Rename",
+    "deleteTitle": "Delete",
+    "deleteConfirm": "Delete {{title}} {{name}}?",
+    "starterPromptsTitle": "Starter Prompts - {{name}}",
+    "chatFeedbackTitle": "Chat Feedback - {{name}}",
+    "allowedDomainsTitle": "Allowed Domains - {{name}}",
+    "speechToTextTitle": "Speech To Text - {{name}}",
+    "chatflowType": "Chatflow",
+    "agentflowType": "Agents"
+}

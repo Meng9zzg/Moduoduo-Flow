@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { styled } from '@mui/material/styles'
@@ -31,6 +32,7 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
 // ===========================|| CONTRACT CARD ||=========================== //
 
 const ItemCard = ({ data, images, icons, onClick }) => {
+    const { t } = useTranslation('common')
     const theme = useTheme()
     const customization = useSelector((state) => state.customization)
 
@@ -171,7 +173,7 @@ const ItemCard = ({ data, images, icons, onClick }) => {
                                             fontWeight: 200
                                         }}
                                     >
-                                        + {(images?.length || 0) + (icons?.length || 0) - 3} More
+                                        + {(images?.length || 0) + (icons?.length || 0) - 3} {t('more')}
                                     </Typography>
                                 </MoreItemsTooltip>
                             )}
