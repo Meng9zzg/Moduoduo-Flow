@@ -1,17 +1,17 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { ButtonBase, Avatar, Tooltip, Menu, MenuItem, ListItemIcon, ListItemText } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import { IconCheck } from '@tabler/icons-react'
 import { styled } from '@mui/material/styles'
 import { motion, useAnimation } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
+import PropTypes from 'prop-types'
 
 const StyledMenu = styled(Menu)(({ theme }) => ({
     '& .MuiPaper-root': {
         minWidth: '160px',
         borderRadius: '12px',
-        boxShadow: theme.palette.mode === 'dark' 
-            ? '0 8px 32px rgba(0, 0, 0, 0.4)' 
-            : '0 8px 32px rgba(0, 0, 0, 0.12)',
+        boxShadow: theme.palette.mode === 'dark' ? '0 8px 32px rgba(0, 0, 0, 0.4)' : '0 8px 32px rgba(0, 0, 0, 0.12)',
         border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.12)' : 'rgba(0, 0, 0, 0.12)'}`
     }
 }))
@@ -21,9 +21,7 @@ const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
     margin: '4px 8px',
     minHeight: '40px',
     '&:hover': {
-        backgroundColor: theme.palette.mode === 'dark' 
-            ? 'rgba(255, 255, 255, 0.08)' 
-            : 'rgba(0, 0, 0, 0.04)'
+        backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.04)'
     },
     '&.Mui-selected': {
         backgroundColor: theme.palette.primary.main + '20',
@@ -51,10 +49,10 @@ const pathVariants = {
                 type: 'spring',
                 duration: 0.5,
                 bounce: 0,
-                delay: custom * 0.1,
-            },
-        },
-    }),
+                delay: custom * 0.1
+            }
+        }
+    })
 }
 
 const svgVariants = {
@@ -63,9 +61,9 @@ const svgVariants = {
         opacity: 1,
         transition: {
             staggerChildren: 0.1,
-            delayChildren: 0.2,
-        },
-    },
+            delayChildren: 0.2
+        }
+    }
 }
 
 // 语言切换图标组件
@@ -89,8 +87,8 @@ const LanguagesIcon = ({ size = 20, color = 'currentColor' }) => {
     }, [svgControls, pathControls])
 
     return (
-        <div 
-            onMouseEnter={handleMouseEnter} 
+        <div
+            onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             style={{
                 display: 'flex',
@@ -101,73 +99,48 @@ const LanguagesIcon = ({ size = 20, color = 'currentColor' }) => {
             }}
         >
             <motion.svg
-                xmlns="http://www.w3.org/2000/svg"
+                xmlns='http://www.w3.org/2000/svg'
                 width={size}
                 height={size}
-                viewBox="0 0 24 24"
-                fill="none"
+                viewBox='0 0 24 24'
+                fill='none'
                 stroke={color}
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                strokeWidth='2'
+                strokeLinecap='round'
+                strokeLinejoin='round'
                 style={{
                     display: 'block'
                 }}
                 variants={svgVariants}
                 animate={svgControls}
             >
-                <motion.path
-                    d="m5 8 6 6"
-                    variants={pathVariants}
-                    custom={3}
-                    animate={pathControls}
-                />
-                <motion.path
-                    d="m4 14 6-6 3-3"
-                    variants={pathVariants}
-                    custom={2}
-                    animate={pathControls}
-                />
-                <motion.path
-                    d="M2 5h12"
-                    variants={pathVariants}
-                    custom={1}
-                    animate={pathControls}
-                />
-                <motion.path
-                    d="M7 2h1"
-                    variants={pathVariants}
-                    custom={0}
-                    animate={pathControls}
-                />
-                <motion.path
-                    d="m22 22-5-10-5 10"
-                    variants={pathVariants}
-                    custom={3}
-                    animate={pathControls}
-                />
-                <motion.path
-                    d="M14 18h6"
-                    variants={pathVariants}
-                    custom={3}
-                    animate={pathControls}
-                />
+                <motion.path d='m5 8 6 6' variants={pathVariants} custom={3} animate={pathControls} />
+                <motion.path d='m4 14 6-6 3-3' variants={pathVariants} custom={2} animate={pathControls} />
+                <motion.path d='M2 5h12' variants={pathVariants} custom={1} animate={pathControls} />
+                <motion.path d='M7 2h1' variants={pathVariants} custom={0} animate={pathControls} />
+                <motion.path d='m22 22-5-10-5 10' variants={pathVariants} custom={3} animate={pathControls} />
+                <motion.path d='M14 18h6' variants={pathVariants} custom={3} animate={pathControls} />
             </motion.svg>
         </div>
     )
 }
 
+LanguagesIcon.propTypes = {
+    size: PropTypes.number,
+    color: PropTypes.string
+}
+
 const LanguageSwitch = () => {
     const theme = useTheme()
+    const { i18n, t } = useTranslation()
     const [anchorEl, setAnchorEl] = useState(null)
-    const [currentLanguage, setCurrentLanguage] = useState('zh')
+    const [currentLanguage, setCurrentLanguage] = useState(i18n.language || 'zh')
     const open = Boolean(anchorEl)
 
     useEffect(() => {
-        // 从localStorage获取保存的语言设置
-        const savedLanguage = localStorage.getItem('language') || 'zh'
-        setCurrentLanguage(savedLanguage)
-    }, [])
+        // 同步i18n的当前语言到组件状态
+        setCurrentLanguage(i18n.language)
+    }, [i18n.language])
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget)
@@ -178,19 +151,16 @@ const LanguageSwitch = () => {
     }
 
     const handleLanguageChange = (languageCode) => {
+        // 使用i18n的changeLanguage方法
+        i18n.changeLanguage(languageCode)
         setCurrentLanguage(languageCode)
         localStorage.setItem('language', languageCode)
         handleClose()
-        
-        // 这里可以添加语言切换的逻辑
-        console.log('Language changed to:', languageCode)
     }
-
-    const currentLang = languages.find(lang => lang.code === currentLanguage) || languages[0]
 
     return (
         <>
-            <Tooltip title="切换语言 / Switch Language" arrow>
+            <Tooltip title={t('common.switchLanguage', '切换语言 / Switch Language')} arrow>
                 <ButtonBase sx={{ borderRadius: '12px', overflow: 'hidden' }}>
                     <Avatar
                         variant='rounded'
@@ -208,26 +178,23 @@ const LanguageSwitch = () => {
                         onClick={handleClick}
                         color='inherit'
                     >
-                        <LanguagesIcon 
-                            size={18} 
-                            color="currentColor"
-                        />
+                        <LanguagesIcon size={18} color='currentColor' />
                     </Avatar>
                 </ButtonBase>
             </Tooltip>
-            
+
             <StyledMenu
-                id="language-menu"
+                id='language-menu'
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}
                 anchorOrigin={{
                     vertical: 'bottom',
-                    horizontal: 'right',
+                    horizontal: 'right'
                 }}
                 transformOrigin={{
                     vertical: 'top',
-                    horizontal: 'right',
+                    horizontal: 'right'
                 }}
             >
                 {languages.map((language) => (
@@ -239,16 +206,14 @@ const LanguageSwitch = () => {
                         <ListItemIcon sx={{ minWidth: '32px' }}>
                             <span style={{ fontSize: '18px' }}>{language.flag}</span>
                         </ListItemIcon>
-                        <ListItemText 
+                        <ListItemText
                             primary={language.name}
                             primaryTypographyProps={{
                                 fontSize: '14px',
                                 fontWeight: language.code === currentLanguage ? 600 : 400
                             }}
                         />
-                        {language.code === currentLanguage && (
-                            <IconCheck size={16} style={{ marginLeft: '8px' }} />
-                        )}
+                        {language.code === currentLanguage && <IconCheck size={16} style={{ marginLeft: '8px' }} />}
                     </StyledMenuItem>
                 ))}
             </StyledMenu>

@@ -3,6 +3,9 @@ import { useSelector } from 'react-redux'
 import { ThemeProvider } from '@mui/material/styles'
 import { CssBaseline, StyledEngineProvider } from '@mui/material'
 
+// i18n
+import '@/i18n/config'
+
 // routing
 import Routes from '@/routes'
 
