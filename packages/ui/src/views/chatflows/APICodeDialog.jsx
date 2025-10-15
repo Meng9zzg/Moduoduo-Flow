@@ -793,7 +793,7 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                                     <a
                                                         rel='noreferrer'
                                                         target='_blank'
-                                                        href='https://docs.flowiseai.com/using-flowise/prediction#configuration-override'
+                                                        href='https://doc.9zzg.com/using-flowise/prediction#configuration-override'
                                                     >
                                                         {t('apiCode.referHere')}
                                                     </a>
@@ -931,7 +931,7 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                 )}
                                 {getIsChatflowStreamingApi.data?.isStreaming && (
                                     <p>
-                                        <a rel='noreferrer' target='_blank' href='https://docs.flowiseai.com/using-flowise/streaming'>
+                                        <a rel='noreferrer' target='_blank' href='https://doc.9zzg.com/using-flowise/streaming'>
                                             {t('apiCode.streamInfo')}
                                         </a>
                                     </p>

@@ -1,6 +1,6 @@
 {
-    "chatflows": "Chatflows",
-    "agentflows": "Agentflows",
+    "chatflows": "Agent Builder",
+    "agentflows": "Multi-AgentsFlow",
     "executions": "Executions",
     "assistants": "Assistants",
     "marketplaces": "Marketplaces",

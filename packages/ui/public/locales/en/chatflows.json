@@ -1,11 +1,11 @@
 {
-    "title": "Chatflows",
-    "description": "Build single-agent systems, chatbots and simple LLM flows",
+    "title": "Agent Builder",
+    "description": "Build AI Agents using LLMs, frameworks like LangChain and LlamaIndex,\nand technologies like Graph RAG, Reranker, and Retriever",
     "searchPlaceholder": "Search Name or Category",
     "addNew": "Add New",
     "cardView": "Card View",
     "listView": "List View",
-    "noChatflowsYet": "No Chatflows Yet",
+    "noChatflowsYet": "No Agent Builder Yet",
     "shareChatbot": {
         "copyLink": "Copy Link",
         "openNewTab": "Open New Tab",
@@ -13,7 +13,7 @@
         "publicTooltip": "Making public will allow anyone to access the chatbot without authentication",
         "titleSettings": "Title Settings",
         "title": "Title",
-        "titlePlaceholder": "Flowise Assistant",
+        "titlePlaceholder": "Moduoduo Assistant",
         "titleAvatarLink": "Title Avatar Link",
         "titleBackgroundColor": "Title Background Color",
         "titleTextColor": "Title TextColor",
@@ -25,7 +25,7 @@
         "backgroundColor": "Background Color",
         "fontSize": "Font Size",
         "poweredByTextColor": "PoweredBy TextColor",
-        "showAgentReasoning": "Show agent reasonings when using Agentflow",
+        "showAgentReasoning": "Show agent reasonings when using Multi-AgentsFlow",
         "renderHTML": "Render HTML on the chat",
         "startNewSession": "Start new session when chatbot link is opened or refreshed",
         "botMessage": "Bot Message",
@@ -46,8 +46,8 @@
         "textInputSendButtonColor": "TextIntput Send Button Color",
         "saveChanges": "Save Changes",
         "copied": "Copied!",
-        "saveSuccess": "Chatbot Configuration Saved",
-        "saveError": "Failed to save Chatbot Configuration: {{error}}"
+        "saveSuccess": "Agent Configuration Saved",
+        "saveError": "Failed to save Agent Configuration: {{error}}"
     },
     "embedChat": {
         "popupHtml": "Popup Html",
@@ -59,9 +59,9 @@
         "showConfig": "Show Embed Chat Config"
     },
     "apiCode": {
-        "authWarning": "You cannot use API key while embedding/sharing chatbot. Please select \"No Authorization\" under chatflow configuration authorization.",
-        "overrideDescription": "You can override existing input configuration of the chatflow with overrideConfig property.",
-        "overrideWarning": "For security reason, override config is disabled by default. Turn this feature on under chatflow configuration.",
+        "authWarning": "You cannot use API key while embedding/sharing chatbot. Please select \"No Authorization\" under agent builder configuration authorization.",
+        "overrideDescription": "You can override existing input configuration of the agent builder with overrideConfig property.",
+        "overrideWarning": "For security reason, override config is disabled by default. Turn this feature on under agent builder configuration.",
         "referHere": "Refer here for more details",
         "nodes": "Nodes",
         "variables": "Variables",

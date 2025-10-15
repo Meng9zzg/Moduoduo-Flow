@@ -1,5 +1,5 @@
 {
-    "title": "工具",
+    "title": "AI工具调用",
     "description": "代理可以使用的外部函数或API来执行操作",
     "searchPlaceholder": "搜索工具",
     "create": "创建",

@@ -107,7 +107,7 @@
         "saveError": "保存对话启动提示失败"
     },
     "saveChatflow": {
-        "placeholder": "我的新聊天流"
+        "placeholder": "我的新智能体搭建"
     },
     "chatflowConfig": {
         "tabs": {
@@ -117,7 +117,7 @@
             "speechToText": "语音转文字",
             "textToSpeech": "文字转语音",
             "chatFeedback": "聊天反馈",
-            "analyseChatflow": "分析聊天流",
+            "analyseChatflow": "分析智能体搭建",
             "leads": "线索",
             "fileUpload": "文件上传",
             "postProcessing": "后处理"
@@ -142,8 +142,8 @@
         },
         "overrideConfig": {
             "checkboxLabel": "显示覆盖配置",
-            "description": "您可以使用overrideConfig属性覆盖聊天流的现有输入配置。",
-            "securityWarning": "出于安全原因，覆盖配置默认禁用。您可以通过进入聊天流配置 -> 安全选项卡来更改此设置，并启用要覆盖的属性。",
+            "description": "您可以使用overrideConfig属性覆盖智能体搭建的现有输入配置。",
+            "securityWarning": "出于安全原因，覆盖配置默认禁用。您可以通过进入智能体搭建配置 -> 安全选项卡来更改此设置，并启用要覆盖的属性。",
             "referLink": "这里",
             "referText": "参考",
             "moreDetails": "了解更多详情",
@@ -188,7 +188,7 @@
             "selectDataset": "选择数据集",
             "treatAsConversation": "将所有数据集行视为一个对话？",
             "selectFlows": "选择要评估的流程",
-            "chatflows": "聊天流",
+            "chatflows": "智能体搭建",
             "agentflows": "智能体流 (v2)",
             "customAssistants": "自定义助手",
             "selectEvaluators": "选择评估器",
@@ -289,7 +289,7 @@
         "saveError": "保存 API 密钥失败：{{error}}"
     },
     "tag": {
-        "title": "设置聊天流类别标签",
+        "title": "设置智能体搭建类别标签",
         "inputLabel": "添加标签",
         "hint": "输入标签并按 Enter 键将其添加到列表中。您可以添加任意数量的标签。"
     },
@@ -351,7 +351,7 @@
         "showApi": "显示 API",
         "upsert": "上传",
         "upsertSuccess": "成功上传向量存储。您现在可以开始聊天了！",
-        "securityWarning": "出于安全原因，覆盖配置默认禁用。您可以通过进入聊天流配置 -> 安全选项卡来更改此设置，并启用要覆盖的属性。",
+        "securityWarning": "出于安全原因，覆盖配置默认禁用。您可以通过进入智能体搭建配置 -> 安全选项卡来更改此设置，并启用要覆盖的属性。",
         "refer": "参考",
         "here": "这里",
         "moreDetails": "了解更多详情",
@@ -859,7 +859,7 @@
         "autoPlayLabel": "自动播放音频",
         "autoPlayTooltip": "启用后，机器人的响应将自动转换为语音并播放",
         "testVoiceTitle": "测试语音",
-        "testText": "今天是用 Flowise 构建东西的美好一天！",
+        "testText": "今天是用 Moduoduo 构建东西的美好一天！",
         "saveButton": "保存",
         "saveSuccess": "文字转语音配置已保存",
         "saveError": "保存文字转语音配置失败",
@@ -900,5 +900,10 @@
         "saveButton": "保存",
         "saveSuccess": "速率限制配置已保存",
         "saveError": "保存速率限制配置失败"
+    },
+    "pasteJSON": {
+        "title": "粘贴 JSON 架构",
+        "seeExample": "查看示例",
+        "invalidFormat": "无效的 JSON 格式。请检查您的输入。"
     }
 }

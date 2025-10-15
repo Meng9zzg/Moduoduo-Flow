@@ -59,7 +59,7 @@ const HowToUseVariablesDialog = ({ show, onCancel }) => {
                 />
                 <p>
                     {t('howToUseVariables.readMore')}{' '}
-                    <a target='_blank' rel='noreferrer' href='https://docs.flowiseai.com/using-flowise/variables'>
+                    <a target='_blank' rel='noreferrer' href='https://doc.9zzg.com/using-flowise/variables'>
                         {t('howToUseVariables.docs')}
                     </a>
                 </p>

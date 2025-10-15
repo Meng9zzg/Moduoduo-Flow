@@ -1,11 +1,11 @@
 {
-    "title": "聊天流",
-    "description": "构建单代理系统、聊天机器人和简单的LLM流程",
+    "title": "智能体搭建",
+    "description": "使用大模型、LangChain、LlamaIndex等框架\nGraph RAG、Reranker、Retriever等技术构建智能体",
     "searchPlaceholder": "搜索名称或分类",
     "addNew": "新建",
     "cardView": "卡片视图",
     "listView": "列表视图",
-    "noChatflowsYet": "暂无聊天流",
+    "noChatflowsYet": "暂无智能体搭建",
     "shareChatbot": {
         "copyLink": "复制链接",
         "openNewTab": "在新标签页打开",
@@ -13,7 +13,7 @@
         "publicTooltip": "公开后，任何人都可以在未经身份验证的情况下访问聊天机器人",
         "titleSettings": "标题设置",
         "title": "标题",
-        "titlePlaceholder": "Flowise 助手",
+        "titlePlaceholder": "Moduoduo 助手",
         "titleAvatarLink": "标题头像链接",
         "titleBackgroundColor": "标题背景颜色",
         "titleTextColor": "标题文字颜色",
@@ -46,8 +46,8 @@
         "textInputSendButtonColor": "文本输入发送按钮颜色",
         "saveChanges": "保存更改",
         "copied": "已复制！",
-        "saveSuccess": "聊天机器人配置已保存",
-        "saveError": "保存聊天机器人配置失败：{{error}}"
+        "saveSuccess": "智能体配置已保存",
+        "saveError": "保存智能体配置失败：{{error}}"
     },
     "embedChat": {
         "popupHtml": "弹窗 Html",
@@ -60,8 +60,8 @@
     },
     "apiCode": {
         "authWarning": "嵌入/分享聊天机器人时无法使用 API 密钥。请在聊天流配置授权下选择【无授权】。",
-        "overrideDescription": "您可以使用 overrideConfig 属性覆盖聊天流的现有输入配置。",
-        "overrideWarning": "出于安全考虑，覆盖配置默认情况下是禁用的。请在聊天流配置下启用此功能。",
+        "overrideDescription": "您可以使用 overrideConfig 属性覆盖智能体搭建的现有输入配置。",
+        "overrideWarning": "出于安全考虑，覆盖配置默认情况下是禁用的。请在智能体搭建配置下启用此功能。",
         "referHere": "请参阅此处了解更多详情",
         "nodes": "节点",
         "variables": "变量",

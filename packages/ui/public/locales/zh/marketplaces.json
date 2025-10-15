@@ -1,5 +1,5 @@
 {
-    "title": "市场",
+    "title": "AI模板超市",
     "description": "浏览和使用预构建模板",
     "searchPlaceholder": "搜索名称/描述/节点",
     "cardView": "卡片视图",
@@ -19,7 +19,7 @@
         "deprecated": "已弃用"
     },
     "types": {
-        "chatflow": "对话流",
+        "chatflow": "智能体搭建",
         "agentflow": "智能体流",
         "agentflowV2": "智能体流 V2",
         "tool": "工具"
@@ -43,7 +43,7 @@
         "cancel": "取消",
         "back": "返回",
         "useTemplate": "使用模板",
-        "useChatflow": "使用对话流",
+        "useChatflow": "使用智能体搭建",
         "addNewTool": "添加新工具",
         "import": "导入",
         "add": "添加"

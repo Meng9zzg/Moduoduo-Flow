@@ -19,9 +19,9 @@
         "deprecated": "DEPRECATED"
     },
     "types": {
-        "chatflow": "Chatflow",
-        "agentflow": "Agentflow",
-        "agentflowV2": "AgentflowV2",
+        "chatflow": "Agent Builder",
+        "agentflow": "Multi-AgentsFlow",
+        "agentflowV2": "Multi-AgentsFlow V2",
         "tool": "Tool"
     },
     "frameworks": {
@@ -43,7 +43,7 @@
         "cancel": "Cancel",
         "back": "Back",
         "useTemplate": "Use Template",
-        "useChatflow": "Use Chatflow",
+        "useChatflow": "Use Agent Builder",
         "addNewTool": "Add New Tool",
         "import": "IMPORT",
         "add": "Add"

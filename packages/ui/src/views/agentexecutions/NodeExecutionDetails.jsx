@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 import axios from 'axios'
+import { useTranslation } from 'react-i18next'
 
 // MUI
 import {
@@ -40,6 +41,7 @@ import SourceDocDialog from '@/ui-component/dialog/SourceDocDialog'
 import predictionApi from '@/api/prediction'
 
 export const NodeExecutionDetails = ({ data, label, status, metadata, isPublic, onProceedSuccess }) => {
+    const { t } = useTranslation('executions')
     const [dataView, setDataView] = useState('rendered')
     const [openFeedbackDialog, setOpenFeedbackDialog] = useState(false)
     const [feedback, setFeedback] = useState('')
@@ -107,7 +109,7 @@ export const NodeExecutionDetails = ({ data, label, status, metadata, isPublic, 
 
     const onSubmitResponse = async (type, feedback = '') => {
         setIsLoading(true)
-        setLoadingMessage(`Submitting feedback...`)
+        setLoadingMessage(t('submittingFeedback'))
         const params = {
             question: feedback ? feedback : type.charAt(0).toUpperCase() + type.slice(1),
             chatId: metadata?.sessionId,
@@ -343,9 +345,9 @@ export const NodeExecutionDetails = ({ data, label, status, metadata, isPublic, 
                         }}
                         variant='contained'
                         value='rendered'
-                        title='Rendered'
+                        title={t('tabs.rendered')}
                     >
-                        Rendered
+                        {t('tabs.rendered')}
                     </ToggleButton>
                     <ToggleButton
                         sx={{
@@ -355,9 +357,9 @@ export const NodeExecutionDetails = ({ data, label, status, metadata, isPublic, 
                         }}
                         variant='contained'
                         value='raw'
-                        title='Raw'
+                        title={t('tabs.raw')}
                     >
-                        Raw
+                        {t('tabs.raw')}
                     </ToggleButton>
                 </ToggleButtonGroup>
             </Box>
@@ -455,7 +457,7 @@ export const NodeExecutionDetails = ({ data, label, status, metadata, isPublic, 
                                                 </Typography>
                                                 {isToolUsed && (
                                                     <Chip
-                                                        label='Used'
+                                                        label={t('tools.used')}
                                                         size='small'
                                                         sx={{ ml: 2, color: 'white', backgroundColor: theme.palette.success.dark }}
                                                     />
@@ -603,7 +605,7 @@ export const NodeExecutionDetails = ({ data, label, status, metadata, isPublic, 
                                                             })()}
                                                         </Typography>
                                                         <Chip
-                                                            label='Called'
+                                                            label={t('tools.called')}
                                                             size='small'
                                                             sx={{
                                                                 ml: 2,

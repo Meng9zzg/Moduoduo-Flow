@@ -17,6 +17,6 @@
     "chatFeedbackTitle": "Chat Feedback - {{name}}",
     "allowedDomainsTitle": "Allowed Domains - {{name}}",
     "speechToTextTitle": "Speech To Text - {{name}}",
-    "chatflowType": "Chatflow",
+    "chatflowType": "Agent Builder",
     "agentflowType": "Agents"
 }

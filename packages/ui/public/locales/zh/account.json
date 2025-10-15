@@ -1,0 +1,65 @@
+{
+    "title": "账户设置",
+    "validation": {
+        "notAuthenticated": "用户未认证",
+        "ssoUserCannotUpdate": "SSO 用户无法更新详细信息",
+        "nameRequired": "姓名不能为空！",
+        "emailRequired": "邮箱不能为空！",
+        "passwordMismatch": "新密码和确认密码不匹配"
+    },
+    "success": {
+        "detailsUpdated": "用户详细信息已更新！",
+        "profileUpdated": "个人资料更新成功",
+        "passwordChanged": "密码修改成功"
+    },
+    "error": {
+        "updateFailed": "更新用户详细信息失败",
+        "loadFailed": "加载账户信息失败"
+    },
+    "profile": {
+        "title": "个人资料",
+        "fullName": "全名",
+        "emailAddress": "邮箱地址",
+        "newPassword": "新密码",
+        "confirmPassword": "确认密码"
+    },
+    "placeholders": {
+        "loginId": "您的登录 ID",
+        "yourName": "您的姓名",
+        "emailAddress": "邮箱地址",
+        "newPassword": "新密码",
+        "retypePassword": "重新输入新密码"
+    },
+    "hints": {
+        "passwordRequirements": "密码长度至少为 8 个字符，且必须包含至少一个大写字母、一个小写字母、一个数字和一个特殊字符",
+        "retypePassword": "重新输入新密码以确认"
+    },
+    "sections": {
+        "subscriptionBilling": "订阅与账单",
+        "seats": "席位",
+        "usage": "使用量",
+        "security": "安全"
+    },
+    "plan": {
+        "current": "当前组织计划：",
+        "updateBilling": "更新您的账单详细信息和订阅"
+    },
+    "seats": {
+        "additionalPurchased": "已购买的额外席位：",
+        "proOnlyTooltip": "添加席位仅适用于 PRO 计划",
+        "addSeats": "添加席位",
+        "removeSeats": "移除席位",
+        "newTotal": "新的总席位数",
+        "proratedRemaining": "剩余额外席位（按比例）",
+        "purchased": "已购买的额外席位",
+        "numberToAdd": "要添加的额外席位数量",
+        "prorated": "额外席位（按比例）"
+    },
+    "payment": {
+        "addMethodInPortal": "在账单门户中添加付款方式"
+    },
+    "dialogs": {
+        "removeSeatsTitle": "移除额外席位",
+        "addSeatsTitle": "添加额外席位"
+    }
+}

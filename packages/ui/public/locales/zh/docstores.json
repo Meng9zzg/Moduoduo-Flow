@@ -1,5 +1,5 @@
 {
-    "title": "文档存储",
+    "title": "私有化文档管理",
     "description": "存储和管理文档以供LLM检索（RAG）",
     "searchPlaceholder": "搜索名称",
     "addNew": "新建",

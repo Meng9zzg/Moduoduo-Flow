@@ -19,5 +19,12 @@
         "name": "姓名",
         "emailAddress": "邮箱地址",
         "phoneNumber": "电话号码"
+    },
+    "attachments": {
+        "remove": "移除附件"
+    },
+    "leads": {
+        "emailPlaceholder": "邮箱地址",
+        "phonePlaceholder": "电话号码"
     }
 }

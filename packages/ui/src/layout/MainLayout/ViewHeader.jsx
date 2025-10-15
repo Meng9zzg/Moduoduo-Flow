@@ -85,13 +85,9 @@ const ViewHeader = ({
                                     fontSize: '1rem',
                                     fontWeight: 500,
                                     mt: 2,
-                                    display: '-webkit-box',
-                                    WebkitLineClamp: 5,
-                                    WebkitBoxOrient: 'vertical',
-                                    textOverflow: 'ellipsis',
-                                    overflow: 'hidden',
-                                    flex: 1,
-                                    maxWidth: 'calc(100vh - 100px)'
+                                    maxWidth: '800px',
+                                    lineHeight: 1.5,
+                                    whiteSpace: 'pre-line'
                                 }}
                             >
                                 {description}
@@ -110,7 +106,7 @@ const ViewHeader = ({
                             inputRef={searchInputRef}
                             size='small'
                             sx={{
-                                width: '325px',
+                                width: '280px',
                                 height: '100%',
                                 display: { xs: 'none', sm: 'flex' },
                                 borderRadius: `${theme?.customization?.borderRadius}px`,

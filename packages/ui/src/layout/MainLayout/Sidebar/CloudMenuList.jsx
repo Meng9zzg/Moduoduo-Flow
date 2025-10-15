@@ -72,7 +72,7 @@ const CloudMenuList = () => {
                         }}
                     />
                     <List sx={{ p: '16px', py: 2, display: 'flex', flexDirection: 'column', gap: 1 }}>
-                        <a href='https://docs.flowiseai.com' target='_blank' rel='noreferrer' style={{ textDecoration: 'none' }}>
+                        <a href='https://doc.9zzg.com' target='_blank' rel='noreferrer' style={{ textDecoration: 'none' }}>
                             <ListItemButton
                                 sx={{
                                     borderRadius: `${customization.borderRadius}px`,

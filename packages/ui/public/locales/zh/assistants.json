@@ -1,5 +1,5 @@
 {
-    "title": "助手",
+    "title": "私有化AI助理",
     "description": "使用指令、工具和文件创建聊天助手以响应用户查询",
     "customAssistantTitle": "自定义助手",
     "customAssistantDescription": "使用你选择的LLM创建自定义助手",

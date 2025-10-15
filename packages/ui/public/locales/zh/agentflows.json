@@ -1,11 +1,11 @@
 {
-    "title": "代理流",
-    "description": "多代理系统、工作流编排",
+    "title": "多智能体搭建流",
+    "description": "可视化多智能体系统搭建流、复杂工作流程编排\n支持智能体之间的多模态通信、支持跨多个代理的协作、委派和共享任务管理",
     "searchPlaceholder": "搜索名称或分类",
     "addNew": "新建",
     "cardView": "卡片视图",
     "listView": "列表视图",
-    "noAgentsYet": "暂无代理",
-    "v1Deprecated": "V1代理流已弃用。",
+    "noAgentsYet": "暂无多智能体搭建流",
+    "v1Deprecated": "V1多智能体搭建流已弃用。",
     "v1DeprecatedMessage": "我们建议迁移到V2以获得更好的性能和持续支持。"
 }

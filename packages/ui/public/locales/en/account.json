@@ -1,0 +1,65 @@
+{
+    "title": "Account Settings",
+    "validation": {
+        "notAuthenticated": "User is not authenticated",
+        "ssoUserCannotUpdate": "User is a SSO user, unable to update details",
+        "nameRequired": "Name cannot be left blank!",
+        "emailRequired": "Email cannot be left blank!",
+        "passwordMismatch": "New Password and Confirm Password do not match"
+    },
+    "success": {
+        "detailsUpdated": "User Details Updated!",
+        "profileUpdated": "Profile Updated Successfully",
+        "passwordChanged": "Password Changed Successfully"
+    },
+    "error": {
+        "updateFailed": "Failed to update user details",
+        "loadFailed": "Failed to load account information"
+    },
+    "profile": {
+        "title": "Profile",
+        "fullName": "Full Name",
+        "emailAddress": "Email Address",
+        "newPassword": "New Password",
+        "confirmPassword": "Confirm Password"
+    },
+    "placeholders": {
+        "loginId": "Your login Id",
+        "yourName": "Your Name",
+        "emailAddress": "Email Address",
+        "newPassword": "New Password",
+        "retypePassword": "Retype your new password"
+    },
+    "hints": {
+        "passwordRequirements": "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character",
+        "retypePassword": "Retype your new password to confirm"
+    },
+    "sections": {
+        "subscriptionBilling": "Subscription & Billing",
+        "seats": "Seats",
+        "usage": "Usage",
+        "security": "Security"
+    },
+    "plan": {
+        "current": "Current Organization Plan:",
+        "updateBilling": "Update your billing details and subscription"
+    },
+    "seats": {
+        "additionalPurchased": "Additional Seats Purchased:",
+        "proOnlyTooltip": "Add Seats is available only for PRO plan",
+        "addSeats": "Add Seats",
+        "removeSeats": "Remove Seats",
+        "newTotal": "New Total Seats",
+        "proratedRemaining": "Additional Seats Left (Prorated)",
+        "purchased": "Additional Seats Purchased",
+        "numberToAdd": "Number of Additional Seats to Add",
+        "prorated": "Additional Seats (Prorated)"
+    },
+    "payment": {
+        "addMethodInPortal": "Add Payment Method in Billing Portal"
+    },
+    "dialogs": {
+        "removeSeatsTitle": "Remove Additional Seats",
+        "addSeatsTitle": "Add Additional Seats"
+    }
+}

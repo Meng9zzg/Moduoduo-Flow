@@ -17,6 +17,6 @@
     "chatFeedbackTitle": "聊天反馈 - {{name}}",
     "allowedDomainsTitle": "允许的域名 - {{name}}",
     "speechToTextTitle": "语音转文字 - {{name}}",
-    "chatflowType": "聊天流",
-    "agentflowType": "代理流"
+    "chatflowType": "智能体搭建",
+    "agentflowType": "多智能体搭建流"
 }

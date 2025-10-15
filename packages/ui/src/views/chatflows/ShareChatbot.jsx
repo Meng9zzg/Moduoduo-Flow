@@ -469,13 +469,7 @@ const ShareChatbot = ({ isSessionMemory, isAgentCanvas }) => {
                     <Typography variant='h4'>{t('shareChatbot.titleSettings')}</Typography>
                 </Stack>
                 {textField(title, 'title', t('shareChatbot.title'), 'string', t('shareChatbot.titlePlaceholder'))}
-                {textField(
-                    titleAvatarSrc,
-                    'titleAvatarSrc',
-                    t('shareChatbot.titleAvatarLink'),
-                    'string',
-                    `https://raw.githubusercontent.com/FlowiseAI/Flowise/main/assets/FloWiseAI_dark.png`
-                )}
+                {textField(titleAvatarSrc, 'titleAvatarSrc', t('shareChatbot.titleAvatarLink'), 'string', ``)}
                 {colorField(titleBackgroundColor, 'titleBackgroundColor', t('shareChatbot.titleBackgroundColor'))}
                 {colorField(titleTextColor, 'titleTextColor', t('shareChatbot.titleTextColor'))}
             </Card>

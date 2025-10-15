@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { Box, Button, OutlinedInput, Stack, Typography } from '@mui/material'
@@ -31,6 +32,7 @@ import { validatePassword } from '@/utils/validation'
 import { IconAlertTriangle, IconX } from '@tabler/icons-react'
 
 const UserProfile = () => {
+    const { t } = useTranslation('account')
     useNotifier()
     const { error, setError } = useError()
 
@@ -55,20 +57,20 @@ const UserProfile = () => {
         const validationErrors = []
         setAuthErrors([])
         if (!isAuthenticated) {
-            validationErrors.push('User is not authenticated')
+            validationErrors.push(t('validation.notAuthenticated'))
         }
         if (currentUser.isSSO) {
-            validationErrors.push('User is a SSO user, unable to update details')
+            validationErrors.push(t('validation.ssoUserCannotUpdate'))
         }
         if (!usernameVal) {
-            validationErrors.push('Name cannot be left blank!')
+            validationErrors.push(t('validation.nameRequired'))
         }
         if (!emailVal) {
-            validationErrors.push('Email cannot be left blank!')
+            validationErrors.push(t('validation.emailRequired'))
         }
         if (newPasswordVal || confirmPasswordVal) {
             if (newPasswordVal !== confirmPasswordVal) {
-                validationErrors.push('New Password and Confirm Password do not match')
+                validationErrors.push(t('validation.passwordMismatch'))
             }
             const passwordErrors = validatePassword(newPasswordVal)
             if (passwordErrors.length > 0) {
@@ -93,7 +95,7 @@ const UserProfile = () => {
             if (updateResponse.data) {
                 store.dispatch(userProfileUpdated(updateResponse.data))
                 enqueueSnackbar({
-                    message: 'User Details Updated!',
+                    message: t('success.detailsUpdated'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -109,7 +111,7 @@ const UserProfile = () => {
             setLoading(false)
             setAuthErrors([typeof error.response.data === 'object' ? error.response.data.message : error.response.data])
             enqueueSnackbar({
-                message: `Failed to update user details`,
+                message: t('error.updateFailed'),
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -155,7 +157,7 @@ const UserProfile = () => {
                     <ErrorBoundary error={error} />
                 ) : (
                     <Stack flexDirection='column' sx={{ gap: 3 }}>
-                        <ViewHeader search={false} title='Settings' />
+                        <ViewHeader search={false} title={t('common:settings')} />
                         {authErrors && authErrors.length > 0 && (
                             <div
                                 style={{
@@ -190,10 +192,10 @@ const UserProfile = () => {
                         <SettingsSection
                             action={
                                 <StyledButton variant='contained' style={{ borderRadius: 2, height: 40 }} onClick={validateAndSubmit}>
-                                    Save
+                                    {t('common:save')}
                                 </StyledButton>
                             }
-                            title='Profile'
+                            title={t('profile.title')}
                         >
                             <Box
                                 sx={{
@@ -206,7 +208,7 @@ const UserProfile = () => {
                             >
                                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                                     <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                        <Typography>Email</Typography>
+                                        <Typography>{t('common:email')}</Typography>
                                         <div style={{ flexGrow: 1 }}></div>
                                     </div>
                                     <OutlinedInput
@@ -214,7 +216,7 @@ const UserProfile = () => {
                                         type='string'
                                         fullWidth
                                         size='small'
-                                        placeholder='Your login Id'
+                                        placeholder={t('placeholders.loginId')}
                                         name='name'
                                         onChange={(e) => setEmailVal(e.target.value)}
                                         value={emailVal}
@@ -223,7 +225,8 @@ const UserProfile = () => {
                                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                                         <Typography>
-                                            Full Name<span style={{ color: 'red' }}>&nbsp;*</span>
+                                            {t('profile.fullName')}
+                                            <span style={{ color: 'red' }}>&nbsp;*</span>
                                         </Typography>
                                         <div style={{ flexGrow: 1 }}></div>
                                     </div>
@@ -232,7 +235,7 @@ const UserProfile = () => {
                                         type='string'
                                         fullWidth
                                         size='small'
-                                        placeholder='Your Name'
+                                        placeholder={t('placeholders.yourName')}
                                         name='name'
                                         onChange={(e) => setUsernameVal(e.target.value)}
                                         value={usernameVal}
@@ -241,7 +244,8 @@ const UserProfile = () => {
                                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                                         <Typography>
-                                            New Password<span style={{ color: 'red' }}>&nbsp;*</span>
+                                            {t('profile.newPassword')}
+                                            <span style={{ color: 'red' }}>&nbsp;*</span>
                                         </Typography>
                                         <div style={{ flexGrow: 1 }}></div>
                                     </div>
@@ -255,16 +259,14 @@ const UserProfile = () => {
                                         value={newPasswordVal}
                                     />
                                     <Typography variant='caption'>
-                                        <i>
-                                            Password must be at least 8 characters long and contain at least one lowercase letter, one
-                                            uppercase letter, one digit, and one special character.
-                                        </i>
+                                        <i>{t('hints.passwordRequirements')}</i>
                                     </Typography>
                                 </Box>
                                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                                         <Typography>
-                                            Confirm Password<span style={{ color: 'red' }}>&nbsp;*</span>
+                                            {t('profile.confirmPassword')}
+                                            <span style={{ color: 'red' }}>&nbsp;*</span>
                                         </Typography>
                                         <div style={{ flexGrow: 1 }}></div>
                                     </div>
@@ -278,7 +280,7 @@ const UserProfile = () => {
                                         value={confirmPasswordVal}
                                     />
                                     <Typography variant='caption'>
-                                        <i>Retype your new password. Must match the password typed above.</i>
+                                        <i>{t('hints.retypePassword')}</i>
                                     </Typography>
                                 </Box>
                             </Box>

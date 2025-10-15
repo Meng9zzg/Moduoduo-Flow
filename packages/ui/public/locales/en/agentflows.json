@@ -1,11 +1,11 @@
 {
-    "title": "Agentflows",
-    "description": "Multi-agent systems, workflow orchestration",
+    "title": "Multi-AgentsFlow",
+    "description": "Orchestrate Multi-Agent systems and complex Workflows visually.\nSupport Multi-Modal communication between Agents,\ncollaboration across multiple agents, and shared task delegation",
     "searchPlaceholder": "Search Name or Category",
     "addNew": "Add New",
     "cardView": "Card View",
     "listView": "List View",
     "noAgentsYet": "No Agents Yet",
-    "v1Deprecated": "V1 Agentflows are deprecated.",
+    "v1Deprecated": "V1 Multi-AgentsFlow are deprecated.",
     "v1DeprecatedMessage": "We recommend migrating to V2 for improved performance and continued support."
 }

@@ -107,7 +107,7 @@
         "saveError": "Failed to save Conversation Starter Prompts"
     },
     "saveChatflow": {
-        "placeholder": "My New Chatflow"
+        "placeholder": "My New Agent Builder"
     },
     "chatflowConfig": {
         "tabs": {
@@ -117,7 +117,7 @@
             "speechToText": "Speech to Text",
             "textToSpeech": "Text to Speech",
             "chatFeedback": "Chat Feedback",
-            "analyseChatflow": "Analyse Chatflow",
+            "analyseChatflow": "Analyse Agent Builder",
             "leads": "Leads",
             "fileUpload": "File Upload",
             "postProcessing": "Post Processing"
@@ -142,8 +142,8 @@
         },
         "overrideConfig": {
             "checkboxLabel": "Show Override Config",
-            "description": "You can override existing input configuration of the chatflow with overrideConfig property.",
-            "securityWarning": "For security reason, override config is disabled by default. You can change this by going into Chatflow Configuration -> Security tab, and enable the property you want to override.",
+            "description": "You can override existing input configuration of the agent builder with overrideConfig property.",
+            "securityWarning": "For security reason, override config is disabled by default. You can change this by going into Agent Builder Configuration -> Security tab, and enable the property you want to override.",
             "referLink": "here",
             "referText": "Refer",
             "moreDetails": "for more details",
@@ -188,8 +188,8 @@
             "selectDataset": "Select Dataset",
             "treatAsConversation": "Treat all dataset rows as one conversation ?",
             "selectFlows": "Select your flows to Evaluate",
-            "chatflows": "Chatflows",
-            "agentflows": "Agentflows (v2)",
+            "chatflows": "Agent Builder",
+            "agentflows": "Multi-AgentsFlow (v2)",
             "customAssistants": "Custom Assistants",
             "selectEvaluators": "Select the Evaluators",
             "useLLM": "Use an LLM to grade the results ?",
@@ -289,7 +289,7 @@
         "saveError": "Failed to save API key: {{error}}"
     },
     "tag": {
-        "title": "Set Chatflow Category Tags",
+        "title": "Set Agent Builder Category Tags",
         "inputLabel": "Add a tag",
         "hint": "Enter a tag and press enter to add it to the list. You can add as many tags as you want."
     },
@@ -351,7 +351,7 @@
         "showApi": "Show API",
         "upsert": "Upsert",
         "upsertSuccess": "Successfully upserted vector store. You can start chatting now!",
-        "securityWarning": "For security reason, override config is disabled by default. You can change this by going into Chatflow Configuration -> Security tab, and enable the property you want to override.",
+        "securityWarning": "For security reason, override config is disabled by default. You can change this by going into Agent Builder Configuration -> Security tab, and enable the property you want to override.",
         "refer": "Refer",
         "here": "here",
         "moreDetails": "for more details",
@@ -404,13 +404,13 @@
         "close": "Close"
     },
     "agentflowGenerator": {
-        "generating": "Generating your Agentflow...",
+        "generating": "Generating your Multi-AgentsFlow...",
         "placeholder": "Describe your agent here",
-        "selectModel": "Select model to generate agentflow",
+        "selectModel": "Select model to generate multi-agentsflow",
         "chooseOption": "choose an option",
         "generate": "Generate",
         "back": "Back",
-        "generateFailed": "Failed to generate agentflow",
+        "generateFailed": "Failed to generate multi-agentsflow",
         "examples": {
             "webSearch": "An agent that can autonomously search the web and generate report",
             "summarizeDoc": "Summarize a document",
@@ -861,7 +861,7 @@
         "autoPlayLabel": "Automatically play audio",
         "autoPlayTooltip": "When enabled, bot responses will be automatically converted to speech and played",
         "testVoiceTitle": "Test Voice",
-        "testText": "Today is a wonderful day to build something with Flowise!",
+        "testText": "Today is a wonderful day to build something with Moduoduo!",
         "saveButton": "Save",
         "saveSuccess": "Text To Speech Configuration Saved",
         "saveError": "Failed to save Text To Speech Configuration",
@@ -902,5 +902,10 @@
         "saveButton": "Save",
         "saveSuccess": "Rate Limit Configuration Saved",
         "saveError": "Failed to save Rate Limit Configuration"
+    },
+    "pasteJSON": {
+        "title": "Paste JSON Schema",
+        "seeExample": "See Example",
+        "invalidFormat": "Invalid JSON format. Please check your input."
     }
 }

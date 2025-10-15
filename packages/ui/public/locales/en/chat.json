@@ -19,5 +19,12 @@
         "name": "Name",
         "emailAddress": "Email Address",
         "phoneNumber": "Phone Number"
+    },
+    "attachments": {
+        "remove": "Remove attachment"
+    },
+    "leads": {
+        "emailPlaceholder": "Email Address",
+        "phonePlaceholder": "Phone Number"
     }
 }

@@ -1,11 +1,11 @@
 {
     "title": "Agent Executions",
-    "description": "Monitor and manage agentflows executions",
+    "description": "Monitor and manage multi-agentsflow executions",
     "filters": {
         "state": "State",
         "startDate": "Start date",
         "endDate": "End date",
-        "agentflow": "Agentflow",
+        "agentflow": "Multi-AgentsFlow",
         "sessionId": "Session ID",
         "apply": "Apply",
         "reset": "Reset",
@@ -28,5 +28,16 @@
         "cancel": "Cancel",
         "delete": "Delete"
     },
-    "noExecutionsYet": "No Executions Yet"
+    "noExecutionsYet": "No Executions Yet",
+    "viewDetails": "View Details",
+    "processFlow": "Process Flow",
+    "submittingFeedback": "Submitting feedback...",
+    "tabs": {
+        "rendered": "Rendered",
+        "raw": "Raw"
+    },
+    "tools": {
+        "used": "Used",
+        "called": "Called"
+    }
 }
