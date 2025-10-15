@@ -5,7 +5,7 @@ services:
         build:
             context: ..
             dockerfile: Dockerfile
-        image: flowise-i18n:latest
+        image: moduoduo-agent-flow-packages-i18ln:latest
         restart: always
         environment:
             - PORT=3000
