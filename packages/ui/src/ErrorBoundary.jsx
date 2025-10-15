@@ -26,7 +26,7 @@ const ErrorBoundary = ({ error }) => {
                         >
                             <IconCopy />
                         </IconButton>
-                        <Typography variant='h3' sx={{ textAlign: 'center' }}>
+                        <Typography variant='body1' sx={{ fontSize: '1.1rem', textAlign: 'center' }}>
                             {`${t('boundary.statusLabel')} ${error.response.status}`}
                         </Typography>
                     </Box>
