@@ -1,5 +1,6 @@
 {
     "description": "Return structured output from LLM",
+    "description_zh": "从 LLM 返回结构化输出",
     "usecases": ["Extraction"],
     "nodes": [
         {

@@ -1,5 +1,6 @@
 {
     "description": "Github Docs QnA using Retrieval Augmented Generation (RAG)",
+    "description_zh": "使用检索增强生成 (RAG) 的 Github 文档问答系统",
     "usecases": ["Documents QnA"],
     "framework": ["Langchain"],
     "nodes": [

@@ -1,5 +1,6 @@
 {
     "description": "Detect text that could generate harmful output and prevent it from being sent to the language model",
+    "description_zh": "检测可能产生有害输出的文本,并阻止其发送到语言模型",
     "framework": ["Langchain"],
     "usecases": ["Basic"],
     "nodes": [

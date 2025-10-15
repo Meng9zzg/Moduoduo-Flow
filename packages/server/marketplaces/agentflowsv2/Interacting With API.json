@@ -1,5 +1,6 @@
 {
     "description": "Different ways of agents that can interact with APIs",
+    "description_zh": "智能体与 API 交互的不同方式",
     "usecases": ["Interacting with API"],
     "nodes": [
         {

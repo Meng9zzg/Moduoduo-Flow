@@ -1,5 +1,6 @@
 {
     "description": "Answer questions over a SQL database",
+    "description_zh": "针对 SQL 数据库回答问题",
     "usecases": ["SQL"],
     "framework": ["Langchain"],
     "nodes": [

@@ -1,5 +1,6 @@
 {
     "description": "Documents QnA using Retrieval Augmented Generation (RAG) with Mistral and FAISS for similarity search",
+    "description_zh": "使用 Mistral 和 FAISS 进行相似性搜索的检索增强生成 (RAG) 文档问答",
     "usecases": ["Documents QnA"],
     "framework": ["Langchain"],
     "nodes": [

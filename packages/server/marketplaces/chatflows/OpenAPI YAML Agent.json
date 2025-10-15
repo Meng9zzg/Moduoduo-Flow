@@ -1,5 +1,6 @@
 {
     "description": "Given an OpenAPI YAML file, agent automatically decide which API to call, generating url and body request from conversation",
+    "description_zh": "给定 OpenAPI YAML 文件,智能体自动决定调用哪个 API,从对话中生成 URL 和请求体",
     "framework": ["Langchain"],
     "usecases": ["Interacting with API"],
     "nodes": [

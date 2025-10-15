@@ -1,5 +1,6 @@
 {
     "description": "Generate image using Replicate Stability text-to-image generative AI model",
+    "description_zh": "使用 Replicate Stability 文本转图像生成式 AI 模型生成图像",
     "framework": ["Langchain"],
     "usecases": ["Image Generation"],
     "nodes": [

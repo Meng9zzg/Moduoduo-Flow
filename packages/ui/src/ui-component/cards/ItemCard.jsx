@@ -32,9 +32,12 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
 // ===========================|| CONTRACT CARD ||=========================== //
 
 const ItemCard = ({ data, images, icons, onClick }) => {
-    const { t } = useTranslation('common')
+    const { t, i18n } = useTranslation('common')
     const theme = useTheme()
     const customization = useSelector((state) => state.customization)
+
+    // Use Chinese description if available and language is set to Chinese
+    const description = i18n.language === 'zh' && data.description_zh ? data.description_zh : data.description
 
     return (
         <CardWrapper content={false} onClick={onClick} sx={{ border: 1, borderColor: theme.palette.grey[900] + 25, borderRadius: 2 }}>
@@ -93,7 +96,7 @@ const ItemCard = ({ data, images, icons, onClick }) => {
                                 {data.templateName || data.name}
                             </Typography>
                         </div>
-                        {data.description && (
+                        {description && (
                             <span
                                 style={{
                                     display: '-webkit-box',
@@ -105,7 +108,7 @@ const ItemCard = ({ data, images, icons, onClick }) => {
                                     overflow: 'hidden'
                                 }}
                             >
-                                {data.description}
+                                {description}
                             </span>
                         )}
                     </Box>

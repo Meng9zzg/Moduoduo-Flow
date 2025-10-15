@@ -1,5 +1,6 @@
 {
     "description": "Multi-agent system that breaks down complex queries, assigns tasks to subagents, and synthesizes findings into detailed reports.",
+    "description_zh": "多智能体系统,分解复杂查询,将任务分配给子智能体,并将结果综合成详细报告",
     "usecases": ["Deep Research"],
     "nodes": [
         {

@@ -1,5 +1,6 @@
 {
     "description": "Simple chat engine to handle back and forth conversations using LlamaIndex",
+    "description_zh": "使用 LlamaIndex 处理来回对话的简单聊天引擎",
     "usecases": ["Basic"],
     "framework": ["LlamaIndex"],
     "nodes": [

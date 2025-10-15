@@ -1,5 +1,6 @@
 {
     "description": "QnA chain using Ollama local LLM, LocalAI embedding model, and Faiss local vector store",
+    "description_zh": "使用 Ollama 本地 LLM、LocalAI 嵌入模型和 Faiss 本地向量存储的问答链",
     "usecases": ["Documents QnA"],
     "framework": ["Langchain"],
     "nodes": [

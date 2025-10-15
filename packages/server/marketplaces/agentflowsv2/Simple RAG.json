@@ -1,5 +1,6 @@
 {
     "description": "A basic RAG agent that can retrieve documents from document store and answer questions",
+    "description_zh": "一个基本的 RAG 智能体,可以从文档存储中检索文档并回答问题",
     "usecases": ["Documents QnA"],
     "nodes": [
         {

@@ -15,6 +15,7 @@ import { WorkspaceService } from '../../enterprise/services/workspace.service'
 type ITemplate = {
     badge: string
     description: string
+    description_zh?: string
     framework: string[]
     usecases: string[]
     nodes: IReactFlowNode[]
@@ -45,7 +46,8 @@ const getAllTemplates = async () => {
                 usecases: fileDataObj?.usecases,
                 categories: getCategories(fileDataObj),
                 type: 'Chatflow',
-                description: fileDataObj?.description || ''
+                description: fileDataObj?.description || '',
+                description_zh: fileDataObj?.description_zh || fileDataObj?.description || ''
             }
             templates.push(template)
         })
@@ -64,7 +66,8 @@ const getAllTemplates = async () => {
                 badge: fileDataObj?.badge,
                 usecases: fileDataObj?.usecases,
                 categories: [],
-                templateName: file.split('.json')[0]
+                templateName: file.split('.json')[0],
+                description_zh: fileDataObj?.description_zh || fileDataObj?.description || ''
             }
             templates.push(template)
         })
@@ -106,7 +109,8 @@ const getAllTemplates = async () => {
                 usecases: fileDataObj?.usecases,
                 categories: getCategories(fileDataObj),
                 type: 'AgentflowV2',
-                description: fileDataObj?.description || ''
+                description: fileDataObj?.description || '',
+                description_zh: fileDataObj?.description_zh || fileDataObj?.description || ''
             }
             templates.push(template)
         })

@@ -10,7 +10,12 @@
             "Bash(curl:*)",
             "Bash(git log:*)",
             "Bash(git reset:*)",
-            "Bash(git diff:*)"
+            "Bash(git diff:*)",
+            "Bash(node:*)",
+            "Bash(for dir in chatflows agentflowsv2 tools)",
+            "Bash(do echo \"=== $dir ===\")",
+            "Bash(ls:*)",
+            "Bash(done)"
         ],
         "deny": [],
         "ask": []

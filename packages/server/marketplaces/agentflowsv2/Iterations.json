@@ -1,5 +1,6 @@
 {
     "description": "An agent that can iterate over a list of items and perform actions on each item",
+    "description_zh": "可以迭代项目列表并对每个项目执行操作的智能体",
     "usecases": ["Agent"],
     "nodes": [
         {

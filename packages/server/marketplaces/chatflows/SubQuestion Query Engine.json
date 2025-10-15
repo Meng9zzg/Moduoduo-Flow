@@ -1,5 +1,6 @@
 {
     "description": "Breaks down query into sub questions for each relevant data source, then combine into final response",
+    "description_zh": "将查询分解为每个相关数据源的子问题,然后组合成最终响应",
     "usecases": ["SQL"],
     "framework": ["LlamaIndex"],
     "nodes": [

@@ -1,5 +1,6 @@
 {
     "description": "An agent based approach using AgentflowV2 to perform self-correcting question answering over documents",
+    "description_zh": "使用 AgentflowV2 的智能体方法,对文档执行自我纠正的问答",
     "usecases": ["Reflective Agent", "Documents QnA"],
     "nodes": [
         {

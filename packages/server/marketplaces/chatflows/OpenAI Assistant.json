@@ -1,5 +1,6 @@
 {
     "description": "OpenAI Assistant that has instructions and can leverage models, tools, and knowledge to respond to user queries",
+    "description_zh": "具有指令的 OpenAI 助手,可以利用模型、工具和知识来响应用户查询",
     "usecases": ["Agent"],
     "framework": ["Langchain"],
     "nodes": [

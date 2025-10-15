@@ -1,5 +1,6 @@
 {
     "description": "Tool agent that can retrieve answers from multiple sources using relevant Retriever Tools",
+    "description_zh": "可以使用相关检索工具从多个来源检索答案的工具智能体",
     "usecases": ["Documents QnA"],
     "framework": ["Langchain"],
     "nodes": [

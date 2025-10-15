@@ -1,5 +1,6 @@
 {
     "description": "Return response as a list (array) instead of a string/text",
+    "description_zh": "将响应以列表(数组)形式返回,而非字符串/文本",
     "usecases": ["Extraction"],
     "framework": ["Langchain"],
     "nodes": [

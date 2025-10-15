@@ -1,5 +1,6 @@
 {
     "description": "Translate text from one language to another",
+    "description_zh": "将文本从一种语言翻译成另一种语言",
     "usecases": ["Basic"],
     "nodes": [
         {

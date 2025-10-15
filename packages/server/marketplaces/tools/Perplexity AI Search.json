@@ -1,6 +1,7 @@
 {
     "name": "perplexity_ai_search",
     "description": "Useful when conducting research using Perplexity AI online model.",
+    "description_zh": "使用 Perplexity AI 在线模型进行研究时使用",
     "color": "linear-gradient(rgb(155,190,84), rgb(176,69,245))",
     "iconSrc": "https://raw.githubusercontent.com/AsharibAli/project-images/main/perplexity-ai-icon.svg",
     "schema": "[{\"id\":1,\"property\":\"query\",\"description\":\"Query for research\",\"type\":\"string\",\"required\":true}]",

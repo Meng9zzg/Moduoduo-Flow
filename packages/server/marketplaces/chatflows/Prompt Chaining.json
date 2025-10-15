@@ -1,5 +1,6 @@
 {
     "description": "Use output from a chain as prompt for another chain, similar to chain of thought",
+    "description_zh": "将一个链的输出用作另一个链的提示,类似于思维链",
     "usecases": ["Basic"],
     "framework": ["Langchain"],
     "nodes": [

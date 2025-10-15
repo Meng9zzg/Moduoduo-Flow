@@ -1,5 +1,6 @@
 {
     "description": "Answer question based on retrieved documents (context) while remembering previous conversations",
+    "description_zh": "基于检索到的文档(上下文)回答问题,同时记住之前的对话",
     "framework": ["LlamaIndex"],
     "usecases": ["Documents QnA"],
     "nodes": [

@@ -1,5 +1,6 @@
 {
     "description": "An agent that can perform question answering over a database",
+    "description_zh": "可以对数据库执行问答的智能体",
     "usecases": ["SQL"],
     "nodes": [
         {

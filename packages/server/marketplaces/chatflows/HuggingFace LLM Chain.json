@@ -1,5 +1,6 @@
 {
     "description": "Simple LLM Chain using HuggingFace Inference API on falcon-7b-instruct model",
+    "description_zh": "使用 HuggingFace 推理 API 在 falcon-7b-instruct 模型上的简单 LLM 链",
     "framework": ["Langchain"],
     "usecases": ["Basic"],
     "nodes": [

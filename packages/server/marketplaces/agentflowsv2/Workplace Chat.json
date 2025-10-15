@@ -1,5 +1,6 @@
 {
     "description": "An agent that can post AI responses to Workplace channels like Slack and Teams",
+    "description_zh": "可以将 AI 响应发布到 Slack 和 Teams 等工作场所频道的智能体",
     "usecases": ["Agent"],
     "nodes": [
         {

@@ -1,5 +1,6 @@
 {
     "description": "An agent designed to use tools and LLM with function calling capability to provide responses",
+    "description_zh": "设计用于使用工具和具有函数调用能力的 LLM 来提供响应的智能体",
     "usecases": ["Agent"],
     "framework": ["Langchain"],
     "nodes": [

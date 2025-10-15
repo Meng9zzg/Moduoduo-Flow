@@ -1,5 +1,6 @@
 {
     "description": "An email reply HITL (human in the loop) agent that can proceed or refine the email with user input",
+    "description_zh": "一个电子邮件回复 HITL(人机协同)智能体,可以根据用户输入继续或改进电子邮件",
     "usecases": ["Human In Loop"],
     "nodes": [
         {

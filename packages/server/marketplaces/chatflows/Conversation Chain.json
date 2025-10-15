@@ -1,5 +1,6 @@
 {
     "description": "Basic example of Conversation Chain with built-in memory - works exactly like ChatGPT",
+    "description_zh": "带有内置记忆功能的对话链基础示例 - 工作方式与 ChatGPT 完全相同",
     "usecases": ["Basic"],
     "framework": ["Langchain"],
     "nodes": [

@@ -1,5 +1,6 @@
 {
     "description": "Deep research system that conducts multi-turn agent conversations to perform web search, synthesize insights and generate well-structured white papers",
+    "description_zh": "进行多轮智能体对话的深度研究系统,执行网络搜索、综合见解并生成结构良好的白皮书",
     "usecases": ["Deep Research"],
     "nodes": [
         {

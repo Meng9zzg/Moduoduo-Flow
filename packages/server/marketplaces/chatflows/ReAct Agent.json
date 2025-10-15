@@ -1,5 +1,6 @@
 {
     "description": "An agent that uses ReAct (Reason + Act) logic to decide what action to take",
+    "description_zh": "使用 ReAct(推理 + 行动)逻辑来决定采取什么行动的智能体",
     "usecases": ["Agent"],
     "framework": ["Langchain"],
     "nodes": [

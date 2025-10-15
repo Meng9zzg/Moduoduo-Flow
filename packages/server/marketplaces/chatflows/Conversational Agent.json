@@ -1,5 +1,6 @@
 {
     "description": "A conversational agent designed to use tools and chat model to provide responses",
+    "description_zh": "一个对话智能体,旨在使用工具和聊天模型提供响应",
     "usecases": ["Agent"],
     "framework": ["Langchain"],
     "nodes": [

@@ -1,5 +1,6 @@
 {
     "description": "Return response as a JSON structure as specified by a Zod schema",
+    "description_zh": "按照 Zod 模式返回符合指定结构的 JSON 响应",
     "framework": ["Langchain"],
     "usecases": ["Extraction"],
     "nodes": [

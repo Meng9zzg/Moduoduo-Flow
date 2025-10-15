@@ -1,5 +1,6 @@
 {
     "description": "A hierarchical supervisor agent that plan the steps, and delegate tasks to worker agents based on user query",
+    "description_zh": "一个分层监督智能体,规划步骤并根据用户查询将任务委派给工作智能体",
     "usecases": ["Hierarchical Agent Teams"],
     "nodes": [
         {

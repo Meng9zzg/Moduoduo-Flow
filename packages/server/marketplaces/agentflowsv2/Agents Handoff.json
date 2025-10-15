@@ -1,5 +1,6 @@
 {
     "description": "A customer support agent that can handoff tasks to different agents based on scenarios",
+    "description_zh": "一个客户支持智能体,可以根据场景将任务移交给不同的智能体",
     "usecases": ["Customer Support"],
     "nodes": [
         {
