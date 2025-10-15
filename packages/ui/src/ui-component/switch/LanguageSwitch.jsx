@@ -137,18 +137,13 @@ const LanguageSwitch = () => {
     const [currentLanguage, setCurrentLanguage] = useState(i18n.language || 'zh')
     const open = Boolean(anchorEl)
 
-    console.log('🟡 LanguageSwitch render - open:', open, 'anchorEl:', anchorEl, 'currentLanguage:', currentLanguage)
-
     useEffect(() => {
         // 同步i18n的当前语言到组件状态
         setCurrentLanguage(i18n.language)
     }, [i18n.language])
 
     const handleClick = (event) => {
-        console.log('🔵 Language switch button clicked!', event)
-        console.log('🔵 Event target:', event.currentTarget)
         setAnchorEl(event.currentTarget)
-        console.log('🔵 AnchorEl set:', event.currentTarget)
     }
 
     const handleClose = () => {
@@ -156,12 +151,10 @@ const LanguageSwitch = () => {
     }
 
     const handleLanguageChange = (languageCode) => {
-        console.log('🟢 Language changing to:', languageCode)
         // 使用i18n的changeLanguage方法
         i18n.changeLanguage(languageCode)
         setCurrentLanguage(languageCode)
         localStorage.setItem('language', languageCode)
-        console.log('🟢 Language changed successfully')
         handleClose()
     }
 

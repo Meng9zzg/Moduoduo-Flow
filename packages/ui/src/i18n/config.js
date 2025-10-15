@@ -17,7 +17,7 @@ const initI18n = async () => {
             // 从localStorage获取保存的语言，默认中文
             lng: localStorage.getItem('language') || 'zh',
             // 开发模式显示调试信息
-            debug: true,
+            debug: false,
 
             // 命名空间配置 - 只加载已创建的文件
             ns: [
