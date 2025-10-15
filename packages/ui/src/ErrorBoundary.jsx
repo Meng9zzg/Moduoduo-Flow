@@ -18,18 +18,18 @@ const ErrorBoundary = ({ error }) => {
         <Box sx={{ border: 1, borderColor: theme.palette.grey[900] + 25, borderRadius: 2, padding: '20px', maxWidth: '1280px' }}>
             <Stack flexDirection='column' sx={{ alignItems: 'center', gap: 3 }}>
                 <Box component='img' src={WrongImg} alt='Error' sx={{ width: '120px', height: '120px' }} />
-                <Card variant='outlined'>
-                    <Box sx={{ position: 'relative', px: 2, py: 3 }}>
-                        <IconButton
-                            onClick={copyToClipboard}
-                            size='small'
-                            sx={{ position: 'absolute', top: 1, right: 1, color: theme.palette.grey[900] + 25 }}
-                        >
-                            <IconCopy />
-                        </IconButton>
+                <Card variant='outlined' sx={{ minWidth: '400px' }}>
+                    <Box sx={{ position: 'relative', px: 3, py: 1.5, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <Typography variant='body1' sx={{ fontSize: '1.1rem', textAlign: 'center' }}>
                             {`${t('boundary.statusLabel')} ${error.response.status}`}
                         </Typography>
+                        <IconButton
+                            onClick={copyToClipboard}
+                            size='small'
+                            sx={{ position: 'absolute', right: 8, color: theme.palette.grey[900] + 25 }}
+                        >
+                            <IconCopy />
+                        </IconButton>
                     </Box>
                 </Card>
                 <Typography variant='body1' sx={{ fontSize: '1.1rem', textAlign: 'center', lineHeight: '1.5' }}>
