@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import { cloneDeep } from 'lodash'
+import { useTranslation } from 'react-i18next'
 import {
     Button,
     Box,
@@ -35,6 +36,7 @@ import useApi from '@/hooks/useApi'
 import { initNode } from '@/utils/genericHelper'
 
 const DeleteDocStoreDialog = ({ show, dialogProps, onCancel, onDelete }) => {
+    const { t } = useTranslation('dialog')
     const portalElement = document.getElementById('portal')
     const [nodeConfigExpanded, setNodeConfigExpanded] = useState({})
     const [removeFromVS, setRemoveFromVS] = useState(false)
@@ -147,7 +149,7 @@ const DeleteDocStoreDialog = ({ show, dialogProps, onCancel, onDelete }) => {
                 {dialogProps.type === 'STORE' && dialogProps.recordManagerConfig && (
                     <FormControlLabel
                         control={<Checkbox checked={removeFromVS} onChange={(event) => setRemoveFromVS(event.target.checked)} />}
-                        label='Remove data from vector store and record manager'
+                        label={t('deleteDocStore.removeFromVSCheckbox')}
                     />
                 )}
                 {removeFromVS && (
@@ -216,18 +218,16 @@ const DeleteDocStoreDialog = ({ show, dialogProps, onCancel, onDelete }) => {
                                 </TableBody>
                             </Table>
                         </TableContainer>
-                        <span style={{ marginTop: '30px', fontStyle: 'italic', color: '#b35702' }}>
-                            * Only data that were upserted with Record Manager will be deleted from vector store
-                        </span>
+                        <span style={{ marginTop: '30px', fontStyle: 'italic', color: '#b35702' }}>{t('deleteDocStore.warningNote')}</span>
                     </div>
                 )}
             </DialogContent>
             <DialogActions sx={{ pr: 3, pb: 3 }}>
                 <Button onClick={onCancel} color='primary'>
-                    Cancel
+                    {t('deleteDocStore.cancelButton')}
                 </Button>
                 <Button variant='contained' onClick={() => onDelete(dialogProps.type, dialogProps.file, removeFromVS)} color='error'>
-                    Delete
+                    {t('deleteDocStore.deleteButton')}
                 </Button>
             </DialogActions>
         </Dialog>

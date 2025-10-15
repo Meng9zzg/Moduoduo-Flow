@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import ReactJson from 'flowise-react-json-view'
 import { HIDE_CANVAS_DIALOG, SHOW_CANVAS_DIALOG } from '@/store/actions'
 
@@ -14,6 +15,7 @@ import { CodeEditor } from '@/ui-component/editor/CodeEditor'
 import { PermissionButton, PermissionIconButton } from '@/ui-component/button/RBACButtons'
 
 const ExpandedChunkDialog = ({ show, dialogProps, onCancel, onChunkEdit, onDeleteChunk, isReadOnly }) => {
+    const { t } = useTranslation('dialog')
     const portalElement = document.getElementById('portal')
 
     const customization = useSelector((state) => state.customization)
@@ -93,15 +95,15 @@ const ExpandedChunkDialog = ({ show, dialogProps, onCancel, onChunkEdit, onDelet
                                 onClick={() => setIsEdit(true)}
                                 size='small'
                                 color='primary'
-                                title='Edit Chunk'
+                                title={t('expandedChunk.editChunkTitle')}
                                 sx={{ ml: 2 }}
                             >
                                 <IconEdit />
                             </PermissionIconButton>
                         )}
                         {isEdit && !isReadOnly && (
-                            <Button onClick={() => onEditCancel()} color='primary' title='Cancel' sx={{ ml: 2 }}>
-                                Cancel
+                            <Button onClick={() => onEditCancel()} color='primary' title={t('expandedChunk.cancelButton')} sx={{ ml: 2 }}>
+                                {t('expandedChunk.cancelButton')}
                             </Button>
                         )}
                         {isEdit && !isReadOnly && (
@@ -109,11 +111,11 @@ const ExpandedChunkDialog = ({ show, dialogProps, onCancel, onChunkEdit, onDelet
                                 permissionId={'documentStores:preview-process'}
                                 onClick={() => onEditSaved(true)}
                                 color='primary'
-                                title='Save'
+                                title={t('expandedChunk.saveButton')}
                                 variant='contained'
                                 sx={{ ml: 2, mr: 1 }}
                             >
-                                Save
+                                {t('expandedChunk.saveButton')}
                             </PermissionButton>
                         )}
                         {!isEdit && !isReadOnly && (
@@ -122,13 +124,13 @@ const ExpandedChunkDialog = ({ show, dialogProps, onCancel, onChunkEdit, onDelet
                                 onClick={() => onDeleteChunk(selectedChunk)}
                                 size='small'
                                 color='error'
-                                title='Delete Chunk'
+                                title={t('expandedChunk.deleteChunkTitle')}
                                 sx={{ ml: 1 }}
                             >
                                 <IconTrash />
                             </PermissionIconButton>
                         )}
-                        <IconButton onClick={onCancel} size='small' color='inherit' title='Close' sx={{ ml: 1 }}>
+                        <IconButton onClick={onCancel} size='small' color='inherit' title={t('expandedChunk.closeTitle')} sx={{ ml: 1 }}>
                             <IconX />
                         </IconButton>
                     </div>
@@ -157,7 +159,7 @@ const ExpandedChunkDialog = ({ show, dialogProps, onCancel, onChunkEdit, onDelet
                             }}
                         >
                             <IconLanguage style={{ marginRight: 5 }} size={15} />
-                            {selectedChunk?.pageContent?.length} characters
+                            {selectedChunk?.pageContent?.length} {t('expandedChunk.charactersLabel')}
                         </div>
                         <div style={{ marginTop: '5px' }}></div>
                         {!isEdit && (

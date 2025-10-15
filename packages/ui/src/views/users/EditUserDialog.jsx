@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 // Material
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, Box, Typography, OutlinedInput } from '@mui/material'
@@ -25,20 +26,10 @@ import useNotifier from '@/utils/useNotifier'
 import { HIDE_CANVAS_DIALOG, SHOW_CANVAS_DIALOG } from '@/store/actions'
 import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction } from '@/store/actions'
 
-const statuses = [
-    {
-        label: 'Active',
-        name: 'active'
-    },
-    {
-        label: 'Inactive',
-        name: 'inactive'
-    }
-]
-
 const EditUserDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) => {
     const portalElement = document.getElementById('portal')
     const currentUser = useSelector((state) => state.auth.user)
+    const { t } = useTranslation('dialog')
 
     const dispatch = useDispatch()
 
@@ -51,6 +42,17 @@ const EditUserDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =>
     const [userEmail, setUserEmail] = useState('')
     const [status, setStatus] = useState('active')
     const [user, setUser] = useState({})
+
+    const statuses = [
+        {
+            label: t('editUser.statusActive'),
+            name: 'active'
+        },
+        {
+            label: t('editUser.statusInactive'),
+            name: 'inactive'
+        }
+    ]
 
     useEffect(() => {
         if (dialogProps.type === 'EDIT' && dialogProps.data) {
@@ -86,7 +88,7 @@ const EditUserDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =>
             const saveResp = await userApi.updateOrganizationUser(saveObj)
             if (saveResp.data) {
                 enqueueSnackbar({
-                    message: 'User Details Updated',
+                    message: t('editUser.updateSuccess'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -100,11 +102,10 @@ const EditUserDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =>
                 onConfirm(saveResp.data.id)
             }
         } catch (error) {
-            setError(err)
+            setError(error)
+            const errorMessage = typeof error.response.data === 'object' ? error.response.data.message : error.response.data
             enqueueSnackbar({
-                message: `Failed to update User: ${
-                    typeof error.response.data === 'object' ? error.response.data.message : error.response.data
-                }`,
+                message: t('editUser.updateError', { error: errorMessage }),
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -132,14 +133,15 @@ const EditUserDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =>
             <DialogTitle sx={{ fontSize: '1rem' }} id='alert-dialog-title'>
                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                     <IconUser style={{ marginRight: '10px' }} />
-                    {'Edit User'}
+                    {t('editUser.title')}
                 </div>
             </DialogTitle>
             <DialogContent>
                 <Box sx={{ p: 1 }}>
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                         <Typography>
-                            Email<span style={{ color: 'red' }}>&nbsp;*</span>
+                            {t('editUser.emailLabel')}
+                            <span style={{ color: 'red' }}>&nbsp;*</span>
                         </Typography>
 
                         <div style={{ flexGrow: 1 }}></div>
@@ -157,7 +159,7 @@ const EditUserDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =>
                 </Box>
                 <Box sx={{ p: 1 }}>
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        <Typography>Name</Typography>
+                        <Typography>{t('editUser.nameLabel')}</Typography>
 
                         <div style={{ flexGrow: 1 }}></div>
                     </div>
@@ -175,7 +177,8 @@ const EditUserDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =>
                 <Box sx={{ p: 1 }}>
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                         <Typography>
-                            Account Status<span style={{ color: 'red' }}>&nbsp;*</span>
+                            {t('editUser.accountStatusLabel')}
+                            <span style={{ color: 'red' }}>&nbsp;*</span>
                         </Typography>
                         <div style={{ flexGrow: 1 }}></div>
                     </div>
@@ -185,12 +188,12 @@ const EditUserDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =>
                         disabled={dialogProps?.data?.isOrgOwner}
                         options={statuses}
                         onSelect={(newValue) => setStatus(newValue)}
-                        value={status ?? 'choose an option'}
+                        value={status ?? t('editUser.statusPlaceholder')}
                         id='dropdown_status'
                     />
                     {dialogProps?.data?.isOrgOwner && (
                         <Typography variant='caption'>
-                            <i>Cannot change status of the organization owner!</i>
+                            <i>{t('editUser.ownerStatusWarning')}</i>
                         </Typography>
                     )}
                 </Box>

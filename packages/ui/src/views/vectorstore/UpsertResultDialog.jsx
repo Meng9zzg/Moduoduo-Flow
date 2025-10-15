@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import { createPortal } from 'react-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import ReactJson from 'flowise-react-json-view'
 import { Typography, Card, CardContent, Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material'
 import StatsCard from '@/ui-component/cards/StatsCard'
@@ -12,6 +13,7 @@ const UpsertResultDialog = ({ show, dialogProps, onCancel, onGoToRetrievalQuery 
     const portalElement = document.getElementById('portal')
     const dispatch = useDispatch()
     const customization = useSelector((state) => state.customization)
+    const { t } = useTranslation('dialog')
 
     useEffect(() => {
         if (show) dispatch({ type: SHOW_CANVAS_DIALOG })
@@ -29,7 +31,7 @@ const UpsertResultDialog = ({ show, dialogProps, onCancel, onGoToRetrievalQuery 
             aria-describedby='upsert-result-dialog-description'
         >
             <DialogTitle sx={{ fontSize: '1rem' }} id='upsert-result-dialog-title'>
-                Upsert Record
+                {t('upsertResult.title')}
             </DialogTitle>
             <DialogContent>
                 <>
@@ -40,13 +42,15 @@ const UpsertResultDialog = ({ show, dialogProps, onCancel, onGoToRetrievalQuery 
                             gap: 5
                         }}
                     >
-                        <StatsCard title='Added' stat={dialogProps.numAdded ?? 0} />
-                        <StatsCard title='Updated' stat={dialogProps.numUpdated ?? 0} />
-                        <StatsCard title='Skipped' stat={dialogProps.numSkipped ?? 0} />
-                        <StatsCard title='Deleted' stat={dialogProps.numDeleted ?? 0} />
+                        <StatsCard title={t('upsertResult.added')} stat={dialogProps.numAdded ?? 0} />
+                        <StatsCard title={t('upsertResult.updated')} stat={dialogProps.numUpdated ?? 0} />
+                        <StatsCard title={t('upsertResult.skipped')} stat={dialogProps.numSkipped ?? 0} />
+                        <StatsCard title={t('upsertResult.deleted')} stat={dialogProps.numDeleted ?? 0} />
                     </div>
                     {dialogProps.addedDocs && dialogProps.addedDocs.length > 0 && (
-                        <Typography sx={{ mt: 2, mb: 2, fontWeight: 500 }}>{dialogProps.numAdded} Added Documents</Typography>
+                        <Typography sx={{ mt: 2, mb: 2, fontWeight: 500 }}>
+                            {t('upsertResult.addedDocuments', { count: dialogProps.numAdded })}
+                        </Typography>
                     )}
                     {dialogProps.addedDocs &&
                         dialogProps.addedDocs.length > 0 &&
@@ -94,14 +98,14 @@ const UpsertResultDialog = ({ show, dialogProps, onCancel, onGoToRetrievalQuery 
                             startIcon={<IconZoomScan />}
                             onClick={onGoToRetrievalQuery}
                         >
-                            Test Retrieval
+                            {t('upsertResult.testRetrieval')}
                         </Button>
                         <Button fullWidth onClick={onCancel}>
-                            Close
+                            {t('upsertResult.close')}
                         </Button>
                     </div>
                 )}
-                {!dialogProps.goToRetrievalQuery && <Button onClick={onCancel}>Close</Button>}
+                {!dialogProps.goToRetrievalQuery && <Button onClick={onCancel}>{t('upsertResult.close')}</Button>}
             </DialogActions>
         </Dialog>
     ) : null

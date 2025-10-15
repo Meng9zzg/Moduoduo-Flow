@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import { createPortal } from 'react-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState, forwardRef } from 'react'
+import { useTranslation } from 'react-i18next'
 import DatePicker from 'react-datepicker'
 import moment from 'moment/moment'
 
@@ -190,6 +191,7 @@ const UpsertHistoryDialog = ({ show, dialogProps, onCancel }) => {
     const dispatch = useDispatch()
     const customization = useSelector((state) => state.customization)
     const theme = useTheme()
+    const { t } = useTranslation('dialog')
     const getUpsertHistoryApi = useApi(vectorstoreApi.getUpsertHistory)
 
     useNotifier()
@@ -250,7 +252,7 @@ const UpsertHistoryDialog = ({ show, dialogProps, onCancel }) => {
         try {
             await vectorstoreApi.deleteUpsertHistory(selected)
             enqueueSnackbar({
-                message: 'Succesfully deleted upsert history',
+                message: t('upsertHistory.deleteSuccess'),
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'success',
@@ -265,9 +267,9 @@ const UpsertHistoryDialog = ({ show, dialogProps, onCancel }) => {
             setSelected([])
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to delete Upsert History: ${
-                    typeof error.response.data === 'object' ? error.response.data.message : error.response.data
-                }`,
+                message: t('upsertHistory.deleteError', {
+                    error: typeof error.response.data === 'object' ? error.response.data.message : error.response.data
+                }),
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -327,7 +329,7 @@ const UpsertHistoryDialog = ({ show, dialogProps, onCancel }) => {
                 <>
                     <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%', marginBottom: 10 }}>
                         <div style={{ marginRight: 10 }}>
-                            <b style={{ marginRight: 10 }}>From Date</b>
+                            <b style={{ marginRight: 10 }}>{t('upsertHistory.fromDate')}</b>
                             <DatePicker
                                 selected={startDate}
                                 onChange={(date) => onStartDateSelected(date)}
@@ -338,7 +340,7 @@ const UpsertHistoryDialog = ({ show, dialogProps, onCancel }) => {
                             />
                         </div>
                         <div style={{ marginRight: 10 }}>
-                            <b style={{ marginRight: 10 }}>To Date</b>
+                            <b style={{ marginRight: 10 }}>{t('upsertHistory.toDate')}</b>
                             <DatePicker
                                 selected={endDate}
                                 onChange={(date) => onEndDateSelected(date)}
@@ -359,7 +361,7 @@ const UpsertHistoryDialog = ({ show, dialogProps, onCancel }) => {
                             color='error'
                             startIcon={<IconTrash />}
                         >
-                            Delete {selected.length} {selected.length === 1 ? 'row' : 'rows'}
+                            {t('upsertHistory.deleteRows', { count: selected.length })}
                         </Button>
                     )}
                     {chatflowUpsertHistory.length <= 0 && (
@@ -371,7 +373,7 @@ const UpsertHistoryDialog = ({ show, dialogProps, onCancel }) => {
                                     alt='HistoryEmptySVG'
                                 />
                             </Box>
-                            <div>No Upsert History Yet</div>
+                            <div>{t('upsertHistory.noHistory')}</div>
                         </Stack>
                     )}
                     {chatflowUpsertHistory.length > 0 && (
@@ -389,42 +391,36 @@ const UpsertHistoryDialog = ({ show, dialogProps, onCancel }) => {
                                                 }}
                                             />
                                         </TableCell>
-                                        <TableCell>Date</TableCell>
+                                        <TableCell>{t('upsertHistory.date')}</TableCell>
                                         <TableCell>
-                                            Added{' '}
+                                            {t('upsertHistory.added')}{' '}
                                             <TooltipWithParser
                                                 style={{ marginBottom: 2, marginLeft: 10 }}
-                                                title={'Number of vector embeddings added to Vector Store'}
+                                                title={t('upsertHistory.addedTooltip')}
                                             />
                                         </TableCell>
                                         <TableCell>
-                                            Updated{' '}
+                                            {t('upsertHistory.updated')}{' '}
                                             <TooltipWithParser
                                                 style={{ marginBottom: 2, marginLeft: 10 }}
-                                                title={
-                                                    'Updated existing vector embeddings. Only works when a Record Manager is connected to the Vector Store'
-                                                }
+                                                title={t('upsertHistory.updatedTooltip')}
                                             />
                                         </TableCell>
                                         <TableCell>
-                                            Skipped{' '}
+                                            {t('upsertHistory.skipped')}{' '}
                                             <TooltipWithParser
                                                 style={{ marginBottom: 2, marginLeft: 10 }}
-                                                title={
-                                                    'Number of same vector embeddings that exists, and were skipped re-upserting again. Only works when a Record Manager is connected to the Vector Store'
-                                                }
+                                                title={t('upsertHistory.skippedTooltip')}
                                             />
                                         </TableCell>
                                         <TableCell>
-                                            Deleted{' '}
+                                            {t('upsertHistory.deleted')}{' '}
                                             <TooltipWithParser
                                                 style={{ marginBottom: 2, marginLeft: 10 }}
-                                                title={
-                                                    'Deleted vector embeddings. Only works when a Record Manager with a Cleanup method is connected to the Vector Store'
-                                                }
+                                                title={t('upsertHistory.deletedTooltip')}
                                             />
                                         </TableCell>
-                                        <TableCell>Details</TableCell>
+                                        <TableCell>{t('upsertHistory.details')}</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -445,7 +441,7 @@ const UpsertHistoryDialog = ({ show, dialogProps, onCancel }) => {
                 </>
             </DialogContent>
             <DialogActions>
-                <Button onClick={onCancel}>Close</Button>
+                <Button onClick={onCancel}>{t('upsertHistory.close')}</Button>
             </DialogActions>
         </Dialog>
     ) : null

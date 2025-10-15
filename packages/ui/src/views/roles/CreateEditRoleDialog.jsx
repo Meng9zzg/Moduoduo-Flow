@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction } from '@/store/actions'
+import { useTranslation } from 'react-i18next'
 
 // Material
 import { Box, Typography, OutlinedInput, Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material'
@@ -35,6 +36,7 @@ const CreateEditRoleDialog = ({ show, dialogProps, onCancel, onConfirm, setError
 
     const dispatch = useDispatch()
     const { isEnterpriseLicensed } = useConfig()
+    const { t } = useTranslation('dialog')
 
     // ==============================|| Snackbar ||============================== //
 
@@ -198,7 +200,7 @@ const CreateEditRoleDialog = ({ show, dialogProps, onCancel, onConfirm, setError
             // if roleName has a space, raise an error
             if (roleName.indexOf(' ') > -1) {
                 enqueueSnackbar({
-                    message: `Role Name cannot contain spaces.`,
+                    message: t('createEditRole.spaceError'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'error',
@@ -238,7 +240,7 @@ const CreateEditRoleDialog = ({ show, dialogProps, onCancel, onConfirm, setError
             }
             if (saveResp.data) {
                 enqueueSnackbar({
-                    message: dialogProps.type === 'EDIT' ? 'Role Updated Successfully' : 'New Role Created!',
+                    message: dialogProps.type === 'EDIT' ? t('createEditRole.updateSuccess') : t('createEditRole.createSuccess'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -252,8 +254,9 @@ const CreateEditRoleDialog = ({ show, dialogProps, onCancel, onConfirm, setError
                 onConfirm(saveResp.data.id)
             }
         } catch (error) {
+            const errorMessage = typeof error.response.data === 'object' ? error.response.data.message : error.response.data
             enqueueSnackbar({
-                message: `Failed : ${typeof error.response.data === 'object' ? error.response.data.message : error.response.data}`,
+                message: t('createEditRole.saveError', { error: errorMessage }),
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -308,14 +311,19 @@ const CreateEditRoleDialog = ({ show, dialogProps, onCancel, onConfirm, setError
             <DialogTitle sx={{ fontSize: '1rem' }} id='alert-dialog-title'>
                 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                     <IconUser style={{ marginRight: '10px' }} />
-                    {dialogProps.type === 'EDIT' ? 'Edit Role' : dialogProps.type === 'VIEW' ? 'View Role' : 'Create New Role'}
+                    {dialogProps.type === 'EDIT'
+                        ? t('createEditRole.titleEdit')
+                        : dialogProps.type === 'VIEW'
+                        ? t('createEditRole.titleView')
+                        : t('createEditRole.titleCreate')}
                 </div>
             </DialogTitle>
             <DialogContent sx={{ backgroundColor: 'transparent' }}>
                 <div className='role-editor'>
                     <Box>
                         <Typography sx={{ mb: 1 }} variant='h5'>
-                            <span style={{ color: 'red' }}>*&nbsp;&nbsp;</span>Role Name
+                            <span style={{ color: 'red' }}>*&nbsp;&nbsp;</span>
+                            {t('createEditRole.roleNameLabel')}
                         </Typography>
                         <OutlinedInput
                             id='roleName'
@@ -323,7 +331,7 @@ const CreateEditRoleDialog = ({ show, dialogProps, onCancel, onConfirm, setError
                             size='small'
                             fullWidth
                             disabled={dialogProps.type === 'EDIT' || dialogProps.type === 'VIEW'}
-                            placeholder='Enter role name'
+                            placeholder={t('createEditRole.roleNamePlaceholder')}
                             value={roleName}
                             name='roleName'
                             onChange={handleRoleNameChange}
@@ -331,7 +339,7 @@ const CreateEditRoleDialog = ({ show, dialogProps, onCancel, onConfirm, setError
                     </Box>
                     <Box>
                         <Typography sx={{ mb: 1 }} variant='h5'>
-                            Role Description
+                            {t('createEditRole.roleDescriptionLabel')}
                         </Typography>
                         <OutlinedInput
                             id='roleDesc'
@@ -339,14 +347,14 @@ const CreateEditRoleDialog = ({ show, dialogProps, onCancel, onConfirm, setError
                             size='small'
                             fullWidth
                             disabled={dialogProps.type === 'VIEW'}
-                            placeholder='Description of the role'
+                            placeholder={t('createEditRole.roleDescriptionPlaceholder')}
                             value={roleDescription}
                             name='roleDesc'
                             onChange={handleRoleDescChange}
                         />
                     </Box>
                     <div className='permissions-container'>
-                        <p>Permissions</p>
+                        <p>{t('createEditRole.permissionsLabel')}</p>
                         <div className='permissions-list-wrapper'>
                             {permissions &&
                                 Object.keys(permissions).map((category) => (
@@ -363,7 +371,7 @@ const CreateEditRoleDialog = ({ show, dialogProps, onCancel, onConfirm, setError
                                                 hidden={dialogProps.type === 'VIEW'}
                                                 onClick={() => handleSelectAll(category)}
                                             >
-                                                Select All
+                                                {t('createEditRole.selectAllButton')}
                                             </button>
                                         </div>
                                         <div className='permissions-list'>
@@ -395,11 +403,11 @@ const CreateEditRoleDialog = ({ show, dialogProps, onCancel, onConfirm, setError
             </DialogContent>
             <DialogActions>
                 <Button variant='outlined' onClick={onCancel}>
-                    {dialogProps.type !== 'VIEW' ? 'Cancel' : 'Close'}
+                    {dialogProps.type !== 'VIEW' ? t('createEditRole.cancelButton') : t('createEditRole.closeButton')}
                 </Button>
                 {dialogProps.type !== 'VIEW' && (
                     <StyledButton disabled={checkDisabled()} variant='contained' onClick={createRole}>
-                        {dialogProps.type !== 'EDIT' ? 'Create Role' : 'Update Role'}
+                        {dialogProps.type !== 'EDIT' ? t('createEditRole.createButton') : t('createEditRole.updateButton')}
                     </StyledButton>
                 )}
             </DialogActions>

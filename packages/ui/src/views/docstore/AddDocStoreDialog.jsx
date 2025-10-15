@@ -27,7 +27,7 @@ import documentStoreApi from '@/api/documentstore'
 import useNotifier from '@/utils/useNotifier'
 
 const AddDocStoreDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
-    const { t } = useTranslation(['docstores', 'common'])
+    const { t } = useTranslation(['docstores', 'dialog', 'common'])
     const portalElement = document.getElementById('portal')
 
     const dispatch = useDispatch()
@@ -76,7 +76,7 @@ const AddDocStoreDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
             const createResp = await documentStoreApi.createDocumentStore(obj)
             if (createResp.data) {
                 enqueueSnackbar({
-                    message: t('newStoreCreated'),
+                    message: t('dialog:addDocStore.newStoreCreated'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -91,7 +91,7 @@ const AddDocStoreDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
             }
         } catch (error) {
             enqueueSnackbar({
-                message: `${t('failedToAdd')}: ${
+                message: `${t('dialog:addDocStore.failedToAdd')}: ${
                     typeof error.response.data === 'object' ? error.response.data.message : error.response.data
                 }`,
                 options: {
@@ -119,7 +119,7 @@ const AddDocStoreDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
             const saveResp = await documentStoreApi.updateDocumentStore(docStoreId, saveObj)
             if (saveResp.data) {
                 enqueueSnackbar({
-                    message: t('storeUpdated'),
+                    message: t('dialog:addDocStore.storeUpdated'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -134,7 +134,7 @@ const AddDocStoreDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
             }
         } catch (error) {
             enqueueSnackbar({
-                message: `${t('failedToUpdate')}: ${
+                message: `${t('dialog:addDocStore.failedToUpdate')}: ${
                     typeof error.response.data === 'object' ? error.response.data.message : error.response.data
                 }`,
                 options: {
@@ -171,7 +171,7 @@ const AddDocStoreDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
                 <Box sx={{ p: 2 }}>
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                         <Typography>
-                            {t('name')}
+                            {t('dialog:addDocStore.nameLabel')}
                             <span style={{ color: 'red' }}>&nbsp;*</span>
                         </Typography>
 
@@ -189,7 +189,7 @@ const AddDocStoreDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
                 </Box>
                 <Box sx={{ p: 2 }}>
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
-                        <Typography>{t('description_label')}</Typography>
+                        <Typography>{t('dialog:addDocStore.descriptionLabel')}</Typography>
 
                         <div style={{ flexGrow: 1 }}></div>
                     </div>
@@ -207,7 +207,7 @@ const AddDocStoreDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
                 </Box>
             </DialogContent>
             <DialogActions>
-                <Button onClick={() => onCancel()}>{t('cancel')}</Button>
+                <Button onClick={() => onCancel()}>{t('dialog:addDocStore.cancelButton')}</Button>
                 <StyledButton
                     disabled={!documentStoreName}
                     variant='contained'

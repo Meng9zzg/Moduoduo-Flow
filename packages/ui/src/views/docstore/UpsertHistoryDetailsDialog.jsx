@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 import {
     Box,
     Paper,
@@ -25,6 +26,7 @@ import StatsCard from '@/ui-component/cards/StatsCard'
 import { baseURL } from '@/store/constant'
 
 const UpsertHistoryDetailsDialog = ({ show, dialogProps, onCancel }) => {
+    const { t } = useTranslation('dialog')
     const portalElement = document.getElementById('portal')
     const [nodeConfigExpanded, setNodeConfigExpanded] = useState({})
 
@@ -54,10 +56,10 @@ const UpsertHistoryDetailsDialog = ({ show, dialogProps, onCancel }) => {
                         marginTop: '10px'
                     }}
                 >
-                    <StatsCard title='Added' stat={dialogProps.numAdded ?? 0} />
-                    <StatsCard title='Updated' stat={dialogProps.numUpdated ?? 0} />
-                    <StatsCard title='Skipped' stat={dialogProps.numSkipped ?? 0} />
-                    <StatsCard title='Deleted' stat={dialogProps.numDeleted ?? 0} />
+                    <StatsCard title={t('upsertHistoryDetails.addedLabel')} stat={dialogProps.numAdded ?? 0} />
+                    <StatsCard title={t('upsertHistoryDetails.updatedLabel')} stat={dialogProps.numUpdated ?? 0} />
+                    <StatsCard title={t('upsertHistoryDetails.skippedLabel')} stat={dialogProps.numSkipped ?? 0} />
+                    <StatsCard title={t('upsertHistoryDetails.deletedLabel')} stat={dialogProps.numDeleted ?? 0} />
                 </div>
                 <div>
                     <TableContainer component={Paper}>

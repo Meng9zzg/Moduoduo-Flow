@@ -304,5 +304,324 @@
         "saveButton": "Save Template",
         "saveSuccess": "Saved as template successfully!",
         "saveError": "Failed to save as template!"
+    },
+    "addDocStore": {
+        "nameLabel": "Name",
+        "descriptionLabel": "Description",
+        "cancelButton": "Cancel",
+        "newStoreCreated": "New Document Store Successfully Created",
+        "failedToAdd": "Failed To Add New Document Store",
+        "storeUpdated": "Document Store Successfully Updated",
+        "failedToUpdate": "Failed To Update Document Store"
+    },
+    "deleteDocStore": {
+        "removeFromVSCheckbox": "Remove data from vector store and record manager",
+        "warningNote": "* Only data that were upserted with Record Manager will be deleted from vector store",
+        "cancelButton": "Cancel",
+        "deleteButton": "Delete"
+    },
+    "docStoreAPI": {
+        "noteTitle": "Note:",
+        "noteMessage": "Upsert API can only be used when the existing document loader has been upserted before.",
+        "overrideConfigTitle": "You can override existing configurations:"
+    },
+    "componentsList": {
+        "searchPlaceholder": "Search",
+        "clearSearch": "Clear Search"
+    },
+    "documentLoaderList": {
+        "searchPlaceholder": "Search",
+        "clearSearch": "Clear Search"
+    },
+    "expandedChunk": {
+        "editChunkTitle": "Edit Chunk",
+        "deleteChunkTitle": "Delete Chunk",
+        "closeTitle": "Close",
+        "cancelButton": "Cancel",
+        "saveButton": "Save",
+        "charactersLabel": "characters"
+    },
+    "upsertHistoryDetails": {
+        "addedLabel": "Added",
+        "updatedLabel": "Updated",
+        "skippedLabel": "Skipped",
+        "deletedLabel": "Deleted"
+    },
+    "vectorStore": {
+        "showApi": "Show API",
+        "upsert": "Upsert",
+        "upsertSuccess": "Successfully upserted vector store. You can start chatting now!",
+        "securityWarning": "For security reason, override config is disabled by default. You can change this by going into Chatflow Configuration -> Security tab, and enable the property you want to override.",
+        "refer": "Refer",
+        "here": "here",
+        "moreDetails": "for more details",
+        "multipleValuesTip": "You can also specify multiple values for a config parameter by specifying the node id"
+    },
+    "upsertHistory": {
+        "fromDate": "From Date",
+        "toDate": "To Date",
+        "deleteRows": "Delete {{count}} row",
+        "deleteRows_other": "Delete {{count}} rows",
+        "noHistory": "No Upsert History Yet",
+        "date": "Date",
+        "added": "Added",
+        "addedTooltip": "Number of vector embeddings added to Vector Store",
+        "updated": "Updated",
+        "updatedTooltip": "Updated existing vector embeddings. Only works when a Record Manager is connected to the Vector Store",
+        "skipped": "Skipped",
+        "skippedTooltip": "Number of same vector embeddings that exists, and were skipped re-upserting again. Only works when a Record Manager is connected to the Vector Store",
+        "deleted": "Deleted",
+        "deletedTooltip": "Deleted vector embeddings. Only works when a Record Manager with a Cleanup method is connected to the Vector Store",
+        "details": "Details",
+        "deleteSuccess": "Successfully deleted upsert history",
+        "deleteError": "Failed to delete Upsert History: {{error}}",
+        "close": "Close"
+    },
+    "upsertResult": {
+        "title": "Upsert Record",
+        "added": "Added",
+        "updated": "Updated",
+        "skipped": "Skipped",
+        "deleted": "Deleted",
+        "addedDocuments": "{{count}} Added Document",
+        "addedDocuments_other": "{{count}} Added Documents",
+        "testRetrieval": "Test Retrieval",
+        "close": "Close"
+    },
+    "editNode": {
+        "editName": "Edit Name",
+        "saveName": "Save Name",
+        "cancel": "Cancel"
+    },
+    "shareExecution": {
+        "title": "Public Trace Link",
+        "description": "Anyone with the link below can view this execution trace.",
+        "copy": "Copy",
+        "copyLink": "Copy link",
+        "copied": "Copied!",
+        "linkCopied": "Link copied to clipboard",
+        "unshare": "Unshare",
+        "close": "Close"
+    },
+    "agentflowGenerator": {
+        "generating": "Generating your Agentflow...",
+        "placeholder": "Describe your agent here",
+        "selectModel": "Select model to generate agentflow",
+        "chooseOption": "choose an option",
+        "generate": "Generate",
+        "back": "Back",
+        "generateFailed": "Failed to generate agentflow",
+        "examples": {
+            "webSearch": "An agent that can autonomously search the web and generate report",
+            "summarizeDoc": "Summarize a document",
+            "slackResponse": "Generate response to user queries and send it to Slack",
+            "customerTeam": "A team of agents that can handle all customer queries"
+        }
+    },
+    "customAssistant": {
+        "nameLabel": "Name",
+        "cancelButton": "Cancel",
+        "messages": {
+            "createSuccess": "New Custom Assistant created",
+            "createError": "Failed to add new Custom Assistant: {{error}}"
+        }
+    },
+    "assistant": {
+        "credentialLabel": "OpenAI Credential",
+        "connectCredential": "Connect Credential",
+        "modelLabel": "Assistant Model",
+        "nameLabel": "Assistant Name",
+        "nameTooltip": "The name of the assistant. The maximum length is 256 characters.",
+        "namePlaceholder": "My New Assistant",
+        "descriptionLabel": "Assistant Description",
+        "descriptionTooltip": "The description of the assistant. The maximum length is 512 characters.",
+        "descriptionPlaceholder": "Description of what the Assistant does",
+        "iconLabel": "Assistant Icon Src",
+        "instructionsLabel": "Assistant Instruction",
+        "instructionsTooltip": "The system instructions that the assistant uses. The maximum length is 32768 characters.",
+        "instructionsPlaceholder": "You are a personal math tutor. When asked a question, write and run Python code to answer the question.",
+        "temperatureLabel": "Assistant Temperature",
+        "temperatureTooltip": "Controls randomness: Lowering results in less random completions. As the temperature approaches zero, the model will become deterministic and repetitive.",
+        "topPLabel": "Assistant Top P",
+        "topPTooltip": "Controls diversity via nucleus sampling: 0.5 means half of all likelihood-weighted options are considered.",
+        "toolsLabel": "Assistant Tools",
+        "toolsTooltip": "A list of tool enabled on the assistant. There can be a maximum of 128 tools per assistant.",
+        "chooseOption": "choose an option",
+        "cancelButton": "Cancel",
+        "saveButton": "Save",
+        "addButton": "Add",
+        "syncButton": "Sync",
+        "deleteButton": "Delete",
+        "deleteTitle": "Delete Assistant",
+        "deleteDescription": "Select delete method for {{name}}",
+        "tools": {
+            "codeInterpreter": "Code Interpreter",
+            "fileSearch": "File Search"
+        },
+        "codeInterpreter": {
+            "label": "Code Interpreter Files",
+            "tooltip": "Code Interpreter enables the assistant to write and run code. This tool can process files with diverse data and formatting, and generate files such as graphs"
+        },
+        "fileSearch": {
+            "label": "File Search Files",
+            "tooltip": "File search enables the assistant with knowledge from files that you or your users upload. Once a file is uploaded, the assistant automatically decides when to retrieve content based on user requests"
+        },
+        "vectorStore": {
+            "addTitle": "Add Vector Store",
+            "editTitle": "Edit {{name}}",
+            "addButton": "Add Vector Store"
+        },
+        "messages": {
+            "getError": "Failed to get assistant: {{error}}",
+            "addSuccess": "New Assistant added",
+            "addError": "Failed to add new Assistant: {{error}}",
+            "saveSuccess": "Assistant saved",
+            "saveError": "Failed to save Assistant: {{error}}",
+            "syncSuccess": "Assistant successfully synced!",
+            "syncError": "Failed to sync Assistant: {{error}}",
+            "deleteSuccess": "Assistant deleted",
+            "deleteError": "Failed to delete Assistant: {{error}}",
+            "fileUploadSuccess": "File uploaded successfully!",
+            "fileUploadError": "Failed to upload file: {{error}}"
+        }
+    },
+    "assistantVectorStore": {
+        "selectLabel": "Select Vector Store",
+        "nameLabel": "Vector Store Name",
+        "namePlaceholder": "My Vector Store",
+        "expirationLabel": "Vector Store Expiration",
+        "expirationDaysLabel": "Expiration Days",
+        "chooseOption": "choose an option",
+        "deleteButton": "Delete",
+        "messages": {
+            "deleteSuccess": "Vector Store deleted",
+            "deleteError": "Failed to delete Vector Store: {{error}}",
+            "addSuccess": "New Vector Store added",
+            "addError": "Failed to add new Vector Store: {{error}}",
+            "saveSuccess": "Vector Store saved",
+            "saveError": "Failed to save Vector Store: {{error}}"
+        }
+    },
+    "loadAssistant": {
+        "credentialLabel": "OpenAI Credential",
+        "connectCredential": "Connect Credential",
+        "assistantsLabel": "Assistants",
+        "chooseOption": "choose an option",
+        "loadButton": "Load"
+    },
+    "editUser": {
+        "title": "Edit User",
+        "emailLabel": "Email",
+        "nameLabel": "Name",
+        "accountStatusLabel": "Account Status",
+        "statusActive": "Active",
+        "statusInactive": "Inactive",
+        "statusPlaceholder": "choose an option",
+        "ownerStatusWarning": "Cannot change status of the organization owner!",
+        "updateSuccess": "User Details Updated",
+        "updateError": "Failed to update User: {{error}}"
+    },
+    "createEditRole": {
+        "titleCreate": "Create New Role",
+        "titleEdit": "Edit Role",
+        "titleView": "View Role",
+        "roleNameLabel": "Role Name",
+        "roleNamePlaceholder": "Enter role name",
+        "roleDescriptionLabel": "Role Description",
+        "roleDescriptionPlaceholder": "Description of the role",
+        "permissionsLabel": "Permissions",
+        "selectAllButton": "Select All",
+        "cancelButton": "Cancel",
+        "closeButton": "Close",
+        "createButton": "Create Role",
+        "updateButton": "Update Role",
+        "spaceError": "Role Name cannot contain spaces.",
+        "createSuccess": "New Role Created!",
+        "updateSuccess": "Role Updated Successfully",
+        "saveError": "Failed : {{error}}"
+    },
+    "inviteUsers": {
+        "title": "Invite Users",
+        "selectUsersLabel": "Select Users",
+        "selectUsersPlaceholder": "Invite users by name or email",
+        "workspaceLabel": "Workspace",
+        "workspaceRequired": "Workspace",
+        "workspacePlaceholder": "Select Workspace",
+        "roleLabel": "Role to Assign",
+        "roleRequired": "Role to Assign",
+        "rolePlaceholder": "Select Role",
+        "invitePrefix": "Invite",
+        "noResults": "No results found",
+        "alreadyInWorkspace": "{{name}} is already a member of this workspace and won't be invited again.",
+        "newUserTooltip": "An invitation will be sent to this email address",
+        "invalidEmailRemoved": "One or more invalid emails were removed.",
+        "alreadyExistsError": "The following users are already in the workspace or organization: {{emails}}",
+        "inviteSuccess": "Users invited to workspace",
+        "inviteError": "Failed to invite users to workspace: {{error}}"
+    },
+    "addVariable": {
+        "titleAdd": "Add Variable",
+        "titleEdit": "Edit Variable",
+        "nameLabel": "Variable Name",
+        "typeLabel": "Type",
+        "valueLabel": "Value",
+        "addSuccess": "New Variable added",
+        "addError": "Failed to add new Variable: {{error}}",
+        "saveSuccess": "Variable saved",
+        "saveError": "Failed to save Variable: {{error}}"
+    },
+    "howToUseVariables": {
+        "title": "How To Use Variables",
+        "description1": "Variables can be used in Custom Tool, Custom Function, Custom Loader, If Else Function with the $ prefix.",
+        "description2": "Variables can also be used in Text Field parameter of any node. For example, in System Message of Agent:",
+        "description3": "If variable type is Static, the value will be retrieved as it is. If variable type is Runtime, the value will be retrieved from .env file.",
+        "description4": "You can also override variable values in API overrideConfig using <1>vars</1>:",
+        "readMore": "Read more from",
+        "docs": "docs"
+    },
+    "addEvaluator": {
+        "titleAdd": "Add Evaluator",
+        "titleEdit": "Edit Evaluator",
+        "nameLabel": "Name",
+        "typeLabel": "Evaluator Type",
+        "typeSelect": "Select Type",
+        "availableEvaluators": "Available Evaluators",
+        "selectDataset": "Select Dataset",
+        "selectOperator": "Select Operator",
+        "valueLabel": "Value",
+        "outputSchema": "Output Schema",
+        "outputSchemaTooltip": "What is the output format in JSON?",
+        "loadSamples": "Load from Pre defined Samples",
+        "addItem": "Add Item",
+        "promptLabel": "Prompt",
+        "expand": "Expand",
+        "evaluationPrompt": "Evaluation Prompt",
+        "promptHint": "You can use <1>question</1> <2>actualOutput</2> <3>expectedOutput</3> to inject runtime values into your prompt.",
+        "columns": {
+            "property": "Property",
+            "type": "Type",
+            "description": "Description",
+            "required": "Required",
+            "delete": "Delete"
+        },
+        "addSuccess": "New Evaluator added",
+        "addError": "Failed to add new Evaluator: {{error}}",
+        "updateSuccess": "Evaluator {{name}} updated",
+        "updateError": "Failed to update Evaluator {{name}}: {{error}}"
+    },
+    "samplePrompt": {
+        "title": "Sample Prompts",
+        "availablePrompts": "Available Prompts",
+        "selectPrompt": "Select Prompt",
+        "outputSchema": "Output Schema",
+        "outputSchemaTooltip": "Instruct the LLM to give formatted JSON output",
+        "promptLabel": "Prompt",
+        "selectButton": "Select Prompt",
+        "columns": {
+            "property": "Property",
+            "type": "Type",
+            "description": "Description",
+            "required": "Required"
+        }
     }
 }

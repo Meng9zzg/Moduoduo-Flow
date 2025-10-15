@@ -10,6 +10,7 @@ import { IconPencil, IconX, IconCheck, IconInfoCircle } from '@tabler/icons-reac
 import { useTheme } from '@mui/material/styles'
 import { flowContext } from '@/store/context/ReactFlowContext'
 import { showHideInputParams } from '@/utils/genericHelper'
+import { useTranslation } from 'react-i18next'
 
 const EditNodeDialog = ({ show, dialogProps, onCancel }) => {
     const portalElement = document.getElementById('portal')
@@ -19,6 +20,7 @@ const EditNodeDialog = ({ show, dialogProps, onCancel }) => {
     const nodeNameRef = useRef()
     const { reactFlowInstance } = useContext(flowContext)
     const updateNodeInternals = useUpdateNodeInternals()
+    const { t } = useTranslation('dialog')
 
     const [inputParams, setInputParams] = useState([])
     const [data, setData] = useState({})
@@ -125,7 +127,7 @@ const EditNodeDialog = ({ show, dialogProps, onCancel }) => {
                                 </Typography>
 
                                 {data?.id && (
-                                    <ButtonBase title='Edit Name' sx={{ borderRadius: '50%' }}>
+                                    <ButtonBase title={t('editNode.editName')} sx={{ borderRadius: '50%' }}>
                                         <Avatar
                                             variant='rounded'
                                             sx={{
@@ -171,7 +173,7 @@ const EditNodeDialog = ({ show, dialogProps, onCancel }) => {
                                         }
                                     }}
                                 />
-                                <ButtonBase title='Save Name' sx={{ borderRadius: '50%' }}>
+                                <ButtonBase title={t('editNode.saveName')} sx={{ borderRadius: '50%' }}>
                                     <Avatar
                                         variant='rounded'
                                         sx={{
@@ -197,7 +199,7 @@ const EditNodeDialog = ({ show, dialogProps, onCancel }) => {
                                         <IconCheck stroke={1.5} size='1rem' />
                                     </Avatar>
                                 </ButtonBase>
-                                <ButtonBase title='Cancel' sx={{ borderRadius: '50%' }}>
+                                <ButtonBase title={t('editNode.cancel')} sx={{ borderRadius: '50%' }}>
                                     <Avatar
                                         variant='rounded'
                                         sx={{

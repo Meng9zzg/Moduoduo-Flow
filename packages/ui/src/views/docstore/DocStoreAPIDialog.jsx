@@ -1,6 +1,7 @@
 import { createPortal } from 'react-dom'
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 import { MemoizedReactMarkdown } from '@/ui-component/markdown/MemoizedReactMarkdown'
 import {
     Typography,
@@ -24,6 +25,7 @@ import { IconInfoCircle } from '@tabler/icons-react'
 import { baseURL } from '@/store/constant'
 
 const DocStoreAPIDialog = ({ show, dialogProps, onCancel }) => {
+    const { t } = useTranslation('dialog')
     const [nodeConfig, setNodeConfig] = useState({})
     const [values, setValues] = useState('')
     const theme = useTheme()
@@ -349,7 +351,7 @@ curl -X POST ${baseURL}/api/v1/document-store/upsert/${dialogProps.storeId} \\
                         }}
                     />
                     <Box sx={{ flex: 1 }}>
-                        <strong>Note:</strong> Upsert API can only be used when the existing document loader has been upserted before.
+                        <strong>{t('docStoreAPI.noteTitle')}</strong> {t('docStoreAPI.noteMessage')}
                     </Box>
                 </Box>
 
@@ -357,7 +359,7 @@ curl -X POST ${baseURL}/api/v1/document-store/upsert/${dialogProps.storeId} \\
 
                 <MemoizedReactMarkdown>{values}</MemoizedReactMarkdown>
 
-                <Typography sx={{ mt: 3, mb: 1 }}>You can override existing configurations:</Typography>
+                <Typography sx={{ mt: 3, mb: 1 }}>{t('docStoreAPI.overrideConfigTitle')}</Typography>
 
                 <Stack direction='column' spacing={2} sx={{ width: '100%', my: 2 }}>
                     <Card sx={{ borderColor: theme.palette.primary[200] + 75, p: 2 }} variant='outlined'>

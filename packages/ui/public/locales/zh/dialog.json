@@ -304,5 +304,322 @@
         "saveButton": "保存模板",
         "saveSuccess": "成功保存为模板！",
         "saveError": "保存为模板失败！"
+    },
+    "addDocStore": {
+        "nameLabel": "名称",
+        "descriptionLabel": "描述",
+        "cancelButton": "取消",
+        "newStoreCreated": "新文档存储创建成功",
+        "failedToAdd": "添加新文档存储失败",
+        "storeUpdated": "文档存储更新成功",
+        "failedToUpdate": "更新文档存储失败"
+    },
+    "deleteDocStore": {
+        "removeFromVSCheckbox": "从向量存储和记录管理器中删除数据",
+        "warningNote": "* 只有使用记录管理器上传的数据才会从向量存储中删除",
+        "cancelButton": "取消",
+        "deleteButton": "删除"
+    },
+    "docStoreAPI": {
+        "noteTitle": "注意：",
+        "noteMessage": "上传 API 只能在现有文档加载器之前已上传的情况下使用。",
+        "overrideConfigTitle": "您可以覆盖现有配置："
+    },
+    "componentsList": {
+        "searchPlaceholder": "搜索",
+        "clearSearch": "清除搜索"
+    },
+    "documentLoaderList": {
+        "searchPlaceholder": "搜索",
+        "clearSearch": "清除搜索"
+    },
+    "expandedChunk": {
+        "editChunkTitle": "编辑块",
+        "deleteChunkTitle": "删除块",
+        "closeTitle": "关闭",
+        "cancelButton": "取消",
+        "saveButton": "保存",
+        "charactersLabel": "字符"
+    },
+    "upsertHistoryDetails": {
+        "addedLabel": "已添加",
+        "updatedLabel": "已更新",
+        "skippedLabel": "已跳过",
+        "deletedLabel": "已删除"
+    },
+    "vectorStore": {
+        "showApi": "显示 API",
+        "upsert": "上传",
+        "upsertSuccess": "成功上传向量存储。您现在可以开始聊天了！",
+        "securityWarning": "出于安全原因，覆盖配置默认禁用。您可以通过进入聊天流配置 -> 安全选项卡来更改此设置，并启用要覆盖的属性。",
+        "refer": "参考",
+        "here": "这里",
+        "moreDetails": "了解更多详情",
+        "multipleValuesTip": "您还可以通过指定节点 ID 来为配置参数指定多个值"
+    },
+    "upsertHistory": {
+        "fromDate": "开始日期",
+        "toDate": "结束日期",
+        "deleteRows": "删除 {{count}} 行",
+        "noHistory": "暂无上传历史",
+        "date": "日期",
+        "added": "已添加",
+        "addedTooltip": "添加到向量存储的向量嵌入数量",
+        "updated": "已更新",
+        "updatedTooltip": "更新现有的向量嵌入。仅当记录管理器连接到向量存储时才有效",
+        "skipped": "已跳过",
+        "skippedTooltip": "存在相同的向量嵌入数量，已跳过重新上传。仅当记录管理器连接到向量存储时才有效",
+        "deleted": "已删除",
+        "deletedTooltip": "删除的向量嵌入。仅当具有清理方法的记录管理器连接到向量存储时才有效",
+        "details": "详情",
+        "deleteSuccess": "成功删除上传历史",
+        "deleteError": "删除上传历史失败：{{error}}",
+        "close": "关闭"
+    },
+    "upsertResult": {
+        "title": "上传记录",
+        "added": "已添加",
+        "updated": "已更新",
+        "skipped": "已跳过",
+        "deleted": "已删除",
+        "addedDocuments": "{{count}} 个已添加文档",
+        "testRetrieval": "测试检索",
+        "close": "关闭"
+    },
+    "editNode": {
+        "editName": "编辑名称",
+        "saveName": "保存名称",
+        "cancel": "取消"
+    },
+    "shareExecution": {
+        "title": "公共追踪链接",
+        "description": "任何拥有以下链接的人都可以查看此执行追踪。",
+        "copy": "复制",
+        "copyLink": "复制链接",
+        "copied": "已复制！",
+        "linkCopied": "链接已复制到剪贴板",
+        "unshare": "取消分享",
+        "close": "关闭"
+    },
+    "agentflowGenerator": {
+        "generating": "正在生成您的智能体流...",
+        "placeholder": "在此描述您的智能体",
+        "selectModel": "选择生成智能体流的模型",
+        "chooseOption": "选择一个选项",
+        "generate": "生成",
+        "back": "返回",
+        "generateFailed": "生成智能体流失败",
+        "examples": {
+            "webSearch": "一个可以自主搜索网络并生成报告的智能体",
+            "summarizeDoc": "总结文档",
+            "slackResponse": "生成对用户查询的响应并发送到 Slack",
+            "customerTeam": "一个可以处理所有客户查询的智能体团队"
+        }
+    },
+    "customAssistant": {
+        "nameLabel": "名称",
+        "cancelButton": "取消",
+        "messages": {
+            "createSuccess": "已创建新的自定义助手",
+            "createError": "添加新自定义助手失败：{{error}}"
+        }
+    },
+    "assistant": {
+        "credentialLabel": "OpenAI 凭证",
+        "connectCredential": "连接凭证",
+        "modelLabel": "助手模型",
+        "nameLabel": "助手名称",
+        "nameTooltip": "助手的名称。最大长度为256个字符。",
+        "namePlaceholder": "我的新助手",
+        "descriptionLabel": "助手描述",
+        "descriptionTooltip": "助手的描述。最大长度为512个字符。",
+        "descriptionPlaceholder": "助手功能的描述",
+        "iconLabel": "助手图标源",
+        "instructionsLabel": "助手指令",
+        "instructionsTooltip": "助手使用的系统指令。最大长度为32768个字符。",
+        "instructionsPlaceholder": "你是一个私人数学导师。当被问到问题时，编写并运行 Python 代码来回答问题。",
+        "temperatureLabel": "助手温度",
+        "temperatureTooltip": "控制随机性：降低会导致更少的随机完成。随着温度接近零，模型将变得确定性和重复性。",
+        "topPLabel": "助手 Top P",
+        "topPTooltip": "通过核采样控制多样性：0.5 表示考虑一半的可能性加权选项。",
+        "toolsLabel": "助手工具",
+        "toolsTooltip": "助手上启用的工具列表。每个助手最多可以有128个工具。",
+        "chooseOption": "选择一个选项",
+        "cancelButton": "取消",
+        "saveButton": "保存",
+        "addButton": "添加",
+        "syncButton": "同步",
+        "deleteButton": "删除",
+        "deleteTitle": "删除助手",
+        "deleteDescription": "选择 {{name}} 的删除方法",
+        "tools": {
+            "codeInterpreter": "代码解释器",
+            "fileSearch": "文件搜索"
+        },
+        "codeInterpreter": {
+            "label": "代码解释器文件",
+            "tooltip": "代码解释器使助手能够编写和运行代码。此工具可以处理具有不同数据和格式的文件，并生成图表等文件"
+        },
+        "fileSearch": {
+            "label": "文件搜索文件",
+            "tooltip": "文件搜索使助手能够从您或您的用户上传的文件中获取知识。文件上传后，助手会根据用户请求自动决定何时检索内容"
+        },
+        "vectorStore": {
+            "addTitle": "添加向量存储",
+            "editTitle": "编辑 {{name}}",
+            "addButton": "添加向量存储"
+        },
+        "messages": {
+            "getError": "获取助手失败：{{error}}",
+            "addSuccess": "已添加新助手",
+            "addError": "添加新助手失败：{{error}}",
+            "saveSuccess": "助手已保存",
+            "saveError": "保存助手失败：{{error}}",
+            "syncSuccess": "助手同步成功！",
+            "syncError": "同步助手失败：{{error}}",
+            "deleteSuccess": "助手已删除",
+            "deleteError": "删除助手失败：{{error}}",
+            "fileUploadSuccess": "文件上传成功！",
+            "fileUploadError": "上传文件失败：{{error}}"
+        }
+    },
+    "assistantVectorStore": {
+        "selectLabel": "选择向量存储",
+        "nameLabel": "向量存储名称",
+        "namePlaceholder": "我的向量存储",
+        "expirationLabel": "向量存储过期",
+        "expirationDaysLabel": "过期天数",
+        "chooseOption": "选择一个选项",
+        "deleteButton": "删除",
+        "messages": {
+            "deleteSuccess": "向量存储已删除",
+            "deleteError": "删除向量存储失败：{{error}}",
+            "addSuccess": "已添加新向量存储",
+            "addError": "添加新向量存储失败：{{error}}",
+            "saveSuccess": "向量存储已保存",
+            "saveError": "保存向量存储失败：{{error}}"
+        }
+    },
+    "loadAssistant": {
+        "credentialLabel": "OpenAI 凭证",
+        "connectCredential": "连接凭证",
+        "assistantsLabel": "助手",
+        "chooseOption": "选择一个选项",
+        "loadButton": "加载"
+    },
+    "editUser": {
+        "title": "编辑用户",
+        "emailLabel": "邮箱",
+        "nameLabel": "名称",
+        "accountStatusLabel": "账户状态",
+        "statusActive": "活跃",
+        "statusInactive": "非活跃",
+        "statusPlaceholder": "选择一个选项",
+        "ownerStatusWarning": "无法更改组织所有者的状态！",
+        "updateSuccess": "用户详情已更新",
+        "updateError": "更新用户失败：{{error}}"
+    },
+    "createEditRole": {
+        "titleCreate": "创建新角色",
+        "titleEdit": "编辑角色",
+        "titleView": "查看角色",
+        "roleNameLabel": "角色名称",
+        "roleNamePlaceholder": "输入角色名称",
+        "roleDescriptionLabel": "角色描述",
+        "roleDescriptionPlaceholder": "角色的描述",
+        "permissionsLabel": "权限",
+        "selectAllButton": "全选",
+        "cancelButton": "取消",
+        "closeButton": "关闭",
+        "createButton": "创建角色",
+        "updateButton": "更新角色",
+        "spaceError": "角色名称不能包含空格。",
+        "createSuccess": "新角色创建成功！",
+        "updateSuccess": "角色更新成功",
+        "saveError": "失败：{{error}}"
+    },
+    "inviteUsers": {
+        "title": "邀请用户",
+        "selectUsersLabel": "选择用户",
+        "selectUsersPlaceholder": "通过姓名或邮箱邀请用户",
+        "workspaceLabel": "工作区",
+        "workspaceRequired": "工作区",
+        "workspacePlaceholder": "选择工作区",
+        "roleLabel": "分配角色",
+        "roleRequired": "分配角色",
+        "rolePlaceholder": "选择角色",
+        "invitePrefix": "邀请",
+        "noResults": "未找到结果",
+        "alreadyInWorkspace": "{{name}} 已经是该工作区的成员，不会再次邀请。",
+        "newUserTooltip": "将向该邮箱地址发送邀请",
+        "invalidEmailRemoved": "已删除一个或多个无效邮箱。",
+        "alreadyExistsError": "以下用户已在工作区或组织中：{{emails}}",
+        "inviteSuccess": "已邀请用户至工作区",
+        "inviteError": "邀请用户至工作区失败：{{error}}"
+    },
+    "addVariable": {
+        "titleAdd": "添加变量",
+        "titleEdit": "编辑变量",
+        "nameLabel": "变量名称",
+        "typeLabel": "类型",
+        "valueLabel": "值",
+        "addSuccess": "已添加新变量",
+        "addError": "添加新变量失败：{{error}}",
+        "saveSuccess": "变量已保存",
+        "saveError": "保存变量失败：{{error}}"
+    },
+    "howToUseVariables": {
+        "title": "如何使用变量",
+        "description1": "变量可以在自定义工具、自定义函数、自定义加载器、If Else 函数中使用 $ 前缀。",
+        "description2": "变量也可以在任何节点的文本字段参数中使用。例如，在智能体的系统消息中：",
+        "description3": "如果变量类型是静态的，将按原样检索值。如果变量类型是运行时的，将从 .env 文件中检索值。",
+        "description4": "您还可以使用 <1>vars</1> 在 API overrideConfig 中覆盖变量值：",
+        "readMore": "阅读更多来自",
+        "docs": "文档"
+    },
+    "addEvaluator": {
+        "titleAdd": "添加评估器",
+        "titleEdit": "编辑评估器",
+        "nameLabel": "名称",
+        "typeLabel": "评估器类型",
+        "typeSelect": "选择类型",
+        "availableEvaluators": "可用评估器",
+        "selectDataset": "选择数据集",
+        "selectOperator": "选择操作符",
+        "valueLabel": "值",
+        "outputSchema": "输出架构",
+        "outputSchemaTooltip": "JSON 格式的输出格式是什么？",
+        "loadSamples": "从预定义样本加载",
+        "addItem": "添加项目",
+        "promptLabel": "提示词",
+        "expand": "展开",
+        "evaluationPrompt": "评估提示词",
+        "promptHint": "您可以使用 <1>question</1> <2>actualOutput</2> <3>expectedOutput</3> 在提示词中注入运行时值。",
+        "columns": {
+            "property": "属性",
+            "type": "类型",
+            "description": "描述",
+            "required": "必填",
+            "delete": "删除"
+        },
+        "addSuccess": "已添加新评估器",
+        "addError": "添加新评估器失败：{{error}}",
+        "updateSuccess": "评估器 {{name}} 已更新",
+        "updateError": "更新评估器 {{name}} 失败：{{error}}"
+    },
+    "samplePrompt": {
+        "title": "示例提示词",
+        "availablePrompts": "可用提示词",
+        "selectPrompt": "选择提示词",
+        "outputSchema": "输出架构",
+        "outputSchemaTooltip": "指示 LLM 给出格式化的 JSON 输出",
+        "promptLabel": "提示词",
+        "selectButton": "选择提示词",
+        "columns": {
+            "property": "属性",
+            "type": "类型",
+            "description": "描述",
+            "required": "必填"
+        }
     }
 }

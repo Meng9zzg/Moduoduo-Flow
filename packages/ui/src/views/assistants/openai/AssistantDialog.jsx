@@ -2,6 +2,7 @@ import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import { useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction } from '@/store/actions'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -120,6 +121,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
     const portalElement = document.getElementById('portal')
     useNotifier()
     const dispatch = useDispatch()
+    const { t } = useTranslation('dialog')
     const enqueueSnackbar = (...args) => dispatch(enqueueSnackbarAction(...args))
     const closeSnackbar = (...args) => dispatch(closeSnackbarAction(...args))
     const customization = useSelector((state) => state.customization)
@@ -187,7 +189,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                 errMsg = typeof error.response.data === 'object' ? error.response.data.message : error.response.data
             }
             enqueueSnackbar({
-                message: `Failed to get assistant: ${errMsg}`,
+                message: t('assistant.messages.getError', { error: errMsg }),
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -211,7 +213,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                 errMsg = typeof error.response.data === 'object' ? error.response.data.message : error.response.data
             }
             enqueueSnackbar({
-                message: `Failed to get assistant: ${errMsg}`,
+                message: t('assistant.messages.getError', { error: errMsg }),
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -315,10 +317,10 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
 
     const onEditAssistantVectorStoreClick = (vectorStoreObject) => {
         const dialogProp = {
-            title: `Edit ${vectorStoreObject.name ? vectorStoreObject.name : vectorStoreObject.id}`,
+            title: t('assistant.vectorStore.editTitle', { name: vectorStoreObject.name ? vectorStoreObject.name : vectorStoreObject.id }),
             type: 'EDIT',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Save',
+            cancelButtonName: t('assistant.cancelButton'),
+            confirmButtonName: t('assistant.saveButton'),
             data: vectorStoreObject,
             credential: assistantCredential
         }
@@ -328,10 +330,10 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
 
     const onAddAssistantVectorStoreClick = () => {
         const dialogProp = {
-            title: `Add Vector Store`,
+            title: t('assistant.vectorStore.addTitle'),
             type: 'ADD',
-            cancelButtonName: 'Cancel',
-            confirmButtonName: 'Add',
+            cancelButtonName: t('assistant.cancelButton'),
+            confirmButtonName: t('assistant.addButton'),
             credential: assistantCredential
         }
         setAssistantVectorStoreDialogProps(dialogProp)
@@ -362,7 +364,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             const createResp = await assistantsApi.createNewAssistant(obj)
             if (createResp.data) {
                 enqueueSnackbar({
-                    message: 'New Assistant added',
+                    message: t('assistant.messages.addSuccess'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -378,9 +380,9 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             setLoading(false)
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to add new Assistant: ${
-                    typeof error.response.data === 'object' ? error.response.data.message : error.response.data
-                }`,
+                message: t('assistant.messages.addError', {
+                    error: typeof error.response.data === 'object' ? error.response.data.message : error.response.data
+                }),
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -417,7 +419,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             const saveResp = await assistantsApi.updateAssistant(assistantId, obj)
             if (saveResp.data) {
                 enqueueSnackbar({
-                    message: 'Assistant saved',
+                    message: t('assistant.messages.saveSuccess'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -433,9 +435,9 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             setLoading(false)
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to save Assistant: ${
-                    typeof error.response.data === 'object' ? error.response.data.message : error.response.data
-                }`,
+                message: t('assistant.messages.saveError', {
+                    error: typeof error.response.data === 'object' ? error.response.data.message : error.response.data
+                }),
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -458,7 +460,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             if (getResp.data) {
                 syncData(getResp.data)
                 enqueueSnackbar({
-                    message: 'Assistant successfully synced!',
+                    message: t('assistant.messages.syncSuccess'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -473,9 +475,9 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             setLoading(false)
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to sync Assistant: ${
-                    typeof error.response.data === 'object' ? error.response.data.message : error.response.data
-                }`,
+                message: t('assistant.messages.syncError', {
+                    error: typeof error.response.data === 'object' ? error.response.data.message : error.response.data
+                }),
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -498,7 +500,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             const uploadResp = await assistantsApi.uploadFilesToAssistantVectorStore(vectorStoreId, assistantCredential, formData)
             if (uploadResp.data) {
                 enqueueSnackbar({
-                    message: 'File uploaded successfully!',
+                    message: t('assistant.messages.fileUploadSuccess'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -524,9 +526,9 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             setLoading(false)
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to upload file: ${
-                    typeof error.response.data === 'object' ? error.response.data.message : error.response.data
-                }`,
+                message: t('assistant.messages.fileUploadError', {
+                    error: typeof error.response.data === 'object' ? error.response.data.message : error.response.data
+                }),
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -548,7 +550,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             const uploadResp = await assistantsApi.uploadFilesToAssistant(assistantCredential, formData)
             if (uploadResp.data) {
                 enqueueSnackbar({
-                    message: 'File uploaded successfully!',
+                    message: t('assistant.messages.fileUploadSuccess'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -576,9 +578,9 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             setLoading(false)
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to upload file: ${
-                    typeof error.response.data === 'object' ? error.response.data.message : error.response.data
-                }`,
+                message: t('assistant.messages.fileUploadError', {
+                    error: typeof error.response.data === 'object' ? error.response.data.message : error.response.data
+                }),
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -607,9 +609,9 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
 
     const onDeleteClick = () => {
         setDeleteDialogProps({
-            title: `Delete Assistant`,
-            description: `Select delete method for ${assistantName}`,
-            cancelButtonName: 'Cancel'
+            title: t('assistant.deleteTitle'),
+            description: t('assistant.deleteDescription', { name: assistantName }),
+            cancelButtonName: t('assistant.cancelButton')
         })
         setDeleteDialogOpen(true)
     }
@@ -620,7 +622,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             const delResp = await assistantsApi.deleteAssistant(assistantId, isDeleteBoth)
             if (delResp.data) {
                 enqueueSnackbar({
-                    message: 'Assistant deleted',
+                    message: t('assistant.messages.deleteSuccess'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -635,9 +637,9 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
             }
         } catch (error) {
             enqueueSnackbar({
-                message: `Failed to delete Assistant: ${
-                    typeof error.response.data === 'object' ? error.response.data.message : error.response.data
-                }`,
+                message: t('assistant.messages.deleteError', {
+                    error: typeof error.response.data === 'object' ? error.response.data.message : error.response.data
+                }),
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -704,7 +706,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                     <Box>
                         <Stack sx={{ position: 'relative' }} direction='row'>
                             <Typography variant='overline'>
-                                OpenAI Credential
+                                {t('assistant.credentialLabel')}
                                 <span style={{ color: 'red' }}>&nbsp;*</span>
                             </Typography>
                         </Stack>
@@ -712,7 +714,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                             key={assistantCredential}
                             data={assistantCredential ? { credential: assistantCredential } : {}}
                             inputParam={{
-                                label: 'Connect Credential',
+                                label: t('assistant.connectCredential'),
                                 name: 'credential',
                                 type: 'credential',
                                 credentialNames: ['openAIApi']
@@ -723,7 +725,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                     <Box>
                         <Stack sx={{ position: 'relative' }} direction='row'>
                             <Typography variant='overline'>
-                                Assistant Model
+                                {t('assistant.modelLabel')}
                                 <span style={{ color: 'red' }}>&nbsp;*</span>
                             </Typography>
                         </Stack>
@@ -732,20 +734,20 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                             name={assistantModel}
                             options={assistantAvailableModels}
                             onSelect={(newValue) => setAssistantModel(newValue)}
-                            value={assistantModel ?? 'choose an option'}
+                            value={assistantModel ?? t('assistant.chooseOption')}
                         />
                     </Box>
                     <Box>
                         <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                            <Typography variant='overline'>Assistant Name</Typography>
-                            <TooltipWithParser title={'The name of the assistant. The maximum length is 256 characters.'} />
+                            <Typography variant='overline'>{t('assistant.nameLabel')}</Typography>
+                            <TooltipWithParser title={t('assistant.nameTooltip')} />
                         </Stack>
                         <OutlinedInput
                             id='assistantName'
                             type='string'
                             size='small'
                             fullWidth
-                            placeholder='My New Assistant'
+                            placeholder={t('assistant.namePlaceholder')}
                             value={assistantName}
                             name='assistantName'
                             onChange={(e) => setAssistantName(e.target.value)}
@@ -753,15 +755,15 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                     </Box>
                     <Box>
                         <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                            <Typography variant='overline'>Assistant Description</Typography>
-                            <TooltipWithParser title={'The description of the assistant. The maximum length is 512 characters.'} />
+                            <Typography variant='overline'>{t('assistant.descriptionLabel')}</Typography>
+                            <TooltipWithParser title={t('assistant.descriptionTooltip')} />
                         </Stack>
                         <OutlinedInput
                             id='assistantDesc'
                             type='string'
                             size='small'
                             fullWidth
-                            placeholder='Description of what the Assistant does'
+                            placeholder={t('assistant.descriptionPlaceholder')}
                             multiline={true}
                             rows={3}
                             value={assistantDesc}
@@ -771,7 +773,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                     </Box>
                     <Box>
                         <Stack sx={{ position: 'relative' }} direction='row'>
-                            <Typography variant='overline'>Assistant Icon Src</Typography>
+                            <Typography variant='overline'>{t('assistant.iconLabel')}</Typography>
                         </Stack>
                         <div
                             style={{
@@ -806,17 +808,15 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                     </Box>
                     <Box>
                         <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                            <Typography variant='overline'>Assistant Instruction</Typography>
-                            <TooltipWithParser
-                                title={'The system instructions that the assistant uses. The maximum length is 32768 characters.'}
-                            />
+                            <Typography variant='overline'>{t('assistant.instructionsLabel')}</Typography>
+                            <TooltipWithParser title={t('assistant.instructionsTooltip')} />
                         </Stack>
                         <OutlinedInput
                             id='assistantInstructions'
                             type='string'
                             size='small'
                             fullWidth
-                            placeholder='You are a personal math tutor. When asked a question, write and run Python code to answer the question.'
+                            placeholder={t('assistant.instructionsPlaceholder')}
                             multiline={true}
                             rows={3}
                             value={assistantInstructions}
@@ -826,12 +826,8 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                     </Box>
                     <Box>
                         <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                            <Typography variant='overline'>Assistant Temperature</Typography>
-                            <TooltipWithParser
-                                title={
-                                    'Controls randomness: Lowering results in less random completions. As the temperature approaches zero, the model will become deterministic and repetitive.'
-                                }
-                            />
+                            <Typography variant='overline'>{t('assistant.temperatureLabel')}</Typography>
+                            <TooltipWithParser title={t('assistant.temperatureTooltip')} />
                         </Stack>
                         <OutlinedInput
                             id='assistantTemp'
@@ -845,12 +841,8 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                     </Box>
                     <Box>
                         <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                            <Typography variant='overline'>Assistant Top P</Typography>
-                            <TooltipWithParser
-                                title={
-                                    'Controls diversity via nucleus sampling: 0.5 means half of all likelihood-weighted options are considered.'
-                                }
-                            />
+                            <Typography variant='overline'>{t('assistant.topPLabel')}</Typography>
+                            <TooltipWithParser title={t('assistant.topPTooltip')} />
                         </Stack>
                         <OutlinedInput
                             id='assistantTopP'
@@ -868,19 +860,19 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                         <>
                             <Box>
                                 <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                                    <Typography variant='overline'>Assistant Tools</Typography>
-                                    <TooltipWithParser title='A list of tool enabled on the assistant. There can be a maximum of 128 tools per assistant.' />
+                                    <Typography variant='overline'>{t('assistant.toolsLabel')}</Typography>
+                                    <TooltipWithParser title={t('assistant.toolsTooltip')} />
                                 </Stack>
                                 <MultiDropdown
                                     key={JSON.stringify(assistantTools)}
                                     name={JSON.stringify(assistantTools)}
                                     options={[
                                         {
-                                            label: 'Code Interpreter',
+                                            label: t('assistant.tools.codeInterpreter'),
                                             name: 'code_interpreter'
                                         },
                                         {
-                                            label: 'File Search',
+                                            label: t('assistant.tools.fileSearch'),
                                             name: 'file_search'
                                         }
                                     ]}
@@ -890,7 +882,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                                             dialogRef?.current?.scrollTo({ top: maxScroll })
                                         }, 100)
                                     }}
-                                    value={assistantTools ?? 'choose an option'}
+                                    value={assistantTools ?? t('assistant.chooseOption')}
                                 />
                             </Box>
                             <Box>
@@ -898,8 +890,8 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                                     <Card sx={{ mb: 2, border: '1px solid #e0e0e0', borderRadius: `${customization.borderRadius}px` }}>
                                         <CardContent>
                                             <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                                                <Typography variant='overline'>Code Interpreter Files</Typography>
-                                                <TooltipWithParser title='Code Interpreter enables the assistant to write and run code. This tool can process files with diverse data and formatting, and generate files such as graphs' />
+                                                <Typography variant='overline'>{t('assistant.codeInterpreter.label')}</Typography>
+                                                <TooltipWithParser title={t('assistant.codeInterpreter.tooltip')} />
                                             </Stack>
                                             {toolResources?.code_interpreter?.files?.length > 0 && (
                                                 <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
@@ -950,8 +942,8 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                                     <Card sx={{ mb: 2, border: '1px solid #e0e0e0', borderRadius: `${customization.borderRadius}px` }}>
                                         <CardContent>
                                             <Stack sx={{ position: 'relative', alignItems: 'center' }} direction='row'>
-                                                <Typography variant='overline'>File Search Files</Typography>
-                                                <TooltipWithParser title='File search enables the assistant with knowledge from files that you or your users upload. Once a file is uploaded, the assistant automatically decides when to retrieve content based on user requests' />
+                                                <Typography variant='overline'>{t('assistant.fileSearch.label')}</Typography>
+                                                <TooltipWithParser title={t('assistant.fileSearch.tooltip')} />
                                             </Stack>
                                             {toolResources?.file_search?.vector_store_object && (
                                                 <Chip
@@ -1014,7 +1006,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                                                     sx={{ marginRight: '1rem' }}
                                                     onClick={() => onAddAssistantVectorStoreClick()}
                                                 >
-                                                    Add Vector Store
+                                                    {t('assistant.vectorStore.addButton')}
                                                 </Button>
                                             ) : (
                                                 <File
@@ -1042,7 +1034,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                         variant='contained'
                         onClick={() => onSyncClick()}
                     >
-                        Sync
+                        {t('assistant.syncButton')}
                     </StyledPermissionButton>
                 )}
                 {dialogProps.type === 'EDIT' && (
@@ -1052,7 +1044,7 @@ const AssistantDialog = ({ show, dialogProps, onCancel, onConfirm, setError }) =
                         variant='contained'
                         onClick={() => onDeleteClick()}
                     >
-                        Delete
+                        {t('assistant.deleteButton')}
                     </StyledPermissionButton>
                 )}
                 <StyledPermissionButton

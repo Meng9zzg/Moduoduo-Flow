@@ -2,6 +2,7 @@ import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
 import { useContext, useState, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import { CopyBlock, atomOneDark } from 'react-code-blocks'
 
@@ -82,6 +83,7 @@ const VectorStoreDialog = ({ show, dialogProps, onCancel, onIndexResult }) => {
     const portalElement = document.getElementById('portal')
     const { reactFlowInstance } = useContext(flowContext)
     const dispatch = useDispatch()
+    const { t } = useTranslation('dialog')
 
     useNotifier()
     const enqueueSnackbar = (...args) => dispatch(enqueueSnackbarAction(...args))
@@ -308,7 +310,7 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
         try {
             const res = await vectorstoreApi.upsertVectorStore(dialogProps.chatflowid, { stopNodeId: vectorStoreNode.data.id })
             enqueueSnackbar({
-                message: 'Succesfully upserted vector store. You can start chatting now!',
+                message: t('vectorStore.upsertSuccess'),
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'success',
@@ -491,7 +493,7 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                     <Box sx={{ p: 2 }}>
                                         <CheckboxInput
                                             key={JSON.stringify(nodeCheckboxExpanded)}
-                                            label='Show API'
+                                            label={t('vectorStore.showApi')}
                                             value={nodeCheckboxExpanded[data.vectorNode.data.id]}
                                             onChange={() => onCheckBoxChanged(data.vectorNode.data.id)}
                                         />
@@ -571,18 +573,16 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                                                                 fontWeight: 500
                                                                             }}
                                                                         >
-                                                                            {
-                                                                                'For security reason, override config is disabled by default. You can change this by going into Chatflow Configuration -> Security tab, and enable the property you want to override.'
-                                                                            }
-                                                                            &nbsp;Refer{' '}
+                                                                            {t('vectorStore.securityWarning')}
+                                                                            &nbsp;{t('vectorStore.refer')}{' '}
                                                                             <a
                                                                                 rel='noreferrer'
                                                                                 target='_blank'
                                                                                 href='https://docs.flowiseai.com/using-flowise/api#override-config'
                                                                             >
-                                                                                here
+                                                                                {t('vectorStore.here')}
                                                                             </a>{' '}
-                                                                            for more details
+                                                                            {t('vectorStore.moreDetails')}
                                                                         </span>
                                                                     </div>
                                                                 </div>
@@ -606,8 +606,7 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                                                     >
                                                                         <IconBulb size={30} color='#2d6a4f' />
                                                                         <span style={{ color: '#2d6a4f', marginLeft: 10, fontWeight: 500 }}>
-                                                                            You can also specify multiple values for a config parameter by
-                                                                            specifying the node id
+                                                                            {t('vectorStore.multipleValuesTip')}
                                                                         </span>
                                                                     </div>
                                                                     <div style={{ padding: 10 }}>
@@ -638,10 +637,10 @@ formData.append("openAIApiKey[openAIEmbeddings_0]", "sk-my-openai-2nd-key")`
                                                 fullWidth
                                                 variant='contained'
                                                 color='teal'
-                                                title='Upsert'
+                                                title={t('vectorStore.upsert')}
                                                 onClick={() => onUpsertClicked(data.vectorNode)}
                                             >
-                                                Upsert
+                                                {t('vectorStore.upsert')}
                                             </Button>
                                         )}
                                     </div>

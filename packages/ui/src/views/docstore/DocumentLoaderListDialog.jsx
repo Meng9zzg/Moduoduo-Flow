@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 import { List, ListItemButton, Dialog, DialogContent, DialogTitle, Box, OutlinedInput, InputAdornment, Typography } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import { IconSearch, IconX } from '@tabler/icons-react'
@@ -15,6 +16,7 @@ import { HIDE_CANVAS_DIALOG, SHOW_CANVAS_DIALOG } from '@/store/actions'
 import useApi from '@/hooks/useApi'
 
 const DocumentLoaderListDialog = ({ show, dialogProps, onCancel, onDocLoaderSelected }) => {
+    const { t } = useTranslation('dialog')
     const portalElement = document.getElementById('portal')
     const dispatch = useDispatch()
     const theme = useTheme()
@@ -83,7 +85,7 @@ const DocumentLoaderListDialog = ({ show, dialogProps, onCancel, onDocLoaderSele
                         id='input-search-credential'
                         value={searchValue}
                         onChange={(e) => onSearchChange(e.target.value)}
-                        placeholder='Search'
+                        placeholder={t('documentLoaderList.searchPlaceholder')}
                         startAdornment={
                             <InputAdornment position='start'>
                                 <IconSearch stroke={1.5} size='1rem' color={theme.palette.grey[500]} />
@@ -99,7 +101,7 @@ const DocumentLoaderListDialog = ({ show, dialogProps, onCancel, onDocLoaderSele
                                         color: theme.palette.grey[900]
                                     }
                                 }}
-                                title='Clear Search'
+                                title={t('documentLoaderList.clearSearch')}
                             >
                                 <IconX
                                     stroke={1.5}
