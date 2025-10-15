@@ -12,5 +12,54 @@
     "framework": "框架",
     "clearAll": "清空全部",
     "noMarketplaceYet": "暂无市场模板",
-    "noSavedCustomTemplates": "暂无已保存的自定义模板"
+    "noSavedCustomTemplates": "暂无已保存的自定义模板",
+    "badges": {
+        "popular": "热门",
+        "new": "新品",
+        "deprecated": "已弃用"
+    },
+    "types": {
+        "chatflow": "对话流",
+        "agentflow": "智能体流",
+        "agentflowV2": "智能体流 V2",
+        "tool": "工具"
+    },
+    "frameworks": {
+        "langchain": "Langchain",
+        "llamaIndex": "LlamaIndex"
+    },
+    "table": {
+        "name": "名称",
+        "type": "类型",
+        "description": "描述",
+        "framework": "框架",
+        "usecases": "用例",
+        "badges": "标签",
+        "sharedTemplate": "共享模板"
+    },
+    "actions": {
+        "share": "分享",
+        "delete": "删除",
+        "cancel": "取消",
+        "back": "返回",
+        "useTemplate": "使用模板",
+        "useChatflow": "使用对话流",
+        "addNewTool": "添加新工具",
+        "import": "导入",
+        "add": "添加"
+    },
+    "canvas": {
+        "inputs": "输入",
+        "output": "输出",
+        "additionalParameters": "附加参数",
+        "toggleSnapping": "切换吸附",
+        "toggleBackground": "切换背景"
+    },
+    "dialog": {
+        "shareTitle": "分享自定义模板",
+        "deleteTitle": "删除",
+        "deleteDescription": "删除自定义模板 {{name}}？",
+        "deleteSuccess": "自定义模板删除成功！",
+        "deleteError": "删除自定义模板失败：{{error}}"
+    }
 }

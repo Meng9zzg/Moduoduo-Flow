@@ -12,5 +12,54 @@
     "framework": "Framework",
     "clearAll": "Clear All",
     "noMarketplaceYet": "No Marketplace Yet",
-    "noSavedCustomTemplates": "No Saved Custom Templates"
+    "noSavedCustomTemplates": "No Saved Custom Templates",
+    "badges": {
+        "popular": "POPULAR",
+        "new": "NEW",
+        "deprecated": "DEPRECATED"
+    },
+    "types": {
+        "chatflow": "Chatflow",
+        "agentflow": "Agentflow",
+        "agentflowV2": "AgentflowV2",
+        "tool": "Tool"
+    },
+    "frameworks": {
+        "langchain": "Langchain",
+        "llamaIndex": "LlamaIndex"
+    },
+    "table": {
+        "name": "Name",
+        "type": "Type",
+        "description": "Description",
+        "framework": "Framework",
+        "usecases": "Use cases",
+        "badges": "Badges",
+        "sharedTemplate": "Shared Template"
+    },
+    "actions": {
+        "share": "Share",
+        "delete": "Delete",
+        "cancel": "Cancel",
+        "back": "Back",
+        "useTemplate": "Use Template",
+        "useChatflow": "Use Chatflow",
+        "addNewTool": "Add New Tool",
+        "import": "IMPORT",
+        "add": "Add"
+    },
+    "canvas": {
+        "inputs": "Inputs",
+        "output": "Output",
+        "additionalParameters": "Additional Parameters",
+        "toggleSnapping": "toggle snapping",
+        "toggleBackground": "toggle background"
+    },
+    "dialog": {
+        "shareTitle": "Share Custom Template",
+        "deleteTitle": "Delete",
+        "deleteDescription": "Delete Custom Template {{name}}?",
+        "deleteSuccess": "Custom Template deleted successfully!",
+        "deleteError": "Failed to delete custom template: {{error}}"
+    }
 }
