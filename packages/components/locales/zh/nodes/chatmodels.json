@@ -1,0 +1,91 @@
+{
+    "chatOpenAI": {
+        "label": "ChatOpenAI",
+        "description": "使用Chat端点的OpenAI大语言模型封装",
+        "category": "聊天模型",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "cache": {
+                "label": "缓存"
+            },
+            "modelName": {
+                "label": "模型名称"
+            },
+            "temperature": {
+                "label": "温度"
+            },
+            "streaming": {
+                "label": "流式输出"
+            },
+            "maxTokens": {
+                "label": "最大令牌数"
+            },
+            "topP": {
+                "label": "Top P 概率"
+            },
+            "frequencyPenalty": {
+                "label": "频率惩罚"
+            },
+            "presencePenalty": {
+                "label": "存在惩罚"
+            },
+            "timeout": {
+                "label": "超时时间"
+            },
+            "strictToolCalling": {
+                "label": "严格工具调用",
+                "description": "模型是否支持传递工具时使用 `strict` 参数。如果未指定，则不会向 OpenAI 传递 `strict` 参数。"
+            },
+            "stopSequence": {
+                "label": "停止序列",
+                "description": "生成时使用的停止词列表。使用逗号分隔多个停止词。"
+            },
+            "basepath": {
+                "label": "基础路径"
+            },
+            "proxyUrl": {
+                "label": "代理地址"
+            },
+            "baseOptions": {
+                "label": "基础选项"
+            },
+            "allowImageUploads": {
+                "label": "允许上传图片",
+                "description": "允许图片输入。查看 <a href=\"https://docs.flowiseai.com/using-flowise/uploads#image\" target=\"_blank\">文档</a> 了解更多详情。"
+            },
+            "imageResolution": {
+                "label": "图片分辨率",
+                "description": "此参数控制模型查看图片的分辨率。",
+                "options": {
+                    "low": "低",
+                    "high": "高",
+                    "auto": "自动"
+                }
+            },
+            "reasoning": {
+                "label": "推理模式",
+                "description": "模型是否支持推理。仅适用于推理模型。"
+            },
+            "reasoningEffort": {
+                "label": "推理力度",
+                "description": "限制推理模型的推理力度",
+                "options": {
+                    "low": "低",
+                    "medium": "中",
+                    "high": "高"
+                }
+            },
+            "reasoningSummary": {
+                "label": "推理摘要",
+                "description": "模型执行的推理摘要。这对于调试和理解模型的推理过程很有用",
+                "options": {
+                    "auto": "自动",
+                    "concise": "简洁",
+                    "detailed": "详细"
+                }
+            }
+        }
+    }
+}

@@ -29,6 +29,7 @@ const initI18n = async () => {
                 'error', // 错误消息
                 'dialog', // 对话框组件
                 'flowmenu', // 流程列表菜单
+                'canvas', // Canvas画布
                 'chatflows', // Chatflows页面
                 'agentflows', // Agentflows页面
                 'tools', // Tools页面
@@ -42,9 +43,16 @@ const initI18n = async () => {
                 'datasets', // Datasets页面
                 'evaluators', // Evaluators页面
                 'evaluations', // Evaluations页面
+                'evaluationResult', // Evaluation Result页面
                 'users', // Users页面
                 'roles', // Roles页面
-                'organization' // Organization页面
+                'organization', // Organization页面
+                'account', // Account页面
+                'auth', // Auth页面
+                'chat', // Chat组件
+                'files', // Files页面
+                'loginActivity', // Login Activity页面
+                'logs' // Logs页面
             ],
             defaultNS: 'common',
 

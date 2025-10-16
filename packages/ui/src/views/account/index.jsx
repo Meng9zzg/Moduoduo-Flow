@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 // utils
 import useNotifier from '@/utils/useNotifier'
@@ -58,6 +59,7 @@ const calculatePercentage = (count, total) => {
 }
 
 const AccountSettings = () => {
+    const { t } = useTranslation('account')
     const theme = useTheme()
     const dispatch = useDispatch()
     useNotifier()
@@ -179,7 +181,7 @@ const AccountSettings = () => {
             }
         } catch (error) {
             enqueueSnackbar({
-                message: 'Failed to access billing portal',
+                message: t('billing.billingPortalFailed'),
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'error',
@@ -206,7 +208,7 @@ const AccountSettings = () => {
             if (saveProfileResp.data) {
                 store.dispatch(userProfileUpdated(saveProfileResp.data))
                 enqueueSnackbar({
-                    message: 'Profile updated',
+                    message: t('success.profileUpdated'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -242,7 +244,7 @@ const AccountSettings = () => {
         try {
             const validationErrors = []
             if (newPassword !== confirmPassword) {
-                validationErrors.push('New Password and Confirm Password do not match')
+                validationErrors.push(t('validation.passwordMismatch'))
             }
             const passwordErrors = validatePassword(newPassword)
             if (passwordErrors.length > 0) {
@@ -273,7 +275,7 @@ const AccountSettings = () => {
             if (saveProfileResp.data) {
                 store.dispatch(userProfileUpdated(saveProfileResp.data))
                 enqueueSnackbar({
-                    message: 'Password updated',
+                    message: t('success.passwordChanged'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -319,7 +321,7 @@ const AccountSettings = () => {
                 prorationInfo.prorationDate
             )
             enqueueSnackbar({
-                message: 'Seats updated successfully',
+                message: t('seatsInfo.seatsUpdated'),
                 options: {
                     key: new Date().getTime() + Math.random(),
                     variant: 'success',
@@ -392,7 +394,7 @@ const AccountSettings = () => {
                 <ErrorBoundary error={error} />
             ) : (
                 <Stack flexDirection='column' sx={{ gap: 4 }}>
-                    <ViewHeader title='Account Settings' />
+                    <ViewHeader title={t('title')} />
                     {isLoading && !getUserByIdApi.data ? (
                         <Box display='flex' flexDirection='column' gap={gridSpacing}>
                             <Skeleton width='25%' height={32} />
@@ -411,7 +413,7 @@ const AccountSettings = () => {
                         </Box>
                     ) : (
                         <>
-                            <SettingsSection title='Subscription & Billing'>
+                            <SettingsSection title={t('sections.subscriptionBilling')}>
                                 <Box
                                     sx={{
                                         width: '100%',
@@ -433,7 +435,7 @@ const AccountSettings = () => {
                                     >
                                         {currentPlanTitle && (
                                             <Stack sx={{ alignItems: 'center' }} flexDirection='row'>
-                                                <Typography variant='body2'>Current Organization Plan:</Typography>
+                                                <Typography variant='body2'>{t('plan.current')}</Typography>
                                                 <Typography sx={{ ml: 1, color: theme.palette.success.dark }} variant='h3'>
                                                     {currentPlanTitle.toUpperCase()}
                                                 </Typography>
@@ -444,7 +446,7 @@ const AccountSettings = () => {
                                             variant='body2'
                                             color='text.secondary'
                                         >
-                                            Update your billing details and subscription
+                                            {t('plan.updateBilling')}
                                         </Typography>
                                     </Box>
                                     <Box
@@ -467,10 +469,10 @@ const AccountSettings = () => {
                                             {isBillingLoading ? (
                                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                                                     <CircularProgress size={16} color='inherit' />
-                                                    Loading
+                                                    {t('billing.loading', { ns: 'common' })}
                                                 </Box>
                                             ) : (
-                                                'Billing'
+                                                t('billing.button')
                                             )}
                                         </Button>
                                         <Button
@@ -499,7 +501,7 @@ const AccountSettings = () => {
                                             disabled={!currentUser.isOrganizationAdmin}
                                             onClick={() => setOpenPricingDialog(true)}
                                         >
-                                            Change Plan
+                                            {t('billing.changePlan')}
                                         </Button>
                                     </Box>
                                 </Box>

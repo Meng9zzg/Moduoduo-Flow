@@ -18,8 +18,18 @@ class ChatOpenAI_ChatModels implements INode {
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
 
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.chatOpenAI.label'
+        this.descriptionKey = 'nodes.chatOpenAI.description'
+        this.categoryKey = 'nodes.chatOpenAI.category'
+
+        // Default English values as fallback
         this.label = 'ChatOpenAI'
         this.name = 'chatOpenAI'
         this.version = 8.3

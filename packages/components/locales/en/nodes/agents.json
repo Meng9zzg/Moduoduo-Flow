@@ -1,0 +1,37 @@
+{
+    "airtableAgent": {
+        "label": "Airtable Agent",
+        "description": "Agent used to answer queries on Airtable table",
+        "category": "Agents",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "model": {
+                "label": "Language Model"
+            },
+            "baseId": {
+                "label": "Base Id",
+                "placeholder": "app11RobdGoX0YNsC",
+                "description": "If your table URL looks like: https://airtable.com/app11RobdGoX0YNsC/tblJdmvbrgizbYICO/viw9UrP77Id0CE4ee, app11RovdGoX0YNsC is the base id"
+            },
+            "tableId": {
+                "label": "Table Id",
+                "placeholder": "tblJdmvbrgizbYICO",
+                "description": "If your table URL looks like: https://airtable.com/app11RobdGoX0YNsC/tblJdmvbrgizbYICO/viw9UrP77Id0CE4ee, tblJdmvbrgizbYICO is the table id"
+            },
+            "returnAll": {
+                "label": "Return All",
+                "description": "If all results should be returned or only up to a given limit"
+            },
+            "limit": {
+                "label": "Limit",
+                "description": "Number of results to return"
+            },
+            "inputModeration": {
+                "label": "Input Moderation",
+                "description": "Detect text that could generate harmful output and prevent it from being sent to the language model"
+            }
+        }
+    }
+}

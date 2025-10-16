@@ -1,0 +1,37 @@
+{
+    "airtableAgent": {
+        "label": "Airtable 代理",
+        "description": "用于回答 Airtable 表格查询的代理",
+        "category": "代理",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "model": {
+                "label": "语言模型"
+            },
+            "baseId": {
+                "label": "基础 ID",
+                "placeholder": "app11RobdGoX0YNsC",
+                "description": "如果您的表格 URL 如下所示：https://airtable.com/app11RobdGoX0YNsC/tblJdmvbrgizbYICO/viw9UrP77Id0CE4ee，app11RovdGoX0YNsC 就是基础 ID"
+            },
+            "tableId": {
+                "label": "表格 ID",
+                "placeholder": "tblJdmvbrgizbYICO",
+                "description": "如果您的表格 URL 如下所示：https://airtable.com/app11RobdGoX0YNsC/tblJdmvbrgizbYICO/viw9UrP77Id0CE4ee，tblJdmvbrgizbYICO 就是表格 ID"
+            },
+            "returnAll": {
+                "label": "返回全部",
+                "description": "是否应返回所有结果或仅返回到给定限制"
+            },
+            "limit": {
+                "label": "限制数量",
+                "description": "要返回的结果数量"
+            },
+            "inputModeration": {
+                "label": "输入审核",
+                "description": "检测可能生成有害输出的文本并防止其发送到语言模型"
+            }
+        }
+    }
+}

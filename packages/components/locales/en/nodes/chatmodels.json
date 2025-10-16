@@ -1,0 +1,91 @@
+{
+    "chatOpenAI": {
+        "label": "ChatOpenAI",
+        "description": "Wrapper around OpenAI large language models that use the Chat endpoint",
+        "category": "Chat Models",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "cache": {
+                "label": "Cache"
+            },
+            "modelName": {
+                "label": "Model Name"
+            },
+            "temperature": {
+                "label": "Temperature"
+            },
+            "streaming": {
+                "label": "Streaming"
+            },
+            "maxTokens": {
+                "label": "Max Tokens"
+            },
+            "topP": {
+                "label": "Top Probability"
+            },
+            "frequencyPenalty": {
+                "label": "Frequency Penalty"
+            },
+            "presencePenalty": {
+                "label": "Presence Penalty"
+            },
+            "timeout": {
+                "label": "Timeout"
+            },
+            "strictToolCalling": {
+                "label": "Strict Tool Calling",
+                "description": "Whether the model supports the `strict` argument when passing in tools. If not specified, the `strict` argument will not be passed to OpenAI."
+            },
+            "stopSequence": {
+                "label": "Stop Sequence",
+                "description": "List of stop words to use when generating. Use comma to separate multiple stop words."
+            },
+            "basepath": {
+                "label": "BasePath"
+            },
+            "proxyUrl": {
+                "label": "Proxy Url"
+            },
+            "baseOptions": {
+                "label": "BaseOptions"
+            },
+            "allowImageUploads": {
+                "label": "Allow Image Uploads",
+                "description": "Allow image input. Refer to the <a href=\"https://docs.flowiseai.com/using-flowise/uploads#image\" target=\"_blank\">docs</a> for more details."
+            },
+            "imageResolution": {
+                "label": "Image Resolution",
+                "description": "This parameter controls the resolution in which the model views the image.",
+                "options": {
+                    "low": "Low",
+                    "high": "High",
+                    "auto": "Auto"
+                }
+            },
+            "reasoning": {
+                "label": "Reasoning",
+                "description": "Whether the model supports reasoning. Only applicable for reasoning models."
+            },
+            "reasoningEffort": {
+                "label": "Reasoning Effort",
+                "description": "Constrains effort on reasoning for reasoning models",
+                "options": {
+                    "low": "Low",
+                    "medium": "Medium",
+                    "high": "High"
+                }
+            },
+            "reasoningSummary": {
+                "label": "Reasoning Summary",
+                "description": "A summary of the reasoning performed by the model. This can be useful for debugging and understanding the model's reasoning process",
+                "options": {
+                    "auto": "Auto",
+                    "concise": "Concise",
+                    "detailed": "Detailed"
+                }
+            }
+        }
+    }
+}

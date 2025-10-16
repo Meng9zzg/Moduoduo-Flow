@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 
 import { Typography, Box, ClickAwayListener, Paper, Popper, Button } from '@mui/material'
 import { useTheme, alpha, lighten, darken } from '@mui/material/styles'
@@ -25,6 +26,7 @@ import { AGENTFLOW_ICONS } from '@/store/constant'
 // Utils
 
 const ValidationPopUp = ({ chatflowid, hidden }) => {
+    const { t } = useTranslation('validation')
     const theme = useTheme()
     const dispatch = useDispatch()
     const customization = useSelector((state) => state.customization)
@@ -60,7 +62,7 @@ const ValidationPopUp = ({ chatflowid, hidden }) => {
 
             if (response.data.length === 0) {
                 enqueueSnackbar({
-                    message: 'No issues found in your flow!',
+                    message: t('noIssues'),
                     options: {
                         key: new Date().getTime() + Math.random(),
                         variant: 'success',
@@ -146,7 +148,7 @@ const ValidationPopUp = ({ chatflowid, hidden }) => {
                     size='small'
                     color='teal'
                     aria-label='validation'
-                    title='Validate Nodes'
+                    title={t('validateNodes')}
                     onClick={handleToggle}
                 >
                     {open ? <IconX /> : <IconChecklist />}
@@ -189,7 +191,7 @@ const ValidationPopUp = ({ chatflowid, hidden }) => {
                                     shadow={theme.shadows[16]}
                                 >
                                     <Typography variant='h4' sx={{ mt: 1, mb: 2 }}>
-                                        Checklist ({previews.length})
+                                        {t('validateNodes')} ({previews.length})
                                     </Typography>
 
                                     <Box
@@ -280,7 +282,7 @@ const ValidationPopUp = ({ chatflowid, hidden }) => {
                                             startIcon={loading ? null : <IconCheckbox size={18} />}
                                             sx={{ color: 'white', minWidth: '120px' }}
                                         >
-                                            {loading ? 'Validating...' : 'Validate Flow'}
+                                            {loading ? t('validating') : t('validateFlow')}
                                         </Button>
                                     </Box>
                                 </MainCard>

@@ -20,8 +20,18 @@ class Airtable_Agents implements INode {
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
 
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.airtableAgent.label'
+        this.descriptionKey = 'nodes.airtableAgent.description'
+        this.categoryKey = 'nodes.airtableAgent.category'
+
+        // Default English values as fallback
         this.label = 'Airtable Agent'
         this.name = 'airtableAgent'
         this.version = 2.0
