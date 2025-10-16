@@ -275,7 +275,13 @@ export class IdentityManager {
     }
 
     public static checkFeatureByPlan(feature: string) {
-        return (req: Request, res: Response, next: NextFunction) => {
+        return async (req: Request, res: Response, next: NextFunction) => {
+            // In open source mode, bypass feature checks entirely
+            const identityManager = await IdentityManager.getInstance()
+            if (identityManager.isOpenSource()) {
+                return next()
+            }
+
             const user = req.user
             if (user) {
                 if (!user.features || Object.keys(user.features).length === 0) {

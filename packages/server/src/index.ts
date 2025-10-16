@@ -226,6 +226,10 @@ export class App {
                     if (isWhitelisted) {
                         next()
                     } else if (req.headers['x-request-from'] === 'internal') {
+                        // In open source mode, bypass authentication for internal requests too
+                        if (this.identityManager.getPlatformType() === Platform.OPEN_SOURCE) {
+                            return next()
+                        }
                         verifyToken(req, res, next)
                     } else {
                         // In open source mode, bypass authentication entirely

@@ -36,16 +36,16 @@ export const RequireAuth = ({ permission, display, children }) => {
     const features = useSelector((state) => state.auth.features)
     const permissions = useSelector((state) => state.auth.permissions)
 
-    // Step 1: Authentication Check
+    // Step 1: Deployment Type Specific Logic
+    // Open Source: Allow all features (bypass authentication, permission and display checks)
+    if (isOpenSource) {
+        return children
+    }
+
+    // Step 2: Authentication Check
     // Redirect to login if user is not authenticated
     if (!currentUser) {
         return <Navigate to='/login' replace state={{ path: location.pathname }} />
-    }
-
-    // Step 2: Deployment Type Specific Logic
-    // Open Source: Allow all features (bypass permission and display checks)
-    if (isOpenSource) {
-        return children
     }
 
     // Cloud & Enterprise: Check both permissions and feature flags
