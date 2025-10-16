@@ -1,0 +1,40 @@
+# Incremental build based on yesterday's image
+# Only updates today's i18n translation module fixes
+
+FROM meng9zzg/moduoduo-agent-flow-packages-i18ln:latest
+
+WORKDIR /usr/src
+
+# Copy the entire locales directory (source code and JSON files)
+COPY packages/components/locales packages/components/locales
+
+# Copy modified configuration files
+COPY packages/components/tsconfig.json packages/components/tsconfig.json
+COPY packages/components/package.json packages/components/package.json
+
+# Rebuild components package with the new tsconfig and exports
+RUN cd packages/components && pnpm build
+
+# Copy the fixed frontend files (permission check UI components)
+COPY packages/ui/src/menu-items/dashboard.js packages/ui/src/menu-items/dashboard.js
+COPY packages/ui/src/routes/MainRoutes.jsx packages/ui/src/routes/MainRoutes.jsx
+COPY packages/ui/src/routes/RequireAuth.jsx packages/ui/src/routes/RequireAuth.jsx
+
+# Rebuild UI package
+RUN cd packages/ui && pnpm build
+
+# Copy the fixed server files (controller, permission check, identity manager, and authentication middleware)
+COPY packages/server/src/controllers/nodes/index.ts packages/server/src/controllers/nodes/index.ts
+COPY packages/server/src/enterprise/rbac/PermissionCheck.ts packages/server/src/enterprise/rbac/PermissionCheck.ts
+COPY packages/server/src/IdentityManager.ts packages/server/src/IdentityManager.ts
+COPY packages/server/src/index.ts packages/server/src/index.ts
+
+# Rebuild server package
+RUN cd packages/server && pnpm build
+
+# Reinstall flowise globally with the updated packages
+RUN cd packages/server && npm install -g .
+
+EXPOSE 3000
+
+CMD [ "flowise", "start" ]

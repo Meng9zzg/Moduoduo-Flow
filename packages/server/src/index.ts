@@ -228,11 +228,15 @@ export class App {
                     } else if (req.headers['x-request-from'] === 'internal') {
                         verifyToken(req, res, next)
                     } else {
+                        // In open source mode, bypass authentication entirely
+                        if (this.identityManager.getPlatformType() === Platform.OPEN_SOURCE) {
+                            // Allow the request to proceed without authentication
+                            return next()
+                        }
+
                         // Only check license validity for non-open-source platforms
-                        if (this.identityManager.getPlatformType() !== Platform.OPEN_SOURCE) {
-                            if (!this.identityManager.isLicenseValid()) {
-                                return res.status(401).json({ error: 'Unauthorized Access' })
-                            }
+                        if (!this.identityManager.isLicenseValid()) {
+                            return res.status(401).json({ error: 'Unauthorized Access' })
                         }
 
                         const { isValid, workspaceId: apiKeyWorkSpaceId } = await validateAPIKey(req)
