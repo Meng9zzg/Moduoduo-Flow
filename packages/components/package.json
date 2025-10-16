@@ -4,6 +4,16 @@
     "description": "Flowiseai Components",
     "main": "dist/src/index",
     "types": "dist/src/index.d.ts",
+    "exports": {
+        ".": {
+            "require": "./dist/src/index.js",
+            "types": "./dist/src/index.d.ts"
+        },
+        "./locales": {
+            "require": "./dist/locales/index.js",
+            "types": "./dist/locales/index.d.ts"
+        }
+    },
     "scripts": {
         "build": "tsc && gulp",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
