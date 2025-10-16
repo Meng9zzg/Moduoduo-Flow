@@ -31,6 +31,7 @@ import {
 } from '@tabler/icons-react'
 import StopCircleIcon from '@mui/icons-material/StopCircle'
 import CancelIcon from '@mui/icons-material/Cancel'
+import { motion } from 'framer-motion'
 
 // const
 import { baseURL, AGENTFLOW_ICONS } from '@/store/constant'
@@ -130,6 +131,22 @@ const AgentFlowNode = ({ data }) => {
         const foundIcon = AGENTFLOW_ICONS.find((icon) => icon.name === node.name)
 
         if (!foundIcon) return null
+
+        // If animated flag is set, use Framer Motion for animation
+        if (foundIcon.animated) {
+            const IconComponent = foundIcon.icon
+            return (
+                <motion.div
+                    whileHover={{ scale: 1.2, rotate: 10 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 10 }}
+                    style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                >
+                    <IconComponent size={24} color={'white'} />
+                </motion.div>
+            )
+        }
+
+        // Static icon (Tabler)
         return <foundIcon.icon size={24} color={'white'} />
     }
 

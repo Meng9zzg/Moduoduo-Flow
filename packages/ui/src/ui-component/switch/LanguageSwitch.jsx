@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { ButtonBase, Avatar, Tooltip, Menu, MenuItem, ListItemIcon, ListItemText } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
+import { useSelector } from 'react-redux'
 import { IconCheck } from '@tabler/icons-react'
 import { styled } from '@mui/material/styles'
 import { motion, useAnimation } from 'framer-motion'
@@ -133,6 +134,7 @@ LanguagesIcon.propTypes = {
 const LanguageSwitch = () => {
     const theme = useTheme()
     const { i18n, t } = useTranslation()
+    const customization = useSelector((state) => state.customization)
     const [anchorEl, setAnchorEl] = useState(null)
     const [currentLanguage, setCurrentLanguage] = useState(i18n.language || 'zh')
     const open = Boolean(anchorEl)
@@ -171,8 +173,8 @@ const LanguageSwitch = () => {
                             background: theme.palette.secondary.light,
                             color: theme.palette.secondary.dark,
                             '&:hover': {
-                                background: theme.palette.secondary.dark,
-                                color: theme.palette.secondary.light
+                                background: customization.isDarkMode ? '#22339a80' : theme.palette.secondary.dark,
+                                color: customization.isDarkMode ? theme.palette.grey[50] : theme.palette.secondary.light
                             }
                         }}
                         color='inherit'

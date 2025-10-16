@@ -27,6 +27,8 @@
     "featureUnavailable": "This feature is currently unavailable",
     "boundary": {
         "message": "Sorry, an error occurred while loading this page, please retry after some time",
-        "statusLabel": "Status"
+        "statusLabel": "Status",
+        "copyTooltip": "Copy error status",
+        "copied": "Copied"
     }
 }

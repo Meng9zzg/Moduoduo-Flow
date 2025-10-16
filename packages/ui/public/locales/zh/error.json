@@ -27,6 +27,8 @@
     "featureUnavailable": "此功能暂时不可用",
     "boundary": {
         "message": "抱歉，加载此页面时发生错误，请稍后重试",
-        "statusLabel": "状态"
+        "statusLabel": "状态",
+        "copyTooltip": "复制此错误状态",
+        "copied": "已复制"
     }
 }

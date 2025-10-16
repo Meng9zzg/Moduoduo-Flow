@@ -402,8 +402,8 @@ const ProfileSection = ({ handleLogout }) => {
                         background: theme.palette.secondary.light,
                         color: theme.palette.secondary.dark,
                         '&:hover': {
-                            background: theme.palette.secondary.dark,
-                            color: theme.palette.secondary.light,
+                            background: customization.isDarkMode ? '#22339a80' : theme.palette.secondary.dark,
+                            color: customization.isDarkMode ? theme.palette.grey[50] : theme.palette.secondary.light,
                             '& svg': {
                                 transform: 'rotate(180deg)',
                                 transition: 'transform 0.3s ease-in-out'
