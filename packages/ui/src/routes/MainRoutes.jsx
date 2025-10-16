@@ -239,7 +239,7 @@ const MainRoutes = {
         {
             path: '/datasets',
             element: (
-                <RequireAuth permission={'datasets:view'} display={'feat:datasets'}>
+                <RequireAuth permission={'datasets:view'}>
                     <EvalDatasets />
                 </RequireAuth>
             )
@@ -247,7 +247,7 @@ const MainRoutes = {
         {
             path: '/dataset_rows/:id',
             element: (
-                <RequireAuth permission={'datasets:view'} display={'feat:datasets'}>
+                <RequireAuth permission={'datasets:view'}>
                     <EvalDatasetRows />
                 </RequireAuth>
             )
@@ -255,7 +255,7 @@ const MainRoutes = {
         {
             path: '/evaluations',
             element: (
-                <RequireAuth permission={'evaluations:view'} display={'feat:evaluations'}>
+                <RequireAuth permission={'evaluations:view'}>
                     <EvalEvaluation />
                 </RequireAuth>
             )
@@ -263,7 +263,7 @@ const MainRoutes = {
         {
             path: '/evaluation_results/:id',
             element: (
-                <RequireAuth permission={'evaluations:view'} display={'feat:evaluations'}>
+                <RequireAuth permission={'evaluations:view'}>
                     <EvaluationResult />
                 </RequireAuth>
             )
@@ -271,7 +271,7 @@ const MainRoutes = {
         {
             path: '/evaluators',
             element: (
-                <RequireAuth permission={'evaluators:view'} display={'feat:evaluators'}>
+                <RequireAuth permission={'evaluators:view'}>
                     <Evaluators />
                 </RequireAuth>
             )
@@ -279,7 +279,7 @@ const MainRoutes = {
         {
             path: '/logs',
             element: (
-                <RequireAuth permission={'logs:view'} display={'feat:logs'}>
+                <RequireAuth permission={'logs:view'}>
                     <Logs />
                 </RequireAuth>
             )
@@ -287,7 +287,7 @@ const MainRoutes = {
         {
             path: '/files',
             element: (
-                <RequireAuth display={'feat:files'}>
+                <RequireAuth>
                     <Files />
                 </RequireAuth>
             )
@@ -295,7 +295,7 @@ const MainRoutes = {
         {
             path: '/account',
             element: (
-                <RequireAuth display={'feat:account'}>
+                <RequireAuth>
                     <Account />
                 </RequireAuth>
             )

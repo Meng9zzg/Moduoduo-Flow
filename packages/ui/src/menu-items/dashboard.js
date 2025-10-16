@@ -170,7 +170,6 @@ const dashboard = {
                     url: '/datasets',
                     icon: icons.IconDatabase,
                     breadcrumbs: true,
-                    display: 'feat:datasets',
                     permission: 'datasets:view'
                 },
                 {
@@ -180,7 +179,6 @@ const dashboard = {
                     url: '/evaluators',
                     icon: icons.IconTestPipe,
                     breadcrumbs: true,
-                    display: 'feat:evaluators',
                     permission: 'evaluators:view'
                 },
                 {
@@ -190,7 +188,6 @@ const dashboard = {
                     url: '/evaluations',
                     icon: icons.IconChartHistogram,
                     breadcrumbs: true,
-                    display: 'feat:evaluations',
                     permission: 'evaluations:view'
                 }
             ]
@@ -264,7 +261,6 @@ const dashboard = {
                     url: '/logs',
                     icon: icons.IconList,
                     breadcrumbs: true,
-                    display: 'feat:logs',
                     permission: 'logs:view'
                 },
                 // {
@@ -282,8 +278,7 @@ const dashboard = {
                     type: 'item',
                     url: '/account',
                     icon: icons.IconSettings,
-                    breadcrumbs: true,
-                    display: 'feat:account'
+                    breadcrumbs: true
                 }
             ]
         }
