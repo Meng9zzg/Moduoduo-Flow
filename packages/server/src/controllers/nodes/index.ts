@@ -4,7 +4,7 @@ import nodesService from '../../services/nodes'
 import { InternalFlowiseError } from '../../errors/internalFlowiseError'
 import { StatusCodes } from 'http-status-codes'
 import { getWorkspaceSearchOptionsFromReq } from '../../enterprise/utils/ControllerServiceUtils'
-import { translationService } from '../../../components/locales'
+import { translationService } from 'flowise-components/locales'
 
 /**
  * Extract language preference from request
