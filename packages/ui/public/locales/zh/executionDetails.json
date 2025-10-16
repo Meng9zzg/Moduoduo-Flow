@@ -1,0 +1,18 @@
+{
+    "buttons": {
+        "goToAgentFlow": "前往 AgentFlow",
+        "copyId": "复制 ID",
+        "copied": "已复制！",
+        "share": "分享",
+        "public": "公开",
+        "updating": "更新中...",
+        "refreshData": "刷新执行数据"
+    },
+    "messages": {
+        "idCopied": "ID 已复制到剪贴板",
+        "executionShared": "执行已公开分享",
+        "executionUnshared": "执行不再公开",
+        "noDataAvailable": "该项没有可用数据"
+    },
+    "iteration": "迭代"
+}

@@ -1,0 +1,18 @@
+{
+    "buttons": {
+        "goToAgentFlow": "Go to AgentFlow",
+        "copyId": "Copy ID",
+        "copied": "Copied!",
+        "share": "Share",
+        "public": "Public",
+        "updating": "Updating...",
+        "refreshData": "Refresh execution data"
+    },
+    "messages": {
+        "idCopied": "ID copied to clipboard",
+        "executionShared": "Execution shared publicly",
+        "executionUnshared": "Execution is no longer public",
+        "noDataAvailable": "No data available for this item"
+    },
+    "iteration": "Iteration"
+}

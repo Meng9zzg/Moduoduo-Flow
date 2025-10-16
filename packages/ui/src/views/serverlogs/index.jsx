@@ -1,5 +1,6 @@
 import { useState, useEffect, forwardRef } from 'react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 
 // project imports
 import MainCard from '@/ui-component/cards/MainCard'
@@ -99,7 +100,22 @@ const subtractTime = (months, days, hours) => {
 }
 
 const Logs = () => {
+    const { t } = useTranslation('serverlogs')
     const colorTheme = useTheme()
+
+    // Time range translation mapping
+    const timeRangeTranslations = {
+        'Last hour': t('timeRanges.lastHour'),
+        'Last 4 hours': t('timeRanges.last4Hours'),
+        'Last 24 hours': t('timeRanges.last24Hours'),
+        'Last 2 days': t('timeRanges.last2Days'),
+        'Last 7 days': t('timeRanges.last7Days'),
+        'Last 14 days': t('timeRanges.last14Days'),
+        'Last 1 month': t('timeRanges.last1Month'),
+        'Last 2 months': t('timeRanges.last2Months'),
+        'Last 3 months': t('timeRanges.last3Months'),
+        Custom: t('timeRanges.custom')
+    }
 
     const customStyle = EditorView.baseTheme({
         '&': {
@@ -207,7 +223,7 @@ const Logs = () => {
                 <ErrorBoundary error={error} />
             ) : (
                 <Stack flexDirection='column' sx={{ gap: 2 }}>
-                    <ViewHeader title='Logs' />
+                    <ViewHeader title={t('title')} />
                     {isLoading ? (
                         <Box display='flex' flexDirection='column' gap={gridSpacing}>
                             <Skeleton width='25%' height={32} />
@@ -235,14 +251,14 @@ const Logs = () => {
                                 >
                                     {searchTimeRanges.map((range) => (
                                         <MenuItem key={range} value={range}>
-                                            {range}
+                                            {timeRangeTranslations[range] || range}
                                         </MenuItem>
                                     ))}
                                 </Select>
                                 {selectedTimeSearch === 'Custom' && (
                                     <>
                                         <Stack sx={{ alignItems: 'center', justifyContent: 'flex-start', gap: 2 }} flexDirection='row'>
-                                            <b>From</b>
+                                            <b>{t('dateRange.from')}</b>
                                             <DatePicker
                                                 selected={startDate}
                                                 onChange={(date) => onStartDateSelected(date)}
@@ -258,7 +274,7 @@ const Logs = () => {
                                             />
                                         </Stack>
                                         <Stack sx={{ alignItems: 'center', justifyContent: 'flex-start', gap: 2 }} flexDirection='row'>
-                                            <b>To</b>
+                                            <b>{t('dateRange.to')}</b>
                                             <DatePicker
                                                 selected={endDate}
                                                 onChange={(date) => onEndDateSelected(date)}
@@ -301,7 +317,7 @@ const Logs = () => {
                                             alt='LogsEmptySVG'
                                         />
                                     </Box>
-                                    <div>No Logs Yet</div>
+                                    <div>{t('noLogs')}</div>
                                 </Stack>
                             )}
                         </>

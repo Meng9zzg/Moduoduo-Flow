@@ -87,5 +87,475 @@
                 }
             }
         }
+    },
+    "azureChatOpenAI": {
+        "label": "Azure ChatOpenAI",
+        "description": "使用Chat端点的Azure OpenAI大语言模型封装",
+        "category": "聊天模型",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "cache": {
+                "label": "缓存"
+            },
+            "modelName": {
+                "label": "模型名称"
+            },
+            "temperature": {
+                "label": "温度"
+            },
+            "maxTokens": {
+                "label": "最大令牌数"
+            },
+            "streaming": {
+                "label": "流式输出"
+            },
+            "topP": {
+                "label": "Top P 概率"
+            },
+            "frequencyPenalty": {
+                "label": "频率惩罚"
+            },
+            "presencePenalty": {
+                "label": "存在惩罚"
+            },
+            "timeout": {
+                "label": "超时时间"
+            },
+            "basepath": {
+                "label": "基础路径"
+            },
+            "baseOptions": {
+                "label": "基础选项"
+            },
+            "allowImageUploads": {
+                "label": "允许上传图片",
+                "description": "允许图片输入。查看 <a href=\"https://docs.flowiseai.com/using-flowise/uploads#image\" target=\"_blank\">文档</a> 了解更多详情。"
+            },
+            "imageResolution": {
+                "label": "图片分辨率",
+                "description": "此参数控制模型查看图片的分辨率。",
+                "options": {
+                    "low": "低",
+                    "high": "高",
+                    "auto": "自动"
+                }
+            },
+            "reasoning": {
+                "label": "推理模式",
+                "description": "模型是否支持推理。仅适用于推理模型。"
+            },
+            "reasoningEffort": {
+                "label": "推理力度",
+                "description": "限制推理模型的推理力度。仅适用于 o1 和 o3 模型。",
+                "options": {
+                    "low": "低",
+                    "medium": "中",
+                    "high": "高"
+                }
+            },
+            "reasoningSummary": {
+                "label": "推理摘要",
+                "description": "模型执行的推理摘要。这对于调试和理解模型的推理过程很有用",
+                "options": {
+                    "auto": "自动",
+                    "concise": "简洁",
+                    "detailed": "详细"
+                }
+            }
+        }
+    },
+    "chatAnthropic": {
+        "label": "ChatAnthropic",
+        "description": "使用Chat端点的ChatAnthropic大语言模型封装",
+        "category": "聊天模型",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "cache": {
+                "label": "缓存"
+            },
+            "modelName": {
+                "label": "模型名称"
+            },
+            "temperature": {
+                "label": "温度"
+            },
+            "streaming": {
+                "label": "流式输出"
+            },
+            "maxTokensToSample": {
+                "label": "最大令牌数"
+            },
+            "topP": {
+                "label": "Top P"
+            },
+            "topK": {
+                "label": "Top K"
+            },
+            "extendedThinking": {
+                "label": "扩展思考",
+                "description": "为推理模型（如 Claude Sonnet 3.7）启用扩展思考"
+            },
+            "budgetTokens": {
+                "label": "预算令牌",
+                "description": "Claude 在内部推理过程中允许使用的最大令牌数"
+            },
+            "allowImageUploads": {
+                "label": "允许上传图片",
+                "description": "允许图片输入。查看 <a href=\"https://docs.flowiseai.com/using-flowise/uploads#image\" target=\"_blank\">文档</a> 了解更多详情。"
+            }
+        }
+    },
+    "chatGoogleGenerativeAI": {
+        "label": "ChatGoogleGenerativeAI",
+        "description": "使用Chat端点的Google Gemini大语言模型封装",
+        "category": "聊天模型",
+        "credential": {
+            "label": "连接凭证",
+            "description": "Google Generative AI 凭证。"
+        },
+        "inputs": {
+            "cache": {
+                "label": "缓存"
+            },
+            "modelName": {
+                "label": "模型名称"
+            },
+            "customModelName": {
+                "label": "自定义模型名称",
+                "placeholder": "gemini-1.5-pro-exp-0801",
+                "description": "要使用的自定义模型名称。如果提供，将覆盖所选模型"
+            },
+            "temperature": {
+                "label": "温度"
+            },
+            "streaming": {
+                "label": "流式输出"
+            },
+            "maxOutputTokens": {
+                "label": "最大输出令牌数"
+            },
+            "topP": {
+                "label": "Top P 概率"
+            },
+            "topK": {
+                "label": "Top K 最高概率令牌",
+                "description": "使用 top-k 采样进行解码：考虑 top_k 个最可能的令牌集合。必须为正数"
+            },
+            "safetySettings": {
+                "label": "安全设置",
+                "description": "模型的安全设置。参考 <a href=\"https://ai.google.dev/gemini-api/docs/safety-settings\">官方指南</a> 了解如何使用安全设置",
+                "harmCategory": {
+                    "label": "危害类别",
+                    "options": {
+                        "dangerous": "危险内容",
+                        "harassment": "骚扰内容",
+                        "hateSpeech": "仇恨言论",
+                        "sexuallyExplicit": "色情内容",
+                        "civicIntegrity": "公民诚信"
+                    },
+                    "descriptions": {
+                        "dangerous": "促进、便利或鼓励有害行为。",
+                        "harassment": "针对身份和/或受保护属性的负面或有害评论。",
+                        "hateSpeech": "粗鲁、不尊重或亵渎的内容。",
+                        "sexuallyExplicit": "包含对性行为或其他淫秽内容的引用。",
+                        "civicIntegrity": "与选举相关的查询。"
+                    }
+                },
+                "harmBlockThreshold": {
+                    "label": "危害阻止阈值",
+                    "options": {
+                        "none": "无",
+                        "onlyHigh": "仅高风险",
+                        "mediumAndAbove": "中等及以上",
+                        "lowAndAbove": "低等及以上",
+                        "unspecified": "未指定阈值（默认阈值）"
+                    },
+                    "descriptions": {
+                        "none": "无论不安全内容的概率如何，始终显示",
+                        "onlyHigh": "当不安全内容概率高时阻止",
+                        "mediumAndAbove": "当不安全内容概率为中等或高时阻止",
+                        "lowAndAbove": "当不安全内容概率为低、中或高时阻止",
+                        "unspecified": "阈值未指定，使用默认阈值阻止"
+                    }
+                }
+            },
+            "baseUrl": {
+                "label": "基础 URL",
+                "description": "API 的基础 URL。留空使用默认值。"
+            },
+            "allowImageUploads": {
+                "label": "允许上传图片",
+                "description": "允许图片输入。查看 <a href=\"https://docs.flowiseai.com/using-flowise/uploads#image\" target=\"_blank\">文档</a> 了解更多详情。"
+            }
+        }
+    },
+    "chatMistralAI": {
+        "label": "ChatMistralAI",
+        "description": "使用Chat端点的Mistral大语言模型封装",
+        "category": "聊天模型",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "cache": {
+                "label": "缓存"
+            },
+            "modelName": {
+                "label": "模型名称"
+            },
+            "temperature": {
+                "label": "温度",
+                "description": "要使用的采样温度，介于 0.0 和 1.0 之间。较高的值（如 0.8）会使输出更加随机，而较低的值（如 0.2）会使输出更加集中和确定。"
+            },
+            "streaming": {
+                "label": "流式输出"
+            },
+            "maxOutputTokens": {
+                "label": "最大输出令牌数",
+                "description": "在完成中生成的最大令牌数。"
+            },
+            "topP": {
+                "label": "Top P 概率",
+                "description": "核采样，模型考虑具有 top_p 概率质量的令牌结果。因此 0.1 意味着只考虑构成前 10% 概率质量的令牌。"
+            },
+            "randomSeed": {
+                "label": "随机种子",
+                "description": "用于随机采样的种子。如果设置，不同的调用将生成确定性结果。"
+            },
+            "safeMode": {
+                "label": "安全模式",
+                "description": "是否在所有对话之前注入安全提示。"
+            },
+            "overrideEndpoint": {
+                "label": "覆盖端点"
+            }
+        }
+    },
+    "groqChat": {
+        "label": "GroqChat",
+        "description": "使用 LPU 推理引擎的 Groq API 封装",
+        "category": "聊天模型",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "cache": {
+                "label": "缓存"
+            },
+            "modelName": {
+                "label": "模型名称",
+                "placeholder": "llama3-70b-8192"
+            },
+            "temperature": {
+                "label": "温度"
+            },
+            "maxTokens": {
+                "label": "最大令牌数"
+            },
+            "streaming": {
+                "label": "流式输出"
+            }
+        }
+    },
+    "chatOllama": {
+        "label": "ChatOllama",
+        "description": "使用 Ollama 上的开源 LLM 进行聊天补全",
+        "category": "聊天模型",
+        "inputs": {
+            "cache": {
+                "label": "缓存"
+            },
+            "baseUrl": {
+                "label": "基础 URL"
+            },
+            "modelName": {
+                "label": "模型名称",
+                "placeholder": "llama2"
+            },
+            "temperature": {
+                "label": "温度",
+                "description": "模型的温度。提高温度会使模型回答更具创造性。（默认值：0.8）。参考 <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">文档</a> 了解更多详情"
+            },
+            "allowImageUploads": {
+                "label": "允许上传图片",
+                "description": "允许图片输入。查看 <a href=\"https://docs.flowiseai.com/using-flowise/uploads#image\" target=\"_blank\">文档</a> 了解更多详情。"
+            },
+            "streaming": {
+                "label": "流式输出"
+            },
+            "jsonMode": {
+                "label": "JSON 模式",
+                "description": "强制模型输出仅返回 JSON。在系统提示中指定返回 JSON。例如：将所有响应格式化为 JSON 对象"
+            },
+            "keepAlive": {
+                "label": "保持活跃",
+                "description": "保持连接活跃的时间。持续时间字符串（如 \"10m\" 或 \"24h\"）"
+            },
+            "topP": {
+                "label": "Top P",
+                "description": "与 top-k 一起工作。较高的值（例如 0.95）将导致更多样化的文本，而较低的值（例如 0.5）将生成更集中和保守的文本。（默认值：0.9）。参考 <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">文档</a> 了解更多详情"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "减少生成无意义内容的概率。较高的值（例如 100）将给出更多样化的答案，而较低的值（例如 10）将更加保守。（默认值：40）。参考 <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">文档</a> 了解更多详情"
+            },
+            "mirostat": {
+                "label": "Mirostat",
+                "description": "启用 Mirostat 采样以控制困惑度。（默认值：0，0 = 禁用，1 = Mirostat，2 = Mirostat 2.0）。参考 <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">文档</a> 了解更多详情"
+            },
+            "mirostatEta": {
+                "label": "Mirostat ETA",
+                "description": "影响算法对生成文本反馈的响应速度。较低的学习率将导致较慢的调整，而较高的学习率将使算法更具响应性。（默认值：0.1）参考 <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">文档</a> 了解更多详情"
+            },
+            "mirostatTau": {
+                "label": "Mirostat TAU",
+                "description": "控制输出的连贯性和多样性之间的平衡。较低的值将导致更集中和连贯的文本。（默认值：5.0）参考 <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">文档</a> 了解更多详情"
+            },
+            "numCtx": {
+                "label": "上下文窗口大小",
+                "description": "设置用于生成下一个令牌的上下文窗口大小。（默认值：2048）参考 <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">文档</a> 了解更多详情"
+            },
+            "numGpu": {
+                "label": "GPU 数量",
+                "description": "要发送到 GPU 的层数。在 macOS 上默认为 1 以启用 metal 支持，0 为禁用。参考 <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">文档</a> 了解更多详情"
+            },
+            "numThread": {
+                "label": "线程数",
+                "description": "设置计算期间使用的线程数。默认情况下，Ollama 将检测此值以获得最佳性能。建议将此值设置为系统具有的物理 CPU 核心数（而不是逻辑核心数）。参考 <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">文档</a> 了解更多详情"
+            },
+            "repeatLastN": {
+                "label": "重复最后 N",
+                "description": "设置模型回溯多远以防止重复。（默认值：64，0 = 禁用，-1 = num_ctx）。参考 <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">文档</a> 了解更多详情"
+            },
+            "repeatPenalty": {
+                "label": "重复惩罚",
+                "description": "设置对重复的惩罚强度。较高的值（例如 1.5）将更强烈地惩罚重复，而较低的值（例如 0.9）将更宽松。（默认值：1.1）。参考 <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">文档</a> 了解更多详情"
+            },
+            "stop": {
+                "label": "停止序列",
+                "placeholder": "AI assistant:",
+                "description": "设置要使用的停止序列。使用逗号分隔不同的序列。参考 <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">文档</a> 了解更多详情"
+            },
+            "tfsZ": {
+                "label": "尾部自由采样",
+                "description": "尾部自由采样用于减少输出中不太可能的令牌的影响。较高的值（例如 2.0）将减少更多影响，而值为 1.0 则禁用此设置。（默认值：1）。参考 <a target=\"_blank\" href=\"https://github.com/jmorganca/ollama/blob/main/docs/modelfile.md#valid-parameters-and-values\">文档</a> 了解更多详情"
+            }
+        }
+    },
+    "chatHuggingFace": {
+        "label": "ChatHuggingFace",
+        "description": "HuggingFace 大语言模型封装",
+        "category": "聊天模型",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "cache": {
+                "label": "缓存"
+            },
+            "model": {
+                "label": "模型",
+                "placeholder": "gpt2",
+                "description": "如果使用自己的推理端点，请将此留空"
+            },
+            "endpoint": {
+                "label": "端点",
+                "placeholder": "https://xyz.eu-west-1.aws.endpoints.huggingface.cloud/gpt2",
+                "description": "使用您自己的推理端点"
+            },
+            "temperature": {
+                "label": "温度",
+                "description": "温度参数可能不适用于某些模型。请检查可用的模型参数"
+            },
+            "maxTokens": {
+                "label": "最大令牌数",
+                "description": "最大令牌数参数可能不适用于某些模型。请检查可用的模型参数"
+            },
+            "topP": {
+                "label": "Top P 概率",
+                "description": "Top P 概率参数可能不适用于某些模型。请检查可用的模型参数"
+            },
+            "hfTopK": {
+                "label": "Top K",
+                "description": "Top K 参数可能不适用于某些模型。请检查可用的模型参数"
+            },
+            "frequencyPenalty": {
+                "label": "频率惩罚",
+                "description": "频率惩罚参数可能不适用于某些模型。请检查可用的模型参数"
+            },
+            "stop": {
+                "label": "停止序列",
+                "placeholder": "AI assistant:",
+                "description": "设置要使用的停止序列。使用逗号分隔不同的序列。"
+            }
+        }
+    },
+    "awsChatBedrock": {
+        "label": "AWS ChatBedrock",
+        "description": "使用 Converse API 的 AWS Bedrock 大语言模型封装",
+        "category": "聊天模型",
+        "credential": {
+            "label": "AWS 凭证"
+        },
+        "inputs": {
+            "cache": {
+                "label": "缓存"
+            },
+            "region": {
+                "label": "区域"
+            },
+            "model": {
+                "label": "模型名称"
+            },
+            "customModel": {
+                "label": "自定义模型名称",
+                "description": "如果提供，将覆盖从模型名称选项中选择的模型"
+            },
+            "streaming": {
+                "label": "流式输出"
+            },
+            "temperature": {
+                "label": "温度",
+                "description": "温度参数可能不适用于某些模型。请检查可用的模型参数"
+            },
+            "max_tokens_to_sample": {
+                "label": "最大采样令牌数",
+                "description": "最大令牌数参数可能不适用于某些模型。请检查可用的模型参数"
+            },
+            "allowImageUploads": {
+                "label": "允许上传图片",
+                "description": "允许图片输入。查看 <a href=\"https://docs.flowiseai.com/using-flowise/uploads#image\" target=\"_blank\">文档</a> 了解更多详情。"
+            },
+            "latencyOptimized": {
+                "label": "延迟优化",
+                "description": "为支持的模型启用延迟优化配置。参考支持的 <a href=\"https://docs.aws.amazon.com/bedrock/latest/userguide/latency-optimized-inference.html\" target=\"_blank\">延迟优化模型</a> 了解更多详情。"
+            }
+        }
+    },
+    "chatCohere": {
+        "label": "ChatCohere",
+        "description": "Cohere Chat 端点封装",
+        "category": "聊天模型",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "cache": {
+                "label": "缓存"
+            },
+            "modelName": {
+                "label": "模型名称"
+            },
+            "temperature": {
+                "label": "温度"
+            },
+            "streaming": {
+                "label": "流式输出"
+            }
+        }
     }
 }

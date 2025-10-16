@@ -17,8 +17,18 @@ class GoogleGenerativeAI_ChatModels implements INode {
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
 
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.chatGoogleGenerativeAI.label'
+        this.descriptionKey = 'nodes.chatGoogleGenerativeAI.description'
+        this.categoryKey = 'nodes.chatGoogleGenerativeAI.category'
+
+        // Default English values as fallback
         this.label = 'ChatGoogleGenerativeAI'
         this.name = 'chatGoogleGenerativeAI'
         this.version = 3.1

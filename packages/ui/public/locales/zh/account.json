@@ -83,6 +83,25 @@
     },
     "paymentMethod": {
         "title": "支付方式",
-        "notFound": "未找到支付方式"
+        "notFound": "未找到支付方式",
+        "expires": "到期时间"
+    },
+    "seatsDialog": {
+        "occupiedSeats": "已占用席位",
+        "emptySeats": "空闲席位",
+        "seatsIncludedWithPlan": "套餐包含席位",
+        "numberToRemove": "要移除的空闲席位数量",
+        "numberToAdd": "要添加的额外席位数量",
+        "newTotalSeats": "新的总席位数",
+        "mustRemoveUsers": "您必须先从组织中移除用户，然后才能移除席位。",
+        "quantity": "数量",
+        "each": "每个",
+        "creditBalance": "信用余额",
+        "appliedAccountBalance": "已应用账户余额",
+        "dueToday": "今日应付",
+        "creditWillApply": "您的可用信用额度将自动应用到下一张发票。",
+        "dateRange": "日期范围",
+        "updating": "更新中...",
+        "cancel": "取消"
     }
 }

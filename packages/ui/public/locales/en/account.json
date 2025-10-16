@@ -83,6 +83,25 @@
     },
     "paymentMethod": {
         "title": "Payment Method",
-        "notFound": "No payment method found"
+        "notFound": "No payment method found",
+        "expires": "expires"
+    },
+    "seatsDialog": {
+        "occupiedSeats": "Occupied Seats",
+        "emptySeats": "Empty Seats",
+        "seatsIncludedWithPlan": "Seats Included with Plan",
+        "numberToRemove": "Number of Empty Seats to Remove",
+        "numberToAdd": "Number of Additional Seats to Add",
+        "newTotalSeats": "New Total Seats",
+        "mustRemoveUsers": "You must remove users from your organization before removing seats.",
+        "quantity": "Qty",
+        "each": "each",
+        "creditBalance": "Credit balance",
+        "appliedAccountBalance": "Applied account balance",
+        "dueToday": "Due today",
+        "creditWillApply": "Your available credit will automatically apply to your next invoice.",
+        "dateRange": "Date Range",
+        "updating": "Updating...",
+        "cancel": "Cancel"
     }
 }

@@ -14,8 +14,18 @@ class ChatHuggingFace_ChatModels implements INode {
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
 
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.chatHuggingFace.label'
+        this.descriptionKey = 'nodes.chatHuggingFace.description'
+        this.categoryKey = 'nodes.chatHuggingFace.category'
+
+        // Default English values as fallback
         this.label = 'ChatHuggingFace'
         this.name = 'chatHuggingFace'
         this.version = 3.0

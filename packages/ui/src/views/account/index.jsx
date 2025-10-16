@@ -506,7 +506,7 @@ const AccountSettings = () => {
                                     </Box>
                                 </Box>
                             </SettingsSection>
-                            <SettingsSection title='Seats'>
+                            <SettingsSection title={t('sections.seats')}>
                                 <Box
                                     sx={{
                                         width: '100%',
@@ -527,19 +527,19 @@ const AccountSettings = () => {
                                         }}
                                     >
                                         <Stack sx={{ alignItems: 'center' }} flexDirection='row'>
-                                            <Typography variant='body2'>Seats Included in Plan:</Typography>
+                                            <Typography variant='body2'>{t('seatsInfo.includedInPlan')}</Typography>
                                             <Typography sx={{ ml: 1, color: 'inherit' }} variant='h3'>
                                                 {getAdditionalSeatsQuantityApi.loading ? <CircularProgress size={16} /> : includedSeats}
                                             </Typography>
                                         </Stack>
                                         <Stack sx={{ alignItems: 'center' }} flexDirection='row'>
-                                            <Typography variant='body2'>Additional Seats Purchased:</Typography>
+                                            <Typography variant='body2'>{t('seatsInfo.additionalPurchased')}</Typography>
                                             <Typography sx={{ ml: 1, color: theme.palette.success.dark }} variant='h3'>
                                                 {getAdditionalSeatsQuantityApi.loading ? <CircularProgress size={16} /> : purchasedSeats}
                                             </Typography>
                                         </Stack>
                                         <Stack sx={{ alignItems: 'center' }} flexDirection='row'>
-                                            <Typography variant='body2'>Occupied Seats:</Typography>
+                                            <Typography variant='body2'>{t('seatsInfo.occupied')}</Typography>
                                             <Typography sx={{ ml: 1, color: 'inherit' }} variant='h3'>
                                                 {getAdditionalSeatsQuantityApi.loading ? (
                                                     <CircularProgress size={16} />
@@ -569,7 +569,7 @@ const AccountSettings = () => {
                                                 color='error'
                                                 sx={{ borderRadius: 2, height: 40 }}
                                             >
-                                                Remove Seats
+                                                {t('seats.removeSeats')}
                                             </Button>
                                         )}
                                         <StyledButton
@@ -582,15 +582,15 @@ const AccountSettings = () => {
                                                     setOpenPricingDialog(true)
                                                 }
                                             }}
-                                            title='Add Seats is available only for PRO plan'
+                                            title={t('seats.proOnlyTooltip')}
                                             sx={{ borderRadius: 2, height: 40 }}
                                         >
-                                            Add Seats
+                                            {t('seats.addSeats')}
                                         </StyledButton>
                                     </Box>
                                 </Box>
                             </SettingsSection>
-                            <SettingsSection title='Usage'>
+                            <SettingsSection title={t('sections.usage')}>
                                 <Box
                                     sx={{
                                         width: '100%',
@@ -600,7 +600,7 @@ const AccountSettings = () => {
                                 >
                                     <Box sx={{ p: 2.5, borderRight: 1, borderColor: theme.palette.grey[900] + 25 }}>
                                         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                            <Typography variant='h3'>Predictions</Typography>
+                                            <Typography variant='h3'>{t('usage.predictions')}</Typography>
                                             <Typography variant='body2' color='text.secondary'>
                                                 {`${usage?.predictions?.usage || 0} / ${usage?.predictions?.limit || 0}`}
                                             </Typography>
@@ -631,7 +631,7 @@ const AccountSettings = () => {
                                     </Box>
                                     <Box sx={{ p: 2.5 }}>
                                         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                            <Typography variant='h3'>Storage</Typography>
+                                            <Typography variant='h3'>{t('usage.storage')}</Typography>
                                             <Typography variant='body2' color='text.secondary'>
                                                 {`${(usage?.storage?.usage || 0).toFixed(2)}MB / ${(usage?.storage?.limit || 0).toFixed(
                                                     2
@@ -667,10 +667,10 @@ const AccountSettings = () => {
                             <SettingsSection
                                 action={
                                     <StyledButton onClick={saveProfileData} sx={{ borderRadius: 2, height: 40 }} variant='contained'>
-                                        Save
+                                        {t('profile.save', { ns: 'common' })}
                                     </StyledButton>
                                 }
-                                title='Profile'
+                                title={t('profile.title')}
                             >
                                 <Box
                                     sx={{
@@ -682,24 +682,24 @@ const AccountSettings = () => {
                                     }}
                                 >
                                     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                                        <Typography variant='body1'>Name</Typography>
+                                        <Typography variant='body1'>{t('profile.fullName')}</Typography>
                                         <OutlinedInput
                                             id='name'
                                             type='string'
                                             fullWidth
-                                            placeholder='Your Name'
+                                            placeholder={t('placeholders.yourName')}
                                             name='name'
                                             onChange={(e) => setProfileName(e.target.value)}
                                             value={profileName}
                                         />
                                     </Box>
                                     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-                                        <Typography variant='body1'>Email Address</Typography>
+                                        <Typography variant='body1'>{t('profile.emailAddress')}</Typography>
                                         <OutlinedInput
                                             id='email'
                                             type='string'
                                             fullWidth
-                                            placeholder='Email Address'
+                                            placeholder={t('placeholders.emailAddress')}
                                             name='email'
                                             onChange={(e) => setEmail(e.target.value)}
                                             value={email}
@@ -716,10 +716,10 @@ const AccountSettings = () => {
                                             sx={{ borderRadius: 2, height: 40 }}
                                             variant='contained'
                                         >
-                                            Save
+                                            {t('profile.save', { ns: 'common' })}
                                         </StyledButton>
                                     }
-                                    title='Security'
+                                    title={t('sections.security')}
                                 >
                                     <Box
                                         sx={{
@@ -738,21 +738,18 @@ const AccountSettings = () => {
                                                 gap: 1
                                             }}
                                         >
-                                            <Typography variant='body1'>New Password</Typography>
+                                            <Typography variant='body1'>{t('profile.newPassword')}</Typography>
                                             <OutlinedInput
                                                 id='newPassword'
                                                 type='password'
                                                 fullWidth
-                                                placeholder='New Password'
+                                                placeholder={t('placeholders.newPassword')}
                                                 name='newPassword'
                                                 onChange={(e) => setNewPassword(e.target.value)}
                                                 value={newPassword}
                                             />
                                             <Typography variant='caption'>
-                                                <i>
-                                                    Password must be at least 8 characters long and contain at least one lowercase letter,
-                                                    one uppercase letter, one digit, and one special character.
-                                                </i>
+                                                <i>{t('hints.passwordRequirements')}</i>
                                             </Typography>
                                         </Box>
                                         <Box
@@ -763,12 +760,12 @@ const AccountSettings = () => {
                                                 gap: 1
                                             }}
                                         >
-                                            <Typography variant='body1'>Confirm Password</Typography>
+                                            <Typography variant='body1'>{t('profile.confirmPassword')}</Typography>
                                             <OutlinedInput
                                                 id='confirmPassword'
                                                 type='password'
                                                 fullWidth
-                                                placeholder='Confirm Password'
+                                                placeholder={t('placeholders.retypePassword')}
                                                 name='confirmPassword'
                                                 onChange={(e) => setConfirmPassword(e.target.value)}
                                                 value={confirmPassword}
@@ -795,7 +792,7 @@ const AccountSettings = () => {
             )}
             {/* Remove Seats Dialog */}
             <Dialog fullWidth maxWidth='sm' open={openRemoveSeatsDialog} onClose={handleRemoveSeatsDialogClose}>
-                <DialogTitle variant='h4'>Remove Additional Seats</DialogTitle>
+                <DialogTitle variant='h4'>{t('dialogs.removeSeatsTitle')}</DialogTitle>
                 <DialogContent>
                     <Box sx={{ mt: 2, display: 'flex', flexDirection: 'column', gap: 3 }}>
                         {emptySeats === 0 ? (
@@ -810,7 +807,7 @@ const AccountSettings = () => {
                                 }}
                             >
                                 <IconAlertCircle size={20} />
-                                You must remove users from your organization before removing seats.
+                                {t('seatsDialog.mustRemoveUsers')}
                             </Typography>
                         ) : (
                             <Box
@@ -825,18 +822,18 @@ const AccountSettings = () => {
                             >
                                 {/* Occupied Seats */}
                                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                    <Typography variant='body2'>Occupied Seats</Typography>
+                                    <Typography variant='body2'>{t('seatsDialog.occupiedSeats')}</Typography>
                                     <Typography variant='body2'>{occupiedSeats}</Typography>
                                 </Box>
 
                                 {/* Empty Seats */}
                                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                    <Typography variant='body2'>Empty Seats</Typography>
+                                    <Typography variant='body2'>{t('seatsDialog.emptySeats')}</Typography>
                                     <Typography variant='body2'>{emptySeats}</Typography>
                                 </Box>
 
                                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                    <Typography variant='body2'>Number of Empty Seats to Remove</Typography>
+                                    <Typography variant='body2'>{t('seatsDialog.numberToRemove')}</Typography>
                                     <TextField
                                         size='small'
                                         type='number'
@@ -872,7 +869,7 @@ const AccountSettings = () => {
                                         borderTop: `1px solid ${theme.palette.divider}`
                                     }}
                                 >
-                                    <Typography variant='h5'>New Total Seats</Typography>
+                                    <Typography variant='h5'>{t('seatsDialog.newTotalSeats')}</Typography>
                                     <Typography variant='h5'>{totalSeats - seatsQuantity}</Typography>
                                 </Box>
                             </Box>
@@ -888,7 +885,7 @@ const AccountSettings = () => {
                             <CircularProgress size={20} />
                         ) : getCustomerDefaultSourceApi.data?.invoice_settings?.default_payment_method ? (
                             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, p: 2 }}>
-                                <Typography variant='subtitle2'>Payment Method</Typography>
+                                <Typography variant='subtitle2'>{t('paymentMethod.title')}</Typography>
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                                     {getCustomerDefaultSourceApi.data.invoice_settings.default_payment_method.card && (
                                         <>
@@ -902,7 +899,7 @@ const AccountSettings = () => {
                                                     {getCustomerDefaultSourceApi.data.invoice_settings.default_payment_method.card.last4}
                                                 </Typography>
                                                 <Typography color='text.secondary'>
-                                                    (expires{' '}
+                                                    ({t('paymentMethod.expires')}{' '}
                                                     {
                                                         getCustomerDefaultSourceApi.data.invoice_settings.default_payment_method.card
                                                             .exp_month
@@ -920,7 +917,7 @@ const AccountSettings = () => {
                             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, p: 2 }}>
                                 <Typography color='error' sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                                     <IconAlertCircle size={20} />
-                                    No payment method found
+                                    {t('paymentMethod.notFound')}
                                 </Typography>
                                 <Button
                                     variant='contained'
@@ -930,7 +927,7 @@ const AccountSettings = () => {
                                         handleBillingPortalClick()
                                     }}
                                 >
-                                    Add Payment Method in Billing Portal
+                                    {t('payment.addMethodInPortal')}
                                 </Button>
                             </Box>
                         )}
@@ -984,9 +981,9 @@ const AccountSettings = () => {
                                     }}
                                 >
                                     <Box>
-                                        <Typography variant='body2'>Additional Seats Left (Prorated)</Typography>
+                                        <Typography variant='body2'>{t('seats.proratedRemaining')}</Typography>
                                         <Typography variant='caption' color='text.secondary'>
-                                            Qty {purchasedSeats - seatsQuantity}
+                                            {t('seatsDialog.quantity')} {purchasedSeats - seatsQuantity}
                                         </Typography>
                                     </Box>
                                     <Box sx={{ textAlign: 'right' }}>
@@ -994,7 +991,7 @@ const AccountSettings = () => {
                                             {prorationInfo.currency} {Math.max(0, prorationInfo.additionalSeatsProratedAmount).toFixed(2)}
                                         </Typography>
                                         <Typography variant='caption' color='text.secondary'>
-                                            {prorationInfo.currency} {prorationInfo.seatPerUnitPrice.toFixed(2)} each
+                                            {prorationInfo.currency} {prorationInfo.seatPerUnitPrice.toFixed(2)} {t('seatsDialog.each')}
                                         </Typography>
                                     </Box>
                                 </Box>
@@ -1007,7 +1004,7 @@ const AccountSettings = () => {
                                             alignItems: 'center'
                                         }}
                                     >
-                                        <Typography variant='body2'>Credit balance</Typography>
+                                        <Typography variant='body2'>{t('seatsDialog.creditBalance')}</Typography>
                                         <Typography
                                             variant='body2'
                                             color={prorationInfo.prorationAmount < 0 ? 'success.main' : 'error.main'}
@@ -1028,7 +1025,7 @@ const AccountSettings = () => {
                                         borderTop: `1px solid ${theme.palette.divider}`
                                     }}
                                 >
-                                    <Typography variant='h5'>Due today</Typography>
+                                    <Typography variant='h5'>{t('seatsDialog.dueToday')}</Typography>
                                     <Typography variant='h5'>
                                         {prorationInfo.currency} {Math.max(0, prorationInfo.prorationAmount).toFixed(2)}
                                     </Typography>
@@ -1042,7 +1039,7 @@ const AccountSettings = () => {
                                             fontStyle: 'italic'
                                         }}
                                     >
-                                        Your available credit will automatically apply to your next invoice.
+                                        {t('seatsDialog.creditWillApply')}
                                     </Typography>
                                 )}
                             </Box>
@@ -1052,7 +1049,7 @@ const AccountSettings = () => {
                 {getCustomerDefaultSourceApi.data?.invoice_settings?.default_payment_method && (
                     <DialogActions>
                         <Button onClick={handleRemoveSeatsDialogClose} disabled={isUpdatingSeats}>
-                            Cancel
+                            {t('seatsDialog.cancel')}
                         </Button>
                         <Button
                             variant='outlined'
@@ -1070,10 +1067,10 @@ const AccountSettings = () => {
                             {isUpdatingSeats ? (
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                                     <CircularProgress size={16} color='inherit' />
-                                    Updating...
+                                    {t('seatsDialog.updating')}
                                 </Box>
                             ) : (
-                                'Remove Seats'
+                                t('seats.removeSeats')
                             )}
                         </Button>
                     </DialogActions>
@@ -1081,7 +1078,7 @@ const AccountSettings = () => {
             </Dialog>
             {/* Add Seats Dialog */}
             <Dialog fullWidth maxWidth='sm' open={openAddSeatsDialog} onClose={handleAddSeatsDialogClose}>
-                <DialogTitle variant='h4'>Add Additional Seats</DialogTitle>
+                <DialogTitle variant='h4'>{t('dialogs.addSeatsTitle')}</DialogTitle>
                 <DialogContent>
                     <Box sx={{ mt: 2, display: 'flex', flexDirection: 'column', gap: 3 }}>
                         <Box
@@ -1096,24 +1093,24 @@ const AccountSettings = () => {
                         >
                             {/* Occupied Seats */}
                             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <Typography variant='body2'>Occupied Seats</Typography>
+                                <Typography variant='body2'>{t('seatsDialog.occupiedSeats')}</Typography>
                                 <Typography variant='body2'>{occupiedSeats}</Typography>
                             </Box>
 
                             {/* Included Seats */}
                             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <Typography variant='body2'>Seats Included with Plan</Typography>
+                                <Typography variant='body2'>{t('seatsDialog.seatsIncludedWithPlan')}</Typography>
                                 <Typography variant='body2'>{includedSeats}</Typography>
                             </Box>
 
                             {/* Additional Seats */}
                             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <Typography variant='body2'>Additional Seats Purchased</Typography>
+                                <Typography variant='body2'>{t('seats.purchased')}</Typography>
                                 <Typography variant='body2'>{purchasedSeats}</Typography>
                             </Box>
 
                             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                <Typography variant='body2'>Number of Additional Seats to Add</Typography>
+                                <Typography variant='body2'>{t('seatsDialog.numberToAdd')}</Typography>
                                 <TextField
                                     size='small'
                                     type='number'
@@ -1147,7 +1144,7 @@ const AccountSettings = () => {
                                     borderTop: `1px solid ${theme.palette.divider}`
                                 }}
                             >
-                                <Typography variant='h5'>New Total Seats</Typography>
+                                <Typography variant='h5'>{t('seatsDialog.newTotalSeats')}</Typography>
                                 <Typography variant='h5'>{totalSeats + seatsQuantity}</Typography>
                             </Box>
                         </Box>
@@ -1162,7 +1159,7 @@ const AccountSettings = () => {
                             <CircularProgress size={20} />
                         ) : getCustomerDefaultSourceApi.data?.invoice_settings?.default_payment_method ? (
                             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, p: 2 }}>
-                                <Typography variant='subtitle2'>Payment Method</Typography>
+                                <Typography variant='subtitle2'>{t('paymentMethod.title')}</Typography>
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                                     {getCustomerDefaultSourceApi.data.invoice_settings.default_payment_method.card && (
                                         <>
@@ -1176,7 +1173,7 @@ const AccountSettings = () => {
                                                     {getCustomerDefaultSourceApi.data.invoice_settings.default_payment_method.card.last4}
                                                 </Typography>
                                                 <Typography color='text.secondary'>
-                                                    (expires{' '}
+                                                    ({t('paymentMethod.expires')}{' '}
                                                     {
                                                         getCustomerDefaultSourceApi.data.invoice_settings.default_payment_method.card
                                                             .exp_month
@@ -1194,7 +1191,7 @@ const AccountSettings = () => {
                             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, p: 2 }}>
                                 <Typography color='error' sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                                     <IconAlertCircle size={20} />
-                                    No payment method found
+                                    {t('paymentMethod.notFound')}
                                 </Typography>
                                 <Button
                                     variant='contained'
@@ -1204,7 +1201,7 @@ const AccountSettings = () => {
                                         handleBillingPortalClick()
                                     }}
                                 >
-                                    Add Payment Method in Billing Portal
+                                    {t('payment.addMethodInPortal')}
                                 </Button>
                             </Box>
                         )}
@@ -1246,9 +1243,9 @@ const AccountSettings = () => {
                                 {/* Additional Seats */}
                                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                                     <Box>
-                                        <Typography variant='body2'>Additional Seats (Prorated)</Typography>
+                                        <Typography variant='body2'>{t('seats.prorated')}</Typography>
                                         <Typography variant='caption' color='text.secondary'>
-                                            Qty {seatsQuantity + purchasedSeats}
+                                            {t('seatsDialog.quantity')} {seatsQuantity + purchasedSeats}
                                         </Typography>
                                     </Box>
                                     <Box sx={{ textAlign: 'right' }}>
@@ -1256,7 +1253,7 @@ const AccountSettings = () => {
                                             {prorationInfo.currency} {prorationInfo.additionalSeatsProratedAmount.toFixed(2)}
                                         </Typography>
                                         <Typography variant='caption' color='text.secondary'>
-                                            {prorationInfo.currency} {prorationInfo.seatPerUnitPrice.toFixed(2)} each
+                                            {prorationInfo.currency} {prorationInfo.seatPerUnitPrice.toFixed(2)} {t('seatsDialog.each')}
                                         </Typography>
                                     </Box>
                                 </Box>
@@ -1264,7 +1261,7 @@ const AccountSettings = () => {
                                 {/* Credit Balance */}
                                 {prorationInfo.creditBalance !== 0 && (
                                     <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                        <Typography variant='body2'>Applied account balance</Typography>
+                                        <Typography variant='body2'>{t('seatsDialog.appliedAccountBalance')}</Typography>
                                         <Typography variant='body2' color={prorationInfo.creditBalance < 0 ? 'success.main' : 'error.main'}>
                                             {prorationInfo.currency} {prorationInfo.creditBalance.toFixed(2)}
                                         </Typography>
@@ -1281,7 +1278,7 @@ const AccountSettings = () => {
                                         borderTop: `1px solid ${theme.palette.divider}`
                                     }}
                                 >
-                                    <Typography variant='h5'>Due today</Typography>
+                                    <Typography variant='h5'>{t('seatsDialog.dueToday')}</Typography>
                                     <Typography variant='h5'>
                                         {prorationInfo.currency}{' '}
                                         {Math.max(0, prorationInfo.prorationAmount + prorationInfo.creditBalance).toFixed(2)}
@@ -1296,7 +1293,7 @@ const AccountSettings = () => {
                                             fontStyle: 'italic'
                                         }}
                                     >
-                                        Your available credit will automatically apply to your next invoice.
+                                        {t('seatsDialog.creditWillApply')}
                                     </Typography>
                                 )}
                             </Box>
@@ -1306,7 +1303,7 @@ const AccountSettings = () => {
                 {getCustomerDefaultSourceApi.data?.invoice_settings?.default_payment_method && (
                     <DialogActions>
                         <Button onClick={handleAddSeatsDialogClose} disabled={isUpdatingSeats}>
-                            Cancel
+                            {t('seatsDialog.cancel')}
                         </Button>
                         <Button
                             variant='contained'
@@ -1322,10 +1319,10 @@ const AccountSettings = () => {
                             {isUpdatingSeats ? (
                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                                     <CircularProgress size={16} color='inherit' />
-                                    Updating...
+                                    {t('seatsDialog.updating')}
                                 </Box>
                             ) : (
-                                'Add Seats'
+                                t('seats.addSeats')
                             )}
                         </Button>
                     </DialogActions>

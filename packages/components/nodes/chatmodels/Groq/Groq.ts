@@ -15,8 +15,18 @@ class Groq_ChatModels implements INode {
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
 
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.groqChat.label'
+        this.descriptionKey = 'nodes.groqChat.description'
+        this.categoryKey = 'nodes.groqChat.category'
+
+        // Default English values as fallback
         this.label = 'GroqChat'
         this.name = 'groqChat'
         this.version = 4.0

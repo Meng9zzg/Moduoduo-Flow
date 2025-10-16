@@ -15,8 +15,18 @@ class ChatCohere_ChatModels implements INode {
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
 
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.chatCohere.label'
+        this.descriptionKey = 'nodes.chatCohere.description'
+        this.categoryKey = 'nodes.chatCohere.category'
+
+        // Default English values as fallback
         this.label = 'ChatCohere'
         this.name = 'chatCohere'
         this.version = 2.0
