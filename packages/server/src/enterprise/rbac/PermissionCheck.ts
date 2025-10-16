@@ -7,7 +7,17 @@ export const checkPermission = (permission: string) => {
     return (req: Request, res: Response, next: NextFunction) => {
         // Check if running in open source mode - bypass permission check
         const appServer = getRunningExpressApp()
-        if (appServer.identityManager.isOpenSource()) {
+        const isOpenSource = appServer.identityManager.isOpenSource()
+        const platformType = appServer.identityManager.getPlatformType()
+
+        console.log(
+            `[PermissionCheck] Permission: ${permission}, isOpenSource: ${isOpenSource}, platform: ${platformType}, user: ${
+                req.user ? 'exists' : 'null'
+            }`
+        )
+
+        if (isOpenSource) {
+            console.log('[PermissionCheck] Open source mode detected - bypassing permission check')
             return next()
         }
 
