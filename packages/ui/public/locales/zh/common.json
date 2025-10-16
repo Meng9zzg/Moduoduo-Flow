@@ -205,5 +205,22 @@
     "confirmLeave": "确定要离开吗？",
     "cannotBeUndone": "此操作无法撤销",
     "proceed": "继续",
-    "abort": "中止"
+    "abort": "中止",
+    "reject": "拒绝",
+    "from": "从",
+    "to": "到",
+    "filterBy": "筛选依据",
+    "showingRecords": "显示第 {{start}}-{{end}} 条，共 {{total}} 条记录",
+    "deleteSelected": "删除选中项",
+    "method": "方法",
+    "message": "消息",
+    "validating": "验证中...",
+    "contactSupport": "联系客服",
+    "emailPassword": "邮箱/密码",
+    "loader": "加载器",
+    "splitter": "分割器",
+    "activity": "活动",
+    "input": "输入",
+    "output": "输出",
+    "tools": "工具"
 }

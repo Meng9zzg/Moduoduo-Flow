@@ -1,0 +1,27 @@
+{
+    "title": "Login Activity",
+    "filterBy": "Filter By",
+    "deleteSelected": "Delete Selected",
+    "activityTypes": {
+        "loginSuccess": "Login Success",
+        "logoutSuccess": "Logout Success",
+        "unknownUser": "Unknown User",
+        "incorrectCredential": "Incorrect Credential",
+        "userDisabled": "User Disabled",
+        "noAssignedWorkspace": "No Assigned Workspace",
+        "unknownActivity": "Unknown Activity"
+    },
+    "columns": {
+        "activity": "Activity",
+        "user": "User",
+        "date": "Date",
+        "method": "Method",
+        "message": "Message"
+    },
+    "pagination": {
+        "showing": "Showing {{start}}-{{end}} of {{total}} Records"
+    },
+    "loginMode": {
+        "emailPassword": "Email/Password"
+    }
+}

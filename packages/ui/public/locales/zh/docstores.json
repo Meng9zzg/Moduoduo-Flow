@@ -17,5 +17,16 @@
     "newStoreCreated": "新文档存储已创建。",
     "storeUpdated": "文档存储已更新！",
     "failedToAdd": "添加新文档存储失败",
-    "failedToUpdate": "更新文档存储失败"
+    "failedToUpdate": "更新文档存储失败",
+    "columns": {
+        "loader": "加载器",
+        "splitter": "分割器",
+        "chunks": "分块",
+        "chars": "字符",
+        "actions": "操作"
+    },
+    "noSource": "无来源",
+    "storeDeleted": "存储、加载器和关联的文档块已删除",
+    "loaderDeleted": "加载器和关联的文档块已删除",
+    "refreshSuccess": "文档存储刷新成功！"
 }

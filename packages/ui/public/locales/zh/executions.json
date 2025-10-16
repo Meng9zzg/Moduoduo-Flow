@@ -38,5 +38,10 @@
     "tools": {
         "used": "已使用",
         "called": "已调用"
-    }
+    },
+    "reject": "拒绝",
+    "proceed": "继续",
+    "provideFeedback": "提供反馈",
+    "feedback": "反馈",
+    "feedbackLabel": "反馈"
 }

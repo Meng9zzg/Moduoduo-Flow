@@ -7,5 +7,12 @@
     "openaiAssistantDescription": "Create assistant using OpenAI Assistant API",
     "azureAssistantTitle": "Azure Assistant (Coming Soon)",
     "azureAssistantDescription": "Create assistant using Azure Assistant API",
-    "underDevelopment": "Under Development"
+    "underDevelopment": "Under Development",
+    "returnSourceDocs": "Return Source Documents",
+    "tools": "Tools",
+    "addTool": "Add Tool",
+    "saveAssistant": "Save Assistant",
+    "mandatoryFields": "Please fill in all mandatory fields.",
+    "saveSuccess": "Assistant saved successfully",
+    "toolDescGenerated": "Document Store Tool Description generated successfully"
 }

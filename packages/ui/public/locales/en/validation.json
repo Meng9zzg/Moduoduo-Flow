@@ -33,5 +33,10 @@
     "dateTooEarly": "Date must be after {{date}}",
     "dateTooLate": "Date must be before {{date}}",
     "futureDate": "Date must be in the future",
-    "pastDate": "Date must be in the past"
+    "pastDate": "Date must be in the past",
+    "validateNodes": "Validate Nodes",
+    "validating": "Validating...",
+    "validateFlow": "Validate Flow",
+    "noIssues": "No issues found in your flow!",
+    "pleaseCompleteMandatory": "Please fill in all mandatory fields."
 }

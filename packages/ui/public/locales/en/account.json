@@ -61,5 +61,28 @@
     "dialogs": {
         "removeSeatsTitle": "Remove Additional Seats",
         "addSeatsTitle": "Add Additional Seats"
+    },
+    "billing": {
+        "title": "Billing",
+        "description": "Update your billing details and subscription",
+        "button": "Billing",
+        "loading": "Loading",
+        "changePlan": "Change Plan",
+        "billingPortalFailed": "Failed to access billing portal"
+    },
+    "seatsInfo": {
+        "includedInPlan": "Seats Included in Plan:",
+        "additionalPurchased": "Additional Seats Purchased:",
+        "occupied": "Occupied Seats:",
+        "empty": "Empty Seats:",
+        "seatsUpdated": "Seats updated successfully"
+    },
+    "usage": {
+        "predictions": "Predictions",
+        "storage": "Storage"
+    },
+    "paymentMethod": {
+        "title": "Payment Method",
+        "notFound": "No payment method found"
     }
 }

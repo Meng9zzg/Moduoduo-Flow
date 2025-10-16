@@ -1,0 +1,12 @@
+{
+    "title": "日志",
+    "from": "从",
+    "to": "到",
+    "timeOptions": {
+        "lastHour": "最近1小时",
+        "last6Hours": "最近6小时",
+        "last12Hours": "最近12小时",
+        "last24Hours": "最近24小时",
+        "last7Days": "最近7天"
+    }
+}

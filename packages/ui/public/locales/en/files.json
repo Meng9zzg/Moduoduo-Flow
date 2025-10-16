@@ -1,0 +1,7 @@
+{
+    "title": "Files",
+    "searchPlaceholder": "Search File",
+    "deleteSuccess": "File deleted",
+    "uploadSuccess": "File uploaded successfully",
+    "uploadFailed": "Failed to upload file"
+}

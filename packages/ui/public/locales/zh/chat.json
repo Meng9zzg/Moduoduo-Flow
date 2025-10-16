@@ -26,5 +26,11 @@
     "leads": {
         "emailPlaceholder": "邮箱地址",
         "phonePlaceholder": "电话号码"
-    }
+    },
+    "title": "聊天",
+    "clearChatHistory": "清空聊天记录",
+    "expandChat": "展开聊天",
+    "clearSuccess": "成功清空所有聊天记录",
+    "welcomeMessage": "你好！有什么可以帮到您？",
+    "provideFeedback": "提供反馈"
 }

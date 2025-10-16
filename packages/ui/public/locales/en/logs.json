@@ -1,0 +1,12 @@
+{
+    "title": "Logs",
+    "from": "From",
+    "to": "To",
+    "timeOptions": {
+        "lastHour": "Last hour",
+        "last6Hours": "Last 6 hours",
+        "last12Hours": "Last 12 hours",
+        "last24Hours": "Last 24 hours",
+        "last7Days": "Last 7 days"
+    }
+}

@@ -1,0 +1,7 @@
+{
+    "title": "文件",
+    "searchPlaceholder": "搜索文件",
+    "deleteSuccess": "文件已删除",
+    "uploadSuccess": "文件上传成功",
+    "uploadFailed": "文件上传失败"
+}

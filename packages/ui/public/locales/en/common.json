@@ -205,5 +205,22 @@
     "confirmLeave": "Are you sure you want to leave?",
     "cannotBeUndone": "This action cannot be undone",
     "proceed": "Proceed",
-    "abort": "Abort"
+    "abort": "Abort",
+    "reject": "Reject",
+    "from": "From",
+    "to": "To",
+    "filterBy": "Filter By",
+    "showingRecords": "Showing {{start}}-{{end}} of {{total}} Records",
+    "deleteSelected": "Delete Selected",
+    "method": "Method",
+    "message": "Message",
+    "validating": "Validating...",
+    "contactSupport": "Contact Support",
+    "emailPassword": "Email/Password",
+    "loader": "Loader",
+    "splitter": "Splitter",
+    "activity": "Activity",
+    "input": "Input",
+    "output": "Output",
+    "tools": "Tools"
 }

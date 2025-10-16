@@ -26,5 +26,11 @@
     "leads": {
         "emailPlaceholder": "Email Address",
         "phonePlaceholder": "Phone Number"
-    }
+    },
+    "title": "Chat",
+    "clearChatHistory": "Clear Chat History",
+    "expandChat": "Expand Chat",
+    "clearSuccess": "Successfully cleared all chat history",
+    "welcomeMessage": "Hi there! How can I help?",
+    "provideFeedback": "Provide Feedback"
 }

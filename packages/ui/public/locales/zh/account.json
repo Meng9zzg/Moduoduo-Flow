@@ -61,5 +61,28 @@
     "dialogs": {
         "removeSeatsTitle": "移除额外席位",
         "addSeatsTitle": "添加额外席位"
+    },
+    "billing": {
+        "title": "账单",
+        "description": "更新您的账单详情和订阅信息",
+        "button": "账单",
+        "loading": "加载中",
+        "changePlan": "更改套餐",
+        "billingPortalFailed": "无法访问账单门户"
+    },
+    "seatsInfo": {
+        "includedInPlan": "套餐包含席位：",
+        "additionalPurchased": "额外购买席位：",
+        "occupied": "已占用席位：",
+        "empty": "空闲席位：",
+        "seatsUpdated": "席位更新成功"
+    },
+    "usage": {
+        "predictions": "预测次数",
+        "storage": "存储空间"
+    },
+    "paymentMethod": {
+        "title": "支付方式",
+        "notFound": "未找到支付方式"
     }
 }

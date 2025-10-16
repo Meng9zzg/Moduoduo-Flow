@@ -17,5 +17,16 @@
     "newStoreCreated": "New Document Store created.",
     "storeUpdated": "Document Store Updated!",
     "failedToAdd": "Failed to add new Document Store",
-    "failedToUpdate": "Failed to update Document Store"
+    "failedToUpdate": "Failed to update Document Store",
+    "columns": {
+        "loader": "Loader",
+        "splitter": "Splitter",
+        "chunks": "Chunks",
+        "chars": "Chars",
+        "actions": "Actions"
+    },
+    "noSource": "No source",
+    "storeDeleted": "Store, Loader and associated document chunks deleted",
+    "loaderDeleted": "Loader and associated document chunks deleted",
+    "refreshSuccess": "Document store refresh successfully!"
 }

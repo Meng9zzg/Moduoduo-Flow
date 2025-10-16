@@ -39,5 +39,10 @@
     "tools": {
         "used": "Used",
         "called": "Called"
-    }
+    },
+    "reject": "Reject",
+    "proceed": "Proceed",
+    "provideFeedback": "Provide Feedback",
+    "feedback": "Feedback",
+    "feedbackLabel": "Feedback"
 }

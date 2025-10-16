@@ -7,5 +7,12 @@
     "openaiAssistantDescription": "使用OpenAI助手API创建助手",
     "azureAssistantTitle": "Azure助手（即将推出）",
     "azureAssistantDescription": "使用Azure助手API创建助手",
-    "underDevelopment": "开发中"
+    "underDevelopment": "开发中",
+    "returnSourceDocs": "返回源文档",
+    "tools": "工具",
+    "addTool": "添加工具",
+    "saveAssistant": "保存助手",
+    "mandatoryFields": "请填写所有必填字段。",
+    "saveSuccess": "助手保存成功",
+    "toolDescGenerated": "文档存储工具描述生成成功"
 }

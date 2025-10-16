@@ -33,5 +33,10 @@
     "dateTooEarly": "日期必须在{{date}}之后",
     "dateTooLate": "日期必须在{{date}}之前",
     "futureDate": "日期必须是未来日期",
-    "pastDate": "日期必须是过去日期"
+    "pastDate": "日期必须是过去日期",
+    "validateNodes": "验证节点",
+    "validating": "验证中...",
+    "validateFlow": "验证流程",
+    "noIssues": "您的流程中未发现问题！",
+    "pleaseCompleteMandatory": "请填写所有必填字段。"
 }

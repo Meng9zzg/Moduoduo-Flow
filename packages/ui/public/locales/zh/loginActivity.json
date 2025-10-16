@@ -1,0 +1,27 @@
+{
+    "title": "登录活动",
+    "filterBy": "筛选依据",
+    "deleteSelected": "删除选中项",
+    "activityTypes": {
+        "loginSuccess": "登录成功",
+        "logoutSuccess": "退出成功",
+        "unknownUser": "未知用户",
+        "incorrectCredential": "凭据错误",
+        "userDisabled": "用户已禁用",
+        "noAssignedWorkspace": "未分配工作区",
+        "unknownActivity": "未知活动"
+    },
+    "columns": {
+        "activity": "活动",
+        "user": "用户",
+        "date": "日期",
+        "method": "方法",
+        "message": "消息"
+    },
+    "pagination": {
+        "showing": "显示第 {{start}}-{{end}} 条，共 {{total}} 条记录"
+    },
+    "loginMode": {
+        "emailPassword": "邮箱/密码"
+    }
+}
