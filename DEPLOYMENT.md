@@ -20,7 +20,11 @@
 git clone https://github.com/9zzg/Moduoduo-Agent-Flow.git
 cd Moduoduo-Agent-Flow/docker
 
-# 2. 拉取 Docker 镜像（可选，docker-compose 会自动拉取）
+# 2. 拉取最新 Docker 镜像（可选，docker-compose 会自动拉取）
+# 推荐使用最新版本（包含 403 修复）
+docker pull meng9zzg/moduoduo-agent-flow-packages:latest
+
+# 或使用 i18n 版本
 docker pull meng9zzg/moduoduo-agent-flow-packages-i18ln:latest
 
 # 3. 启动服务
@@ -169,10 +173,38 @@ SENDER_EMAIL=noreply@example.com
 
 ## 📊 Docker 镜像信息
 
-### 镜像详情
+### 可用镜像
+
+我们提供两个 Docker 镜像版本：
+
+#### 1. 最新版本（推荐）⭐
+
+-   **镜像名称**: `meng9zzg/moduoduo-agent-flow-packages:latest`
+-   **镜像大小**: 3.46 GB
+-   **发布日期**: 2025-10-17
+-   **包含更新**:
+    -   ✅ **修复开源模式下的 403 Forbidden 问题**
+    -   ✅ 完整的前端构建
+    -   ✅ 完整的后端服务
+    -   ✅ JWT 认证系统（开源模式下已优化）
+    -   ✅ Session 管理
+    -   ✅ 密码加密
+    -   ✅ SMTP 邮件服务
+    -   ✅ 所有必要的依赖
+
+**镜像拉取**:
+
+```bash
+docker pull meng9zzg/moduoduo-agent-flow-packages:latest
+```
+
+**Docker Hub**: https://hub.docker.com/r/meng9zzg/moduoduo-agent-flow-packages
+
+#### 2. i18n 国际化版本
 
 -   **镜像名称**: `meng9zzg/moduoduo-agent-flow-packages-i18ln:latest`
 -   **镜像大小**: 3.41 GB
+-   **发布日期**: 2025-10-16
 -   **包含内容**:
     -   ✅ 完整的前端构建（包含 i18n 国际化）
     -   ✅ 完整的后端服务
@@ -182,15 +214,38 @@ SENDER_EMAIL=noreply@example.com
     -   ✅ SMTP 邮件服务
     -   ✅ 所有必要的依赖
 
-### 镜像拉取
+**镜像拉取**:
 
 ```bash
 docker pull meng9zzg/moduoduo-agent-flow-packages-i18ln:latest
 ```
 
-### 从 Docker Hub 查看
+**Docker Hub**: https://hub.docker.com/r/meng9zzg/moduoduo-agent-flow-packages-i18ln
 
-访问：https://hub.docker.com/r/meng9zzg/moduoduo-agent-flow-packages-i18ln
+### 版本选择建议
+
+-   **生产环境**: 推荐使用最新版本 `meng9zzg/moduoduo-agent-flow-packages:latest`
+
+    -   包含最新的 bug 修复和优化
+    -   解决了开源模式下 Datasets、Evaluations、Evaluators、Logs 等功能的 403 错误
+
+-   **需要多语言支持**: 使用 `meng9zzg/moduoduo-agent-flow-packages-i18ln:latest`
+    -   包含完整的国际化支持
+
+### 镜像更新日志
+
+**v3.46GB (2025-10-17)** - `meng9zzg/moduoduo-agent-flow-packages:latest`
+
+-   🐛 修复开源模式下的 403 Forbidden 问题
+-   🔧 优化 IdentityManager.checkFeatureByPlan()中间件
+-   🔧 优化 RequireAuth 组件的认证检查顺序
+-   📝 添加完整的 403 问题修复文档
+-   🐳 优化 Dockerfile 构建流程（解决依赖安装卡住问题）
+
+**v3.41GB (2025-10-16)** - `meng9zzg/moduoduo-agent-flow-packages-i18ln:latest`
+
+-   🌐 完整的 i18n 国际化支持
+-   ✨ UI 组件样式优化
 
 ---
 
@@ -272,7 +327,13 @@ node --version
 ## 📚 更多资源
 
 -   **GitHub 仓库**: https://github.com/9zzg/Moduoduo-Agent-Flow
--   **Docker Hub**: https://hub.docker.com/r/meng9zzg/moduoduo-agent-flow-packages-i18ln
+-   **Docker Hub**:
+    -   最新版本: https://hub.docker.com/r/meng9zzg/moduoduo-agent-flow-packages
+    -   i18n 版本: https://hub.docker.com/r/meng9zzg/moduoduo-agent-flow-packages-i18ln
+-   **技术文档**:
+    -   本地开发指南: [LOCAL_DEVELOPMENT.md](./LOCAL_DEVELOPMENT.md)
+    -   Docker 构建指南: [LOCAL_DEVELOPMENT.md#docker-镜像构建指南](./LOCAL_DEVELOPMENT.md#docker-镜像构建指南)
+    -   403 问题修复: [docs/FIX_403_FORBIDDEN.md](./docs/FIX_403_FORBIDDEN.md)
 -   **官方文档**: https://doc.9zzg.com
 -   **问题反馈**: https://github.com/9zzg/Moduoduo-Agent-Flow/issues
 
