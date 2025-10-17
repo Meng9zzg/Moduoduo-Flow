@@ -8,7 +8,7 @@ export const TooltipWithParser = ({ title, sx }) => {
     const customization = useSelector((state) => state.customization)
 
     return (
-        <Tooltip title={parser(title)} placement='right'>
+        <Tooltip title={parser(title)} placement='right' arrow>
             <IconButton sx={{ height: 15, width: 15, ml: 2, mt: -0.5 }}>
                 <Info
                     sx={{

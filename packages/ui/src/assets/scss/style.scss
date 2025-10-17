@@ -226,3 +226,28 @@
 .react-flow__attribution {
     display: none !important;
 }
+
+// ==============================|| FORCE TOOLTIP 毛玻璃样式 ||============================== //
+
+.MuiTooltip-tooltip {
+    background-color: rgba(150, 169, 255, 0.25) !important;
+    color: #fafafa !important;
+    font-size: 0.875rem !important;
+    border-radius: 12px !important;
+    padding: 8px 14px !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+}
+
+.MuiTooltip-tooltip[data-theme='light'] {
+    background-color: rgba(177, 191, 255, 0.25) !important;
+    color: #424242 !important;
+}
+
+.MuiTooltip-arrow {
+    color: rgba(150, 169, 255, 0.25) !important;
+}
+
+.MuiTooltip-arrow[data-theme='light'] {
+    color: rgba(177, 191, 255, 0.25) !important;
+}

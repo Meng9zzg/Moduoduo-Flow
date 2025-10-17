@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback, useRef, useContext } from 'react'
-import ReactFlow, { Controls, Background, useNodesState, useEdgesState } from 'reactflow'
+import ReactFlow, { Background, useNodesState, useEdgesState } from 'reactflow'
 import 'reactflow/dist/style.css'
 import '@/views/canvas/index.css'
 
@@ -18,10 +18,11 @@ import IterationNode from './IterationNode'
 import MarketplaceCanvasHeader from '@/views/marketplaces/MarketplaceCanvasHeader'
 import StickyNote from './StickyNote'
 import EditNodeDialog from '@/views/agentflowsv2/EditNodeDialog'
+import CustomControls from './CustomControls'
 import { flowContext } from '@/store/context/ReactFlowContext'
 
 // icons
-import { IconMagnetFilled, IconMagnetOff, IconArtboard, IconArtboardOff } from '@tabler/icons-react'
+// import { IconMagnetFilled, IconMagnetOff, IconArtboard, IconArtboardOff } from '@tabler/icons-react'
 
 const nodeTypes = { agentFlow: AgentFlowNode, stickyNote: StickyNote, iteration: IterationNode }
 const edgeTypes = { agentFlow: AgentFlowEdge }
@@ -90,9 +91,10 @@ const MarketplaceCanvasV2 = () => {
                     enableColorOnDark
                     position='fixed'
                     color='inherit'
-                    elevation={1}
+                    elevation={0}
                     sx={{
-                        bgcolor: theme.palette.background.default
+                        bgcolor: theme.palette.background.default,
+                        borderBottom: customization.isDarkMode ? `1px solid ${theme.palette.divider}` : '1px solid rgba(0, 0, 0, 0.10)'
                     }}
                 >
                     <Toolbar>
@@ -121,36 +123,13 @@ const MarketplaceCanvasV2 = () => {
                                 snapToGrid={isSnappingEnabled}
                                 proOptions={{ hideAttribution: true }}
                             >
-                                <Controls
-                                    className={customization.isDarkMode ? 'dark-mode-controls' : ''}
-                                    style={{
-                                        display: 'flex',
-                                        flexDirection: 'row',
-                                        left: '50%',
-                                        transform: 'translate(-50%, -50%)'
-                                    }}
-                                >
-                                    <button
-                                        className='react-flow__controls-button react-flow__controls-interactive'
-                                        onClick={() => {
-                                            setIsSnappingEnabled(!isSnappingEnabled)
-                                        }}
-                                        title={t('canvas.toggleSnapping')}
-                                        aria-label={t('canvas.toggleSnapping')}
-                                    >
-                                        {isSnappingEnabled ? <IconMagnetFilled /> : <IconMagnetOff />}
-                                    </button>
-                                    <button
-                                        className='react-flow__controls-button react-flow__controls-interactive'
-                                        onClick={() => {
-                                            setIsBackgroundEnabled(!isBackgroundEnabled)
-                                        }}
-                                        title={t('canvas.toggleBackground')}
-                                        aria-label={t('canvas.toggleBackground')}
-                                    >
-                                        {isBackgroundEnabled ? <IconArtboard /> : <IconArtboardOff />}
-                                    </button>
-                                </Controls>
+                                <CustomControls
+                                    isDarkMode={customization.isDarkMode}
+                                    isSnappingEnabled={isSnappingEnabled}
+                                    setIsSnappingEnabled={setIsSnappingEnabled}
+                                    isBackgroundEnabled={isBackgroundEnabled}
+                                    setIsBackgroundEnabled={setIsBackgroundEnabled}
+                                />
                                 {isBackgroundEnabled && <Background color='#aaa' gap={16} />}
                                 <EditNodeDialog
                                     show={editNodeDialogOpen}

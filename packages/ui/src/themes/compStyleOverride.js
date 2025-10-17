@@ -269,16 +269,20 @@ export default function componentStyleOverrides(theme) {
         MuiTooltip: {
             styleOverrides: {
                 tooltip: {
-                    backgroundColor: theme?.customization?.isDarkMode ? 'rgba(150, 169, 255, 0.25)' : 'rgba(177, 191, 255, 0.25)',
-                    color: theme?.customization?.isDarkMode ? '#fafafa' : theme.colors?.grey700,
-                    fontSize: '0.875rem',
-                    borderRadius: '12px',
-                    padding: '8px 14px',
-                    backdropFilter: 'blur(10px)',
-                    WebkitBackdropFilter: 'blur(10px)'
+                    backgroundColor: theme?.customization?.isDarkMode
+                        ? 'rgba(150, 169, 255, 0.25) !important'
+                        : 'rgba(177, 191, 255, 0.25) !important',
+                    color: theme?.customization?.isDarkMode ? '#fafafa !important' : `${theme.colors?.grey700} !important`,
+                    fontSize: '0.875rem !important',
+                    borderRadius: '12px !important',
+                    padding: '8px 14px !important',
+                    backdropFilter: 'blur(10px) !important',
+                    WebkitBackdropFilter: 'blur(10px) !important'
                 },
                 arrow: {
-                    color: theme?.customization?.isDarkMode ? 'rgba(150, 169, 255, 0.25)' : 'rgba(177, 191, 255, 0.25)'
+                    color: theme?.customization?.isDarkMode
+                        ? 'rgba(150, 169, 255, 0.25) !important'
+                        : 'rgba(177, 191, 255, 0.25) !important'
                 }
             }
         },

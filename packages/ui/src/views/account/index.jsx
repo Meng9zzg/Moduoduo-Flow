@@ -464,7 +464,16 @@ const AccountSettings = () => {
                                             endIcon={!isBillingLoading && <IconExternalLink />}
                                             disabled={!currentUser.isOrganizationAdmin || isBillingLoading}
                                             onClick={handleBillingPortalClick}
-                                            sx={{ borderRadius: 2, height: 40 }}
+                                            sx={{
+                                                borderRadius: 2,
+                                                height: 40,
+                                                minWidth: 'auto',
+                                                whiteSpace: 'nowrap',
+                                                textAlign: 'center',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center'
+                                            }}
                                         >
                                             {isBillingLoading ? (
                                                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -667,7 +676,7 @@ const AccountSettings = () => {
                             <SettingsSection
                                 action={
                                     <StyledButton onClick={saveProfileData} sx={{ borderRadius: 2, height: 40 }} variant='contained'>
-                                        {t('profile.save', { ns: 'common' })}
+                                        {t('save', { ns: 'common' })}
                                     </StyledButton>
                                 }
                                 title={t('profile.title')}
@@ -716,7 +725,7 @@ const AccountSettings = () => {
                                             sx={{ borderRadius: 2, height: 40 }}
                                             variant='contained'
                                         >
-                                            {t('profile.save', { ns: 'common' })}
+                                            {t('save', { ns: 'common' })}
                                         </StyledButton>
                                     }
                                     title={t('sections.security')}

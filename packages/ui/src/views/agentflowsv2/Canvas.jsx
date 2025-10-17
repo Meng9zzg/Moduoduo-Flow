@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback, useContext } from 'react'
-import ReactFlow, { addEdge, MiniMap, Background, useNodesState, useEdgesState } from 'reactflow'
+import ReactFlow, { addEdge, Background, useNodesState, useEdgesState } from 'reactflow'
 import 'reactflow/dist/style.css'
 import './index.css'
 import { useReward } from 'react-rewards'
@@ -691,9 +691,10 @@ const AgentflowCanvas = () => {
                     enableColorOnDark
                     position='fixed'
                     color='inherit'
-                    elevation={1}
+                    elevation={0}
                     sx={{
-                        bgcolor: theme.palette.background.default
+                        bgcolor: theme.palette.background.default,
+                        borderBottom: customization.isDarkMode ? `1px solid ${theme.palette.divider}` : '1px solid rgba(0, 0, 0, 0.10)'
                     }}
                 >
                     <Toolbar>
@@ -738,15 +739,6 @@ const AgentflowCanvas = () => {
                                     setIsSnappingEnabled={setIsSnappingEnabled}
                                     isBackgroundEnabled={isBackgroundEnabled}
                                     setIsBackgroundEnabled={setIsBackgroundEnabled}
-                                />
-                                <MiniMap
-                                    nodeStrokeWidth={3}
-                                    nodeColor={customization.isDarkMode ? '#2d2d2d' : '#e2e2e2'}
-                                    nodeStrokeColor={customization.isDarkMode ? '#525252' : '#fff'}
-                                    maskColor={customization.isDarkMode ? 'rgb(45, 45, 45, 0.6)' : 'rgb(240, 240, 240, 0.6)'}
-                                    style={{
-                                        backgroundColor: customization.isDarkMode ? theme.palette.background.default : '#fff'
-                                    }}
                                 />
                                 {isBackgroundEnabled && <Background color='#aaa' gap={16} />}
                                 <AddNodes

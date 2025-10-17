@@ -83,11 +83,21 @@ import { closeSnackbar as closeSnackbarAction, enqueueSnackbar as enqueueSnackba
 
 const EDITABLE_OPTIONS = ['selectedTool', 'selectedAssistant']
 
-const CustomWidthTooltip = styled(({ className, ...props }) => <Tooltip {...props} classes={{ popper: className }} />)({
+const CustomWidthTooltip = styled(({ className, ...props }) => <Tooltip {...props} classes={{ popper: className }} />)(({ theme }) => ({
     [`& .${tooltipClasses.tooltip}`]: {
-        maxWidth: 500
+        maxWidth: 500,
+        backgroundColor: theme?.customization?.isDarkMode ? 'rgba(150, 169, 255, 0.25)' : 'rgba(177, 191, 255, 0.25)',
+        color: theme?.customization?.isDarkMode ? '#fafafa' : theme.colors?.grey700,
+        fontSize: '0.875rem',
+        borderRadius: '12px',
+        padding: '8px 14px',
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)'
+    },
+    [`& .${tooltipClasses.arrow}`]: {
+        color: theme?.customization?.isDarkMode ? 'rgba(150, 169, 255, 0.25)' : 'rgba(177, 191, 255, 0.25)'
     }
-})
+}))
 
 const StyledPopper = styled(Popper)({
     boxShadow: '0px 8px 10px -5px rgb(0 0 0 / 20%), 0px 16px 24px 2px rgb(0 0 0 / 14%), 0px 6px 30px 5px rgb(0 0 0 / 12%)',

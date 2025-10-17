@@ -11,11 +11,21 @@ import { flowContext } from '@/store/context/ReactFlowContext'
 import { isValidConnection } from '@/utils/genericHelper'
 import { Dropdown } from '@/ui-component/dropdown/Dropdown'
 
-const CustomWidthTooltip = styled(({ className, ...props }) => <Tooltip {...props} classes={{ popper: className }} />)({
+const CustomWidthTooltip = styled(({ className, ...props }) => <Tooltip {...props} classes={{ popper: className }} />)(({ theme }) => ({
     [`& .${tooltipClasses.tooltip}`]: {
-        maxWidth: 500
+        maxWidth: 500,
+        backgroundColor: theme?.customization?.isDarkMode ? 'rgba(150, 169, 255, 0.25)' : 'rgba(177, 191, 255, 0.25)',
+        color: theme?.customization?.isDarkMode ? '#fafafa' : theme.colors?.grey700,
+        fontSize: '0.875rem',
+        borderRadius: '12px',
+        padding: '8px 14px',
+        backdropFilter: 'blur(10px)',
+        WebkitBackdropFilter: 'blur(10px)'
+    },
+    [`& .${tooltipClasses.arrow}`]: {
+        color: theme?.customization?.isDarkMode ? 'rgba(150, 169, 255, 0.25)' : 'rgba(177, 191, 255, 0.25)'
     }
-})
+}))
 
 // ===========================|| NodeOutputHandler ||=========================== //
 
