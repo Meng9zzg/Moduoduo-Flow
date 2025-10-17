@@ -1,0 +1,62 @@
+{
+    "structuredOutputParser": {
+        "label": "Structured Output Parser",
+        "description": "Parse the output of an LLM call into a given (JSON) structure.",
+        "category": "Output Parsers",
+        "inputs": {
+            "autofixParser": {
+                "label": "Autofix",
+                "description": "In the event that the first call fails, will make another call to the model to fix any errors."
+            },
+            "jsonStructure": {
+                "label": "JSON Structure",
+                "description": "JSON structure for LLM to return"
+            }
+        }
+    },
+    "structuredOutputParserAdvanced": {
+        "label": "Structured Output Parser Advanced",
+        "description": "Parse the output of an LLM call into a given (JSON) structure with advanced features.",
+        "category": "Output Parsers",
+        "inputs": {
+            "autofixParser": {
+                "label": "Autofix",
+                "description": "In the event that the first call fails, will make another call to the model to fix any errors."
+            },
+            "jsonStructure": {
+                "label": "JSON Structure",
+                "description": "JSON structure for LLM to return"
+            },
+            "partialStructuredOutputParser": {
+                "label": "Partial Structured Output Parser",
+                "description": "Enable partial parsing for streaming responses"
+            }
+        }
+    },
+    "csvListOutputParser": {
+        "label": "CSV List Output Parser",
+        "description": "Parse the output of an LLM call into a CSV list.",
+        "category": "Output Parsers",
+        "inputs": {
+            "separator": {
+                "label": "Separator",
+                "description": "The separator to use for the CSV list. Default is comma."
+            }
+        }
+    },
+    "customListOutputParser": {
+        "label": "Custom List Output Parser",
+        "description": "Parse the output of an LLM call into a custom list format.",
+        "category": "Output Parsers",
+        "inputs": {
+            "separator": {
+                "label": "Separator",
+                "description": "The separator to use for the list. Default is newline."
+            },
+            "length": {
+                "label": "Length",
+                "description": "Expected length of the list. If not provided, will return all items."
+            }
+        }
+    }
+}

@@ -1,36 +1,348 @@
 {
-    "airtableAgent": {
-        "label": "Airtable Agent",
-        "description": "Agent used to answer queries on Airtable table",
+    "conversationalAgent": {
+        "label": "Conversational Agent",
+        "description": "A conversational agent that can use tools and maintain conversation history",
         "category": "Agents",
-        "credential": {
-            "label": "Connect Credential"
-        },
         "inputs": {
-            "model": {
-                "label": "Language Model"
+            "llm": {
+                "label": "LLM",
+                "description": "Language model to use for the agent"
             },
-            "baseId": {
-                "label": "Base Id",
-                "placeholder": "app11RobdGoX0YNsC",
-                "description": "If your table URL looks like: https://airtable.com/app11RobdGoX0YNsC/tblJdmvbrgizbYICO/viw9UrP77Id0CE4ee, app11RovdGoX0YNsC is the base id"
+            "tools": {
+                "label": "Tools",
+                "description": "Tools available to the agent"
             },
-            "tableId": {
-                "label": "Table Id",
-                "placeholder": "tblJdmvbrgizbYICO",
-                "description": "If your table URL looks like: https://airtable.com/app11RobdGoX0YNsC/tblJdmvbrgizbYICO/viw9UrP77Id0CE4ee, tblJdmvbrgizbYICO is the table id"
+            "memory": {
+                "label": "Memory",
+                "description": "Memory component for conversation history"
             },
-            "returnAll": {
-                "label": "Return All",
-                "description": "If all results should be returned or only up to a given limit"
+            "systemMessage": {
+                "label": "System Message",
+                "description": "System message to set the agent's behavior"
             },
-            "limit": {
-                "label": "Limit",
-                "description": "Number of results to return"
+            "humanMessage": {
+                "label": "Human Message",
+                "description": "Human message to the agent"
+            }
+        }
+    },
+    "reactAgent": {
+        "label": "ReAct Agent",
+        "description": "A ReAct (Reasoning and Acting) agent that can reason about problems and take actions",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "LLM",
+                "description": "Language model to use for the agent"
             },
-            "inputModeration": {
-                "label": "Input Moderation",
-                "description": "Detect text that could generate harmful output and prevent it from being sent to the language model"
+            "tools": {
+                "label": "Tools",
+                "description": "Tools available to the agent"
+            },
+            "memory": {
+                "label": "Memory",
+                "description": "Memory component for conversation history"
+            },
+            "systemMessage": {
+                "label": "System Message",
+                "description": "System message to set the agent's behavior"
+            },
+            "humanMessage": {
+                "label": "Human Message",
+                "description": "Human message to the agent"
+            }
+        }
+    },
+    "planAndExecuteAgent": {
+        "label": "Plan and Execute Agent",
+        "description": "An agent that plans a sequence of actions and then executes them",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "LLM",
+                "description": "Language model to use for the agent"
+            },
+            "tools": {
+                "label": "Tools",
+                "description": "Tools available to the agent"
+            },
+            "memory": {
+                "label": "Memory",
+                "description": "Memory component for conversation history"
+            },
+            "systemMessage": {
+                "label": "System Message",
+                "description": "System message to set the agent's behavior"
+            },
+            "humanMessage": {
+                "label": "Human Message",
+                "description": "Human message to the agent"
+            }
+        }
+    },
+    "toolCallingAgent": {
+        "label": "Tool Calling Agent",
+        "description": "An agent that can call tools based on function definitions",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "LLM",
+                "description": "Language model to use for the agent"
+            },
+            "tools": {
+                "label": "Tools",
+                "description": "Tools available to the agent"
+            },
+            "memory": {
+                "label": "Memory",
+                "description": "Memory component for conversation history"
+            },
+            "systemMessage": {
+                "label": "System Message",
+                "description": "System message to set the agent's behavior"
+            },
+            "humanMessage": {
+                "label": "Human Message",
+                "description": "Human message to the agent"
+            }
+        }
+    },
+    "openAIFunctionsAgent": {
+        "label": "OpenAI Functions Agent",
+        "description": "An agent that uses OpenAI's function calling capabilities",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "LLM",
+                "description": "Language model to use for the agent"
+            },
+            "tools": {
+                "label": "Tools",
+                "description": "Tools available to the agent"
+            },
+            "memory": {
+                "label": "Memory",
+                "description": "Memory component for conversation history"
+            },
+            "systemMessage": {
+                "label": "System Message",
+                "description": "System message to set the agent's behavior"
+            },
+            "humanMessage": {
+                "label": "Human Message",
+                "description": "Human message to the agent"
+            }
+        }
+    },
+    "xmlAgent": {
+        "label": "XML Agent",
+        "description": "An agent that uses XML-based reasoning and tool calling",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "LLM",
+                "description": "Language model to use for the agent"
+            },
+            "tools": {
+                "label": "Tools",
+                "description": "Tools available to the agent"
+            },
+            "memory": {
+                "label": "Memory",
+                "description": "Memory component for conversation history"
+            },
+            "systemMessage": {
+                "label": "System Message",
+                "description": "System message to set the agent's behavior"
+            },
+            "humanMessage": {
+                "label": "Human Message",
+                "description": "Human message to the agent"
+            }
+        }
+    },
+    "autoGPT": {
+        "label": "AutoGPT Agent",
+        "description": "An autonomous agent that can set and achieve goals independently",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "LLM",
+                "description": "Language model to use for the agent"
+            },
+            "tools": {
+                "label": "Tools",
+                "description": "Tools available to the agent"
+            },
+            "memory": {
+                "label": "Memory",
+                "description": "Memory component for conversation history"
+            },
+            "goal": {
+                "label": "Goal",
+                "description": "The goal the agent should achieve"
+            },
+            "maxIterations": {
+                "label": "Max Iterations",
+                "description": "Maximum number of iterations the agent can perform"
+            }
+        }
+    },
+    "babyAGI": {
+        "label": "BabyAGI Agent",
+        "description": "A simplified version of AGI that can perform tasks autonomously",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "LLM",
+                "description": "Language model to use for the agent"
+            },
+            "tools": {
+                "label": "Tools",
+                "description": "Tools available to the agent"
+            },
+            "memory": {
+                "label": "Memory",
+                "description": "Memory component for conversation history"
+            },
+            "objective": {
+                "label": "Objective",
+                "description": "The objective the agent should work towards"
+            },
+            "maxIterations": {
+                "label": "Max Iterations",
+                "description": "Maximum number of iterations the agent can perform"
+            }
+        }
+    },
+    "conversationalRetrievalAgent": {
+        "label": "Conversational Retrieval Agent",
+        "description": "An agent that can retrieve information and have conversations about it",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "LLM",
+                "description": "Language model to use for the agent"
+            },
+            "retriever": {
+                "label": "Retriever",
+                "description": "Retriever to use for information retrieval"
+            },
+            "memory": {
+                "label": "Memory",
+                "description": "Memory component for conversation history"
+            },
+            "systemMessage": {
+                "label": "System Message",
+                "description": "System message to set the agent's behavior"
+            },
+            "humanMessage": {
+                "label": "Human Message",
+                "description": "Human message to the agent"
+            }
+        }
+    },
+    "multiAgentExecutor": {
+        "label": "Multi-Agent Executor",
+        "description": "An executor that can coordinate multiple agents to work together",
+        "category": "Agents",
+        "inputs": {
+            "agents": {
+                "label": "Agents",
+                "description": "List of agents to coordinate"
+            },
+            "memory": {
+                "label": "Memory",
+                "description": "Memory component for conversation history"
+            },
+            "systemMessage": {
+                "label": "System Message",
+                "description": "System message to set the executor's behavior"
+            },
+            "humanMessage": {
+                "label": "Human Message",
+                "description": "Human message to the executor"
+            }
+        }
+    },
+    "selfAskWithSearchAgent": {
+        "label": "Self-Ask with Search Agent",
+        "description": "An agent that can ask itself questions and search for answers",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "LLM",
+                "description": "Language model to use for the agent"
+            },
+            "searchTool": {
+                "label": "Search Tool",
+                "description": "Search tool for finding information"
+            },
+            "memory": {
+                "label": "Memory",
+                "description": "Memory component for conversation history"
+            },
+            "systemMessage": {
+                "label": "System Message",
+                "description": "System message to set the agent's behavior"
+            },
+            "humanMessage": {
+                "label": "Human Message",
+                "description": "Human message to the agent"
+            }
+        }
+    },
+    "zeroShotAgent": {
+        "label": "Zero-Shot Agent",
+        "description": "An agent that can perform tasks without prior training examples",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "LLM",
+                "description": "Language model to use for the agent"
+            },
+            "tools": {
+                "label": "Tools",
+                "description": "Tools available to the agent"
+            },
+            "memory": {
+                "label": "Memory",
+                "description": "Memory component for conversation history"
+            },
+            "systemMessage": {
+                "label": "System Message",
+                "description": "System message to set the agent's behavior"
+            },
+            "humanMessage": {
+                "label": "Human Message",
+                "description": "Human message to the agent"
+            }
+        }
+    },
+    "createReactAgent": {
+        "label": "Create React Agent",
+        "description": "A ReAct agent created using the create_react_agent function",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "LLM",
+                "description": "Language model to use for the agent"
+            },
+            "tools": {
+                "label": "Tools",
+                "description": "Tools available to the agent"
+            },
+            "memory": {
+                "label": "Memory",
+                "description": "Memory component for conversation history"
+            },
+            "systemMessage": {
+                "label": "System Message",
+                "description": "System message to set the agent's behavior"
+            },
+            "humanMessage": {
+                "label": "Human Message",
+                "description": "Human message to the agent"
             }
         }
     }

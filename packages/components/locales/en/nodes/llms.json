@@ -1,0 +1,263 @@
+{
+    "openAI": {
+        "label": "OpenAI",
+        "description": "Use OpenAI's GPT models for text generation",
+        "category": "LLMs",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the OpenAI model to use"
+            },
+            "temperature": {
+                "label": "Temperature",
+                "description": "Controls randomness in the output"
+            },
+            "maxTokens": {
+                "label": "Max Tokens",
+                "description": "Maximum number of tokens to generate"
+            }
+        }
+    },
+    "azureOpenAI": {
+        "label": "Azure OpenAI",
+        "description": "Use Azure OpenAI's GPT models for text generation",
+        "category": "LLMs",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the Azure OpenAI model to use"
+            },
+            "temperature": {
+                "label": "Temperature",
+                "description": "Controls randomness in the output"
+            },
+            "maxTokens": {
+                "label": "Max Tokens",
+                "description": "Maximum number of tokens to generate"
+            }
+        }
+    },
+    "cohere": {
+        "label": "Cohere",
+        "description": "Use Cohere's language models for text generation",
+        "category": "LLMs",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the Cohere model to use"
+            },
+            "temperature": {
+                "label": "Temperature",
+                "description": "Controls randomness in the output"
+            },
+            "maxTokens": {
+                "label": "Max Tokens",
+                "description": "Maximum number of tokens to generate"
+            }
+        }
+    },
+    "ollama": {
+        "label": "Ollama",
+        "description": "Use Ollama for running local language models",
+        "category": "LLMs",
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the Ollama model to use"
+            },
+            "baseURL": {
+                "label": "Base URL",
+                "description": "Base URL for the Ollama API"
+            },
+            "temperature": {
+                "label": "Temperature",
+                "description": "Controls randomness in the output"
+            }
+        }
+    },
+    "awsBedrock": {
+        "label": "AWS Bedrock",
+        "description": "Use AWS Bedrock for accessing various language models",
+        "category": "LLMs",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the AWS Bedrock model to use"
+            },
+            "region": {
+                "label": "Region",
+                "description": "AWS region for the Bedrock service"
+            },
+            "temperature": {
+                "label": "Temperature",
+                "description": "Controls randomness in the output"
+            }
+        }
+    },
+    "googlevertexai": {
+        "label": "Google Vertex AI",
+        "description": "Use Google Vertex AI for text generation",
+        "category": "LLMs",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the Google Vertex AI model to use"
+            },
+            "projectId": {
+                "label": "Project ID",
+                "description": "Google Cloud project ID"
+            },
+            "temperature": {
+                "label": "Temperature",
+                "description": "Controls randomness in the output"
+            }
+        }
+    },
+    "huggingFaceInference_LLMs": {
+        "label": "Hugging Face Inference LLMs",
+        "description": "Use Hugging Face Inference API for text generation",
+        "category": "LLMs",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the Hugging Face model to use"
+            },
+            "temperature": {
+                "label": "Temperature",
+                "description": "Controls randomness in the output"
+            },
+            "maxTokens": {
+                "label": "Max Tokens",
+                "description": "Maximum number of tokens to generate"
+            }
+        }
+    },
+    "replicate": {
+        "label": "Replicate",
+        "description": "Use Replicate for running language models",
+        "category": "LLMs",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the Replicate model to use"
+            },
+            "temperature": {
+                "label": "Temperature",
+                "description": "Controls randomness in the output"
+            },
+            "maxTokens": {
+                "label": "Max Tokens",
+                "description": "Maximum number of tokens to generate"
+            }
+        }
+    },
+    "togetherAI": {
+        "label": "Together AI",
+        "description": "Use Together AI for text generation",
+        "category": "LLMs",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the Together AI model to use"
+            },
+            "temperature": {
+                "label": "Temperature",
+                "description": "Controls randomness in the output"
+            },
+            "maxTokens": {
+                "label": "Max Tokens",
+                "description": "Maximum number of tokens to generate"
+            }
+        }
+    },
+    "fireworks": {
+        "label": "Fireworks",
+        "description": "Use Fireworks AI for text generation",
+        "category": "LLMs",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the Fireworks model to use"
+            },
+            "temperature": {
+                "label": "Temperature",
+                "description": "Controls randomness in the output"
+            },
+            "maxTokens": {
+                "label": "Max Tokens",
+                "description": "Maximum number of tokens to generate"
+            }
+        }
+    },
+    "ibmWatsonx": {
+        "label": "IBM Watsonx",
+        "description": "Use IBM Watsonx for text generation",
+        "category": "LLMs",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the IBM Watsonx model to use"
+            },
+            "region": {
+                "label": "Region",
+                "description": "IBM Cloud region"
+            },
+            "temperature": {
+                "label": "Temperature",
+                "description": "Controls randomness in the output"
+            }
+        }
+    },
+    "sambanova": {
+        "label": "SambaNova",
+        "description": "Use SambaNova for text generation",
+        "category": "LLMs",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the SambaNova model to use"
+            },
+            "temperature": {
+                "label": "Temperature",
+                "description": "Controls randomness in the output"
+            },
+            "maxTokens": {
+                "label": "Max Tokens",
+                "description": "Maximum number of tokens to generate"
+            }
+        }
+    }
+}

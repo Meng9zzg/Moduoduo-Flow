@@ -31,7 +31,18 @@ class Code_Interpreter_Tools implements INode {
     badge: string
     credential: INodeParams
 
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
+
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.tools.codeInterpreterE2B.label'
+        this.descriptionKey = 'nodes.tools.codeInterpreterE2B.description'
+        this.categoryKey = 'nodes.tools.codeInterpreterE2B.category'
+
+        // Default English values as fallback
         this.label = 'Code Interpreter by E2B'
         this.name = 'codeInterpreterE2B'
         this.version = 1.0

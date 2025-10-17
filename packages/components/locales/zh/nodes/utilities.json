@@ -1,0 +1,81 @@
+{
+    "customFunction": {
+        "label": "自定义函数",
+        "description": "执行自定义 JavaScript 函数",
+        "category": "Utilities",
+        "inputs": {
+            "functionCode": {
+                "label": "函数代码",
+                "description": "要执行的 JavaScript 函数代码"
+            },
+            "inputData": {
+                "label": "输入数据",
+                "description": "函数的输入数据"
+            }
+        }
+    },
+    "getVariable": {
+        "label": "获取变量",
+        "description": "从流程上下文中获取变量值",
+        "category": "Utilities",
+        "inputs": {
+            "variableName": {
+                "label": "变量名",
+                "description": "要获取的变量名称"
+            },
+            "defaultValue": {
+                "label": "默认值",
+                "description": "变量不存在时的默认值"
+            }
+        }
+    },
+    "setVariable": {
+        "label": "设置变量",
+        "description": "在流程上下文中设置变量值",
+        "category": "Utilities",
+        "inputs": {
+            "variableName": {
+                "label": "变量名",
+                "description": "要设置的变量名称"
+            },
+            "variableValue": {
+                "label": "变量值",
+                "description": "要为变量设置的值"
+            }
+        }
+    },
+    "ifElseFunction": {
+        "label": "条件函数",
+        "description": "带有 if-else 语句的条件逻辑",
+        "category": "Utilities",
+        "inputs": {
+            "condition": {
+                "label": "条件",
+                "description": "要评估的条件"
+            },
+            "trueValue": {
+                "label": "真值",
+                "description": "条件为真时返回的值"
+            },
+            "falseValue": {
+                "label": "假值",
+                "description": "条件为假时返回的值"
+            }
+        }
+    },
+    "stickyNote": {
+        "label": "便签",
+        "description": "在画布上添加便签",
+        "category": "Utilities",
+        "inputs": {
+            "content": {
+                "label": "内容",
+                "description": "便签的内容"
+            },
+            "color": {
+                "label": "颜色",
+                "description": "便签的颜色"
+            }
+        }
+    }
+}

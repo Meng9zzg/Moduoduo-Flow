@@ -66,7 +66,18 @@ class Searxng_Tools implements INode {
     baseClasses: string[]
     inputs: INodeParams[]
 
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
+
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.tools.searXNG.label'
+        this.descriptionKey = 'nodes.tools.searXNG.description'
+        this.categoryKey = 'nodes.tools.searXNG.category'
+
+        // Default English values as fallback
         this.label = 'SearXNG'
         this.name = 'searXNG'
         this.version = 3.0

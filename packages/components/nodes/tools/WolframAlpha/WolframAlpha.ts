@@ -14,7 +14,18 @@ class WolframAlpha_Tools implements INode {
     credential: INodeParams
     inputs: INodeParams[]
 
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
+
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.tools.wolframAlpha.label'
+        this.descriptionKey = 'nodes.tools.wolframAlpha.description'
+        this.categoryKey = 'nodes.tools.wolframAlpha.category'
+
+        // Default English values as fallback
         this.label = 'WolframAlpha'
         this.name = 'wolframAlpha'
         this.version = 1.0

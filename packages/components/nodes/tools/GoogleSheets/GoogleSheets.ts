@@ -14,7 +14,18 @@ class GoogleSheets_Tools implements INode {
     credential: INodeParams
     inputs: INodeParams[]
 
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
+
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.tools.googleSheetsTool.label'
+        this.descriptionKey = 'nodes.tools.googleSheetsTool.description'
+        this.categoryKey = 'nodes.tools.googleSheetsTool.category'
+
+        // Default English values as fallback
         this.label = 'Google Sheets'
         this.name = 'googleSheetsTool'
         this.version = 1.0

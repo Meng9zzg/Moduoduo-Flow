@@ -1,0 +1,56 @@
+{
+    "SQLiteRecordManager": {
+        "label": "SQLite Record Manager",
+        "description": "Manage records using SQLite database",
+        "category": "Record Manager",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "tableName": {
+                "label": "Table Name",
+                "description": "Name of the table to manage"
+            },
+            "dbPath": {
+                "label": "Database Path",
+                "description": "Path to the SQLite database file"
+            }
+        }
+    },
+    "postgresRecordManager": {
+        "label": "PostgreSQL Record Manager",
+        "description": "Manage records using PostgreSQL database",
+        "category": "Record Manager",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "tableName": {
+                "label": "Table Name",
+                "description": "Name of the table to manage"
+            },
+            "connectionString": {
+                "label": "Connection String",
+                "description": "PostgreSQL connection string"
+            }
+        }
+    },
+    "MySQLRecordManager": {
+        "label": "MySQL Record Manager",
+        "description": "Manage records using MySQL database",
+        "category": "Record Manager",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "tableName": {
+                "label": "Table Name",
+                "description": "Name of the table to manage"
+            },
+            "connectionString": {
+                "label": "Connection String",
+                "description": "MySQL connection string"
+            }
+        }
+    }
+}

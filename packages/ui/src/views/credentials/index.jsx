@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { enqueueSnackbar as enqueueSnackbarAction, closeSnackbar as closeSnackbarAction } from '@/store/actions'
 import { useTranslation } from 'react-i18next'
-import moment from 'moment'
+import { formatDateTime } from '@/utils/timeFormatHelper'
 
 // material-ui
 import { styled } from '@mui/material/styles'
@@ -380,12 +380,8 @@ const Credentials = () => {
                                                                 {credential.name}
                                                             </Box>
                                                         </StyledTableCell>
-                                                        <StyledTableCell>
-                                                            {moment(credential.updatedDate).format('MMMM Do, YYYY HH:mm:ss')}
-                                                        </StyledTableCell>
-                                                        <StyledTableCell>
-                                                            {moment(credential.createdDate).format('MMMM Do, YYYY HH:mm:ss')}
-                                                        </StyledTableCell>
+                                                        <StyledTableCell>{formatDateTime(credential.updatedDate)}</StyledTableCell>
+                                                        <StyledTableCell>{formatDateTime(credential.createdDate)}</StyledTableCell>
                                                         {!credential.shared && (
                                                             <>
                                                                 <StyledTableCell>

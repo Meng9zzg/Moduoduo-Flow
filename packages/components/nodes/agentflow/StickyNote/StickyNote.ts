@@ -12,8 +12,18 @@ class StickyNote_Agentflow implements INode {
     tags: string[]
     baseClasses: string[]
     inputs: INodeParams[]
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
 
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.stickyNoteAgentflow.label'
+        this.descriptionKey = 'nodes.stickyNoteAgentflow.description'
+        this.categoryKey = 'nodes.stickyNoteAgentflow.category'
+
+        // Default English values as fallback
         this.label = 'Sticky Note'
         this.name = 'stickyNoteAgentflow'
         this.version = 1.0

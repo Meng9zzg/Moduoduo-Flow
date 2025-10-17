@@ -14,5 +14,20 @@
     "saveAssistant": "保存助手",
     "mandatoryFields": "请填写所有必填字段。",
     "saveSuccess": "助手保存成功",
-    "toolDescGenerated": "文档存储工具描述生成成功"
+    "toolDescGenerated": "文档存储工具描述生成成功",
+    "customAssistant": "自定义私人AI助理",
+    "openAIAssistant": "OpenAI私人AI助理",
+    "openAIAssistantDescription": "你的OpenAI私人AI助理界面",
+    "searchAssistants": "搜索助手",
+    "loadExistingAssistant": "加载现有助手",
+    "addNewAssistant": "添加新助手",
+    "editAssistant": "编辑助手",
+    "noCustomAssistantsAddedYet": "尚未添加自定义助手",
+    "noOpenAIAssistantsAddedYet": "尚未添加OpenAI助手",
+    "load": "加载",
+    "add": "添加",
+    "edit": "编辑",
+    "delete": "删除",
+    "save": "保存",
+    "cancel": "取消"
 }

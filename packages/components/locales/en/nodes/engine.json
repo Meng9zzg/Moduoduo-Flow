@@ -1,0 +1,58 @@
+{
+    "contextChatEngine": {
+        "label": "Context Chat Engine",
+        "description": "Chat engine with context retrieval",
+        "category": "Engine",
+        "inputs": {
+            "retriever": {
+                "label": "Retriever",
+                "description": "Retriever for context"
+            },
+            "llm": {
+                "label": "LLM",
+                "description": "Language model for chat"
+            }
+        }
+    },
+    "simpleChatEngine": {
+        "label": "Simple Chat Engine",
+        "description": "Simple chat engine without context",
+        "category": "Engine",
+        "inputs": {
+            "llm": {
+                "label": "LLM",
+                "description": "Language model for chat"
+            }
+        }
+    },
+    "queryEngine": {
+        "label": "Query Engine",
+        "description": "Query engine for document retrieval",
+        "category": "Engine",
+        "inputs": {
+            "retriever": {
+                "label": "Retriever",
+                "description": "Retriever for documents"
+            },
+            "llm": {
+                "label": "LLM",
+                "description": "Language model for query processing"
+            }
+        }
+    },
+    "subQuestionQueryEngine": {
+        "label": "Sub Question Query Engine",
+        "description": "Query engine that breaks down complex questions",
+        "category": "Engine",
+        "inputs": {
+            "retriever": {
+                "label": "Retriever",
+                "description": "Retriever for documents"
+            },
+            "llm": {
+                "label": "LLM",
+                "description": "Language model for query processing"
+            }
+        }
+    }
+}

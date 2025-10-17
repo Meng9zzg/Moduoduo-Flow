@@ -1,0 +1,32 @@
+{
+    "supervisor": {
+        "label": "Supervisor",
+        "description": "Supervisor agent for multi-agent coordination",
+        "category": "Multiagents",
+        "inputs": {
+            "agents": {
+                "label": "Agents",
+                "description": "List of agents to supervise"
+            },
+            "llm": {
+                "label": "LLM",
+                "description": "Language model for supervision"
+            }
+        }
+    },
+    "worker": {
+        "label": "Worker",
+        "description": "Worker agent for multi-agent tasks",
+        "category": "Multiagents",
+        "inputs": {
+            "tools": {
+                "label": "Tools",
+                "description": "Tools available to the worker"
+            },
+            "llm": {
+                "label": "LLM",
+                "description": "Language model for the worker"
+            }
+        }
+    }
+}

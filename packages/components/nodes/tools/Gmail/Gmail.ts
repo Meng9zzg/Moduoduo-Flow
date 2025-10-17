@@ -14,7 +14,18 @@ class Gmail_Tools implements INode {
     credential: INodeParams
     inputs: INodeParams[]
 
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
+
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.tools.gmail.label'
+        this.descriptionKey = 'nodes.tools.gmail.description'
+        this.categoryKey = 'nodes.tools.gmail.category'
+
+        // Default English values as fallback
         this.label = 'Gmail'
         this.name = 'gmail'
         this.version = 1.0

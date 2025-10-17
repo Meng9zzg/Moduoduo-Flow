@@ -15,7 +15,18 @@ class TavilyAPI_Tools implements INode {
     inputs: INodeParams[]
     additionalParams: boolean
 
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
+
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.tools.tavilyAPI.label'
+        this.descriptionKey = 'nodes.tools.tavilyAPI.description'
+        this.categoryKey = 'nodes.tools.tavilyAPI.category'
+
+        // Default English values as fallback
         this.label = 'Tavily API'
         this.name = 'tavilyAPI'
         this.version = 1.2

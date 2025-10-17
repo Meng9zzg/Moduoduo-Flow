@@ -25,8 +25,18 @@ class Tool_Agentflow implements INode {
     documentation?: string
     credential: INodeParams
     inputs: INodeParams[]
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
 
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.toolAgentflow.label'
+        this.descriptionKey = 'nodes.toolAgentflow.description'
+        this.categoryKey = 'nodes.toolAgentflow.category'
+
+        // Default English values as fallback
         this.label = 'Tool'
         this.name = 'toolAgentflow'
         this.version = 1.1

@@ -14,7 +14,18 @@ class SerpAPI_Tools implements INode {
     credential: INodeParams
     inputs: INodeParams[]
 
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
+
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.tools.serpAPI.label'
+        this.descriptionKey = 'nodes.tools.serpAPI.description'
+        this.categoryKey = 'nodes.tools.serpAPI.category'
+
+        // Default English values as fallback
         this.label = 'Serp API'
         this.name = 'serpAPI'
         this.version = 1.0

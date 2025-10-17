@@ -43,7 +43,18 @@ class AWSSNS_Tools implements INode {
     credential: INodeParams
     inputs: INodeParams[]
 
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
+
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.tools.awsSNS.label'
+        this.descriptionKey = 'nodes.tools.awsSNS.description'
+        this.categoryKey = 'nodes.tools.awsSNS.category'
+
+        // Default English values as fallback
         this.label = 'AWS SNS'
         this.name = 'awsSNS'
         this.version = 1.0

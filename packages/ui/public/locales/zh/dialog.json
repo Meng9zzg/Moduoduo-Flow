@@ -597,6 +597,24 @@
         "expand": "展开",
         "evaluationPrompt": "评估提示词",
         "promptHint": "您可以使用 <1>question</1> <2>actualOutput</2> <3>expectedOutput</3> 在提示词中注入运行时值。",
+        "evaluatorTypes": {
+            "text": {
+                "label": "评估结果（基于文本）",
+                "description": "用于评估聊天流结果的一组评估器。"
+            },
+            "json": {
+                "label": "评估结果（JSON）",
+                "description": "用于评估聊天流 JSON 响应的一组评估器。"
+            },
+            "numeric": {
+                "label": "评估指标（数值）",
+                "description": "评估聊天流指标（延迟、令牌、成本、响应长度）的一组评估器。"
+            },
+            "llm": {
+                "label": "基于 LLM 的评分（JSON）",
+                "description": "执行后，使用 LLM 对答案进行评分。"
+            }
+        },
         "columns": {
             "property": "属性",
             "type": "类型",
@@ -758,6 +776,7 @@
         "title": "导入 API 密钥",
         "fileLabel": "导入 api.json 文件",
         "filePlaceholder": "选择要上传的文件",
+        "uploadButton": "上传文件",
         "importModeLabel": "导入模式",
         "importModePlaceholder": "选择一个选项",
         "importModes": {

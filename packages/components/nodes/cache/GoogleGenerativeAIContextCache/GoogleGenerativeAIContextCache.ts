@@ -12,8 +12,18 @@ class GoogleGenerativeAIContextCache implements INode {
     baseClasses: string[]
     inputs: INodeParams[]
     credential: INodeParams
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
 
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.googleGenerativeAIContextCache.label'
+        this.descriptionKey = 'nodes.googleGenerativeAIContextCache.description'
+        this.categoryKey = 'nodes.googleGenerativeAIContextCache.category'
+
+        // Default English values as fallback
         this.label = 'Google GenAI Context Cache'
         this.name = 'googleGenerativeAIContextCache'
         this.version = 1.0

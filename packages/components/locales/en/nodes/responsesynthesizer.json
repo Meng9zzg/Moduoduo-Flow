@@ -1,0 +1,62 @@
+{
+    "simpleResponseBuilderLlamaIndex": {
+        "label": "Simple Response Builder (LlamaIndex)",
+        "description": "Simple response builder for LlamaIndex",
+        "category": "Response Synthesizer",
+        "inputs": {
+            "llm": {
+                "label": "LLM",
+                "description": "Language model for response generation"
+            },
+            "responseMode": {
+                "label": "Response Mode",
+                "description": "Mode for response generation"
+            }
+        }
+    },
+    "refineLlamaIndex": {
+        "label": "Refine (LlamaIndex)",
+        "description": "Refine response using LlamaIndex",
+        "category": "Response Synthesizer",
+        "inputs": {
+            "llm": {
+                "label": "LLM",
+                "description": "Language model for refinement"
+            },
+            "responseMode": {
+                "label": "Response Mode",
+                "description": "Mode for response generation"
+            }
+        }
+    },
+    "compactrefineLlamaIndex": {
+        "label": "Compact Refine (LlamaIndex)",
+        "description": "Compact refine response using LlamaIndex",
+        "category": "Response Synthesizer",
+        "inputs": {
+            "llm": {
+                "label": "LLM",
+                "description": "Language model for refinement"
+            },
+            "responseMode": {
+                "label": "Response Mode",
+                "description": "Mode for response generation"
+            }
+        }
+    },
+    "treeSummarizeLlamaIndex": {
+        "label": "Tree Summarize (LlamaIndex)",
+        "description": "Tree summarize response using LlamaIndex",
+        "category": "Response Synthesizer",
+        "inputs": {
+            "llm": {
+                "label": "LLM",
+                "description": "Language model for summarization"
+            },
+            "responseMode": {
+                "label": "Response Mode",
+                "description": "Mode for response generation"
+            }
+        }
+    }
+}

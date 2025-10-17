@@ -23,6 +23,9 @@ class ChatIBMWatsonx_ChatModels implements INode {
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
+    labelKey: string
+    descriptionKey: string
+    categoryKey: string
 
     constructor() {
         this.label = 'ChatIBMWatsonx'
@@ -32,9 +35,13 @@ class ChatIBMWatsonx_ChatModels implements INode {
         this.icon = 'ibm.png'
         this.category = 'Chat Models'
         this.description = 'Wrapper around IBM watsonx.ai foundation models'
+        this.labelKey = 'nodes.chatmodels.chatIBMWatsonx.label'
+        this.descriptionKey = 'nodes.chatmodels.chatIBMWatsonx.description'
+        this.categoryKey = 'nodes.chatmodels.chatIBMWatsonx.category'
         this.baseClasses = [this.type, ...getBaseClasses(ChatWatsonx)]
         this.credential = {
             label: 'Connect Credential',
+            labelKey: 'nodes.chatmodels.chatIBMWatsonx.credential.label',
             name: 'credential',
             type: 'credential',
             credentialNames: ['ibmWatsonx']
@@ -42,18 +49,21 @@ class ChatIBMWatsonx_ChatModels implements INode {
         this.inputs = [
             {
                 label: 'Cache',
+                labelKey: 'nodes.chatmodels.chatIBMWatsonx.inputs.cache.label',
                 name: 'cache',
                 type: 'BaseCache',
                 optional: true
             },
             {
                 label: 'Model',
+                labelKey: 'nodes.chatmodels.chatIBMWatsonx.inputs.modelName.label',
                 name: 'modelName',
                 type: 'string',
                 placeholder: 'mistralai/mistral-large'
             },
             {
                 label: 'Temperature',
+                labelKey: 'nodes.chatmodels.chatIBMWatsonx.inputs.temperature.label',
                 name: 'temperature',
                 type: 'number',
                 step: 0.1,
@@ -62,6 +72,7 @@ class ChatIBMWatsonx_ChatModels implements INode {
             },
             {
                 label: 'Streaming',
+                labelKey: 'nodes.chatmodels.chatIBMWatsonx.inputs.streaming.label',
                 name: 'streaming',
                 type: 'boolean',
                 default: true,
@@ -70,6 +81,7 @@ class ChatIBMWatsonx_ChatModels implements INode {
             },
             {
                 label: 'Max Tokens',
+                labelKey: 'nodes.chatmodels.chatIBMWatsonx.inputs.maxTokens.label',
                 name: 'maxTokens',
                 type: 'number',
                 step: 1,
@@ -78,6 +90,7 @@ class ChatIBMWatsonx_ChatModels implements INode {
             },
             {
                 label: 'Frequency Penalty',
+                labelKey: 'nodes.chatmodels.chatIBMWatsonx.inputs.frequencyPenalty.label',
                 name: 'frequencyPenalty',
                 type: 'number',
                 step: 1,
@@ -88,6 +101,7 @@ class ChatIBMWatsonx_ChatModels implements INode {
             },
             {
                 label: 'Log Probs',
+                labelKey: 'nodes.chatmodels.chatIBMWatsonx.inputs.logprobs.label',
                 name: 'logprobs',
                 type: 'boolean',
                 default: false,
@@ -98,6 +112,7 @@ class ChatIBMWatsonx_ChatModels implements INode {
             },
             {
                 label: 'N',
+                labelKey: 'nodes.chatmodels.chatIBMWatsonx.inputs.n.label',
                 name: 'n',
                 type: 'number',
                 step: 1,
@@ -109,6 +124,7 @@ class ChatIBMWatsonx_ChatModels implements INode {
             },
             {
                 label: 'Presence Penalty',
+                labelKey: 'nodes.chatmodels.chatIBMWatsonx.inputs.presencePenalty.label',
                 name: 'presencePenalty',
                 type: 'number',
                 step: 1,
@@ -120,6 +136,7 @@ class ChatIBMWatsonx_ChatModels implements INode {
             },
             {
                 label: 'Top P',
+                labelKey: 'nodes.chatmodels.chatIBMWatsonx.inputs.topP.label',
                 name: 'topP',
                 type: 'number',
                 step: 0.1,

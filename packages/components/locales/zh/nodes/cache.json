@@ -1,0 +1,116 @@
+{
+    "googleGenerativeAIContextCache": {
+        "label": "Google Generative AI 上下文缓存",
+        "description": "Google Generative AI 的上下文缓存",
+        "category": "Cache",
+        "inputs": {
+            "projectId": {
+                "label": "项目 ID",
+                "description": "Google Cloud 项目 ID"
+            },
+            "location": {
+                "label": "位置",
+                "description": "缓存位置"
+            }
+        }
+    },
+    "inMemoryCache": {
+        "label": "内存缓存",
+        "description": "基于内存的缓存实现",
+        "category": "Cache",
+        "inputs": {
+            "maxSize": {
+                "label": "最大大小",
+                "description": "缓存的最大条目数"
+            },
+            "ttl": {
+                "label": "生存时间",
+                "description": "缓存的生存时间（秒）"
+            }
+        }
+    },
+    "momentoCache": {
+        "label": "Momento 缓存",
+        "description": "基于 Momento 的分布式缓存",
+        "category": "Cache",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "cacheName": {
+                "label": "缓存名称",
+                "description": "Momento 缓存名称"
+            },
+            "ttl": {
+                "label": "生存时间",
+                "description": "缓存的生存时间（秒）"
+            }
+        }
+    },
+    "redisCache": {
+        "label": "Redis 缓存",
+        "description": "基于 Redis 的缓存实现",
+        "category": "Cache",
+        "inputs": {
+            "host": {
+                "label": "主机",
+                "description": "Redis 服务器主机"
+            },
+            "port": {
+                "label": "端口",
+                "description": "Redis 服务器端口"
+            },
+            "password": {
+                "label": "密码",
+                "description": "Redis 服务器密码"
+            },
+            "db": {
+                "label": "数据库",
+                "description": "Redis 数据库编号"
+            }
+        }
+    },
+    "upstashRedisCache": {
+        "label": "Upstash Redis 缓存",
+        "description": "基于 Upstash Redis 的缓存实现",
+        "category": "Cache",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "url": {
+                "label": "URL",
+                "description": "Upstash Redis 连接 URL"
+            },
+            "token": {
+                "label": "令牌",
+                "description": "Upstash Redis 访问令牌"
+            }
+        }
+    },
+    "redisEmbeddingsCache": {
+        "label": "Redis 嵌入缓存",
+        "description": "在 Redis 中缓存生成的嵌入向量",
+        "category": "Cache",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "embeddings": {
+                "label": "嵌入",
+                "description": "要缓存的嵌入模型"
+            }
+        }
+    },
+    "inMemoryEmbeddingCache": {
+        "label": "内存嵌入缓存",
+        "description": "在内存中缓存生成的嵌入向量",
+        "category": "Cache",
+        "inputs": {
+            "embeddings": {
+                "label": "嵌入",
+                "description": "要缓存的嵌入模型"
+            }
+        }
+    }
+}

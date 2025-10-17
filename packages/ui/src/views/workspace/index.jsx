@@ -1,4 +1,4 @@
-import moment from 'moment/moment'
+import { formatDateTime } from '@/utils/timeFormatHelper'
 import * as PropTypes from 'prop-types'
 import { Fragment, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -127,7 +127,7 @@ function ShowWorkspaceRow(props) {
                         </IconButton>
                     )}
                 </StyledTableCell>
-                <StyledTableCell>{moment(props.workspace.updatedDate).format('MMMM Do YYYY, hh:mm A')}</StyledTableCell>
+                <StyledTableCell>{formatDateTime(props.workspace.updatedDate)}</StyledTableCell>
                 <StyledTableCell>
                     {props.workspace.name !== 'Default Workspace' && (
                         <PermissionIconButton

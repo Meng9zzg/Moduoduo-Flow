@@ -1,0 +1,276 @@
+{
+    "vectorStoreRetriever": {
+        "label": "向量存储检索器",
+        "description": "从向量存储中检索文档",
+        "category": "Retrievers",
+        "inputs": {
+            "vectorStore": {
+                "label": "向量存储",
+                "description": "要检索的向量存储"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "要检索的文档数量"
+            },
+            "searchType": {
+                "label": "搜索类型",
+                "description": "要执行的搜索类型"
+            }
+        }
+    },
+    "similarityThresholdRetriever": {
+        "label": "相似度阈值检索器",
+        "description": "检索相似度超过阈值的文档",
+        "category": "Retrievers",
+        "inputs": {
+            "vectorStore": {
+                "label": "向量存储",
+                "description": "要检索的向量存储"
+            },
+            "threshold": {
+                "label": "阈值",
+                "description": "检索的相似度阈值"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "要检索的最大文档数量"
+            }
+        }
+    },
+    "multiQueryRetriever": {
+        "label": "多查询检索器",
+        "description": "生成多个查询并从每个查询中检索",
+        "category": "Retrievers",
+        "inputs": {
+            "vectorStore": {
+                "label": "向量存储",
+                "description": "要检索的向量存储"
+            },
+            "llm": {
+                "label": "大语言模型",
+                "description": "用于查询生成的语言模型"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "每个查询要检索的文档数量"
+            }
+        }
+    },
+    "HydeRetriever": {
+        "label": "HyDE 检索器",
+        "description": "假设文档嵌入检索器",
+        "category": "Retrievers",
+        "inputs": {
+            "vectorStore": {
+                "label": "向量存储",
+                "description": "要检索的向量存储"
+            },
+            "llm": {
+                "label": "大语言模型",
+                "description": "用于生成假设文档的语言模型"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "要检索的文档数量"
+            }
+        }
+    },
+    "llmFilterRetriever": {
+        "label": "大语言模型过滤检索器",
+        "description": "使用大语言模型过滤检索的文档",
+        "category": "Retrievers",
+        "inputs": {
+            "vectorStore": {
+                "label": "向量存储",
+                "description": "要检索的向量存储"
+            },
+            "llm": {
+                "label": "大语言模型",
+                "description": "用于过滤的语言模型"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "要检索的文档数量"
+            }
+        }
+    },
+    "embeddingsFilterRetriever": {
+        "label": "嵌入过滤检索器",
+        "description": "使用嵌入过滤检索的文档",
+        "category": "Retrievers",
+        "inputs": {
+            "vectorStore": {
+                "label": "向量存储",
+                "description": "要检索的向量存储"
+            },
+            "embeddings": {
+                "label": "嵌入",
+                "description": "用于过滤的嵌入模型"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "要检索的文档数量"
+            }
+        }
+    },
+    "cohereRerankRetriever": {
+        "label": "Cohere 重排序检索器",
+        "description": "使用 Cohere 重排序检索的文档",
+        "category": "Retrievers",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "vectorStore": {
+                "label": "向量存储",
+                "description": "要检索的向量存储"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "要检索的文档数量"
+            },
+            "topN": {
+                "label": "Top N",
+                "description": "要重排序的文档数量"
+            }
+        }
+    },
+    "voyageAIRerankRetriever": {
+        "label": "Voyage AI 重排序检索器",
+        "description": "使用 Voyage AI 重排序检索的文档",
+        "category": "Retrievers",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "vectorStore": {
+                "label": "向量存储",
+                "description": "要检索的向量存储"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "要检索的文档数量"
+            },
+            "topN": {
+                "label": "Top N",
+                "description": "要重排序的文档数量"
+            }
+        }
+    },
+    "JinaRerankRetriever": {
+        "label": "Jina 重排序检索器",
+        "description": "使用 Jina 重排序检索的文档",
+        "category": "Retrievers",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "vectorStore": {
+                "label": "向量存储",
+                "description": "要检索的向量存储"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "要检索的文档数量"
+            },
+            "topN": {
+                "label": "Top N",
+                "description": "要重排序的文档数量"
+            }
+        }
+    },
+    "RRFRetriever": {
+        "label": "倒数排名融合检索器",
+        "description": "使用 RRF 组合多个检索器",
+        "category": "Retrievers",
+        "inputs": {
+            "retrievers": {
+                "label": "检索器",
+                "description": "要组合的检索器列表"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "要检索的文档数量"
+            },
+            "rrfK": {
+                "label": "RRF K",
+                "description": "排名的 RRF 常数"
+            }
+        }
+    },
+    "extractMetadataRetriever": {
+        "label": "提取元数据检索器",
+        "description": "从检索的文档中提取元数据",
+        "category": "Retrievers",
+        "inputs": {
+            "vectorStore": {
+                "label": "向量存储",
+                "description": "要检索的向量存储"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "要检索的文档数量"
+            },
+            "metadataFields": {
+                "label": "元数据字段",
+                "description": "要从元数据中提取的字段"
+            }
+        }
+    },
+    "promptRetriever": {
+        "label": "提示检索器",
+        "description": "使用基于提示的方法检索文档",
+        "category": "Retrievers",
+        "inputs": {
+            "vectorStore": {
+                "label": "向量存储",
+                "description": "要检索的向量存储"
+            },
+            "llm": {
+                "label": "大语言模型",
+                "description": "用于检索的语言模型"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "要检索的文档数量"
+            }
+        }
+    },
+    "customRetriever": {
+        "label": "自定义检索器",
+        "description": "自定义检索器实现",
+        "category": "Retrievers",
+        "inputs": {
+            "query": {
+                "label": "查询",
+                "description": "要检索文档的查询"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "要检索的文档数量"
+            }
+        }
+    },
+    "awsBedrockKBRetriever": {
+        "label": "AWS Bedrock 知识库检索器",
+        "description": "从 AWS Bedrock 知识库检索文档",
+        "category": "Retrievers",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "knowledgeBaseId": {
+                "label": "知识库 ID",
+                "description": "Bedrock 知识库的 ID"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "要检索的文档数量"
+            },
+            "region": {
+                "label": "区域",
+                "description": "知识库的 AWS 区域"
+            }
+        }
+    }
+}

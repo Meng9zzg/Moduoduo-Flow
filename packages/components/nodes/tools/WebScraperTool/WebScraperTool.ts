@@ -315,7 +315,18 @@ class WebScraperRecursive_Tools implements INode {
     baseClasses: string[]
     inputs: INodeParams[]
 
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
+
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.tools.webScraperTool.label'
+        this.descriptionKey = 'nodes.tools.webScraperTool.description'
+        this.categoryKey = 'nodes.tools.webScraperTool.category'
+
+        // Default English values as fallback
         this.label = 'Web Scraper Tool'
         this.name = 'webScraperTool'
         this.version = 1.1

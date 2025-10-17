@@ -93,6 +93,11 @@ const getFrameworkTranslationKey = (framework) => {
     }
     return map[framework] || framework
 }
+
+// Translation mapping for usecase options
+const getUsecaseTranslationKey = (usecase) => {
+    return `usecaseOptions.${usecase}`
+}
 const MenuProps = {
     PaperProps: {
         style: {
@@ -674,7 +679,7 @@ const Marketplace = () => {
                                     value={selectedUsecases}
                                     onChange={(_, newValue) => setSelectedUsecases(newValue)}
                                     disableCloseOnSelect
-                                    getOptionLabel={(option) => option}
+                                    getOptionLabel={(option) => t(getUsecaseTranslationKey(option))}
                                     isOptionEqualToValue={(option, value) => option === value}
                                     renderOption={(props, option, { selected }) => {
                                         const isDisabled = eligibleUsecases.length > 0 && !eligibleUsecases.includes(option)
@@ -682,7 +687,7 @@ const Marketplace = () => {
                                         return (
                                             <li {...props} style={{ pointerEvents: isDisabled ? 'none' : 'auto' }}>
                                                 <Checkbox checked={selected} color='success' disabled={isDisabled} />
-                                                <ListItemText primary={option} />
+                                                <ListItemText primary={t(getUsecaseTranslationKey(option))} />
                                             </li>
                                         )
                                     }}
@@ -713,7 +718,7 @@ const Marketplace = () => {
                                                     <Chip
                                                         {...getTagProps({ index })}
                                                         key={index}
-                                                        label={option}
+                                                        label={t(getUsecaseTranslationKey(option))}
                                                         sx={{
                                                             height: 24,
                                                             '& .MuiSvgIcon-root': {
@@ -729,7 +734,7 @@ const Marketplace = () => {
                                                         title={
                                                             <ol style={{ paddingLeft: '20px' }}>
                                                                 {value.slice(limitTags).map((item, i) => (
-                                                                    <li key={i}>{item}</li>
+                                                                    <li key={i}>{t(getUsecaseTranslationKey(item))}</li>
                                                                 ))}
                                                             </ol>
                                                         }
@@ -872,7 +877,7 @@ const Marketplace = () => {
                                                     }}
                                                 />
                                             }
-                                            label={usecase}
+                                            label={t(getUsecaseTranslationKey(usecase))}
                                         />
                                     ))}
                                 </Stack>

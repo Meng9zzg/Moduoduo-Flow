@@ -80,6 +80,9 @@ class ChatNemoGuardrailsChatModel implements INode {
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
+    labelKey: string
+    descriptionKey: string
+    categoryKey: string
 
     constructor() {
         this.label = 'Chat Nemo Guardrails'
@@ -89,16 +92,21 @@ class ChatNemoGuardrailsChatModel implements INode {
         this.icon = 'nemo.svg'
         this.category = 'Chat Models'
         this.description = 'Access models through the Nemo Guardrails API'
+        this.labelKey = 'nodes.chatmodels.chatNemoGuardrails.label'
+        this.descriptionKey = 'nodes.chatmodels.chatNemoGuardrails.description'
+        this.categoryKey = 'nodes.chatmodels.chatNemoGuardrails.category'
         this.baseClasses = [this.type, ...getBaseClasses(ChatNemoGuardrailsModel)]
         this.inputs = [
             {
                 label: 'Configuration ID',
+                labelKey: 'nodes.chatmodels.chatNemoGuardrails.inputs.configurationId.label',
                 name: 'configurationId',
                 type: 'string',
                 optional: false
             },
             {
                 label: 'Base URL',
+                labelKey: 'nodes.chatmodels.chatNemoGuardrails.inputs.baseUrl.label',
                 name: 'baseUrl',
                 type: 'string',
                 optional: false

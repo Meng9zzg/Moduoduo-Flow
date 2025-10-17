@@ -1,0 +1,654 @@
+{
+    "pinecone": {
+        "label": "Pinecone",
+        "description": "使用 Pinecone（领先的完全托管托管向量数据库）插入嵌入数据并执行相似性或 MMR 搜索",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "document": {
+                "label": "文档"
+            },
+            "embeddings": {
+                "label": "嵌入"
+            },
+            "recordManager": {
+                "label": "记录管理器",
+                "description": "跟踪记录以防止重复"
+            },
+            "pineconeIndex": {
+                "label": "Pinecone 索引"
+            },
+            "pineconeNamespace": {
+                "label": "Pinecone 命名空间",
+                "placeholder": "my-first-namespace"
+            },
+            "fileUpload": {
+                "label": "文件上传",
+                "description": "允许在聊天中上传文件"
+            },
+            "pineconeTextKey": {
+                "label": "Pinecone 文本键",
+                "description": "元数据中用于存储文本的键。默认为 `text`",
+                "placeholder": "text"
+            },
+            "pineconeMetadataFilter": {
+                "label": "Pinecone 元数据过滤器"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "要获取的顶级结果数量。默认为 4",
+                "placeholder": "4"
+            },
+            "searchType": {
+                "label": "搜索类型"
+            },
+            "fetchK": {
+                "label": "Fetch K（用于 MMR 搜索）",
+                "description": "为 MMR 重新排序获取的初始文档数量。默认为 20。仅在搜索类型为 MMR 时使用",
+                "placeholder": "20"
+            },
+            "lambda": {
+                "label": "Lambda（用于 MMR 搜索）",
+                "description": "0 到 1 之间的数字，确定结果之间的多样性程度，其中 0 对应最大多样性，1 对应最小多样性。仅在搜索类型为 MMR 时使用",
+                "placeholder": "0.5"
+            }
+        }
+    },
+    "chroma": {
+        "label": "Chroma",
+        "description": "使用 Chroma（开源向量数据库）插入嵌入数据并执行相似性搜索",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "document": {
+                "label": "文档"
+            },
+            "embeddings": {
+                "label": "嵌入"
+            },
+            "collectionName": {
+                "label": "集合名称",
+                "description": "存储向量的集合名称"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "要获取的顶级结果数量。默认为 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "faiss": {
+        "label": "FAISS",
+        "description": "使用 FAISS（高效相似性搜索和聚类的库）插入嵌入数据并执行相似性搜索",
+        "category": "Vector Stores",
+        "inputs": {
+            "document": {
+                "label": "文档"
+            },
+            "embeddings": {
+                "label": "嵌入"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "要获取的顶级结果数量。默认为 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "weaviate": {
+        "label": "Weaviate",
+        "description": "使用 Weaviate（开源向量数据库）插入嵌入数据并执行相似性搜索",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "document": {
+                "label": "文档"
+            },
+            "embeddings": {
+                "label": "嵌入"
+            },
+            "className": {
+                "label": "类名",
+                "description": "存储向量的 Weaviate 类名"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "要获取的顶级结果数量。默认为 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "qdrant": {
+        "label": "Qdrant",
+        "description": "使用 Qdrant（向量相似性搜索引擎）插入嵌入数据并执行相似性搜索",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "document": {
+                "label": "文档"
+            },
+            "embeddings": {
+                "label": "嵌入"
+            },
+            "collectionName": {
+                "label": "集合名称",
+                "description": "存储向量的 Qdrant 集合名称"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "要获取的顶级结果数量。默认为 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "elasticsearch": {
+        "label": "Elasticsearch",
+        "description": "使用 Elasticsearch 插入嵌入数据并执行相似性搜索",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "document": {
+                "label": "文档"
+            },
+            "embeddings": {
+                "label": "嵌入"
+            },
+            "indexName": {
+                "label": "索引名称",
+                "description": "存储向量的 Elasticsearch 索引名称"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "要获取的顶级结果数量。默认为 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "redis": {
+        "label": "Redis",
+        "description": "使用 Redis 插入嵌入数据并执行相似性搜索",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "document": {
+                "label": "文档"
+            },
+            "embeddings": {
+                "label": "嵌入"
+            },
+            "indexName": {
+                "label": "索引名称",
+                "description": "存储向量的 Redis 索引名称"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "要获取的顶级结果数量。默认为 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "mongoDBAtlas": {
+        "label": "MongoDB Atlas",
+        "description": "使用 MongoDB Atlas 插入嵌入数据并执行相似性搜索",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "document": {
+                "label": "文档"
+            },
+            "embeddings": {
+                "label": "嵌入"
+            },
+            "collectionName": {
+                "label": "集合名称",
+                "description": "存储向量的 MongoDB 集合名称"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "要获取的顶级结果数量。默认为 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "supabase": {
+        "label": "Supabase",
+        "description": "使用 Supabase 插入嵌入数据并执行相似性搜索",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "document": {
+                "label": "文档"
+            },
+            "embeddings": {
+                "label": "嵌入"
+            },
+            "tableName": {
+                "label": "表名",
+                "description": "存储向量的 Supabase 表名"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "要获取的顶级结果数量。默认为 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "vectara": {
+        "label": "Vectara",
+        "description": "使用 Vectara 插入嵌入数据并执行相似性搜索",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "document": {
+                "label": "文档"
+            },
+            "embeddings": {
+                "label": "嵌入"
+            },
+            "corpusId": {
+                "label": "语料库 ID",
+                "description": "存储向量的 Vectara 语料库 ID"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "要获取的顶级结果数量。默认为 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "milvus": {
+        "label": "Milvus",
+        "description": "使用 Milvus 插入嵌入数据并执行相似性搜索",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "document": {
+                "label": "文档"
+            },
+            "embeddings": {
+                "label": "嵌入"
+            },
+            "collectionName": {
+                "label": "集合名称",
+                "description": "存储向量的 Milvus 集合名称"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "要获取的顶级结果数量。默认为 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "zep": {
+        "label": "Zep",
+        "description": "使用 Zep 插入嵌入数据并执行相似性搜索",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "document": {
+                "label": "文档"
+            },
+            "embeddings": {
+                "label": "嵌入"
+            },
+            "collectionName": {
+                "label": "集合名称",
+                "description": "存储向量的 Zep 集合名称"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "要获取的顶级结果数量。默认为 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "postgres": {
+        "label": "PostgreSQL",
+        "description": "使用 PostgreSQL 和 pgvector 插入嵌入数据并执行相似性搜索",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "document": {
+                "label": "文档"
+            },
+            "embeddings": {
+                "label": "嵌入"
+            },
+            "tableName": {
+                "label": "表名",
+                "description": "存储向量的 PostgreSQL 表名"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "要获取的顶级结果数量。默认为 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "singlestore": {
+        "label": "SingleStore",
+        "description": "使用 SingleStore 插入嵌入数据并执行相似性搜索",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "document": {
+                "label": "文档"
+            },
+            "embeddings": {
+                "label": "嵌入"
+            },
+            "tableName": {
+                "label": "表名",
+                "description": "存储向量的 SingleStore 表名"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "要获取的顶级结果数量。默认为 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "astra": {
+        "label": "Astra",
+        "description": "使用 DataStax Astra 插入嵌入数据并执行相似性搜索",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "document": {
+                "label": "文档"
+            },
+            "embeddings": {
+                "label": "嵌入"
+            },
+            "keyspace": {
+                "label": "键空间",
+                "description": "存储向量的 Astra 键空间名称"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "要获取的顶级结果数量。默认为 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "couchbase": {
+        "label": "Couchbase",
+        "description": "使用 Couchbase 插入嵌入数据并执行相似性搜索",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "document": {
+                "label": "文档"
+            },
+            "embeddings": {
+                "label": "嵌入"
+            },
+            "bucketName": {
+                "label": "存储桶名称",
+                "description": "存储向量的 Couchbase 存储桶名称"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "要获取的顶级结果数量。默认为 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "meilisearch": {
+        "label": "Meilisearch",
+        "description": "使用 Meilisearch 插入嵌入数据并执行相似性搜索",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "document": {
+                "label": "文档"
+            },
+            "embeddings": {
+                "label": "嵌入"
+            },
+            "indexName": {
+                "label": "索引名称",
+                "description": "存储向量的 Meilisearch 索引名称"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "要获取的顶级结果数量。默认为 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "upstash": {
+        "label": "Upstash",
+        "description": "使用 Upstash Redis 插入嵌入数据并执行相似性搜索",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "document": {
+                "label": "文档"
+            },
+            "embeddings": {
+                "label": "嵌入"
+            },
+            "indexName": {
+                "label": "索引名称",
+                "description": "存储向量的 Upstash 索引名称"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "要获取的顶级结果数量。默认为 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "kendra": {
+        "label": "Amazon Kendra",
+        "description": "使用 Amazon Kendra 插入嵌入数据并执行相似性搜索",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "document": {
+                "label": "文档"
+            },
+            "embeddings": {
+                "label": "嵌入"
+            },
+            "indexId": {
+                "label": "索引 ID",
+                "description": "存储向量的 Kendra 索引 ID"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "要获取的顶级结果数量。默认为 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "openSearch": {
+        "label": "OpenSearch",
+        "description": "使用 OpenSearch 插入嵌入数据并执行相似性搜索",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "document": {
+                "label": "文档"
+            },
+            "embeddings": {
+                "label": "嵌入"
+            },
+            "indexName": {
+                "label": "索引名称",
+                "description": "存储向量的 OpenSearch 索引名称"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "要获取的顶级结果数量。默认为 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "zepCloud": {
+        "label": "Zep Cloud",
+        "description": "使用 Zep Cloud 插入嵌入数据并执行相似性搜索",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "document": {
+                "label": "文档"
+            },
+            "embeddings": {
+                "label": "嵌入"
+            },
+            "collectionName": {
+                "label": "集合名称",
+                "description": "存储向量的 Zep Cloud 集合名称"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "要获取的顶级结果数量。默认为 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "vectaraUpload": {
+        "label": "Vectara 上传",
+        "description": "将文档上传到 Vectara 进行向量存储和搜索",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "document": {
+                "label": "文档"
+            },
+            "embeddings": {
+                "label": "嵌入"
+            },
+            "corpusId": {
+                "label": "语料库 ID",
+                "description": "要上传到的 Vectara 语料库 ID"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "要获取的顶级结果数量。默认为 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "Astra": {
+        "label": "Astra 向量存储",
+        "description": "使用 DataStax Astra 的向量存储",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "keyspace": {
+                "label": "键空间",
+                "description": "Astra 键空间名称"
+            },
+            "table": {
+                "label": "表",
+                "description": "向量表名称"
+            }
+        }
+    },
+    "documentStoreVS": {
+        "label": "文档存储向量存储",
+        "description": "基于文档存储的向量存储实现",
+        "category": "Vector Stores",
+        "inputs": {
+            "storeId": {
+                "label": "存储 ID",
+                "description": "文档存储的 ID"
+            },
+            "dimension": {
+                "label": "维度",
+                "description": "向量维度"
+            }
+        }
+    },
+    "memoryVectorStore": {
+        "label": "内存向量存储",
+        "description": "基于内存的向量存储实现",
+        "category": "Vector Stores",
+        "inputs": {
+            "dimension": {
+                "label": "维度",
+                "description": "向量维度"
+            },
+            "maxSize": {
+                "label": "最大大小",
+                "description": "最大存储条目数"
+            }
+        }
+    },
+    "pineconeLlamaIndex": {
+        "label": "Pinecone 向量存储 (LlamaIndex)",
+        "description": "使用 Pinecone 和 LlamaIndex 的向量存储",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "indexName": {
+                "label": "索引名称",
+                "description": "Pinecone 索引名称"
+            },
+            "dimension": {
+                "label": "维度",
+                "description": "向量维度"
+            }
+        }
+    },
+    "simpleStoreLlamaIndex": {
+        "label": "简单存储 (LlamaIndex)",
+        "description": "使用 LlamaIndex 的简单向量存储",
+        "category": "Vector Stores",
+        "inputs": {
+            "dimension": {
+                "label": "维度",
+                "description": "向量维度"
+            }
+        }
+    }
+}

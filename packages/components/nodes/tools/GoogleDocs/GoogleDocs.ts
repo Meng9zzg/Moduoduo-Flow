@@ -14,7 +14,18 @@ class GoogleDocs_Tools implements INode {
     credential: INodeParams
     inputs: INodeParams[]
 
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
+
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.tools.googleDocs.label'
+        this.descriptionKey = 'nodes.tools.googleDocs.description'
+        this.categoryKey = 'nodes.tools.googleDocs.category'
+
+        // Default English values as fallback
         this.label = 'Google Docs'
         this.name = 'googleDocsTool'
         this.version = 1.0

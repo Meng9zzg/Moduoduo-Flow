@@ -1,0 +1,81 @@
+{
+    "customFunction": {
+        "label": "Custom Function",
+        "description": "Execute a custom JavaScript function",
+        "category": "Utilities",
+        "inputs": {
+            "functionCode": {
+                "label": "Function Code",
+                "description": "JavaScript function code to execute"
+            },
+            "inputData": {
+                "label": "Input Data",
+                "description": "Input data for the function"
+            }
+        }
+    },
+    "getVariable": {
+        "label": "Get Variable",
+        "description": "Get a variable value from the flow context",
+        "category": "Utilities",
+        "inputs": {
+            "variableName": {
+                "label": "Variable Name",
+                "description": "Name of the variable to get"
+            },
+            "defaultValue": {
+                "label": "Default Value",
+                "description": "Default value if variable doesn't exist"
+            }
+        }
+    },
+    "setVariable": {
+        "label": "Set Variable",
+        "description": "Set a variable value in the flow context",
+        "category": "Utilities",
+        "inputs": {
+            "variableName": {
+                "label": "Variable Name",
+                "description": "Name of the variable to set"
+            },
+            "variableValue": {
+                "label": "Variable Value",
+                "description": "Value to set for the variable"
+            }
+        }
+    },
+    "ifElseFunction": {
+        "label": "If Else Function",
+        "description": "Conditional logic with if-else statements",
+        "category": "Utilities",
+        "inputs": {
+            "condition": {
+                "label": "Condition",
+                "description": "Condition to evaluate"
+            },
+            "trueValue": {
+                "label": "True Value",
+                "description": "Value to return if condition is true"
+            },
+            "falseValue": {
+                "label": "False Value",
+                "description": "Value to return if condition is false"
+            }
+        }
+    },
+    "stickyNote": {
+        "label": "Sticky Note",
+        "description": "Add a sticky note to the canvas",
+        "category": "Utilities",
+        "inputs": {
+            "content": {
+                "label": "Content",
+                "description": "Content of the sticky note"
+            },
+            "color": {
+                "label": "Color",
+                "description": "Color of the sticky note"
+            }
+        }
+    }
+}

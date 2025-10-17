@@ -13,8 +13,18 @@ class MomentoCache implements INode {
     baseClasses: string[]
     inputs: INodeParams[]
     credential: INodeParams
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
 
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.momentoCache.label'
+        this.descriptionKey = 'nodes.momentoCache.description'
+        this.categoryKey = 'nodes.momentoCache.category'
+
+        // Default English values as fallback
         this.label = 'Momento Cache'
         this.name = 'momentoCache'
         this.version = 1.0

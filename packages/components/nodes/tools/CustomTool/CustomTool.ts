@@ -16,7 +16,18 @@ class CustomTool_Tools implements INode {
     baseClasses: string[]
     inputs: INodeParams[]
 
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
+
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.tools.customTool.label'
+        this.descriptionKey = 'nodes.tools.customTool.description'
+        this.categoryKey = 'nodes.tools.customTool.category'
+
+        // Default English values as fallback
         this.label = 'Custom Tool'
         this.name = 'customTool'
         this.version = 3.0

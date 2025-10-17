@@ -28,6 +28,15 @@
         "langchain": "Langchain",
         "llamaIndex": "LlamaIndex"
     },
+    "usecaseOptions": {
+        "Agent": "Agent",
+        "Basic": "Basic",
+        "Customer Support": "Customer Support",
+        "Deep Research": "Deep Research",
+        "Documents QnA": "Documents QnA",
+        "Extraction": "Extraction",
+        "Hierarchical Agent Teams": "Hierarchical Agent Teams"
+    },
     "table": {
         "name": "Name",
         "type": "Type",

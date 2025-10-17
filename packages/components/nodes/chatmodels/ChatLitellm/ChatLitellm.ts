@@ -15,6 +15,9 @@ class ChatLitellm_ChatModels implements INode {
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
+    labelKey: string
+    descriptionKey: string
+    categoryKey: string
 
     constructor() {
         this.label = 'ChatLitellm'
@@ -24,9 +27,13 @@ class ChatLitellm_ChatModels implements INode {
         this.icon = 'litellm.jpg'
         this.category = 'Chat Models'
         this.description = 'Connect to a Litellm server using OpenAI-compatible API'
+        this.labelKey = 'nodes.chatmodels.chatLitellm.label'
+        this.descriptionKey = 'nodes.chatmodels.chatLitellm.description'
+        this.categoryKey = 'nodes.chatmodels.chatLitellm.category'
         this.baseClasses = [this.type, 'BaseChatModel', ...getBaseClasses(ChatOpenAI)]
         this.credential = {
             label: 'Connect Credential',
+            labelKey: 'nodes.chatmodels.chatLitellm.credential.label',
             name: 'credential',
             type: 'credential',
             credentialNames: ['litellmApi'],
@@ -35,24 +42,28 @@ class ChatLitellm_ChatModels implements INode {
         this.inputs = [
             {
                 label: 'Cache',
+                labelKey: 'nodes.chatmodels.chatLitellm.inputs.cache.label',
                 name: 'cache',
                 type: 'BaseCache',
                 optional: true
             },
             {
                 label: 'Base URL',
+                labelKey: 'nodes.chatmodels.chatLitellm.inputs.basePath.label',
                 name: 'basePath',
                 type: 'string',
                 placeholder: 'http://localhost:8000'
             },
             {
                 label: 'Model Name',
+                labelKey: 'nodes.chatmodels.chatLitellm.inputs.modelName.label',
                 name: 'modelName',
                 type: 'string',
                 placeholder: 'model_name'
             },
             {
                 label: 'Temperature',
+                labelKey: 'nodes.chatmodels.chatLitellm.inputs.temperature.label',
                 name: 'temperature',
                 type: 'number',
                 step: 0.1,
@@ -61,6 +72,7 @@ class ChatLitellm_ChatModels implements INode {
             },
             {
                 label: 'Streaming',
+                labelKey: 'nodes.chatmodels.chatLitellm.inputs.streaming.label',
                 name: 'streaming',
                 type: 'boolean',
                 default: true,
@@ -69,6 +81,7 @@ class ChatLitellm_ChatModels implements INode {
             },
             {
                 label: 'Max Tokens',
+                labelKey: 'nodes.chatmodels.chatLitellm.inputs.maxTokens.label',
                 name: 'maxTokens',
                 type: 'number',
                 step: 1,
@@ -77,6 +90,7 @@ class ChatLitellm_ChatModels implements INode {
             },
             {
                 label: 'Top P',
+                labelKey: 'nodes.chatmodels.chatLitellm.inputs.topP.label',
                 name: 'topP',
                 type: 'number',
                 step: 0.1,
@@ -85,6 +99,7 @@ class ChatLitellm_ChatModels implements INode {
             },
             {
                 label: 'Timeout',
+                labelKey: 'nodes.chatmodels.chatLitellm.inputs.timeout.label',
                 name: 'timeout',
                 type: 'number',
                 step: 1,

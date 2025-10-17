@@ -1,0 +1,267 @@
+{
+    "openAI": {
+        "label": "OpenAI Embeddings",
+        "description": "Generate embeddings using OpenAI's embedding models",
+        "category": "Embeddings",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the OpenAI embedding model to use"
+            },
+            "batchSize": {
+                "label": "Batch Size",
+                "description": "Number of texts to process in each batch"
+            },
+            "stripNewLines": {
+                "label": "Strip New Lines",
+                "description": "Whether to strip new lines from the input text"
+            }
+        }
+    },
+    "cohere": {
+        "label": "Cohere Embeddings",
+        "description": "Generate embeddings using Cohere's embedding models",
+        "category": "Embeddings",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the Cohere embedding model to use"
+            },
+            "inputType": {
+                "label": "Input Type",
+                "description": "Type of input for the embedding model"
+            }
+        }
+    },
+    "huggingFace": {
+        "label": "Hugging Face Embeddings",
+        "description": "Generate embeddings using Hugging Face models",
+        "category": "Embeddings",
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the Hugging Face model to use"
+            },
+            "modelKwargs": {
+                "label": "Model Kwargs",
+                "description": "Additional keyword arguments for the model"
+            }
+        }
+    },
+    "azureOpenAI": {
+        "label": "Azure OpenAI Embeddings",
+        "description": "Generate embeddings using Azure OpenAI's embedding models",
+        "category": "Embeddings",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the Azure OpenAI embedding model to use"
+            },
+            "batchSize": {
+                "label": "Batch Size",
+                "description": "Number of texts to process in each batch"
+            }
+        }
+    },
+    "googleGenerativeAI": {
+        "label": "Google Generative AI Embeddings",
+        "description": "Generate embeddings using Google's Generative AI models",
+        "category": "Embeddings",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the Google Generative AI model to use"
+            },
+            "taskType": {
+                "label": "Task Type",
+                "description": "Type of task for the embedding model"
+            }
+        }
+    },
+    "ollama": {
+        "label": "Ollama Embeddings",
+        "description": "Generate embeddings using Ollama models",
+        "category": "Embeddings",
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the Ollama model to use"
+            },
+            "baseURL": {
+                "label": "Base URL",
+                "description": "Base URL for the Ollama API"
+            }
+        }
+    },
+    "awsBedrock": {
+        "label": "AWS Bedrock Embeddings",
+        "description": "Generate embeddings using AWS Bedrock models",
+        "category": "Embeddings",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the AWS Bedrock model to use"
+            },
+            "region": {
+                "label": "Region",
+                "description": "AWS region for the Bedrock service"
+            }
+        }
+    },
+    "googleVertexAI": {
+        "label": "Google Vertex AI Embeddings",
+        "description": "Generate embeddings using Google Vertex AI models",
+        "category": "Embeddings",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the Google Vertex AI model to use"
+            },
+            "projectId": {
+                "label": "Project ID",
+                "description": "Google Cloud project ID"
+            }
+        }
+    },
+    "mistralAI": {
+        "label": "Mistral AI Embeddings",
+        "description": "Generate embeddings using Mistral AI models",
+        "category": "Embeddings",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the Mistral AI model to use"
+            },
+            "batchSize": {
+                "label": "Batch Size",
+                "description": "Number of texts to process in each batch"
+            }
+        }
+    },
+    "voyageAI": {
+        "label": "Voyage AI Embeddings",
+        "description": "Generate embeddings using Voyage AI models",
+        "category": "Embeddings",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the Voyage AI model to use"
+            },
+            "batchSize": {
+                "label": "Batch Size",
+                "description": "Number of texts to process in each batch"
+            }
+        }
+    },
+    "togetherAI": {
+        "label": "Together AI Embeddings",
+        "description": "Generate embeddings using Together AI models",
+        "category": "Embeddings",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the Together AI model to use"
+            },
+            "batchSize": {
+                "label": "Batch Size",
+                "description": "Number of texts to process in each batch"
+            }
+        }
+    },
+    "jina": {
+        "label": "Jina Embeddings",
+        "description": "Generate embeddings using Jina AI models",
+        "category": "Embeddings",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the Jina model to use"
+            },
+            "batchSize": {
+                "label": "Batch Size",
+                "description": "Number of texts to process in each batch"
+            }
+        }
+    },
+    "localAI": {
+        "label": "Local AI Embeddings",
+        "description": "Generate embeddings using local AI models",
+        "category": "Embeddings",
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the local AI model to use"
+            },
+            "baseURL": {
+                "label": "Base URL",
+                "description": "Base URL for the local AI API"
+            }
+        }
+    },
+    "ibm": {
+        "label": "IBM Embeddings",
+        "description": "Generate embeddings using IBM Watson models",
+        "category": "Embeddings",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the IBM model to use"
+            },
+            "region": {
+                "label": "Region",
+                "description": "IBM Cloud region"
+            }
+        }
+    },
+    "huggingFaceInference": {
+        "label": "Hugging Face Inference Embeddings",
+        "description": "Generate embeddings using Hugging Face Inference API",
+        "category": "Embeddings",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "Model Name",
+                "description": "Name of the Hugging Face model to use"
+            },
+            "batchSize": {
+                "label": "Batch Size",
+                "description": "Number of texts to process in each batch"
+            }
+        }
+    }
+}

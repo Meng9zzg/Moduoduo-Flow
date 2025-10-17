@@ -1,0 +1,263 @@
+{
+    "openAI": {
+        "label": "OpenAI",
+        "description": "使用 OpenAI 的 GPT 模型进行文本生成",
+        "category": "LLMs",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 OpenAI 模型名称"
+            },
+            "temperature": {
+                "label": "温度",
+                "description": "控制输出的随机性"
+            },
+            "maxTokens": {
+                "label": "最大令牌数",
+                "description": "生成的最大令牌数量"
+            }
+        }
+    },
+    "azureOpenAI": {
+        "label": "Azure OpenAI",
+        "description": "使用 Azure OpenAI 的 GPT 模型进行文本生成",
+        "category": "LLMs",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 Azure OpenAI 模型名称"
+            },
+            "temperature": {
+                "label": "温度",
+                "description": "控制输出的随机性"
+            },
+            "maxTokens": {
+                "label": "最大令牌数",
+                "description": "生成的最大令牌数量"
+            }
+        }
+    },
+    "cohere": {
+        "label": "Cohere",
+        "description": "使用 Cohere 的语言模型进行文本生成",
+        "category": "LLMs",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 Cohere 模型名称"
+            },
+            "temperature": {
+                "label": "温度",
+                "description": "控制输出的随机性"
+            },
+            "maxTokens": {
+                "label": "最大令牌数",
+                "description": "生成的最大令牌数量"
+            }
+        }
+    },
+    "ollama": {
+        "label": "Ollama",
+        "description": "使用 Ollama 运行本地语言模型",
+        "category": "LLMs",
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 Ollama 模型名称"
+            },
+            "baseURL": {
+                "label": "基础 URL",
+                "description": "Ollama API 的基础 URL"
+            },
+            "temperature": {
+                "label": "温度",
+                "description": "控制输出的随机性"
+            }
+        }
+    },
+    "awsBedrock": {
+        "label": "AWS Bedrock",
+        "description": "使用 AWS Bedrock 访问各种语言模型",
+        "category": "LLMs",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 AWS Bedrock 模型名称"
+            },
+            "region": {
+                "label": "区域",
+                "description": "Bedrock 服务的 AWS 区域"
+            },
+            "temperature": {
+                "label": "温度",
+                "description": "控制输出的随机性"
+            }
+        }
+    },
+    "googlevertexai": {
+        "label": "Google Vertex AI",
+        "description": "使用 Google Vertex AI 进行文本生成",
+        "category": "LLMs",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 Google Vertex AI 模型名称"
+            },
+            "projectId": {
+                "label": "项目 ID",
+                "description": "Google Cloud 项目 ID"
+            },
+            "temperature": {
+                "label": "温度",
+                "description": "控制输出的随机性"
+            }
+        }
+    },
+    "huggingFaceInference_LLMs": {
+        "label": "Hugging Face 推理大语言模型",
+        "description": "使用 Hugging Face 推理 API 进行文本生成",
+        "category": "LLMs",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 Hugging Face 模型名称"
+            },
+            "temperature": {
+                "label": "温度",
+                "description": "控制输出的随机性"
+            },
+            "maxTokens": {
+                "label": "最大令牌数",
+                "description": "生成的最大令牌数量"
+            }
+        }
+    },
+    "replicate": {
+        "label": "Replicate",
+        "description": "使用 Replicate 运行语言模型",
+        "category": "LLMs",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 Replicate 模型名称"
+            },
+            "temperature": {
+                "label": "温度",
+                "description": "控制输出的随机性"
+            },
+            "maxTokens": {
+                "label": "最大令牌数",
+                "description": "生成的最大令牌数量"
+            }
+        }
+    },
+    "togetherAI": {
+        "label": "Together AI",
+        "description": "使用 Together AI 进行文本生成",
+        "category": "LLMs",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 Together AI 模型名称"
+            },
+            "temperature": {
+                "label": "温度",
+                "description": "控制输出的随机性"
+            },
+            "maxTokens": {
+                "label": "最大令牌数",
+                "description": "生成的最大令牌数量"
+            }
+        }
+    },
+    "fireworks": {
+        "label": "Fireworks",
+        "description": "使用 Fireworks AI 进行文本生成",
+        "category": "LLMs",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 Fireworks 模型名称"
+            },
+            "temperature": {
+                "label": "温度",
+                "description": "控制输出的随机性"
+            },
+            "maxTokens": {
+                "label": "最大令牌数",
+                "description": "生成的最大令牌数量"
+            }
+        }
+    },
+    "ibmWatsonx": {
+        "label": "IBM Watsonx",
+        "description": "使用 IBM Watsonx 进行文本生成",
+        "category": "LLMs",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 IBM Watsonx 模型名称"
+            },
+            "region": {
+                "label": "区域",
+                "description": "IBM Cloud 区域"
+            },
+            "temperature": {
+                "label": "温度",
+                "description": "控制输出的随机性"
+            }
+        }
+    },
+    "sambanova": {
+        "label": "SambaNova",
+        "description": "使用 SambaNova 进行文本生成",
+        "category": "LLMs",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 SambaNova 模型名称"
+            },
+            "temperature": {
+                "label": "温度",
+                "description": "控制输出的随机性"
+            },
+            "maxTokens": {
+                "label": "最大令牌数",
+                "description": "生成的最大令牌数量"
+            }
+        }
+    }
+}

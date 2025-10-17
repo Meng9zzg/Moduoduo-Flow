@@ -18,8 +18,18 @@ class HTTP_Agentflow implements INode {
     documentation?: string
     credential: INodeParams
     inputs: INodeParams[]
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
 
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.httpAgentflow.label'
+        this.descriptionKey = 'nodes.httpAgentflow.description'
+        this.categoryKey = 'nodes.httpAgentflow.category'
+
+        // Default English values as fallback
         this.label = 'HTTP'
         this.name = 'httpAgentflow'
         this.version = 1.1

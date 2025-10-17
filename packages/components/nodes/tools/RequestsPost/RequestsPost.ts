@@ -25,7 +25,18 @@ class RequestsPost_Tools implements INode {
     baseClasses: string[]
     inputs: INodeParams[]
 
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
+
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.tools.requestsPost.label'
+        this.descriptionKey = 'nodes.tools.requestsPost.description'
+        this.categoryKey = 'nodes.tools.requestsPost.category'
+
+        // Default English values as fallback
         this.label = 'Requests Post'
         this.name = 'requestsPost'
         this.version = 2.0

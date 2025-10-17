@@ -1,0 +1,267 @@
+{
+    "agentAgentflow": {
+        "label": "Agent",
+        "description": "Agent node in Agent Flow",
+        "category": "Agent Flows",
+        "inputs": {
+            "name": {
+                "label": "Name",
+                "description": "Name of the agent"
+            },
+            "description": {
+                "label": "Description",
+                "description": "Description of the agent"
+            },
+            "systemMessage": {
+                "label": "System Message",
+                "description": "System message for the agent"
+            }
+        }
+    },
+    "conditionAgentflow": {
+        "label": "Condition",
+        "description": "Conditional node in Agent Flow",
+        "category": "Agent Flows",
+        "inputs": {
+            "condition": {
+                "label": "Condition",
+                "description": "Condition to evaluate"
+            },
+            "trueValue": {
+                "label": "True Value",
+                "description": "Value when condition is true"
+            },
+            "falseValue": {
+                "label": "False Value",
+                "description": "Value when condition is false"
+            }
+        }
+    },
+    "conditionAgentAgentflow": {
+        "label": "Condition Agent",
+        "description": "Agent node that executes based on condition",
+        "category": "Agent Flows",
+        "inputs": {
+            "condition": {
+                "label": "Condition",
+                "description": "Execution condition"
+            },
+            "agent": {
+                "label": "Agent",
+                "description": "Agent to execute"
+            }
+        }
+    },
+    "customFunctionAgentflow": {
+        "label": "Custom Function",
+        "description": "Custom function node in Agent Flow",
+        "category": "Agent Flows",
+        "inputs": {
+            "functionName": {
+                "label": "Function Name",
+                "description": "Name of the custom function"
+            },
+            "parameters": {
+                "label": "Parameters",
+                "description": "Function parameters"
+            },
+            "code": {
+                "label": "Code",
+                "description": "Function implementation code"
+            }
+        }
+    },
+    "directReplyAgentflow": {
+        "label": "Direct Reply",
+        "description": "Direct reply node in Agent Flow",
+        "category": "Agent Flows",
+        "inputs": {
+            "message": {
+                "label": "Message",
+                "description": "Message to reply"
+            },
+            "type": {
+                "label": "Type",
+                "description": "Type of reply"
+            }
+        }
+    },
+    "executeFlowAgentflow": {
+        "label": "Execute Flow",
+        "description": "Flow execution node in Agent Flow",
+        "category": "Agent Flows",
+        "inputs": {
+            "flowId": {
+                "label": "Flow ID",
+                "description": "ID of the flow to execute"
+            },
+            "parameters": {
+                "label": "Parameters",
+                "description": "Parameters to pass to the flow"
+            }
+        }
+    },
+    "httpAgentflow": {
+        "label": "HTTP Request",
+        "description": "HTTP request node in Agent Flow",
+        "category": "Agent Flows",
+        "inputs": {
+            "url": {
+                "label": "URL",
+                "description": "Request URL"
+            },
+            "method": {
+                "label": "Method",
+                "description": "HTTP method"
+            },
+            "headers": {
+                "label": "Headers",
+                "description": "HTTP request headers"
+            },
+            "body": {
+                "label": "Body",
+                "description": "HTTP request body"
+            }
+        }
+    },
+    "humanInputAgentflow": {
+        "label": "Human Input",
+        "description": "Human input node in Agent Flow",
+        "category": "Agent Flows",
+        "inputs": {
+            "prompt": {
+                "label": "Prompt",
+                "description": "Prompt message to display to user"
+            },
+            "inputType": {
+                "label": "Input Type",
+                "description": "Expected input type"
+            },
+            "required": {
+                "label": "Required",
+                "description": "Whether input is required"
+            }
+        }
+    },
+    "iterationAgentflow": {
+        "label": "Iteration",
+        "description": "Iteration node in Agent Flow",
+        "category": "Agent Flows",
+        "inputs": {
+            "iterable": {
+                "label": "Iterable",
+                "description": "Object to iterate over"
+            },
+            "iterator": {
+                "label": "Iterator",
+                "description": "Iterator function"
+            },
+            "maxIterations": {
+                "label": "Max Iterations",
+                "description": "Maximum number of iterations"
+            }
+        }
+    },
+    "llmAgentflow": {
+        "label": "Large Language Model",
+        "description": "LLM node in Agent Flow",
+        "category": "Agent Flows",
+        "inputs": {
+            "model": {
+                "label": "Model",
+                "description": "Large language model to use"
+            },
+            "prompt": {
+                "label": "Prompt",
+                "description": "Prompt to send to the model"
+            },
+            "temperature": {
+                "label": "Temperature",
+                "description": "Randomness of generated text"
+            },
+            "maxTokens": {
+                "label": "Max Tokens",
+                "description": "Maximum number of tokens to generate"
+            }
+        }
+    },
+    "loopAgentflow": {
+        "label": "Loop",
+        "description": "Loop node in Agent Flow",
+        "category": "Agent Flows",
+        "inputs": {
+            "condition": {
+                "label": "Loop Condition",
+                "description": "Condition for loop execution"
+            },
+            "body": {
+                "label": "Loop Body",
+                "description": "Content to execute in the loop"
+            },
+            "maxIterations": {
+                "label": "Max Iterations",
+                "description": "Maximum number of iterations"
+            }
+        }
+    },
+    "retrieverAgentflow": {
+        "label": "Retriever",
+        "description": "Retriever node in Agent Flow",
+        "category": "Agent Flows",
+        "inputs": {
+            "query": {
+                "label": "Query",
+                "description": "Retrieval query"
+            },
+            "vectorStore": {
+                "label": "Vector Store",
+                "description": "Vector store for retrieval"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "Number of similar documents to return"
+            }
+        }
+    },
+    "startAgentflow": {
+        "label": "Start",
+        "description": "Start node in Agent Flow",
+        "category": "Agent Flows",
+        "inputs": {
+            "input": {
+                "label": "Input",
+                "description": "Initial input for the flow"
+            }
+        }
+    },
+    "stickyNoteAgentflow": {
+        "label": "Sticky Note",
+        "description": "Sticky note node in Agent Flow",
+        "category": "Agent Flows",
+        "inputs": {
+            "content": {
+                "label": "Content",
+                "description": "Content of the sticky note"
+            },
+            "color": {
+                "label": "Color",
+                "description": "Color of the sticky note"
+            }
+        }
+    },
+    "toolAgentflow": {
+        "label": "Tool",
+        "description": "Tool node in Agent Flow",
+        "category": "Agent Flows",
+        "inputs": {
+            "toolName": {
+                "label": "Tool Name",
+                "description": "Name of the tool to use"
+            },
+            "parameters": {
+                "label": "Parameters",
+                "description": "Parameters to pass to the tool"
+            }
+        }
+    }
+}

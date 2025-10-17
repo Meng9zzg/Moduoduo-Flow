@@ -1,0 +1,1240 @@
+{
+    "airtable": {
+        "label": "Airtable",
+        "description": "从 Airtable 表格加载数据",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "textSplitter": {
+                "label": "文本分割器",
+                "description": "用于分割文档的文本分割器"
+            },
+            "baseId": {
+                "label": "基础 ID",
+                "description": "如果您的表格 URL 看起来像：https://airtable.com/app11RobdGoX0YNsC/tblJdmvbrgizbYICO/viw9UrP77Id0CE4ee，那么 app11RovdGoX0YNsC 就是基础 ID",
+                "placeholder": "app11RobdGoX0YNsC"
+            },
+            "tableId": {
+                "label": "表格 ID",
+                "description": "如果您的表格 URL 看起来像：https://airtable.com/app11RobdGoX0YNsC/tblJdmvbrgizbYICO/viw9UrP77Id0CE4ee，那么 tblJdmvbrgizbYICO 就是表格 ID",
+                "placeholder": "tblJdmvbrgizbYICO"
+            },
+            "viewId": {
+                "label": "视图 ID",
+                "description": "如果您的视图 URL 看起来像：https://airtable.com/app11RobdGoX0YNsC/tblJdmvbrgizbYICO/viw9UrP77Id0CE4ee，那么 viw9UrP77Id0CE4ee 就是视图 ID",
+                "placeholder": "viw9UrP77Id0CE4ee"
+            },
+            "fields": {
+                "label": "仅包含字段",
+                "description": "要包含的字段名称或 ID 的逗号分隔列表。如果为空，则使用所有字段。如果字段名称包含逗号，请使用字段 ID。",
+                "placeholder": "Name, Assignee, fld1u0qUz0SoOQ9Gg, fldew39v6LBN5CjUl"
+            },
+            "returnAll": {
+                "label": "返回全部",
+                "description": "是否应返回所有结果或仅返回给定限制内的结果"
+            },
+            "limit": {
+                "label": "限制",
+                "description": "要返回的结果数量。启用\"返回全部\"时忽略。"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            },
+            "omitMetadataKeys": {
+                "label": "省略元数据键",
+                "description": "每个文档加载器都带有一组从文档中提取的默认元数据键。您可以使用此字段省略一些默认元数据键。值应该是用逗号分隔的键列表。使用 * 省略所有元数据键，除了您在附加元数据字段中指定的键",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            },
+            "filterByFormula": {
+                "label": "按公式过滤",
+                "description": "用于过滤记录的公式。将对每个记录评估公式，如果结果不是 0、false、\"\"、NaN、[] 或 #Error!，则记录将包含在响应中。",
+                "placeholder": "NOT({Id} = \"\")"
+            }
+        }
+    },
+    "apiLoader": {
+        "label": "API 加载器",
+        "description": "从 API 加载数据",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "url": {
+                "label": "URL",
+                "description": "要获取数据的 URL"
+            },
+            "method": {
+                "label": "方法",
+                "description": "要使用的 HTTP 方法"
+            },
+            "headers": {
+                "label": "请求头",
+                "description": "要在请求中包含的 HTTP 请求头"
+            },
+            "body": {
+                "label": "请求体",
+                "description": "POST/PUT 请求的请求体"
+            }
+        }
+    },
+    "apifyWebsiteContentCrawler": {
+        "label": "Apify 网站内容爬虫",
+        "description": "从 Apify 网站内容爬虫加载数据",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "actorId": {
+                "label": "Actor ID",
+                "description": "Apify actor ID"
+            },
+            "runId": {
+                "label": "Run ID",
+                "description": "Apify run ID"
+            },
+            "datasetId": {
+                "label": "Dataset ID",
+                "description": "Apify dataset ID"
+            }
+        }
+    },
+    "braveSearchApiLoader": {
+        "label": "BraveSearch API 文档加载器",
+        "description": "从 BraveSearch 结果加载和处理数据",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "query": {
+                "label": "查询",
+                "description": "搜索查询"
+            },
+            "count": {
+                "label": "数量",
+                "description": "要返回的结果数量"
+            },
+            "country": {
+                "label": "国家",
+                "description": "搜索结果的国家代码"
+            },
+            "language": {
+                "label": "语言",
+                "description": "搜索结果的语言代码"
+            }
+        }
+    },
+    "cheerioWebScraper": {
+        "label": "Cheerio 网页爬虫",
+        "description": "从网页加载数据",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "url": {
+                "label": "URL",
+                "description": "要爬取的 URL"
+            },
+            "selector": {
+                "label": "选择器",
+                "description": "用于提取内容的 CSS 选择器"
+            },
+            "waitFor": {
+                "label": "等待元素",
+                "description": "爬取前要等待的 CSS 选择器"
+            }
+        }
+    },
+    "csvFile": {
+        "label": "CSV 文件",
+        "description": "从CSV文件加载数据",
+        "category": "Document Loaders",
+        "inputs": {
+            "csvFile": {
+                "label": "CSV 文件"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "columnName": {
+                "label": "单列提取",
+                "description": "提取单个列",
+                "placeholder": "输入列名"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            },
+            "omitMetadataKeys": {
+                "label": "忽略元数据键",
+                "description": "每个文档加载器都带有一组从文档中提取的默认元数据键。您可以使用此字段忽略某些默认元数据键。值应该是用逗号分隔的键列表。使用 * 忽略所有元数据键，除了您在附加元数据字段中指定的键",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            }
+        }
+    },
+    "docxFile": {
+        "label": "DOCX 文件",
+        "description": "从DOCX文件加载数据",
+        "category": "Document Loaders",
+        "inputs": {
+            "docxFile": {
+                "label": "DOCX 文件"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            },
+            "omitMetadataKeys": {
+                "label": "忽略元数据键",
+                "description": "每个文档加载器都带有一组从文档中提取的默认元数据键。您可以使用此字段忽略某些默认元数据键。值应该是用逗号分隔的键列表。使用 * 忽略所有元数据键，除了您在附加元数据字段中指定的键",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            }
+        }
+    },
+    "epubFile": {
+        "label": "EPUB 文件",
+        "description": "从EPUB文件加载数据",
+        "category": "Document Loaders",
+        "inputs": {
+            "epubFile": {
+                "label": "EPUB 文件"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "usage": {
+                "label": "使用方式"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            },
+            "omitMetadataKeys": {
+                "label": "忽略元数据键",
+                "description": "每个文档加载器都带有一组从文档中提取的默认元数据键。您可以使用此字段忽略某些默认元数据键。值应该是用逗号分隔的键列表。使用 * 忽略所有元数据键，除了您在附加元数据字段中指定的键",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            }
+        }
+    },
+    "jsonFile": {
+        "label": "JSON 文件",
+        "description": "从JSON文件加载数据",
+        "category": "Document Loaders",
+        "inputs": {
+            "jsonFile": {
+                "label": "JSON 文件"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "pointersName": {
+                "label": "指针提取（用逗号分隔）",
+                "description": "从JSON文件中提取的JSON指针"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            },
+            "omitMetadataKeys": {
+                "label": "忽略元数据键",
+                "description": "每个文档加载器都带有一组从文档中提取的默认元数据键。您可以使用此字段忽略某些默认元数据键。值应该是用逗号分隔的键列表。使用 * 忽略所有元数据键，除了您在附加元数据字段中指定的键",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            }
+        }
+    },
+    "pdfFile": {
+        "label": "PDF 文件",
+        "description": "从PDF文件加载数据",
+        "category": "Document Loaders",
+        "inputs": {
+            "pdfFile": {
+                "label": "PDF 文件"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "usage": {
+                "label": "使用方式"
+            },
+            "legacyBuild": {
+                "label": "使用旧版构建",
+                "description": "使用旧版构建进行PDF处理"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            },
+            "omitMetadataKeys": {
+                "label": "忽略元数据键",
+                "description": "每个文档加载器都带有一组从文档中提取的默认元数据键。您可以使用此字段忽略某些默认元数据键。值应该是用逗号分隔的键列表。使用 * 忽略所有元数据键，除了您在附加元数据字段中指定的键",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            }
+        }
+    },
+    "textFile": {
+        "label": "文本文件",
+        "description": "从文本文件加载数据",
+        "category": "Document Loaders",
+        "inputs": {
+            "txtFile": {
+                "label": "TXT 文件"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            },
+            "omitMetadataKeys": {
+                "label": "忽略元数据键",
+                "description": "每个文档加载器都带有一组从文档中提取的默认元数据键。您可以使用此字段忽略某些默认元数据键。值应该是用逗号分隔的键列表。使用 * 忽略所有元数据键，除了您在附加元数据字段中指定的键",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            }
+        }
+    },
+    "htmlFile": {
+        "label": "HTML 文件",
+        "description": "从HTML文件加载数据",
+        "category": "Document Loaders",
+        "inputs": {
+            "htmlFile": {
+                "label": "HTML 文件"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            },
+            "omitMetadataKeys": {
+                "label": "忽略元数据键",
+                "description": "每个文档加载器都带有一组从文档中提取的默认元数据键。您可以使用此字段忽略某些默认元数据键。值应该是用逗号分隔的键列表。使用 * 忽略所有元数据键，除了您在附加元数据字段中指定的键",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            }
+        }
+    },
+    "markdownFile": {
+        "label": "Markdown 文件",
+        "description": "从Markdown文件加载数据",
+        "category": "Document Loaders",
+        "inputs": {
+            "markdownFile": {
+                "label": "Markdown 文件"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            },
+            "omitMetadataKeys": {
+                "label": "忽略元数据键",
+                "description": "每个文档加载器都带有一组从文档中提取的默认元数据键。您可以使用此字段忽略某些默认元数据键。值应该是用逗号分隔的键列表。使用 * 忽略所有元数据键，除了您在附加元数据字段中指定的键",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            }
+        }
+    },
+    "powerpointFile": {
+        "label": "PowerPoint 文件",
+        "description": "从PowerPoint文件加载数据",
+        "category": "Document Loaders",
+        "inputs": {
+            "powerpointFile": {
+                "label": "PowerPoint 文件"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            },
+            "omitMetadataKeys": {
+                "label": "忽略元数据键",
+                "description": "每个文档加载器都带有一组从文档中提取的默认元数据键。您可以使用此字段忽略某些默认元数据键。值应该是用逗号分隔的键列表。使用 * 忽略所有元数据键，除了您在附加元数据字段中指定的键",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            }
+        }
+    },
+    "rtfFile": {
+        "label": "RTF 文件",
+        "description": "从RTF文件加载数据",
+        "category": "Document Loaders",
+        "inputs": {
+            "rtfFile": {
+                "label": "RTF 文件"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            },
+            "omitMetadataKeys": {
+                "label": "忽略元数据键",
+                "description": "每个文档加载器都带有一组从文档中提取的默认元数据键。您可以使用此字段忽略某些默认元数据键。值应该是用逗号分隔的键列表。使用 * 忽略所有元数据键，除了您在附加元数据字段中指定的键",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            }
+        }
+    },
+    "srtFile": {
+        "label": "SRT 文件",
+        "description": "从SRT字幕文件加载数据",
+        "category": "Document Loaders",
+        "inputs": {
+            "srtFile": {
+                "label": "SRT 文件"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            },
+            "omitMetadataKeys": {
+                "label": "忽略元数据键",
+                "description": "每个文档加载器都带有一组从文档中提取的默认元数据键。您可以使用此字段忽略某些默认元数据键。值应该是用逗号分隔的键列表。使用 * 忽略所有元数据键，除了您在附加元数据字段中指定的键",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            }
+        }
+    },
+    "xlsxFile": {
+        "label": "XLSX 文件",
+        "description": "从XLSX文件加载数据",
+        "category": "Document Loaders",
+        "inputs": {
+            "xlsxFile": {
+                "label": "XLSX 文件"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            },
+            "omitMetadataKeys": {
+                "label": "忽略元数据键",
+                "description": "每个文档加载器都带有一组从文档中提取的默认元数据键。您可以使用此字段忽略某些默认元数据键。值应该是用逗号分隔的键列表。使用 * 忽略所有元数据键，除了您在附加元数据字段中指定的键",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            }
+        }
+    },
+    "youtubeAudioLoader": {
+        "label": "YouTube 音频加载器",
+        "description": "从YouTube视频加载音频数据",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "url": {
+                "label": "URL",
+                "description": "YouTube视频URL"
+            },
+            "language": {
+                "label": "语言",
+                "description": "转录语言"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            }
+        }
+    },
+    "unstructuredFileLoader": {
+        "label": "非结构化文件加载器",
+        "description": "使用 Unstructured 库从非结构化文件加载数据",
+        "category": "Document Loaders",
+        "inputs": {
+            "filePath": {
+                "label": "文件路径",
+                "description": "非结构化文件的路径"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            }
+        }
+    },
+    "unstructuredFolderLoader": {
+        "label": "非结构化文件夹加载器",
+        "description": "使用 Unstructured 库从文件夹中的非结构化文件加载数据",
+        "category": "Document Loaders",
+        "inputs": {
+            "folderPath": {
+                "label": "文件夹路径",
+                "description": "包含非结构化文件的文件夹路径"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            }
+        }
+    },
+    "vectorStoreToDocument": {
+        "label": "向量存储转文档",
+        "description": "将向量存储数据转换为文档",
+        "category": "Document Loaders",
+        "inputs": {
+            "vectorStore": {
+                "label": "向量存储",
+                "description": "要转换为文档的向量存储"
+            },
+            "query": {
+                "label": "查询",
+                "description": "搜索向量存储的查询"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "要获取的顶级结果数量"
+            }
+        }
+    },
+    "notionLoader": {
+        "label": "Notion 加载器",
+        "description": "从 Notion 页面和数据库加载数据",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "notionPageId": {
+                "label": "Notion 页面 ID",
+                "description": "要加载的 Notion 页面 ID"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            }
+        }
+    },
+    "discordLoader": {
+        "label": "Discord 加载器",
+        "description": "从 Discord 频道和消息加载数据",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "channelId": {
+                "label": "频道 ID",
+                "description": "要加载的 Discord 频道 ID"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            }
+        }
+    },
+    "slackLoader": {
+        "label": "Slack 加载器",
+        "description": "从 Slack 频道和消息加载数据",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "channelId": {
+                "label": "频道 ID",
+                "description": "要加载的 Slack 频道 ID"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            }
+        }
+    },
+    "githubLoader": {
+        "label": "GitHub 加载器",
+        "description": "从 GitHub 仓库加载数据",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "repositoryUrl": {
+                "label": "仓库 URL",
+                "description": "要加载的 GitHub 仓库 URL"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            }
+        }
+    },
+    "webBaseLoader": {
+        "label": "Web Base 加载器",
+        "description": "使用 WebBaseLoader 从网页加载数据",
+        "category": "Document Loaders",
+        "inputs": {
+            "urls": {
+                "label": "URLs",
+                "description": "要加载的 URL 列表"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            }
+        }
+    },
+    "playwrightWebLoader": {
+        "label": "Playwright 网页加载器",
+        "description": "使用 Playwright 从网页加载动态内容数据",
+        "category": "Document Loaders",
+        "inputs": {
+            "urls": {
+                "label": "URLs",
+                "description": "要加载的 URL 列表"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            }
+        }
+    },
+    "sitemapLoader": {
+        "label": "Sitemap 加载器",
+        "description": "使用 sitemap.xml 从网站加载数据",
+        "category": "Document Loaders",
+        "inputs": {
+            "sitemapUrl": {
+                "label": "Sitemap URL",
+                "description": "sitemap.xml 文件的 URL"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            }
+        }
+    },
+    "rssLoader": {
+        "label": "RSS 加载器",
+        "description": "从 RSS 源加载数据",
+        "category": "Document Loaders",
+        "inputs": {
+            "rssUrl": {
+                "label": "RSS URL",
+                "description": "RSS 源的 URL"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            }
+        }
+    },
+    "twitterLoader": {
+        "label": "Twitter 加载器",
+        "description": "从 Twitter/X 帖子加载数据",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "username": {
+                "label": "用户名",
+                "description": "要加载帖子的 Twitter 用户名"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            }
+        }
+    },
+    "redditLoader": {
+        "label": "Reddit 加载器",
+        "description": "从 Reddit 帖子和评论加载数据",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "subreddit": {
+                "label": "子版块",
+                "description": "要加载帖子的 Reddit 子版块"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            }
+        }
+    },
+    "youtubeLoader": {
+        "label": "YouTube 加载器",
+        "description": "从 YouTube 视频和转录文本加载数据",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "videoId": {
+                "label": "视频 ID",
+                "description": "要加载的 YouTube 视频 ID"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            }
+        }
+    },
+    "wikipediaLoader": {
+        "label": "Wikipedia 加载器",
+        "description": "从 Wikipedia 文章加载数据",
+        "category": "Document Loaders",
+        "inputs": {
+            "query": {
+                "label": "查询",
+                "description": "Wikipedia 搜索查询"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            }
+        }
+    },
+    "arxivLoader": {
+        "label": "ArXiv 加载器",
+        "description": "从 ArXiv 研究论文加载数据",
+        "category": "Document Loaders",
+        "inputs": {
+            "query": {
+                "label": "查询",
+                "description": "ArXiv 搜索查询"
+            },
+            "textSplitter": {
+                "label": "文本分割器"
+            },
+            "metadata": {
+                "label": "附加元数据",
+                "description": "要添加到提取文档的附加元数据"
+            }
+        }
+    },
+    "confluence": {
+        "label": "Confluence 加载器",
+        "description": "从 Confluence 页面加载文档",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "spaceKey": {
+                "label": "空间键",
+                "description": "Confluence 空间键"
+            },
+            "pageId": {
+                "label": "页面 ID",
+                "description": "要加载的页面 ID"
+            }
+        }
+    },
+    "customDocumentLoader": {
+        "label": "自定义文档加载器",
+        "description": "自定义的文档加载器实现",
+        "category": "Document Loaders",
+        "inputs": {
+            "filePath": {
+                "label": "文件路径",
+                "description": "要加载的文件路径"
+            },
+            "options": {
+                "label": "选项",
+                "description": "加载选项"
+            }
+        }
+    },
+    "documentStore": {
+        "label": "文档存储加载器",
+        "description": "从文档存储中加载文档",
+        "category": "Document Loaders",
+        "inputs": {
+            "storeId": {
+                "label": "存储 ID",
+                "description": "文档存储的 ID"
+            },
+            "query": {
+                "label": "查询",
+                "description": "搜索查询"
+            }
+        }
+    },
+    "figma": {
+        "label": "Figma 加载器",
+        "description": "从 Figma 设计文件加载数据",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "fileKey": {
+                "label": "文件键",
+                "description": "Figma 文件键"
+            },
+            "nodeIds": {
+                "label": "节点 ID",
+                "description": "要加载的节点 ID 列表"
+            }
+        }
+    },
+    "fileLoader": {
+        "label": "文件加载器",
+        "description": "从本地文件系统加载文档",
+        "category": "Document Loaders",
+        "inputs": {
+            "filePath": {
+                "label": "文件路径",
+                "description": "要加载的文件路径"
+            },
+            "encoding": {
+                "label": "编码",
+                "description": "文件编码格式"
+            }
+        }
+    },
+    "fireCrawl": {
+        "label": "FireCrawl 加载器",
+        "description": "使用 FireCrawl 服务爬取网页内容",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "url": {
+                "label": "URL",
+                "description": "要爬取的网页 URL"
+            },
+            "crawlOptions": {
+                "label": "爬取选项",
+                "description": "爬取配置选项"
+            }
+        }
+    },
+    "folderFiles": {
+        "label": "文件夹文件加载器",
+        "description": "从文件夹中批量加载文件",
+        "category": "Document Loaders",
+        "inputs": {
+            "folderPath": {
+                "label": "文件夹路径",
+                "description": "要加载的文件夹路径"
+            },
+            "globPattern": {
+                "label": "文件模式",
+                "description": "文件匹配模式"
+            }
+        }
+    },
+    "gitbook": {
+        "label": "GitBook 加载器",
+        "description": "从 GitBook 文档加载内容",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "spaceId": {
+                "label": "空间 ID",
+                "description": "GitBook 空间 ID"
+            },
+            "pageId": {
+                "label": "页面 ID",
+                "description": "要加载的页面 ID"
+            }
+        }
+    },
+    "github": {
+        "label": "GitHub 加载器",
+        "description": "从 GitHub 仓库加载代码和文档",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "repository": {
+                "label": "仓库",
+                "description": "GitHub 仓库名称"
+            },
+            "branch": {
+                "label": "分支",
+                "description": "要加载的分支名称"
+            }
+        }
+    },
+    "googleDrive": {
+        "label": "Google Drive 加载器",
+        "description": "从 Google Drive 加载文档",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "folderId": {
+                "label": "文件夹 ID",
+                "description": "Google Drive 文件夹 ID"
+            },
+            "fileId": {
+                "label": "文件 ID",
+                "description": "要加载的文件 ID"
+            }
+        }
+    },
+    "googleSheets": {
+        "label": "Google Sheets 加载器",
+        "description": "从 Google Sheets 加载表格数据",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "spreadsheetId": {
+                "label": "电子表格 ID",
+                "description": "Google Sheets 电子表格 ID"
+            },
+            "sheetName": {
+                "label": "工作表名称",
+                "description": "要加载的工作表名称"
+            }
+        }
+    },
+    "jira": {
+        "label": "Jira 加载器",
+        "description": "从 Jira 问题跟踪系统加载数据",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "jql": {
+                "label": "JQL 查询",
+                "description": "Jira Query Language 查询"
+            },
+            "projectKey": {
+                "label": "项目键",
+                "description": "Jira 项目键"
+            }
+        }
+    },
+    "jsonlinesFile": {
+        "label": "JSON Lines 文件加载器",
+        "description": "从 JSON Lines 格式文件加载数据",
+        "category": "Document Loaders",
+        "inputs": {
+            "filePath": {
+                "label": "文件路径",
+                "description": "JSON Lines 文件路径"
+            },
+            "encoding": {
+                "label": "编码",
+                "description": "文件编码格式"
+            }
+        }
+    },
+    "microsoftExcel": {
+        "label": "Microsoft Excel 加载器",
+        "description": "从 Excel 文件加载表格数据",
+        "category": "Document Loaders",
+        "inputs": {
+            "filePath": {
+                "label": "文件路径",
+                "description": "Excel 文件路径"
+            },
+            "sheetName": {
+                "label": "工作表名称",
+                "description": "要加载的工作表名称"
+            }
+        }
+    },
+    "microsoftPowerpoint": {
+        "label": "Microsoft PowerPoint 加载器",
+        "description": "从 PowerPoint 文件加载演示文稿内容",
+        "category": "Document Loaders",
+        "inputs": {
+            "filePath": {
+                "label": "文件路径",
+                "description": "PowerPoint 文件路径"
+            },
+            "slideNumbers": {
+                "label": "幻灯片编号",
+                "description": "要加载的幻灯片编号列表"
+            }
+        }
+    },
+    "microsoftWord": {
+        "label": "Microsoft Word 加载器",
+        "description": "从 Word 文档加载文本内容",
+        "category": "Document Loaders",
+        "inputs": {
+            "filePath": {
+                "label": "文件路径",
+                "description": "Word 文档路径"
+            },
+            "extractImages": {
+                "label": "提取图片",
+                "description": "是否提取文档中的图片"
+            }
+        }
+    },
+    "notionDB": {
+        "label": "Notion 数据库加载器",
+        "description": "从 Notion 数据库加载数据",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "databaseId": {
+                "label": "数据库 ID",
+                "description": "Notion 数据库 ID"
+            },
+            "filter": {
+                "label": "过滤器",
+                "description": "数据库查询过滤器"
+            }
+        }
+    },
+    "notionFolder": {
+        "label": "Notion 文件夹加载器",
+        "description": "从 Notion 文件夹加载页面",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "folderId": {
+                "label": "文件夹 ID",
+                "description": "Notion 文件夹 ID"
+            },
+            "recursive": {
+                "label": "递归",
+                "description": "是否递归加载子文件夹"
+            }
+        }
+    },
+    "notionPage": {
+        "label": "Notion 页面加载器",
+        "description": "从 Notion 页面加载内容",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "pageId": {
+                "label": "页面 ID",
+                "description": "Notion 页面 ID"
+            },
+            "includeChildren": {
+                "label": "包含子页面",
+                "description": "是否包含子页面内容"
+            }
+        }
+    },
+    "oxylabs": {
+        "label": "Oxylabs 加载器",
+        "description": "使用 Oxylabs 代理服务加载网页内容",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "url": {
+                "label": "URL",
+                "description": "要加载的网页 URL"
+            },
+            "render": {
+                "label": "渲染",
+                "description": "是否渲染 JavaScript"
+            }
+        }
+    },
+    "plainText": {
+        "label": "纯文本加载器",
+        "description": "从纯文本文件加载内容",
+        "category": "Document Loaders",
+        "inputs": {
+            "filePath": {
+                "label": "文件路径",
+                "description": "文本文件路径"
+            },
+            "encoding": {
+                "label": "编码",
+                "description": "文件编码格式"
+            }
+        }
+    },
+    "playwrightWebScraper": {
+        "label": "Playwright 网页爬虫",
+        "description": "使用 Playwright 爬取网页内容",
+        "category": "Document Loaders",
+        "inputs": {
+            "url": {
+                "label": "URL",
+                "description": "要爬取的网页 URL"
+            },
+            "waitForSelector": {
+                "label": "等待选择器",
+                "description": "等待特定元素出现"
+            }
+        }
+    },
+    "puppeteerWebScraper": {
+        "label": "Puppeteer 网页爬虫",
+        "description": "使用 Puppeteer 爬取网页内容",
+        "category": "Document Loaders",
+        "inputs": {
+            "url": {
+                "label": "URL",
+                "description": "要爬取的网页 URL"
+            },
+            "waitForSelector": {
+                "label": "等待选择器",
+                "description": "等待特定元素出现"
+            }
+        }
+    },
+    "s3Directory": {
+        "label": "S3 目录加载器",
+        "description": "从 AWS S3 目录加载文件",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "bucket": {
+                "label": "存储桶",
+                "description": "S3 存储桶名称"
+            },
+            "prefix": {
+                "label": "前缀",
+                "description": "文件路径前缀"
+            }
+        }
+    },
+    "S3": {
+        "label": "S3 文件加载器",
+        "description": "从 AWS S3 加载单个文件",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "bucket": {
+                "label": "存储桶",
+                "description": "S3 存储桶名称"
+            },
+            "key": {
+                "label": "键",
+                "description": "S3 对象键"
+            }
+        }
+    },
+    "searchApi": {
+        "label": "Search API 加载器",
+        "description": "使用 Search API 搜索和加载内容",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "query": {
+                "label": "查询",
+                "description": "搜索查询"
+            },
+            "numResults": {
+                "label": "结果数量",
+                "description": "要返回的结果数量"
+            }
+        }
+    },
+    "serpApi": {
+        "label": "SerpAPI 加载器",
+        "description": "使用 SerpAPI 搜索和加载内容",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "query": {
+                "label": "查询",
+                "description": "搜索查询"
+            },
+            "engine": {
+                "label": "搜索引擎",
+                "description": "要使用的搜索引擎"
+            }
+        }
+    },
+    "spiderDocumentLoaders": {
+        "label": "Spider 文档加载器",
+        "description": "使用 Spider 服务加载网页内容",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "url": {
+                "label": "URL",
+                "description": "要加载的网页 URL"
+            },
+            "spiderId": {
+                "label": "Spider ID",
+                "description": "Spider 服务 ID"
+            }
+        }
+    }
+}

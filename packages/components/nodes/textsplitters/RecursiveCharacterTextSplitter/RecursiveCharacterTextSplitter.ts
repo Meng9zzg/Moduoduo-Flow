@@ -12,8 +12,18 @@ class RecursiveCharacterTextSplitter_TextSplitters implements INode {
     category: string
     baseClasses: string[]
     inputs: INodeParams[]
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
 
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.textsplitters.recursiveCharacterTextSplitter.label'
+        this.descriptionKey = 'nodes.textsplitters.recursiveCharacterTextSplitter.description'
+        this.categoryKey = 'nodes.textsplitters.recursiveCharacterTextSplitter.category'
+
+        // Default English values as fallback
         this.label = 'Recursive Character Text Splitter'
         this.name = 'recursiveCharacterTextSplitter'
         this.version = 2.0

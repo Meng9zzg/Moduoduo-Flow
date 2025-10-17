@@ -62,6 +62,9 @@ class GoogleVertexAI_ChatModels implements INode {
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
+    labelKey: string
+    descriptionKey: string
+    categoryKey: string
 
     constructor() {
         this.label = 'ChatGoogleVertexAI'
@@ -71,9 +74,13 @@ class GoogleVertexAI_ChatModels implements INode {
         this.icon = 'GoogleVertex.svg'
         this.category = 'Chat Models'
         this.description = 'Wrapper around VertexAI large language models that use the Chat endpoint'
+        this.labelKey = 'nodes.chatmodels.chatGoogleVertexAI.label'
+        this.descriptionKey = 'nodes.chatmodels.chatGoogleVertexAI.description'
+        this.categoryKey = 'nodes.chatmodels.chatGoogleVertexAI.category'
         this.baseClasses = [this.type, ...getBaseClasses(ChatVertexAI)]
         this.credential = {
             label: 'Connect Credential',
+            labelKey: 'nodes.chatmodels.chatGoogleVertexAI.credential.label',
             name: 'credential',
             type: 'credential',
             credentialNames: ['googleVertexAuth'],
@@ -84,6 +91,7 @@ class GoogleVertexAI_ChatModels implements INode {
         this.inputs = [
             {
                 label: 'Cache',
+                labelKey: 'nodes.chatmodels.chatGoogleVertexAI.inputs.cache.label',
                 name: 'cache',
                 type: 'BaseCache',
                 optional: true
@@ -98,12 +106,14 @@ class GoogleVertexAI_ChatModels implements INode {
             },
             {
                 label: 'Model Name',
+                labelKey: 'nodes.chatmodels.chatGoogleVertexAI.inputs.modelName.label',
                 name: 'modelName',
                 type: 'asyncOptions',
                 loadMethod: 'listModels'
             },
             {
                 label: 'Custom Model Name',
+                labelKey: 'nodes.chatmodels.chatGoogleVertexAI.inputs.customModelName.label',
                 name: 'customModelName',
                 type: 'string',
                 placeholder: 'gemini-1.5-pro-exp-0801',
@@ -113,6 +123,7 @@ class GoogleVertexAI_ChatModels implements INode {
             },
             {
                 label: 'Temperature',
+                labelKey: 'nodes.chatmodels.chatGoogleVertexAI.inputs.temperature.label',
                 name: 'temperature',
                 type: 'number',
                 step: 0.1,
@@ -121,6 +132,7 @@ class GoogleVertexAI_ChatModels implements INode {
             },
             {
                 label: 'Allow Image Uploads',
+                labelKey: 'nodes.chatmodels.chatGoogleVertexAI.inputs.allowImageUploads.label',
                 name: 'allowImageUploads',
                 type: 'boolean',
                 description:
@@ -130,6 +142,7 @@ class GoogleVertexAI_ChatModels implements INode {
             },
             {
                 label: 'Streaming',
+                labelKey: 'nodes.chatmodels.chatGoogleVertexAI.inputs.streaming.label',
                 name: 'streaming',
                 type: 'boolean',
                 default: true,
@@ -138,6 +151,7 @@ class GoogleVertexAI_ChatModels implements INode {
             },
             {
                 label: 'Max Output Tokens',
+                labelKey: 'nodes.chatmodels.chatGoogleVertexAI.inputs.maxOutputTokens.label',
                 name: 'maxOutputTokens',
                 type: 'number',
                 step: 1,
@@ -146,6 +160,7 @@ class GoogleVertexAI_ChatModels implements INode {
             },
             {
                 label: 'Top Probability',
+                labelKey: 'nodes.chatmodels.chatGoogleVertexAI.inputs.topP.label',
                 name: 'topP',
                 type: 'number',
                 step: 0.1,
@@ -154,6 +169,7 @@ class GoogleVertexAI_ChatModels implements INode {
             },
             {
                 label: 'Top Next Highest Probability Tokens',
+                labelKey: 'nodes.chatmodels.chatGoogleVertexAI.inputs.topK.label',
                 name: 'topK',
                 type: 'number',
                 description: `Decode using top-k sampling: consider the set of top_k most probable tokens. Must be positive`,
@@ -163,6 +179,7 @@ class GoogleVertexAI_ChatModels implements INode {
             },
             {
                 label: 'Thinking Budget',
+                labelKey: 'nodes.chatmodels.chatGoogleVertexAI.inputs.thinkingBudget.label',
                 name: 'thinkingBudget',
                 type: 'number',
                 description: 'Number of tokens to use for thinking process (0 to disable)',

@@ -27,7 +27,18 @@ class RequestsDelete_Tools implements INode {
     baseClasses: string[]
     inputs: INodeParams[]
 
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
+
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.tools.requestsDelete.label'
+        this.descriptionKey = 'nodes.tools.requestsDelete.description'
+        this.categoryKey = 'nodes.tools.requestsDelete.category'
+
+        // Default English values as fallback
         this.label = 'Requests Delete'
         this.name = 'requestsDelete'
         this.version = 1.0

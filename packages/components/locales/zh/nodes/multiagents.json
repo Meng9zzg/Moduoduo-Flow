@@ -1,0 +1,32 @@
+{
+    "supervisor": {
+        "label": "监督者",
+        "description": "用于多代理协调的监督者代理",
+        "category": "Multiagents",
+        "inputs": {
+            "agents": {
+                "label": "代理",
+                "description": "要监督的代理列表"
+            },
+            "llm": {
+                "label": "大语言模型",
+                "description": "用于监督的语言模型"
+            }
+        }
+    },
+    "worker": {
+        "label": "工作者",
+        "description": "用于多代理任务的工作者代理",
+        "category": "Multiagents",
+        "inputs": {
+            "tools": {
+                "label": "工具",
+                "description": "工作者可用的工具"
+            },
+            "llm": {
+                "label": "大语言模型",
+                "description": "工作者的语言模型"
+            }
+        }
+    }
+}

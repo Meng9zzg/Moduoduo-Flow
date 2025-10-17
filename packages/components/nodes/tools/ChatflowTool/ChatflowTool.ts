@@ -20,7 +20,18 @@ class ChatflowTool_Tools implements INode {
     credential: INodeParams
     inputs: INodeParams[]
 
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
+
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.tools.chatflowTool.label'
+        this.descriptionKey = 'nodes.tools.chatflowTool.description'
+        this.categoryKey = 'nodes.tools.chatflowTool.category'
+
+        // Default English values as fallback
         this.label = 'Chatflow Tool'
         this.name = 'ChatflowTool'
         this.version = 5.1

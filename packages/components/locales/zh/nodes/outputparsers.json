@@ -1,0 +1,62 @@
+{
+    "structuredOutputParser": {
+        "label": "结构化输出解析器",
+        "description": "将LLM调用的输出解析为给定的（JSON）结构。",
+        "category": "输出解析器",
+        "inputs": {
+            "autofixParser": {
+                "label": "自动修复",
+                "description": "如果第一次调用失败，将再次调用模型来修复任何错误。"
+            },
+            "jsonStructure": {
+                "label": "JSON结构",
+                "description": "LLM要返回的JSON结构"
+            }
+        }
+    },
+    "structuredOutputParserAdvanced": {
+        "label": "高级结构化输出解析器",
+        "description": "将LLM调用的输出解析为给定的（JSON）结构，具有高级功能。",
+        "category": "输出解析器",
+        "inputs": {
+            "autofixParser": {
+                "label": "自动修复",
+                "description": "如果第一次调用失败，将再次调用模型来修复任何错误。"
+            },
+            "jsonStructure": {
+                "label": "JSON结构",
+                "description": "LLM要返回的JSON结构"
+            },
+            "partialStructuredOutputParser": {
+                "label": "部分结构化输出解析器",
+                "description": "为流式响应启用部分解析"
+            }
+        }
+    },
+    "csvListOutputParser": {
+        "label": "CSV列表输出解析器",
+        "description": "将LLM调用的输出解析为CSV列表。",
+        "category": "输出解析器",
+        "inputs": {
+            "separator": {
+                "label": "分隔符",
+                "description": "用于CSV列表的分隔符。默认为逗号。"
+            }
+        }
+    },
+    "customListOutputParser": {
+        "label": "自定义列表输出解析器",
+        "description": "将LLM调用的输出解析为自定义列表格式。",
+        "category": "输出解析器",
+        "inputs": {
+            "separator": {
+                "label": "分隔符",
+                "description": "用于列表的分隔符。默认为换行符。"
+            },
+            "length": {
+                "label": "长度",
+                "description": "列表的预期长度。如果未提供，将返回所有项目。"
+            }
+        }
+    }
+}

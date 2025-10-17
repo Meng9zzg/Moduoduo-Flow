@@ -23,7 +23,18 @@ class ReadFile_Tools implements INode {
     inputs: INodeParams[]
     warning: string
 
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
+
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.tools.readFile.label'
+        this.descriptionKey = 'nodes.tools.readFile.description'
+        this.categoryKey = 'nodes.tools.readFile.category'
+
+        // Default English values as fallback
         this.label = 'Read File'
         this.name = 'readFile'
         this.version = 2.0

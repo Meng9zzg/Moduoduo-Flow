@@ -12,8 +12,18 @@ class CharacterTextSplitter_TextSplitters implements INode {
     category: string
     baseClasses: string[]
     inputs: INodeParams[]
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
 
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.textsplitters.characterTextSplitter.label'
+        this.descriptionKey = 'nodes.textsplitters.characterTextSplitter.description'
+        this.categoryKey = 'nodes.textsplitters.characterTextSplitter.category'
+
+        // Default English values as fallback
         this.label = 'Character Text Splitter'
         this.name = 'characterTextSplitter'
         this.version = 1.0

@@ -16,8 +16,18 @@ class RedisCache implements INode {
     baseClasses: string[]
     inputs: INodeParams[]
     credential: INodeParams
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
 
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.redisCache.label'
+        this.descriptionKey = 'nodes.redisCache.description'
+        this.categoryKey = 'nodes.redisCache.category'
+
+        // Default English values as fallback
         this.label = 'Redis Cache'
         this.name = 'redisCache'
         this.version = 1.0

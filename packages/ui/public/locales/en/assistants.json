@@ -14,5 +14,20 @@
     "saveAssistant": "Save Assistant",
     "mandatoryFields": "Please fill in all mandatory fields.",
     "saveSuccess": "Assistant saved successfully",
-    "toolDescGenerated": "Document Store Tool Description generated successfully"
+    "toolDescGenerated": "Document Store Tool Description generated successfully",
+    "customAssistant": "Custom Private AI Assistant",
+    "openAIAssistant": "OpenAI Assistant",
+    "openAIAssistantDescription": "Your OpenAI Private AI Assistant Interface",
+    "searchAssistants": "Search Assistants",
+    "loadExistingAssistant": "Load Existing Assistant",
+    "addNewAssistant": "Add New Assistant",
+    "editAssistant": "Edit Assistant",
+    "noCustomAssistantsAddedYet": "No Custom Assistants Added Yet",
+    "noOpenAIAssistantsAddedYet": "No OpenAI Assistants Added Yet",
+    "load": "Load",
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel"
 }

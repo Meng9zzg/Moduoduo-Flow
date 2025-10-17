@@ -14,7 +14,18 @@ class ChainTool_Tools implements INode {
     baseClasses: string[]
     inputs: INodeParams[]
 
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
+
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.tools.chainTool.label'
+        this.descriptionKey = 'nodes.tools.chainTool.description'
+        this.categoryKey = 'nodes.tools.chainTool.category'
+
+        // Default English values as fallback
         this.label = 'Chain Tool'
         this.name = 'chainTool'
         this.version = 1.0

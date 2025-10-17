@@ -1,0 +1,863 @@
+{
+    "agentAsTool": {
+        "label": "代理工具",
+        "description": "作为工具执行另一个代理流程",
+        "category": "工具",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "selectedAgent": {
+                "label": "选择代理"
+            },
+            "toolName": {
+                "label": "工具名称"
+            },
+            "toolDesc": {
+                "label": "工具描述"
+            },
+            "returnDirect": {
+                "label": "直接返回"
+            },
+            "overrideConfig": {
+                "label": "覆盖配置"
+            },
+            "baseURL": {
+                "label": "基础 URL"
+            },
+            "startNewSessionPerMessage": {
+                "label": "每条消息启动新会话"
+            },
+            "useQuestionFromChat": {
+                "label": "使用聊天中的问题"
+            },
+            "customInput": {
+                "label": "自定义输入"
+            }
+        }
+    },
+    "arxiv": {
+        "label": "Arxiv",
+        "description": "从 Arxiv 搜索和阅读学术论文内容",
+        "category": "工具",
+        "inputs": {
+            "toolName": {
+                "label": "名称"
+            },
+            "toolDescription": {
+                "label": "描述"
+            },
+            "topKResults": {
+                "label": "返回前 K 个结果"
+            },
+            "maxQueryLength": {
+                "label": "最大查询长度"
+            },
+            "maxContentLength": {
+                "label": "最大内容长度"
+            },
+            "loadFullContent": {
+                "label": "加载完整内容"
+            },
+            "continueOnFailure": {
+                "label": "失败时继续"
+            },
+            "useLegacyBuild": {
+                "label": "使用旧版构建"
+            }
+        }
+    },
+    "awsDynamoDBKVStorage": {
+        "label": "AWS DynamoDB KV 存储",
+        "description": "在 AWS DynamoDB 中存储和检索版本化文本值",
+        "category": "工具",
+        "credential": {
+            "label": "AWS 凭证"
+        },
+        "inputs": {
+            "region": {
+                "label": "AWS 区域"
+            },
+            "tableName": {
+                "label": "DynamoDB 表"
+            },
+            "keyPrefix": {
+                "label": "键前缀"
+            },
+            "operation": {
+                "label": "操作"
+            },
+            "store": {
+                "label": "存储"
+            },
+            "retrieve": {
+                "label": "检索"
+            }
+        }
+    },
+    "awsSNS": {
+        "label": "AWS SNS",
+        "description": "向 AWS SNS 主题发布消息",
+        "category": "工具",
+        "credential": {
+            "label": "AWS 凭证"
+        },
+        "inputs": {
+            "region": {
+                "label": "AWS 区域"
+            },
+            "topic": {
+                "label": "SNS 主题"
+            }
+        }
+    },
+    "braveSearchAPI": {
+        "label": "BraveSearch API",
+        "description": "BraveSearch API 的包装器 - 访问 Brave 搜索结果的实时 API",
+        "category": "工具",
+        "credential": {
+            "label": "连接凭证"
+        }
+    },
+    "calculator": {
+        "label": "计算器",
+        "description": "对响应执行计算",
+        "category": "工具"
+    },
+    "chainTool": {
+        "label": "链工具",
+        "description": "将链用作代理的允许工具",
+        "category": "工具",
+        "inputs": {
+            "chainName": {
+                "label": "链名称"
+            },
+            "chainDescription": {
+                "label": "链描述"
+            },
+            "returnDirect": {
+                "label": "直接返回"
+            },
+            "baseChain": {
+                "label": "基础链"
+            }
+        }
+    },
+    "chatflowTool": {
+        "label": "聊天流工具",
+        "description": "作为工具执行另一个聊天流程",
+        "category": "工具",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "selectedChatflow": {
+                "label": "选择聊天流"
+            },
+            "toolName": {
+                "label": "工具名称"
+            },
+            "toolDesc": {
+                "label": "工具描述"
+            },
+            "returnDirect": {
+                "label": "直接返回"
+            },
+            "overrideConfig": {
+                "label": "覆盖配置"
+            },
+            "baseURL": {
+                "label": "基础 URL"
+            },
+            "startNewSessionPerMessage": {
+                "label": "每条消息启动新会话"
+            },
+            "useQuestionFromChat": {
+                "label": "使用聊天中的问题"
+            },
+            "customInput": {
+                "label": "自定义输入"
+            }
+        }
+    },
+    "codeInterpreterE2B": {
+        "label": "E2B 代码解释器",
+        "description": "在沙箱环境中执行代码",
+        "category": "工具",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "toolName": {
+                "label": "工具名称"
+            },
+            "toolDescription": {
+                "label": "工具描述"
+            }
+        }
+    },
+    "composio": {
+        "label": "Composio",
+        "description": "包含 250+ 个应用的工具集，用于构建 AI 驱动的应用程序",
+        "category": "工具",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "appName": {
+                "label": "应用名称"
+            },
+            "authStatus": {
+                "label": "认证状态"
+            },
+            "actionsToUse": {
+                "label": "使用的操作"
+            }
+        }
+    },
+    "currentDateTime": {
+        "label": "当前日期时间",
+        "description": "获取今天的星期、日期和时间。",
+        "category": "工具"
+    },
+    "customTool": {
+        "label": "自定义工具",
+        "description": "在聊天流程中使用您在 Flowise 中创建的自定义工具",
+        "category": "工具",
+        "inputs": {
+            "selectedTool": {
+                "label": "选择工具"
+            },
+            "returnDirect": {
+                "label": "直接返回",
+                "description": "直接向用户返回工具的输出"
+            },
+            "customToolName": {
+                "label": "自定义工具名称"
+            },
+            "customToolDesc": {
+                "label": "自定义工具描述"
+            },
+            "customToolSchema": {
+                "label": "自定义工具架构"
+            },
+            "customToolFunc": {
+                "label": "自定义工具函数"
+            }
+        }
+    },
+    "exaSearch": {
+        "label": "Exa Search",
+        "description": "Exa Search API 的包装器 - 专为 LLM 使用而设计的搜索引擎",
+        "category": "工具",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "description": {
+                "label": "工具描述"
+            },
+            "numResults": {
+                "label": "结果数量"
+            },
+            "searchType": {
+                "label": "搜索类型",
+                "options": {
+                    "keyword": "关键词",
+                    "neural": "神经",
+                    "auto": "自动"
+                }
+            }
+        }
+    },
+    "gmail": {
+        "label": "Gmail",
+        "description": "执行 Gmail 草稿、消息、标签和主题的操作",
+        "category": "工具",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "type": {
+                "label": "类型",
+                "options": {
+                    "drafts": "草稿",
+                    "messages": "消息",
+                    "labels": "标签",
+                    "threads": "主题"
+                }
+            }
+        }
+    },
+    "googleCalendar": {
+        "label": "Google Calendar",
+        "description": "执行 Google Calendar 操作，例如管理事件、日历和检查可用性",
+        "category": "工具",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "type": {
+                "label": "类型",
+                "options": {
+                    "event": "事件",
+                    "calendar": "日历",
+                    "freebusy": "空闲忙碌"
+                }
+            }
+        }
+    },
+    "googleDocs": {
+        "label": "Google Docs",
+        "description": "执行 Google Docs 操作，例如创建、读取、更新和删除文档，以及文本操作",
+        "category": "工具",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "actions": {
+                "label": "操作",
+                "options": {
+                    "createDocument": "创建文档",
+                    "getDocument": "获取文档",
+                    "updateDocument": "更新文档",
+                    "insertText": "插入文本",
+                    "replaceText": "替换文本",
+                    "appendText": "追加文本",
+                    "getTextContent": "获取文本内容",
+                    "insertImage": "插入图片",
+                    "createTable": "创建表格"
+                }
+            }
+        }
+    },
+    "googleDrive": {
+        "label": "Google Drive",
+        "description": "执行 Google Drive 操作，例如管理文件、文件夹、共享和搜索",
+        "category": "工具",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "type": {
+                "label": "类型",
+                "options": {
+                    "file": "文件",
+                    "folder": "文件夹",
+                    "search": "搜索",
+                    "share": "共享"
+                }
+            }
+        }
+    },
+    "googleCustomSearch": {
+        "label": "Google Custom Search",
+        "description": "Google Custom Search API 的包装器 - 访问 Google 搜索结果的实时 API",
+        "category": "工具",
+        "credential": {
+            "label": "连接凭证"
+        }
+    },
+    "googleSheetsTool": {
+        "label": "Google Sheets",
+        "description": "执行 Google Sheets 操作，例如管理电子表格、读取和写入值",
+        "category": "工具",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "type": {
+                "label": "类型",
+                "options": {
+                    "spreadsheet": "电子表格",
+                    "values": "值"
+                }
+            }
+        }
+    },
+    "jiraTool": {
+        "label": "Jira",
+        "description": "执行 Jira 问题、评论和用户的操作",
+        "category": "工具",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "host": {
+                "label": "主机"
+            },
+            "type": {
+                "label": "类型",
+                "options": {
+                    "issues": "问题",
+                    "issueComments": "问题评论",
+                    "users": "用户"
+                }
+            }
+        }
+    },
+    "jsonPathExtractor": {
+        "label": "JSON 路径提取器",
+        "description": "使用路径表达式从 JSON 中提取值",
+        "category": "工具",
+        "inputs": {
+            "jsonPath": {
+                "label": "JSON 路径"
+            }
+        }
+    },
+    "microsoftOutlook": {
+        "label": "Microsoft Outlook",
+        "description": "执行 Microsoft Outlook 日历、事件和消息的操作",
+        "category": "工具",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "type": {
+                "label": "类型",
+                "options": {
+                    "calendar": "日历",
+                    "message": "消息"
+                }
+            }
+        }
+    },
+    "microsoftTeams": {
+        "label": "Microsoft Teams",
+        "description": "执行 Microsoft Teams 频道、聊天和聊天消息的操作",
+        "category": "工具",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "type": {
+                "label": "类型",
+                "options": {
+                    "channel": "频道",
+                    "chat": "聊天",
+                    "chatMessage": "聊天消息"
+                }
+            }
+        }
+    },
+    "openAPIToolkit": {
+        "label": "OpenAPI Toolkit",
+        "description": "加载 OpenAPI 规范，并将每个 API 端点转换为工具",
+        "category": "工具",
+        "inputs": {
+            "inputType": {
+                "label": "输入类型",
+                "options": {
+                    "file": "上传文件",
+                    "url": "提供链接"
+                }
+            }
+        }
+    },
+    "queryEngineToolLlamaIndex": {
+        "label": "QueryEngine 工具",
+        "description": "用于调用查询引擎的工具",
+        "category": "工具",
+        "inputs": {
+            "queryEngine": {
+                "label": "基础 QueryEngine"
+            },
+            "toolName": {
+                "label": "工具名称"
+            },
+            "toolDescription": {
+                "label": "工具描述"
+            }
+        }
+    },
+    "readFile": {
+        "label": "读取文件",
+        "description": "从磁盘读取文件",
+        "category": "工具",
+        "warning": "此工具可用于从磁盘读取文件。建议谨慎使用此工具。",
+        "inputs": {
+            "workspacePath": {
+                "label": "工作区路径",
+                "placeholder": "C:\\Users\\User\\MyProject",
+                "description": "文件操作的基础工作区目录。所有文件路径将相对于此目录。"
+            },
+            "enforceWorkspaceBoundaries": {
+                "label": "强制工作区边界",
+                "description": "启用时，出于安全考虑，将文件访问限制在工作区目录内。推荐：true"
+            },
+            "maxFileSize": {
+                "label": "最大文件大小（MB）",
+                "description": "可读取的最大文件大小（以兆字节为单位）"
+            },
+            "allowedExtensions": {
+                "label": "允许的扩展名",
+                "description": "允许的文件扩展名的逗号分隔列表（例如 .txt,.json,.md）。留空以允许所有。",
+                "placeholder": ".txt,.json,.md,.py,.js"
+            }
+        }
+    },
+    "requestsDelete": {
+        "label": "Requests Delete",
+        "description": "执行 HTTP DELETE 请求",
+        "category": "工具",
+        "inputs": {
+            "requestsDeleteUrl": {
+                "label": "URL"
+            },
+            "requestsDeleteName": {
+                "label": "名称",
+                "description": "工具的名称"
+            },
+            "requestsDeleteDescription": {
+                "label": "描述",
+                "description": "描述 LLM 何时应使用此工具"
+            },
+            "requestsDeleteHeaders": {
+                "label": "请求头",
+                "placeholder": "{\n    \"Authorization\": \"Bearer <token>\"\n}"
+            },
+            "requestsDeleteQueryParamsSchema": {
+                "label": "查询参数架构",
+                "description": "可用查询参数的描述，使 LLM 能够确定要使用哪些查询参数"
+            },
+            "requestsDeleteMaxOutputLength": {
+                "label": "最大输出长度",
+                "description": "输出的最大长度。如果要返回整个响应，请删除此项"
+            }
+        }
+    },
+    "requestsGet": {
+        "label": "Requests Get",
+        "description": "执行 HTTP GET 请求",
+        "category": "工具",
+        "inputs": {
+            "requestsGetUrl": {
+                "label": "URL"
+            },
+            "requestsGetName": {
+                "label": "名称",
+                "description": "工具的名称"
+            },
+            "requestsGetDescription": {
+                "label": "描述",
+                "description": "描述 LLM 何时应使用此工具"
+            },
+            "requestsGetHeaders": {
+                "label": "请求头",
+                "placeholder": "{\n    \"Authorization\": \"Bearer <token>\"\n}"
+            },
+            "requestsGetQueryParamsSchema": {
+                "label": "查询参数架构",
+                "description": "可用查询参数的描述，使 LLM 能够确定要使用哪些查询参数"
+            },
+            "requestsGetMaxOutputLength": {
+                "label": "最大输出长度",
+                "description": "输出的最大长度。如果要返回整个响应，请删除此项"
+            }
+        }
+    },
+    "requestsPost": {
+        "label": "Requests Post",
+        "description": "执行 HTTP POST 请求",
+        "category": "工具",
+        "inputs": {
+            "requestsPostUrl": {
+                "label": "URL"
+            },
+            "requestsPostName": {
+                "label": "名称",
+                "description": "工具的名称"
+            },
+            "requestsPostDescription": {
+                "label": "描述",
+                "description": "描述 LLM 何时应使用此工具"
+            },
+            "requestsPostHeaders": {
+                "label": "请求头",
+                "placeholder": "{\n    \"Authorization\": \"Bearer <token>\"\n}"
+            },
+            "requestsPostBody": {
+                "label": "请求体"
+            },
+            "requestsPostBodySchema": {
+                "label": "请求体架构"
+            },
+            "requestsPostMaxOutputLength": {
+                "label": "最大输出长度",
+                "description": "输出的最大长度。如果要返回整个响应，请删除此项"
+            }
+        }
+    },
+    "requestsPut": {
+        "label": "Requests Put",
+        "description": "执行 HTTP PUT 请求",
+        "category": "工具",
+        "inputs": {
+            "requestsPutUrl": {
+                "label": "URL"
+            },
+            "requestsPutName": {
+                "label": "名称",
+                "description": "工具的名称"
+            },
+            "requestsPutDescription": {
+                "label": "描述",
+                "description": "描述 LLM 何时应使用此工具"
+            },
+            "requestsPutHeaders": {
+                "label": "请求头",
+                "placeholder": "{\n    \"Authorization\": \"Bearer <token>\"\n}"
+            },
+            "requestsPutBody": {
+                "label": "请求体"
+            },
+            "requestsPutBodySchema": {
+                "label": "请求体架构"
+            },
+            "requestsPutMaxOutputLength": {
+                "label": "最大输出长度",
+                "description": "输出的最大长度。如果要返回整个响应，请删除此项"
+            }
+        }
+    },
+    "retrieverTool": {
+        "label": "检索器工具",
+        "description": "将检索器用作代理的允许工具",
+        "category": "工具",
+        "inputs": {
+            "retrieverName": {
+                "label": "检索器名称"
+            },
+            "retrieverDescription": {
+                "label": "检索器描述"
+            },
+            "retriever": {
+                "label": "检索器"
+            },
+            "returnSourceDocuments": {
+                "label": "返回源文档"
+            },
+            "additionalMetadataFilter": {
+                "label": "附加元数据过滤器"
+            },
+            "metadataFilterExplanation": {
+                "label": "可以过滤什么？"
+            }
+        }
+    },
+    "searchAPI": {
+        "label": "SearchApi",
+        "description": "访问 Google Search 数据的实时 API",
+        "category": "工具",
+        "credential": {
+            "label": "连接凭证"
+        }
+    },
+    "searXNG": {
+        "label": "SearXNG",
+        "description": "SearXNG 的包装器 - 免费的互联网元搜索引擎",
+        "category": "工具",
+        "inputs": {
+            "baseURL": {
+                "label": "基础 URL"
+            },
+            "toolName": {
+                "label": "工具名称"
+            },
+            "toolDescription": {
+                "label": "工具描述"
+            },
+            "headers": {
+                "label": "请求头"
+            },
+            "format": {
+                "label": "格式",
+                "options": {
+                    "json": "JSON",
+                    "html": "HTML"
+                }
+            }
+        }
+    },
+    "serpAPI": {
+        "label": "Serp API",
+        "description": "SerpAPI 的包装器 - 访问 Google 搜索结果的实时 API",
+        "category": "工具",
+        "credential": {
+            "label": "连接凭证"
+        }
+    },
+    "serper": {
+        "label": "Serper",
+        "description": "Serper.dev 的包装器 - Google Search API",
+        "category": "工具",
+        "credential": {
+            "label": "连接凭证"
+        }
+    },
+    "stripeAgentTool": {
+        "label": "StripeAgentTool",
+        "description": "使用 Stripe Agent 函数调用进行金融交易",
+        "category": "工具",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "paymentLinks": {
+                "label": "支付链接",
+                "options": {
+                    "create": "创建",
+                    "update": "更新",
+                    "read": "读取"
+                }
+            }
+        }
+    },
+    "tavilyAPI": {
+        "label": "Tavily API",
+        "description": "TavilyAPI 的包装器 - 为 LLM 和 AI 代理设计的专业搜索引擎",
+        "category": "工具",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "topic": {
+                "label": "主题",
+                "options": {
+                    "general": "通用",
+                    "news": "新闻"
+                }
+            }
+        }
+    },
+    "webBrowser": {
+        "label": "Web 浏览器",
+        "description": "使代理能够访问网站并提取信息",
+        "category": "工具",
+        "inputs": {
+            "model": {
+                "label": "语言模型"
+            },
+            "embeddings": {
+                "label": "嵌入"
+            }
+        }
+    },
+    "webScraperTool": {
+        "label": "Web 抓取工具",
+        "description": "通过跟随链接递归抓取网页，或从默认站点地图获取 URL。",
+        "category": "工具",
+        "inputs": {
+            "scrapingMode": {
+                "label": "抓取模式",
+                "options": {
+                    "recursive": "递归跟随链接",
+                    "sitemap": "站点地图"
+                }
+            }
+        }
+    },
+    "wolframAlpha": {
+        "label": "WolframAlpha",
+        "description": "WolframAlpha 的包装器 - 强大的计算知识引擎",
+        "category": "工具",
+        "credential": {
+            "label": "连接凭证"
+        }
+    },
+    "writeFile": {
+        "label": "写入文件",
+        "description": "将文件写入磁盘",
+        "category": "工具",
+        "warning": "此工具可用于将文件写入磁盘。建议谨慎使用此工具。",
+        "inputs": {
+            "workspacePath": {
+                "label": "工作区路径",
+                "description": "文件操作的基础工作区目录。所有文件路径将相对于此目录。"
+            },
+            "enforceWorkspaceBoundaries": {
+                "label": "强制工作区边界",
+                "description": "启用时，出于安全考虑，将文件访问限制在工作区目录内。推荐：true"
+            },
+            "maxFileSize": {
+                "label": "最大文件大小（MB）",
+                "description": "可写入的最大文件大小（以兆字节为单位）"
+            },
+            "allowedExtensions": {
+                "label": "允许的扩展名",
+                "description": "允许的文件扩展名的逗号分隔列表（例如 .txt,.json,.md）。留空以允许所有。",
+                "placeholder": ".txt,.json,.md,.py,.js"
+            }
+        }
+    },
+    "ChatflowTool": {
+        "label": "聊天流程工具",
+        "description": "调用另一个聊天流程的工具",
+        "category": "Tools",
+        "inputs": {
+            "chatflowId": {
+                "label": "聊天流程 ID",
+                "description": "要调用的聊天流程的 ID"
+            },
+            "inputValue": {
+                "label": "输入值",
+                "description": "传递给聊天流程的输入值"
+            }
+        }
+    },
+    "googleCalendarTool": {
+        "label": "Google 日历工具",
+        "description": "与 Google 日历交互的工具",
+        "category": "Tools",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "calendarId": {
+                "label": "日历 ID",
+                "description": "要访问的 Google 日历 ID"
+            },
+            "operation": {
+                "label": "操作",
+                "description": "要执行的操作（创建、读取、更新、删除）"
+            }
+        }
+    },
+    "googleDocsTool": {
+        "label": "Google 文档工具",
+        "description": "与 Google Docs 交互的工具",
+        "category": "Tools",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "documentId": {
+                "label": "文档 ID",
+                "description": "要访问的 Google 文档 ID"
+            },
+            "operation": {
+                "label": "操作",
+                "description": "要执行的操作"
+            }
+        }
+    },
+    "googleDriveTool": {
+        "label": "Google Drive 工具",
+        "description": "与 Google Drive 交互的工具",
+        "category": "Tools",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "fileId": {
+                "label": "文件 ID",
+                "description": "要访问的 Google Drive 文件 ID"
+            },
+            "operation": {
+                "label": "操作",
+                "description": "要执行的操作"
+            }
+        }
+    }
+}

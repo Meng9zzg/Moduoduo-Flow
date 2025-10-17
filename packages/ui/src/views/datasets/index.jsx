@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import moment from 'moment/moment'
+import { formatDateTime } from '@/utils/timeFormatHelper'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
@@ -322,7 +322,7 @@ const EvalDatasets = () => {
                                                             </TableCell>
                                                             <TableCell onClick={() => goToRows(ds)}>{ds?.rowCount}</TableCell>
                                                             <TableCell onClick={() => goToRows(ds)}>
-                                                                {moment(ds.updatedDate).format('MMMM Do YYYY, hh:mm A')}
+                                                                {formatDateTime(ds.updatedDate)}
                                                             </TableCell>
                                                             <Available permission={'datasets:update,datasets:create'}>
                                                                 <TableCell>

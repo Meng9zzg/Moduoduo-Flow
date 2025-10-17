@@ -1,0 +1,24 @@
+{
+    "Neo4j": {
+        "label": "Neo4j",
+        "description": "Neo4j graph database integration",
+        "category": "Graph",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "url": {
+                "label": "URL",
+                "description": "Neo4j database URL"
+            },
+            "username": {
+                "label": "Username",
+                "description": "Database username"
+            },
+            "password": {
+                "label": "Password",
+                "description": "Database password"
+            }
+        }
+    }
+}

@@ -30,13 +30,13 @@ export class Workspace {
     @UpdateDateColumn()
     updatedDate?: Date
 
-    @Column({ nullable: false })
+    @Column({ nullable: true })
     createdBy?: string
     @ManyToOne(() => User, (user) => user.createdWorkspace)
     @JoinColumn({ name: 'createdBy' })
     createdByUser?: User
 
-    @Column({ nullable: false })
+    @Column({ nullable: true })
     updatedBy?: string
     @ManyToOne(() => User, (user) => user.updatedWorkspace)
     @JoinColumn({ name: 'updatedBy' })

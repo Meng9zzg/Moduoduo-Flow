@@ -16,8 +16,18 @@ class Loop_Agentflow implements INode {
     documentation?: string
     credential: INodeParams
     inputs: INodeParams[]
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
 
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.loopAgentflow.label'
+        this.descriptionKey = 'nodes.loopAgentflow.description'
+        this.categoryKey = 'nodes.loopAgentflow.category'
+
+        // Default English values as fallback
         this.label = 'Loop'
         this.name = 'loopAgentflow'
         this.version = 1.1

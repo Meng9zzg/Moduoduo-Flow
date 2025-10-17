@@ -1,0 +1,56 @@
+{
+    "SQLiteRecordManager": {
+        "label": "SQLite 记录管理器",
+        "description": "使用 SQLite 数据库管理记录",
+        "category": "Record Manager",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "tableName": {
+                "label": "表名",
+                "description": "要管理的表名"
+            },
+            "dbPath": {
+                "label": "数据库路径",
+                "description": "SQLite 数据库文件路径"
+            }
+        }
+    },
+    "postgresRecordManager": {
+        "label": "PostgreSQL 记录管理器",
+        "description": "使用 PostgreSQL 数据库管理记录",
+        "category": "Record Manager",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "tableName": {
+                "label": "表名",
+                "description": "要管理的表名"
+            },
+            "connectionString": {
+                "label": "连接字符串",
+                "description": "PostgreSQL 连接字符串"
+            }
+        }
+    },
+    "MySQLRecordManager": {
+        "label": "MySQL 记录管理器",
+        "description": "使用 MySQL 数据库管理记录",
+        "category": "Record Manager",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "tableName": {
+                "label": "表名",
+                "description": "要管理的表名"
+            },
+            "connectionString": {
+                "label": "连接字符串",
+                "description": "MySQL 连接字符串"
+            }
+        }
+    }
+}

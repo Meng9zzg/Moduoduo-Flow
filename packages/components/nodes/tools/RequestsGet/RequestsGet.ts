@@ -27,7 +27,18 @@ class RequestsGet_Tools implements INode {
     baseClasses: string[]
     inputs: INodeParams[]
 
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
+
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.tools.requestsGet.label'
+        this.descriptionKey = 'nodes.tools.requestsGet.description'
+        this.categoryKey = 'nodes.tools.requestsGet.category'
+
+        // Default English values as fallback
         this.label = 'Requests Get'
         this.name = 'requestsGet'
         this.version = 2.0

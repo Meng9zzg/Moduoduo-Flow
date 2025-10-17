@@ -1,0 +1,62 @@
+{
+    "simpleResponseBuilderLlamaIndex": {
+        "label": "简单响应构建器 (LlamaIndex)",
+        "description": "使用 LlamaIndex 的简单响应构建器",
+        "category": "Response Synthesizer",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "用于响应生成的语言模型"
+            },
+            "responseMode": {
+                "label": "响应模式",
+                "description": "响应生成的模式"
+            }
+        }
+    },
+    "refineLlamaIndex": {
+        "label": "精炼 (LlamaIndex)",
+        "description": "使用 LlamaIndex 精炼响应",
+        "category": "Response Synthesizer",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "用于精炼的语言模型"
+            },
+            "responseMode": {
+                "label": "响应模式",
+                "description": "响应生成的模式"
+            }
+        }
+    },
+    "compactrefineLlamaIndex": {
+        "label": "紧凑精炼 (LlamaIndex)",
+        "description": "使用 LlamaIndex 紧凑精炼响应",
+        "category": "Response Synthesizer",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "用于精炼的语言模型"
+            },
+            "responseMode": {
+                "label": "响应模式",
+                "description": "响应生成的模式"
+            }
+        }
+    },
+    "treeSummarizeLlamaIndex": {
+        "label": "树形摘要 (LlamaIndex)",
+        "description": "使用 LlamaIndex 树形摘要响应",
+        "category": "Response Synthesizer",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "用于摘要的语言模型"
+            },
+            "responseMode": {
+                "label": "响应模式",
+                "description": "响应生成的模式"
+            }
+        }
+    }
+}

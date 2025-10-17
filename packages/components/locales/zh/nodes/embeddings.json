@@ -1,0 +1,266 @@
+{
+    "AWSBedrockEmbeddings": {
+        "label": "AWS Bedrock 嵌入",
+        "description": "使用 AWS Bedrock 服务生成嵌入向量",
+        "category": "Embeddings",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 Bedrock 模型名称"
+            },
+            "region": {
+                "label": "区域",
+                "description": "AWS 区域"
+            }
+        }
+    },
+    "azureOpenAIEmbeddings": {
+        "label": "Azure OpenAI 嵌入",
+        "description": "使用 Azure OpenAI 服务生成嵌入向量",
+        "category": "Embeddings",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的嵌入模型名称"
+            },
+            "batchSize": {
+                "label": "批次大小",
+                "description": "每批次处理的文本数量"
+            }
+        }
+    },
+    "azureOpenAIEmbeddingsLlamaIndex": {
+        "label": "Azure OpenAI 嵌入 (LlamaIndex)",
+        "description": "使用 Azure OpenAI 和 LlamaIndex 生成嵌入向量",
+        "category": "Embeddings",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的嵌入模型名称"
+            }
+        }
+    },
+    "cohereEmbeddings": {
+        "label": "Cohere 嵌入",
+        "description": "使用 Cohere API 生成嵌入向量",
+        "category": "Embeddings",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 Cohere 模型名称"
+            },
+            "batchSize": {
+                "label": "批次大小",
+                "description": "每批次处理的文本数量"
+            }
+        }
+    },
+    "googleGenerativeAiEmbeddings": {
+        "label": "Google Generative AI 嵌入",
+        "description": "使用 Google Generative AI 生成嵌入向量",
+        "category": "Embeddings",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 Google 模型名称"
+            }
+        }
+    },
+    "googlevertexaiEmbeddings": {
+        "label": "Google Vertex AI 嵌入",
+        "description": "使用 Google Vertex AI 生成嵌入向量",
+        "category": "Embeddings",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 Vertex AI 模型名称"
+            }
+        }
+    },
+    "huggingFaceInferenceEmbeddings": {
+        "label": "Hugging Face 推理嵌入",
+        "description": "使用 Hugging Face 推理 API 生成嵌入向量",
+        "category": "Embeddings",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 Hugging Face 模型名称"
+            },
+            "batchSize": {
+                "label": "批次大小",
+                "description": "每批次处理的文本数量"
+            }
+        }
+    },
+    "ibmEmbedding": {
+        "label": "IBM 嵌入",
+        "description": "使用 IBM Watson 服务生成嵌入向量",
+        "category": "Embeddings",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 IBM 模型名称"
+            }
+        }
+    },
+    "jinaEmbeddings": {
+        "label": "Jina 嵌入",
+        "description": "使用 Jina AI 服务生成嵌入向量",
+        "category": "Embeddings",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 Jina 模型名称"
+            }
+        }
+    },
+    "localAIEmbeddings": {
+        "label": "Local AI 嵌入",
+        "description": "使用本地 AI 模型生成嵌入向量",
+        "category": "Embeddings",
+        "inputs": {
+            "basePath": {
+                "label": "基础路径",
+                "description": "Local AI 服务的基础路径"
+            },
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的本地模型名称"
+            }
+        }
+    },
+    "mistralAIEmbeddings": {
+        "label": "Mistral AI 嵌入",
+        "description": "使用 Mistral AI 服务生成嵌入向量",
+        "category": "Embeddings",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 Mistral 模型名称"
+            }
+        }
+    },
+    "ollamaEmbedding": {
+        "label": "Ollama 嵌入",
+        "description": "使用 Ollama 本地模型生成嵌入向量",
+        "category": "Embeddings",
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 Ollama 模型名称"
+            },
+            "baseUrl": {
+                "label": "基础 URL",
+                "description": "Ollama 服务的基础 URL"
+            }
+        }
+    },
+    "openAIEmbeddings": {
+        "label": "OpenAI 嵌入",
+        "description": "使用 OpenAI API 生成嵌入向量",
+        "category": "Embeddings",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 OpenAI 嵌入模型名称"
+            },
+            "batchSize": {
+                "label": "批次大小",
+                "description": "每批次处理的文本数量"
+            }
+        }
+    },
+    "openAIEmbedding_LlamaIndex": {
+        "label": "OpenAI 嵌入 (LlamaIndex)",
+        "description": "使用 OpenAI 和 LlamaIndex 生成嵌入向量",
+        "category": "Embeddings",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 OpenAI 模型名称"
+            }
+        }
+    },
+    "openAIEmbeddingsCustom": {
+        "label": "OpenAI 自定义嵌入",
+        "description": "使用自定义配置的 OpenAI 嵌入服务",
+        "category": "Embeddings",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "自定义的 OpenAI 模型名称"
+            },
+            "customEndpoint": {
+                "label": "自定义端点",
+                "description": "自定义的 API 端点"
+            }
+        }
+    },
+    "togetherAIEmbedding": {
+        "label": "Together AI 嵌入",
+        "description": "使用 Together AI 服务生成嵌入向量",
+        "category": "Embeddings",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 Together AI 模型名称"
+            }
+        }
+    },
+    "voyageAIEmbeddings": {
+        "label": "Voyage AI 嵌入",
+        "description": "使用 Voyage AI 服务生成嵌入向量",
+        "category": "Embeddings",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "modelName": {
+                "label": "模型名称",
+                "description": "要使用的 Voyage AI 模型名称"
+            }
+        }
+    }
+}

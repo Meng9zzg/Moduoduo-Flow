@@ -1,0 +1,577 @@
+{
+    "pinecone": {
+        "label": "Pinecone",
+        "description": "Upsert embedded data and perform similarity or mmr search using Pinecone, a leading fully managed hosted vector database",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "document": {
+                "label": "Document"
+            },
+            "embeddings": {
+                "label": "Embeddings"
+            },
+            "recordManager": {
+                "label": "Record Manager",
+                "description": "Keep track of the record to prevent duplication"
+            },
+            "pineconeIndex": {
+                "label": "Pinecone Index"
+            },
+            "pineconeNamespace": {
+                "label": "Pinecone Namespace",
+                "placeholder": "my-first-namespace"
+            },
+            "fileUpload": {
+                "label": "File Upload",
+                "description": "Allow file upload on the chat"
+            },
+            "pineconeTextKey": {
+                "label": "Pinecone Text Key",
+                "description": "The key in the metadata for storing text. Default to `text`",
+                "placeholder": "text"
+            },
+            "pineconeMetadataFilter": {
+                "label": "Pinecone Metadata Filter"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "Number of top results to fetch. Default to 4",
+                "placeholder": "4"
+            },
+            "searchType": {
+                "label": "Search Type"
+            },
+            "fetchK": {
+                "label": "Fetch K (for MMR Search)",
+                "description": "Number of initial documents to fetch for MMR reranking. Default to 20. Used only when the search type is MMR",
+                "placeholder": "20"
+            },
+            "lambda": {
+                "label": "Lambda (for MMR Search)",
+                "description": "Number between 0 and 1 that determines the degree of diversity among the results, where 0 corresponds to maximum diversity and 1 to minimum diversity. Used only when the search type is MMR",
+                "placeholder": "0.5"
+            }
+        }
+    },
+    "chroma": {
+        "label": "Chroma",
+        "description": "Upsert embedded data and perform similarity search using Chroma, an open-source vector database",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "document": {
+                "label": "Document"
+            },
+            "embeddings": {
+                "label": "Embeddings"
+            },
+            "collectionName": {
+                "label": "Collection Name",
+                "description": "Name of the collection to store vectors"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "Number of top results to fetch. Default to 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "faiss": {
+        "label": "FAISS",
+        "description": "Upsert embedded data and perform similarity search using FAISS, a library for efficient similarity search and clustering",
+        "category": "Vector Stores",
+        "inputs": {
+            "document": {
+                "label": "Document"
+            },
+            "embeddings": {
+                "label": "Embeddings"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "Number of top results to fetch. Default to 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "weaviate": {
+        "label": "Weaviate",
+        "description": "Upsert embedded data and perform similarity search using Weaviate, an open-source vector database",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "document": {
+                "label": "Document"
+            },
+            "embeddings": {
+                "label": "Embeddings"
+            },
+            "className": {
+                "label": "Class Name",
+                "description": "Name of the Weaviate class to store vectors"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "Number of top results to fetch. Default to 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "qdrant": {
+        "label": "Qdrant",
+        "description": "Upsert embedded data and perform similarity search using Qdrant, a vector similarity search engine",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "document": {
+                "label": "Document"
+            },
+            "embeddings": {
+                "label": "Embeddings"
+            },
+            "collectionName": {
+                "label": "Collection Name",
+                "description": "Name of the Qdrant collection to store vectors"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "Number of top results to fetch. Default to 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "elasticsearch": {
+        "label": "Elasticsearch",
+        "description": "Upsert embedded data and perform similarity search using Elasticsearch",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "document": {
+                "label": "Document"
+            },
+            "embeddings": {
+                "label": "Embeddings"
+            },
+            "indexName": {
+                "label": "Index Name",
+                "description": "Name of the Elasticsearch index to store vectors"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "Number of top results to fetch. Default to 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "redis": {
+        "label": "Redis",
+        "description": "Upsert embedded data and perform similarity search using Redis",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "document": {
+                "label": "Document"
+            },
+            "embeddings": {
+                "label": "Embeddings"
+            },
+            "indexName": {
+                "label": "Index Name",
+                "description": "Name of the Redis index to store vectors"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "Number of top results to fetch. Default to 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "mongoDBAtlas": {
+        "label": "MongoDB Atlas",
+        "description": "Upsert embedded data and perform similarity search using MongoDB Atlas",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "document": {
+                "label": "Document"
+            },
+            "embeddings": {
+                "label": "Embeddings"
+            },
+            "collectionName": {
+                "label": "Collection Name",
+                "description": "Name of the MongoDB collection to store vectors"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "Number of top results to fetch. Default to 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "supabase": {
+        "label": "Supabase",
+        "description": "Upsert embedded data and perform similarity search using Supabase",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "document": {
+                "label": "Document"
+            },
+            "embeddings": {
+                "label": "Embeddings"
+            },
+            "tableName": {
+                "label": "Table Name",
+                "description": "Name of the Supabase table to store vectors"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "Number of top results to fetch. Default to 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "vectara": {
+        "label": "Vectara",
+        "description": "Upsert embedded data and perform similarity search using Vectara",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "document": {
+                "label": "Document"
+            },
+            "embeddings": {
+                "label": "Embeddings"
+            },
+            "corpusId": {
+                "label": "Corpus ID",
+                "description": "ID of the Vectara corpus to store vectors"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "Number of top results to fetch. Default to 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "milvus": {
+        "label": "Milvus",
+        "description": "Upsert embedded data and perform similarity search using Milvus",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "document": {
+                "label": "Document"
+            },
+            "embeddings": {
+                "label": "Embeddings"
+            },
+            "collectionName": {
+                "label": "Collection Name",
+                "description": "Name of the Milvus collection to store vectors"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "Number of top results to fetch. Default to 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "zep": {
+        "label": "Zep",
+        "description": "Upsert embedded data and perform similarity search using Zep",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "document": {
+                "label": "Document"
+            },
+            "embeddings": {
+                "label": "Embeddings"
+            },
+            "collectionName": {
+                "label": "Collection Name",
+                "description": "Name of the Zep collection to store vectors"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "Number of top results to fetch. Default to 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "postgres": {
+        "label": "PostgreSQL",
+        "description": "Upsert embedded data and perform similarity search using PostgreSQL with pgvector",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "document": {
+                "label": "Document"
+            },
+            "embeddings": {
+                "label": "Embeddings"
+            },
+            "tableName": {
+                "label": "Table Name",
+                "description": "Name of the PostgreSQL table to store vectors"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "Number of top results to fetch. Default to 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "singlestore": {
+        "label": "SingleStore",
+        "description": "Upsert embedded data and perform similarity search using SingleStore",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "document": {
+                "label": "Document"
+            },
+            "embeddings": {
+                "label": "Embeddings"
+            },
+            "tableName": {
+                "label": "Table Name",
+                "description": "Name of the SingleStore table to store vectors"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "Number of top results to fetch. Default to 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "astra": {
+        "label": "Astra",
+        "description": "Upsert embedded data and perform similarity search using DataStax Astra",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "document": {
+                "label": "Document"
+            },
+            "embeddings": {
+                "label": "Embeddings"
+            },
+            "keyspace": {
+                "label": "Keyspace",
+                "description": "Name of the Astra keyspace to store vectors"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "Number of top results to fetch. Default to 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "couchbase": {
+        "label": "Couchbase",
+        "description": "Upsert embedded data and perform similarity search using Couchbase",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "document": {
+                "label": "Document"
+            },
+            "embeddings": {
+                "label": "Embeddings"
+            },
+            "bucketName": {
+                "label": "Bucket Name",
+                "description": "Name of the Couchbase bucket to store vectors"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "Number of top results to fetch. Default to 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "meilisearch": {
+        "label": "Meilisearch",
+        "description": "Upsert embedded data and perform similarity search using Meilisearch",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "document": {
+                "label": "Document"
+            },
+            "embeddings": {
+                "label": "Embeddings"
+            },
+            "indexName": {
+                "label": "Index Name",
+                "description": "Name of the Meilisearch index to store vectors"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "Number of top results to fetch. Default to 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "upstash": {
+        "label": "Upstash",
+        "description": "Upsert embedded data and perform similarity search using Upstash Redis",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "document": {
+                "label": "Document"
+            },
+            "embeddings": {
+                "label": "Embeddings"
+            },
+            "indexName": {
+                "label": "Index Name",
+                "description": "Name of the Upstash index to store vectors"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "Number of top results to fetch. Default to 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "kendra": {
+        "label": "Amazon Kendra",
+        "description": "Upsert embedded data and perform similarity search using Amazon Kendra",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "document": {
+                "label": "Document"
+            },
+            "embeddings": {
+                "label": "Embeddings"
+            },
+            "indexId": {
+                "label": "Index ID",
+                "description": "ID of the Kendra index to store vectors"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "Number of top results to fetch. Default to 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "openSearch": {
+        "label": "OpenSearch",
+        "description": "Upsert embedded data and perform similarity search using OpenSearch",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "document": {
+                "label": "Document"
+            },
+            "embeddings": {
+                "label": "Embeddings"
+            },
+            "indexName": {
+                "label": "Index Name",
+                "description": "Name of the OpenSearch index to store vectors"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "Number of top results to fetch. Default to 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "zepCloud": {
+        "label": "Zep Cloud",
+        "description": "Upsert embedded data and perform similarity search using Zep Cloud",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "document": {
+                "label": "Document"
+            },
+            "embeddings": {
+                "label": "Embeddings"
+            },
+            "collectionName": {
+                "label": "Collection Name",
+                "description": "Name of the Zep Cloud collection to store vectors"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "Number of top results to fetch. Default to 4",
+                "placeholder": "4"
+            }
+        }
+    },
+    "vectaraUpload": {
+        "label": "Vectara Upload",
+        "description": "Upload documents to Vectara for vector storage and search",
+        "category": "Vector Stores",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "document": {
+                "label": "Document"
+            },
+            "embeddings": {
+                "label": "Embeddings"
+            },
+            "corpusId": {
+                "label": "Corpus ID",
+                "description": "ID of the Vectara corpus to upload to"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "Number of top results to fetch. Default to 4",
+                "placeholder": "4"
+            }
+        }
+    }
+}

@@ -14,6 +14,9 @@ class ChatCerebras_ChatModels implements INode {
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
+    labelKey: string
+    descriptionKey: string
+    categoryKey: string
 
     constructor() {
         this.label = 'ChatCerebras'
@@ -24,8 +27,12 @@ class ChatCerebras_ChatModels implements INode {
         this.category = 'Chat Models'
         this.description = 'Wrapper around Cerebras Inference API'
         this.baseClasses = [this.type, ...getBaseClasses(ChatOpenAI)]
+        this.labelKey = 'nodes.chatmodels.chatCerebras.label'
+        this.descriptionKey = 'nodes.chatmodels.chatCerebras.description'
+        this.categoryKey = 'nodes.chatmodels.chatCerebras.category'
         this.credential = {
             label: 'Connect Credential',
+            labelKey: 'nodes.chatmodels.chatCerebras.credential.label',
             name: 'credential',
             type: 'credential',
             credentialNames: ['cerebrasAIApi'],
@@ -34,18 +41,21 @@ class ChatCerebras_ChatModels implements INode {
         this.inputs = [
             {
                 label: 'Cache',
+                labelKey: 'nodes.chatmodels.chatCerebras.inputs.cache.label',
                 name: 'cache',
                 type: 'BaseCache',
                 optional: true
             },
             {
                 label: 'Model Name',
+                labelKey: 'nodes.chatmodels.chatCerebras.inputs.modelName.label',
                 name: 'modelName',
                 type: 'string',
                 placeholder: 'llama3.1-8b'
             },
             {
                 label: 'Temperature',
+                labelKey: 'nodes.chatmodels.chatCerebras.inputs.temperature.label',
                 name: 'temperature',
                 type: 'number',
                 step: 0.1,
@@ -54,6 +64,7 @@ class ChatCerebras_ChatModels implements INode {
             },
             {
                 label: 'Streaming',
+                labelKey: 'nodes.chatmodels.chatCerebras.inputs.streaming.label',
                 name: 'streaming',
                 type: 'boolean',
                 default: true,
@@ -62,6 +73,7 @@ class ChatCerebras_ChatModels implements INode {
             },
             {
                 label: 'Max Tokens',
+                labelKey: 'nodes.chatmodels.chatCerebras.inputs.maxTokens.label',
                 name: 'maxTokens',
                 type: 'number',
                 step: 1,
@@ -70,6 +82,7 @@ class ChatCerebras_ChatModels implements INode {
             },
             {
                 label: 'Top Probability',
+                labelKey: 'nodes.chatmodels.chatCerebras.inputs.topP.label',
                 name: 'topP',
                 type: 'number',
                 step: 0.1,
@@ -78,6 +91,7 @@ class ChatCerebras_ChatModels implements INode {
             },
             {
                 label: 'Frequency Penalty',
+                labelKey: 'nodes.chatmodels.chatCerebras.inputs.frequencyPenalty.label',
                 name: 'frequencyPenalty',
                 type: 'number',
                 step: 0.1,
@@ -86,6 +100,7 @@ class ChatCerebras_ChatModels implements INode {
             },
             {
                 label: 'Presence Penalty',
+                labelKey: 'nodes.chatmodels.chatCerebras.inputs.presencePenalty.label',
                 name: 'presencePenalty',
                 type: 'number',
                 step: 0.1,
@@ -94,6 +109,7 @@ class ChatCerebras_ChatModels implements INode {
             },
             {
                 label: 'Timeout',
+                labelKey: 'nodes.chatmodels.chatCerebras.inputs.timeout.label',
                 name: 'timeout',
                 type: 'number',
                 step: 1,
@@ -102,6 +118,7 @@ class ChatCerebras_ChatModels implements INode {
             },
             {
                 label: 'BasePath',
+                labelKey: 'nodes.chatmodels.chatCerebras.inputs.basepath.label',
                 name: 'basepath',
                 type: 'string',
                 optional: true,
@@ -110,6 +127,7 @@ class ChatCerebras_ChatModels implements INode {
             },
             {
                 label: 'BaseOptions',
+                labelKey: 'nodes.chatmodels.chatCerebras.inputs.baseOptions.label',
                 name: 'baseOptions',
                 type: 'json',
                 optional: true,

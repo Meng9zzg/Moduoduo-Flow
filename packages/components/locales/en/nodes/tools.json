@@ -1,0 +1,794 @@
+{
+    "agentAsTool": {
+        "label": "Agent as Tool",
+        "description": "Use as a tool to execute another agentflow",
+        "category": "Tools",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "selectedAgent": {
+                "label": "Select Agent"
+            },
+            "toolName": {
+                "label": "Tool Name"
+            },
+            "toolDesc": {
+                "label": "Tool Description"
+            },
+            "returnDirect": {
+                "label": "Return Direct"
+            },
+            "overrideConfig": {
+                "label": "Override Config"
+            },
+            "baseURL": {
+                "label": "Base URL"
+            },
+            "startNewSessionPerMessage": {
+                "label": "Start new session per message"
+            },
+            "useQuestionFromChat": {
+                "label": "Use Question from Chat"
+            },
+            "customInput": {
+                "label": "Custom Input"
+            }
+        }
+    },
+    "arxiv": {
+        "label": "Arxiv",
+        "description": "Search and read content from academic papers on Arxiv",
+        "category": "Tools",
+        "inputs": {
+            "toolName": {
+                "label": "Name"
+            },
+            "toolDescription": {
+                "label": "Description"
+            },
+            "topKResults": {
+                "label": "Top K Results"
+            },
+            "maxQueryLength": {
+                "label": "Max Query Length"
+            },
+            "maxContentLength": {
+                "label": "Max Content Length"
+            },
+            "loadFullContent": {
+                "label": "Load Full Content"
+            },
+            "continueOnFailure": {
+                "label": "Continue On Failure"
+            },
+            "useLegacyBuild": {
+                "label": "Use Legacy Build"
+            }
+        }
+    },
+    "awsDynamoDBKVStorage": {
+        "label": "AWS DynamoDB KV Storage",
+        "description": "Store and retrieve versioned text values in AWS DynamoDB",
+        "category": "Tools",
+        "credential": {
+            "label": "AWS Credentials"
+        },
+        "inputs": {
+            "region": {
+                "label": "AWS Region"
+            },
+            "tableName": {
+                "label": "DynamoDB Table"
+            },
+            "keyPrefix": {
+                "label": "Key Prefix"
+            },
+            "operation": {
+                "label": "Operation"
+            },
+            "store": {
+                "label": "Store"
+            },
+            "retrieve": {
+                "label": "Retrieve"
+            }
+        }
+    },
+    "awsSNS": {
+        "label": "AWS SNS",
+        "description": "Publish messages to AWS SNS topics",
+        "category": "Tools",
+        "credential": {
+            "label": "AWS Credentials"
+        },
+        "inputs": {
+            "region": {
+                "label": "AWS Region"
+            },
+            "topic": {
+                "label": "SNS Topic"
+            }
+        }
+    },
+    "braveSearchAPI": {
+        "label": "BraveSearch API",
+        "description": "Wrapper around BraveSearch API - a real-time API to access Brave search results",
+        "category": "Tools",
+        "credential": {
+            "label": "Connect Credential"
+        }
+    },
+    "calculator": {
+        "label": "Calculator",
+        "description": "Perform calculations on response",
+        "category": "Tools"
+    },
+    "chainTool": {
+        "label": "Chain Tool",
+        "description": "Use a chain as allowed tool for agent",
+        "category": "Tools",
+        "inputs": {
+            "chainName": {
+                "label": "Chain Name"
+            },
+            "chainDescription": {
+                "label": "Chain Description"
+            },
+            "returnDirect": {
+                "label": "Return Direct"
+            },
+            "baseChain": {
+                "label": "Base Chain"
+            }
+        }
+    },
+    "chatflowTool": {
+        "label": "Chatflow Tool",
+        "description": "Use as a tool to execute another chatflow",
+        "category": "Tools",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "selectedChatflow": {
+                "label": "Select Chatflow"
+            },
+            "toolName": {
+                "label": "Tool Name"
+            },
+            "toolDesc": {
+                "label": "Tool Description"
+            },
+            "returnDirect": {
+                "label": "Return Direct"
+            },
+            "overrideConfig": {
+                "label": "Override Config"
+            },
+            "baseURL": {
+                "label": "Base URL"
+            },
+            "startNewSessionPerMessage": {
+                "label": "Start new session per message"
+            },
+            "useQuestionFromChat": {
+                "label": "Use Question from Chat"
+            },
+            "customInput": {
+                "label": "Custom Input"
+            }
+        }
+    },
+    "codeInterpreterE2B": {
+        "label": "Code Interpreter by E2B",
+        "description": "Execute code in a sandbox environment",
+        "category": "Tools",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "toolName": {
+                "label": "Tool Name"
+            },
+            "toolDescription": {
+                "label": "Tool Description"
+            }
+        }
+    },
+    "composio": {
+        "label": "Composio",
+        "description": "Toolset with over 250+ Apps for building AI-powered applications",
+        "category": "Tools",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "appName": {
+                "label": "App Name"
+            },
+            "authStatus": {
+                "label": "Auth Status"
+            },
+            "actionsToUse": {
+                "label": "Actions to Use"
+            }
+        }
+    },
+    "currentDateTime": {
+        "label": "CurrentDateTime",
+        "description": "Get todays day, date and time.",
+        "category": "Tools"
+    },
+    "customTool": {
+        "label": "Custom Tool",
+        "description": "Use custom tool you've created in Flowise within chatflow",
+        "category": "Tools",
+        "inputs": {
+            "selectedTool": {
+                "label": "Select Tool"
+            },
+            "returnDirect": {
+                "label": "Return Direct",
+                "description": "Return the output of the tool directly to the user"
+            },
+            "customToolName": {
+                "label": "Custom Tool Name"
+            },
+            "customToolDesc": {
+                "label": "Custom Tool Description"
+            },
+            "customToolSchema": {
+                "label": "Custom Tool Schema"
+            },
+            "customToolFunc": {
+                "label": "Custom Tool Func"
+            }
+        }
+    },
+    "exaSearch": {
+        "label": "Exa Search",
+        "description": "Wrapper around Exa Search API - search engine fully designed for use by LLMs",
+        "category": "Tools",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "description": {
+                "label": "Tool Description"
+            },
+            "numResults": {
+                "label": "Num of Results"
+            },
+            "searchType": {
+                "label": "Search Type",
+                "options": {
+                    "keyword": "keyword",
+                    "neural": "neural",
+                    "auto": "auto"
+                }
+            }
+        }
+    },
+    "gmail": {
+        "label": "Gmail",
+        "description": "Perform Gmail operations for drafts, messages, labels, and threads",
+        "category": "Tools",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "type": {
+                "label": "Type",
+                "options": {
+                    "drafts": "Drafts",
+                    "messages": "Messages",
+                    "labels": "Labels",
+                    "threads": "Threads"
+                }
+            }
+        }
+    },
+    "googleCalendar": {
+        "label": "Google Calendar",
+        "description": "Perform Google Calendar operations such as managing events, calendars, and checking availability",
+        "category": "Tools",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "type": {
+                "label": "Type",
+                "options": {
+                    "event": "Event",
+                    "calendar": "Calendar",
+                    "freebusy": "Freebusy"
+                }
+            }
+        }
+    },
+    "googleDocs": {
+        "label": "Google Docs",
+        "description": "Perform Google Docs operations such as creating, reading, updating, and deleting documents, as well as text manipulation",
+        "category": "Tools",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "actions": {
+                "label": "Actions",
+                "options": {
+                    "createDocument": "Create Document",
+                    "getDocument": "Get Document",
+                    "updateDocument": "Update Document",
+                    "insertText": "Insert Text",
+                    "replaceText": "Replace Text",
+                    "appendText": "Append Text",
+                    "getTextContent": "Get Text Content",
+                    "insertImage": "Insert Image",
+                    "createTable": "Create Table"
+                }
+            }
+        }
+    },
+    "googleDrive": {
+        "label": "Google Drive",
+        "description": "Perform Google Drive operations such as managing files, folders, sharing, and searching",
+        "category": "Tools",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "type": {
+                "label": "Type",
+                "options": {
+                    "file": "File",
+                    "folder": "Folder",
+                    "search": "Search",
+                    "share": "Share"
+                }
+            }
+        }
+    },
+    "googleCustomSearch": {
+        "label": "Google Custom Search",
+        "description": "Wrapper around Google Custom Search API - a real-time API to access Google search results",
+        "category": "Tools",
+        "credential": {
+            "label": "Connect Credential"
+        }
+    },
+    "googleSheetsTool": {
+        "label": "Google Sheets",
+        "description": "Perform Google Sheets operations such as managing spreadsheets, reading and writing values",
+        "category": "Tools",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "type": {
+                "label": "Type",
+                "options": {
+                    "spreadsheet": "Spreadsheet",
+                    "values": "Values"
+                }
+            }
+        }
+    },
+    "jiraTool": {
+        "label": "Jira",
+        "description": "Perform Jira operations for issues, comments, and users",
+        "category": "Tools",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "host": {
+                "label": "Host"
+            },
+            "type": {
+                "label": "Type",
+                "options": {
+                    "issues": "Issues",
+                    "issueComments": "Issue Comments",
+                    "users": "Users"
+                }
+            }
+        }
+    },
+    "jsonPathExtractor": {
+        "label": "JSON Path Extractor",
+        "description": "Extract values from JSON using path expressions",
+        "category": "Tools",
+        "inputs": {
+            "jsonPath": {
+                "label": "JSON Path"
+            }
+        }
+    },
+    "microsoftOutlook": {
+        "label": "Microsoft Outlook",
+        "description": "Perform Microsoft Outlook operations for calendars, events, and messages",
+        "category": "Tools",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "type": {
+                "label": "Type",
+                "options": {
+                    "calendar": "Calendar",
+                    "message": "Message"
+                }
+            }
+        }
+    },
+    "microsoftTeams": {
+        "label": "Microsoft Teams",
+        "description": "Perform Microsoft Teams operations for channels, chats, and chat messages",
+        "category": "Tools",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "type": {
+                "label": "Type",
+                "options": {
+                    "channel": "Channel",
+                    "chat": "Chat",
+                    "chatMessage": "Chat Message"
+                }
+            }
+        }
+    },
+    "openAPIToolkit": {
+        "label": "OpenAPI Toolkit",
+        "description": "Load OpenAPI specification, and converts each API endpoint to a tool",
+        "category": "Tools",
+        "inputs": {
+            "inputType": {
+                "label": "Input Type",
+                "options": {
+                    "file": "Upload File",
+                    "url": "Provide Link"
+                }
+            }
+        }
+    },
+    "queryEngineToolLlamaIndex": {
+        "label": "QueryEngine Tool",
+        "description": "Tool used to invoke query engine",
+        "category": "Tools",
+        "inputs": {
+            "queryEngine": {
+                "label": "Base QueryEngine"
+            },
+            "toolName": {
+                "label": "Tool Name"
+            },
+            "toolDescription": {
+                "label": "Tool Description"
+            }
+        }
+    },
+    "readFile": {
+        "label": "Read File",
+        "description": "Read file from disk",
+        "category": "Tools",
+        "warning": "This tool can be used to read files from the disk. It is recommended to use this tool with caution.",
+        "inputs": {
+            "workspacePath": {
+                "label": "Workspace Path",
+                "placeholder": "C:\\Users\\User\\MyProject",
+                "description": "Base workspace directory for file operations. All file paths will be relative to this directory."
+            },
+            "enforceWorkspaceBoundaries": {
+                "label": "Enforce Workspace Boundaries",
+                "description": "When enabled, restricts file access to the workspace directory for security. Recommended: true"
+            },
+            "maxFileSize": {
+                "label": "Max File Size (MB)",
+                "description": "Maximum file size in megabytes that can be read"
+            },
+            "allowedExtensions": {
+                "label": "Allowed Extensions",
+                "description": "Comma-separated list of allowed file extensions (e.g., .txt,.json,.md). Leave empty to allow all.",
+                "placeholder": ".txt,.json,.md,.py,.js"
+            }
+        }
+    },
+    "requestsDelete": {
+        "label": "Requests Delete",
+        "description": "Execute HTTP DELETE requests",
+        "category": "Tools",
+        "inputs": {
+            "requestsDeleteUrl": {
+                "label": "URL"
+            },
+            "requestsDeleteName": {
+                "label": "Name",
+                "description": "Name of the tool"
+            },
+            "requestsDeleteDescription": {
+                "label": "Description",
+                "description": "Describe to LLM when it should use this tool"
+            },
+            "requestsDeleteHeaders": {
+                "label": "Headers",
+                "placeholder": "{\n    \"Authorization\": \"Bearer <token>\"\n}"
+            },
+            "requestsDeleteQueryParamsSchema": {
+                "label": "Query Params Schema",
+                "description": "Description of the available query params to enable LLM to figure out which query params to use"
+            },
+            "requestsDeleteMaxOutputLength": {
+                "label": "Max Output Length",
+                "description": "Max length of the output. Remove this if you want to return the entire response"
+            }
+        }
+    },
+    "requestsGet": {
+        "label": "Requests Get",
+        "description": "Execute HTTP GET requests",
+        "category": "Tools",
+        "inputs": {
+            "requestsGetUrl": {
+                "label": "URL"
+            },
+            "requestsGetName": {
+                "label": "Name",
+                "description": "Name of the tool"
+            },
+            "requestsGetDescription": {
+                "label": "Description",
+                "description": "Describe to LLM when it should use this tool"
+            },
+            "requestsGetHeaders": {
+                "label": "Headers",
+                "placeholder": "{\n    \"Authorization\": \"Bearer <token>\"\n}"
+            },
+            "requestsGetQueryParamsSchema": {
+                "label": "Query Params Schema",
+                "description": "Description of the available query params to enable LLM to figure out which query params to use"
+            },
+            "requestsGetMaxOutputLength": {
+                "label": "Max Output Length",
+                "description": "Max length of the output. Remove this if you want to return the entire response"
+            }
+        }
+    },
+    "requestsPost": {
+        "label": "Requests Post",
+        "description": "Execute HTTP POST requests",
+        "category": "Tools",
+        "inputs": {
+            "requestsPostUrl": {
+                "label": "URL"
+            },
+            "requestsPostName": {
+                "label": "Name",
+                "description": "Name of the tool"
+            },
+            "requestsPostDescription": {
+                "label": "Description",
+                "description": "Describe to LLM when it should use this tool"
+            },
+            "requestsPostHeaders": {
+                "label": "Headers",
+                "placeholder": "{\n    \"Authorization\": \"Bearer <token>\"\n}"
+            },
+            "requestsPostBody": {
+                "label": "Body"
+            },
+            "requestsPostBodySchema": {
+                "label": "Body Schema"
+            },
+            "requestsPostMaxOutputLength": {
+                "label": "Max Output Length",
+                "description": "Max length of the output. Remove this if you want to return the entire response"
+            }
+        }
+    },
+    "requestsPut": {
+        "label": "Requests Put",
+        "description": "Execute HTTP PUT requests",
+        "category": "Tools",
+        "inputs": {
+            "requestsPutUrl": {
+                "label": "URL"
+            },
+            "requestsPutName": {
+                "label": "Name",
+                "description": "Name of the tool"
+            },
+            "requestsPutDescription": {
+                "label": "Description",
+                "description": "Describe to LLM when it should use this tool"
+            },
+            "requestsPutHeaders": {
+                "label": "Headers",
+                "placeholder": "{\n    \"Authorization\": \"Bearer <token>\"\n}"
+            },
+            "requestsPutBody": {
+                "label": "Body"
+            },
+            "requestsPutBodySchema": {
+                "label": "Body Schema"
+            },
+            "requestsPutMaxOutputLength": {
+                "label": "Max Output Length",
+                "description": "Max length of the output. Remove this if you want to return the entire response"
+            }
+        }
+    },
+    "retrieverTool": {
+        "label": "Retriever Tool",
+        "description": "Use a retriever as allowed tool for agent",
+        "category": "Tools",
+        "inputs": {
+            "retrieverName": {
+                "label": "Retriever Name"
+            },
+            "retrieverDescription": {
+                "label": "Retriever Description"
+            },
+            "retriever": {
+                "label": "Retriever"
+            },
+            "returnSourceDocuments": {
+                "label": "Return Source Documents"
+            },
+            "additionalMetadataFilter": {
+                "label": "Additional Metadata Filter"
+            },
+            "metadataFilterExplanation": {
+                "label": "What can you filter?"
+            }
+        }
+    },
+    "searchAPI": {
+        "label": "SearchApi",
+        "description": "Real-time API for accessing Google Search data",
+        "category": "Tools",
+        "credential": {
+            "label": "Connect Credential"
+        }
+    },
+    "searXNG": {
+        "label": "SearXNG",
+        "description": "Wrapper around SearXNG - a free internet metasearch engine",
+        "category": "Tools",
+        "inputs": {
+            "baseURL": {
+                "label": "Base URL"
+            },
+            "toolName": {
+                "label": "Tool Name"
+            },
+            "toolDescription": {
+                "label": "Tool Description"
+            },
+            "headers": {
+                "label": "Headers"
+            },
+            "format": {
+                "label": "Format",
+                "options": {
+                    "json": "JSON",
+                    "html": "HTML"
+                }
+            }
+        }
+    },
+    "serpAPI": {
+        "label": "Serp API",
+        "description": "Wrapper around SerpAPI - a real-time API to access Google search results",
+        "category": "Tools",
+        "credential": {
+            "label": "Connect Credential"
+        }
+    },
+    "serper": {
+        "label": "Serper",
+        "description": "Wrapper around Serper.dev - Google Search API",
+        "category": "Tools",
+        "credential": {
+            "label": "Connect Credential"
+        }
+    },
+    "stripeAgentTool": {
+        "label": "StripeAgentTool",
+        "description": "Use Stripe Agent function calling for financial transactions",
+        "category": "Tools",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "paymentLinks": {
+                "label": "Payment Links",
+                "options": {
+                    "create": "Create",
+                    "update": "Update",
+                    "read": "Read"
+                }
+            }
+        }
+    },
+    "tavilyAPI": {
+        "label": "Tavily API",
+        "description": "Wrapper around TavilyAPI - A specialized search engine designed for LLMs and AI agents",
+        "category": "Tools",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "topic": {
+                "label": "Topic",
+                "options": {
+                    "general": "General",
+                    "news": "News"
+                }
+            }
+        }
+    },
+    "webBrowser": {
+        "label": "Web Browser",
+        "description": "Gives agent the ability to visit a website and extract information",
+        "category": "Tools",
+        "inputs": {
+            "model": {
+                "label": "Language Model"
+            },
+            "embeddings": {
+                "label": "Embeddings"
+            }
+        }
+    },
+    "webScraperTool": {
+        "label": "Web Scraper Tool",
+        "description": "Scrapes web pages recursively by following links OR by fetching URLs from the default sitemap.",
+        "category": "Tools",
+        "inputs": {
+            "scrapingMode": {
+                "label": "Scraping Mode",
+                "options": {
+                    "recursive": "Recursive Link Following",
+                    "sitemap": "Sitemap"
+                }
+            }
+        }
+    },
+    "wolframAlpha": {
+        "label": "WolframAlpha",
+        "description": "Wrapper around WolframAlpha - a powerful computational knowledge engine",
+        "category": "Tools",
+        "credential": {
+            "label": "Connect Credential"
+        }
+    },
+    "writeFile": {
+        "label": "Write File",
+        "description": "Write file to disk",
+        "category": "Tools",
+        "warning": "This tool can be used to write files to the disk. It is recommended to use this tool with caution.",
+        "inputs": {
+            "workspacePath": {
+                "label": "Workspace Path",
+                "description": "Base workspace directory for file operations. All file paths will be relative to this directory."
+            },
+            "enforceWorkspaceBoundaries": {
+                "label": "Enforce Workspace Boundaries",
+                "description": "When enabled, restricts file access to the workspace directory for security. Recommended: true"
+            },
+            "maxFileSize": {
+                "label": "Max File Size (MB)",
+                "description": "Maximum file size in megabytes that can be written"
+            },
+            "allowedExtensions": {
+                "label": "Allowed Extensions",
+                "description": "Comma-separated list of allowed file extensions (e.g., .txt,.json,.md). Leave empty to allow all.",
+                "placeholder": ".txt,.json,.md,.py,.js"
+            }
+        }
+    }
+}

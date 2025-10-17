@@ -1,0 +1,109 @@
+{
+    "characterTextSplitter": {
+        "label": "Character Text Splitter",
+        "description": "splits only on one type of character (defaults to \"\\n\\n\").",
+        "category": "Text Splitters",
+        "inputs": {
+            "chunkSize": {
+                "label": "Chunk Size",
+                "description": "Number of characters in each chunk. Default is 1000."
+            },
+            "chunkOverlap": {
+                "label": "Chunk Overlap",
+                "description": "Number of characters to overlap between chunks. Default is 200."
+            },
+            "separator": {
+                "label": "Custom Separator",
+                "description": "Separator to determine when to split the text, will override the default separator",
+                "placeholder": "\" \""
+            }
+        }
+    },
+    "recursiveCharacterTextSplitter": {
+        "label": "Recursive Character Text Splitter",
+        "description": "splits text recursively by different characters - starting with the first character and then the second character and so on.",
+        "category": "Text Splitters",
+        "inputs": {
+            "chunkSize": {
+                "label": "Chunk Size",
+                "description": "Number of characters in each chunk. Default is 1000."
+            },
+            "chunkOverlap": {
+                "label": "Chunk Overlap",
+                "description": "Number of characters to overlap between chunks. Default is 200."
+            },
+            "separators": {
+                "label": "Custom Separators",
+                "description": "List of separators to determine when to split the text, will override the default separators"
+            }
+        }
+    },
+    "markdownTextSplitter": {
+        "label": "Markdown Text Splitter",
+        "description": "splits text based on Markdown headers.",
+        "category": "Text Splitters",
+        "inputs": {
+            "chunkSize": {
+                "label": "Chunk Size",
+                "description": "Number of characters in each chunk. Default is 1000."
+            },
+            "chunkOverlap": {
+                "label": "Chunk Overlap",
+                "description": "Number of characters to overlap between chunks. Default is 200."
+            }
+        }
+    },
+    "codeTextSplitter": {
+        "label": "Code Text Splitter",
+        "description": "splits code based on language-specific syntax.",
+        "category": "Text Splitters",
+        "inputs": {
+            "language": {
+                "label": "Language",
+                "description": "Programming language of the code to split"
+            },
+            "chunkSize": {
+                "label": "Chunk Size",
+                "description": "Number of characters in each chunk. Default is 1000."
+            },
+            "chunkOverlap": {
+                "label": "Chunk Overlap",
+                "description": "Number of characters to overlap between chunks. Default is 200."
+            }
+        }
+    },
+    "htmlToMarkdownTextSplitter": {
+        "label": "HTML to Markdown Text Splitter",
+        "description": "converts HTML to Markdown and then splits based on Markdown headers.",
+        "category": "Text Splitters",
+        "inputs": {
+            "chunkSize": {
+                "label": "Chunk Size",
+                "description": "Number of characters in each chunk. Default is 1000."
+            },
+            "chunkOverlap": {
+                "label": "Chunk Overlap",
+                "description": "Number of characters to overlap between chunks. Default is 200."
+            }
+        }
+    },
+    "tokenTextSplitter": {
+        "label": "Token Text Splitter",
+        "description": "splits text based on token count using tiktoken tokenizer.",
+        "category": "Text Splitters",
+        "inputs": {
+            "encodingName": {
+                "label": "Encoding Name",
+                "description": "Name of the encoding to use for tokenization"
+            },
+            "chunkSize": {
+                "label": "Chunk Size",
+                "description": "Number of tokens in each chunk. Default is 1000."
+            },
+            "chunkOverlap": {
+                "label": "Chunk Overlap",
+                "description": "Number of tokens to overlap between chunks. Default is 200."
+            }
+        }
+    }
+}

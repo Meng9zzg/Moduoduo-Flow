@@ -23,8 +23,18 @@ class ConditionAgent_Agentflow implements INode {
     baseClasses: string[]
     inputs: INodeParams[]
     outputs: INodeOutputsValue[]
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
 
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.conditionAgentAgentflow.label'
+        this.descriptionKey = 'nodes.conditionAgentAgentflow.description'
+        this.categoryKey = 'nodes.conditionAgentAgentflow.category'
+
+        // Default English values as fallback
         this.label = 'Condition Agent'
         this.name = 'conditionAgentAgentflow'
         this.version = 1.1

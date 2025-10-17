@@ -1,0 +1,276 @@
+{
+    "vectorStoreRetriever": {
+        "label": "Vector Store Retriever",
+        "description": "Retrieve documents from a vector store",
+        "category": "Retrievers",
+        "inputs": {
+            "vectorStore": {
+                "label": "Vector Store",
+                "description": "Vector store to retrieve from"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "Number of documents to retrieve"
+            },
+            "searchType": {
+                "label": "Search Type",
+                "description": "Type of search to perform"
+            }
+        }
+    },
+    "similarityThresholdRetriever": {
+        "label": "Similarity Threshold Retriever",
+        "description": "Retrieve documents above a similarity threshold",
+        "category": "Retrievers",
+        "inputs": {
+            "vectorStore": {
+                "label": "Vector Store",
+                "description": "Vector store to retrieve from"
+            },
+            "threshold": {
+                "label": "Threshold",
+                "description": "Similarity threshold for retrieval"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "Maximum number of documents to retrieve"
+            }
+        }
+    },
+    "multiQueryRetriever": {
+        "label": "Multi Query Retriever",
+        "description": "Generate multiple queries and retrieve from each",
+        "category": "Retrievers",
+        "inputs": {
+            "vectorStore": {
+                "label": "Vector Store",
+                "description": "Vector store to retrieve from"
+            },
+            "llm": {
+                "label": "LLM",
+                "description": "Language model for query generation"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "Number of documents to retrieve per query"
+            }
+        }
+    },
+    "HydeRetriever": {
+        "label": "HyDE Retriever",
+        "description": "Hypothetical Document Embeddings retriever",
+        "category": "Retrievers",
+        "inputs": {
+            "vectorStore": {
+                "label": "Vector Store",
+                "description": "Vector store to retrieve from"
+            },
+            "llm": {
+                "label": "LLM",
+                "description": "Language model for generating hypothetical documents"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "Number of documents to retrieve"
+            }
+        }
+    },
+    "llmFilterRetriever": {
+        "label": "LLM Filter Retriever",
+        "description": "Use LLM to filter retrieved documents",
+        "category": "Retrievers",
+        "inputs": {
+            "vectorStore": {
+                "label": "Vector Store",
+                "description": "Vector store to retrieve from"
+            },
+            "llm": {
+                "label": "LLM",
+                "description": "Language model for filtering"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "Number of documents to retrieve"
+            }
+        }
+    },
+    "embeddingsFilterRetriever": {
+        "label": "Embeddings Filter Retriever",
+        "description": "Filter retrieved documents using embeddings",
+        "category": "Retrievers",
+        "inputs": {
+            "vectorStore": {
+                "label": "Vector Store",
+                "description": "Vector store to retrieve from"
+            },
+            "embeddings": {
+                "label": "Embeddings",
+                "description": "Embeddings model for filtering"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "Number of documents to retrieve"
+            }
+        }
+    },
+    "cohereRerankRetriever": {
+        "label": "Cohere Rerank Retriever",
+        "description": "Rerank retrieved documents using Cohere",
+        "category": "Retrievers",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "vectorStore": {
+                "label": "Vector Store",
+                "description": "Vector store to retrieve from"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "Number of documents to retrieve"
+            },
+            "topN": {
+                "label": "Top N",
+                "description": "Number of documents to rerank"
+            }
+        }
+    },
+    "voyageAIRerankRetriever": {
+        "label": "Voyage AI Rerank Retriever",
+        "description": "Rerank retrieved documents using Voyage AI",
+        "category": "Retrievers",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "vectorStore": {
+                "label": "Vector Store",
+                "description": "Vector store to retrieve from"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "Number of documents to retrieve"
+            },
+            "topN": {
+                "label": "Top N",
+                "description": "Number of documents to rerank"
+            }
+        }
+    },
+    "JinaRerankRetriever": {
+        "label": "Jina Rerank Retriever",
+        "description": "Rerank retrieved documents using Jina",
+        "category": "Retrievers",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "vectorStore": {
+                "label": "Vector Store",
+                "description": "Vector store to retrieve from"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "Number of documents to retrieve"
+            },
+            "topN": {
+                "label": "Top N",
+                "description": "Number of documents to rerank"
+            }
+        }
+    },
+    "RRFRetriever": {
+        "label": "Reciprocal Rank Fusion Retriever",
+        "description": "Combine multiple retrievers using RRF",
+        "category": "Retrievers",
+        "inputs": {
+            "retrievers": {
+                "label": "Retrievers",
+                "description": "List of retrievers to combine"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "Number of documents to retrieve"
+            },
+            "rrfK": {
+                "label": "RRF K",
+                "description": "RRF constant for ranking"
+            }
+        }
+    },
+    "extractMetadataRetriever": {
+        "label": "Extract Metadata Retriever",
+        "description": "Extract metadata from retrieved documents",
+        "category": "Retrievers",
+        "inputs": {
+            "vectorStore": {
+                "label": "Vector Store",
+                "description": "Vector store to retrieve from"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "Number of documents to retrieve"
+            },
+            "metadataFields": {
+                "label": "Metadata Fields",
+                "description": "Fields to extract from metadata"
+            }
+        }
+    },
+    "promptRetriever": {
+        "label": "Prompt Retriever",
+        "description": "Retrieve documents using a prompt-based approach",
+        "category": "Retrievers",
+        "inputs": {
+            "vectorStore": {
+                "label": "Vector Store",
+                "description": "Vector store to retrieve from"
+            },
+            "llm": {
+                "label": "LLM",
+                "description": "Language model for retrieval"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "Number of documents to retrieve"
+            }
+        }
+    },
+    "customRetriever": {
+        "label": "Custom Retriever",
+        "description": "Custom retriever implementation",
+        "category": "Retrievers",
+        "inputs": {
+            "query": {
+                "label": "Query",
+                "description": "Query to retrieve documents for"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "Number of documents to retrieve"
+            }
+        }
+    },
+    "awsBedrockKBRetriever": {
+        "label": "AWS Bedrock Knowledge Base Retriever",
+        "description": "Retrieve documents from AWS Bedrock Knowledge Base",
+        "category": "Retrievers",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "knowledgeBaseId": {
+                "label": "Knowledge Base ID",
+                "description": "ID of the Bedrock Knowledge Base"
+            },
+            "k": {
+                "label": "Top K",
+                "description": "Number of documents to retrieve"
+            },
+            "region": {
+                "label": "Region",
+                "description": "AWS region for the Knowledge Base"
+            }
+        }
+    }
+}

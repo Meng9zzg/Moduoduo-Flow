@@ -20,7 +20,7 @@ import { truncateString } from '@/utils/genericHelper'
 
 // API
 import evaluatorsApi from '@/api/evaluators'
-import moment from 'moment/moment'
+import { formatDateTime } from '@/utils/timeFormatHelper'
 
 // Hooks
 import useNotifier from '@/utils/useNotifier'
@@ -535,7 +535,7 @@ const Evaluators = () => {
                                                                     )}
                                                                 </TableCell>
                                                                 <TableCell onClick={() => edit(ds)}>
-                                                                    {moment(ds.updatedDate).format('MMMM Do YYYY, hh:mm A')}
+                                                                    {formatDateTime(ds.updatedDate)}
                                                                 </TableCell>
                                                                 <TableCell>
                                                                     <PermissionIconButton

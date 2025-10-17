@@ -25,13 +25,13 @@ export class Organization {
     @UpdateDateColumn()
     updatedDate?: Date
 
-    @Column({ nullable: false })
+    @Column({ nullable: true })
     createdBy?: string
     @ManyToOne(() => User, (user) => user.createdOrganizations)
     @JoinColumn({ name: 'createdBy' })
     createdByUser?: User
 
-    @Column({ nullable: false })
+    @Column({ nullable: true })
     updatedBy?: string
     @ManyToOne(() => User, (user) => user.updatedOrganizations)
     @JoinColumn({ name: 'updatedBy' })

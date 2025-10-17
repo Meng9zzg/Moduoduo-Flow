@@ -14,7 +14,18 @@ class BraveSearchAPI_Tools implements INode {
     credential: INodeParams
     inputs: INodeParams[]
 
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
+
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.tools.braveSearchAPI.label'
+        this.descriptionKey = 'nodes.tools.braveSearchAPI.description'
+        this.categoryKey = 'nodes.tools.braveSearchAPI.category'
+
+        // Default English values as fallback
         this.label = 'BraveSearch API'
         this.name = 'braveSearchAPI'
         this.version = 1.0

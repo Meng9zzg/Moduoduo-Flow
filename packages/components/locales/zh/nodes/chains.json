@@ -1,0 +1,205 @@
+{
+    "getApiChain": {
+        "label": "GET API 链",
+        "description": "调用 GET API 的链式处理",
+        "category": "Chains",
+        "inputs": {
+            "apiUrl": {
+                "label": "API URL",
+                "description": "要调用的 API 地址"
+            },
+            "headers": {
+                "label": "请求头",
+                "description": "HTTP 请求头"
+            }
+        }
+    },
+    "openApiChain": {
+        "label": "OpenAPI 链",
+        "description": "基于 OpenAPI 规范自动选择和调用 API 的链",
+        "category": "Chains",
+        "inputs": {
+            "openApiSpec": {
+                "label": "OpenAPI 规范",
+                "description": "OpenAPI 规范文档"
+            },
+            "llm": {
+                "label": "大语言模型",
+                "description": "用于 API 选择的大语言模型"
+            }
+        }
+    },
+    "postApiChain": {
+        "label": "POST API 链",
+        "description": "调用 POST API 的链式处理",
+        "category": "Chains",
+        "inputs": {
+            "apiUrl": {
+                "label": "API URL",
+                "description": "要调用的 API 地址"
+            },
+            "headers": {
+                "label": "请求头",
+                "description": "HTTP 请求头"
+            },
+            "body": {
+                "label": "请求体",
+                "description": "HTTP 请求体"
+            }
+        }
+    },
+    "conversationalRetrievalQAChain": {
+        "label": "对话检索问答链",
+        "description": "结合对话历史和检索的问答链",
+        "category": "Chains",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "用于问答的大语言模型"
+            },
+            "retriever": {
+                "label": "检索器",
+                "description": "用于检索相关文档的检索器"
+            },
+            "memory": {
+                "label": "记忆",
+                "description": "对话历史记忆"
+            }
+        }
+    },
+    "conversationChain": {
+        "label": "对话链",
+        "description": "基本的对话处理链",
+        "category": "Chains",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "用于对话的大语言模型"
+            },
+            "memory": {
+                "label": "记忆",
+                "description": "对话历史记忆"
+            }
+        }
+    },
+    "graphCypherQAChain": {
+        "label": "图 Cypher 问答链",
+        "description": "基于图数据库 Cypher 查询的问答链",
+        "category": "Chains",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "用于问答的大语言模型"
+            },
+            "graph": {
+                "label": "图数据库",
+                "description": "Neo4j 图数据库连接"
+            }
+        }
+    },
+    "llmChain": {
+        "label": "LLM 链",
+        "description": "基本的大语言模型处理链",
+        "category": "Chains",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "要使用的大语言模型"
+            },
+            "prompt": {
+                "label": "提示",
+                "description": "发送给模型的提示"
+            }
+        }
+    },
+    "multiPromptChain": {
+        "label": "多提示链",
+        "description": "使用多个提示的链式处理",
+        "category": "Chains",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "要使用的大语言模型"
+            },
+            "prompts": {
+                "label": "提示列表",
+                "description": "多个提示的列表"
+            }
+        }
+    },
+    "multiRetrievalQAChain": {
+        "label": "多检索问答链",
+        "description": "使用多个检索器的问答链",
+        "category": "Chains",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "用于问答的大语言模型"
+            },
+            "retrievers": {
+                "label": "检索器列表",
+                "description": "多个检索器的列表"
+            }
+        }
+    },
+    "retrievalQAChain": {
+        "label": "检索问答链",
+        "description": "结合检索的问答链",
+        "category": "Chains",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "用于问答的大语言模型"
+            },
+            "retriever": {
+                "label": "检索器",
+                "description": "用于检索相关文档的检索器"
+            }
+        }
+    },
+    "sqlDatabaseChain": {
+        "label": "SQL 数据库链",
+        "description": "基于 SQL 数据库查询的链式处理",
+        "category": "Chains",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "用于生成 SQL 的大语言模型"
+            },
+            "database": {
+                "label": "数据库",
+                "description": "SQL 数据库连接"
+            }
+        }
+    },
+    "vectaraQAChain": {
+        "label": "Vectara 问答链",
+        "description": "基于 Vectara 的问答链式处理",
+        "category": "Chains",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "用于问答的大语言模型"
+            },
+            "vectara": {
+                "label": "Vectara",
+                "description": "Vectara 向量数据库连接"
+            }
+        }
+    },
+    "vectorDBQAChain": {
+        "label": "向量数据库问答链",
+        "description": "基于向量数据库的问答链",
+        "category": "Chains",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "用于问答的大语言模型"
+            },
+            "vectorStore": {
+                "label": "向量存储",
+                "description": "向量数据库连接"
+            }
+        }
+    }
+}

@@ -14,6 +14,9 @@ class ChatLocalAI_ChatModels implements INode {
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
+    labelKey: string
+    descriptionKey: string
+    categoryKey: string
 
     constructor() {
         this.label = 'ChatLocalAI'
@@ -23,9 +26,13 @@ class ChatLocalAI_ChatModels implements INode {
         this.icon = 'localai.png'
         this.category = 'Chat Models'
         this.description = 'Use local LLMs like llama.cpp, gpt4all using LocalAI'
+        this.labelKey = 'nodes.chatmodels.chatLocalAI.label'
+        this.descriptionKey = 'nodes.chatmodels.chatLocalAI.description'
+        this.categoryKey = 'nodes.chatmodels.chatLocalAI.category'
         this.baseClasses = [this.type, 'BaseChatModel', ...getBaseClasses(ChatOpenAI)]
         this.credential = {
             label: 'Connect Credential',
+            labelKey: 'nodes.chatmodels.chatLocalAI.credential.label',
             name: 'credential',
             type: 'credential',
             credentialNames: ['localAIApi'],
@@ -34,24 +41,28 @@ class ChatLocalAI_ChatModels implements INode {
         this.inputs = [
             {
                 label: 'Cache',
+                labelKey: 'nodes.chatmodels.chatLocalAI.inputs.cache.label',
                 name: 'cache',
                 type: 'BaseCache',
                 optional: true
             },
             {
                 label: 'Base Path',
+                labelKey: 'nodes.chatmodels.chatLocalAI.inputs.basePath.label',
                 name: 'basePath',
                 type: 'string',
                 placeholder: 'http://localhost:8080/v1'
             },
             {
                 label: 'Model Name',
+                labelKey: 'nodes.chatmodels.chatLocalAI.inputs.modelName.label',
                 name: 'modelName',
                 type: 'string',
                 placeholder: 'gpt4all-lora-quantized.bin'
             },
             {
                 label: 'Temperature',
+                labelKey: 'nodes.chatmodels.chatLocalAI.inputs.temperature.label',
                 name: 'temperature',
                 type: 'number',
                 step: 0.1,
@@ -60,6 +71,7 @@ class ChatLocalAI_ChatModels implements INode {
             },
             {
                 label: 'Streaming',
+                labelKey: 'nodes.chatmodels.chatLocalAI.inputs.streaming.label',
                 name: 'streaming',
                 type: 'boolean',
                 default: true,
@@ -68,6 +80,7 @@ class ChatLocalAI_ChatModels implements INode {
             },
             {
                 label: 'Max Tokens',
+                labelKey: 'nodes.chatmodels.chatLocalAI.inputs.maxTokens.label',
                 name: 'maxTokens',
                 type: 'number',
                 step: 1,
@@ -76,6 +89,7 @@ class ChatLocalAI_ChatModels implements INode {
             },
             {
                 label: 'Top Probability',
+                labelKey: 'nodes.chatmodels.chatLocalAI.inputs.topP.label',
                 name: 'topP',
                 type: 'number',
                 step: 0.1,
@@ -84,6 +98,7 @@ class ChatLocalAI_ChatModels implements INode {
             },
             {
                 label: 'Timeout',
+                labelKey: 'nodes.chatmodels.chatLocalAI.inputs.timeout.label',
                 name: 'timeout',
                 type: 'number',
                 step: 1,

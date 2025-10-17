@@ -1,36 +1,504 @@
 {
+    "conversationalAgent": {
+        "label": "对话代理",
+        "description": "可以使用工具并维护对话历史的对话代理",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "代理使用的大语言模型"
+            },
+            "tools": {
+                "label": "工具",
+                "description": "代理可用的工具"
+            },
+            "memory": {
+                "label": "记忆",
+                "description": "对话历史的记忆组件"
+            },
+            "systemMessage": {
+                "label": "系统消息",
+                "description": "设置代理行为的系统消息"
+            },
+            "humanMessage": {
+                "label": "人类消息",
+                "description": "发送给代理的人类消息"
+            }
+        }
+    },
+    "reactAgent": {
+        "label": "ReAct 代理",
+        "description": "可以推理问题并采取行动的 ReAct（推理和行动）代理",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "代理使用的大语言模型"
+            },
+            "tools": {
+                "label": "工具",
+                "description": "代理可用的工具"
+            },
+            "memory": {
+                "label": "记忆",
+                "description": "对话历史的记忆组件"
+            },
+            "systemMessage": {
+                "label": "系统消息",
+                "description": "设置代理行为的系统消息"
+            },
+            "humanMessage": {
+                "label": "人类消息",
+                "description": "发送给代理的人类消息"
+            }
+        }
+    },
+    "planAndExecuteAgent": {
+        "label": "规划和执行代理",
+        "description": "规划一系列行动然后执行它们的代理",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "代理使用的大语言模型"
+            },
+            "tools": {
+                "label": "工具",
+                "description": "代理可用的工具"
+            },
+            "memory": {
+                "label": "记忆",
+                "description": "对话历史的记忆组件"
+            },
+            "systemMessage": {
+                "label": "系统消息",
+                "description": "设置代理行为的系统消息"
+            },
+            "humanMessage": {
+                "label": "人类消息",
+                "description": "发送给代理的人类消息"
+            }
+        }
+    },
+    "toolCallingAgent": {
+        "label": "工具调用代理",
+        "description": "可以基于函数定义调用工具的代理",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "代理使用的大语言模型"
+            },
+            "tools": {
+                "label": "工具",
+                "description": "代理可用的工具"
+            },
+            "memory": {
+                "label": "记忆",
+                "description": "对话历史的记忆组件"
+            },
+            "systemMessage": {
+                "label": "系统消息",
+                "description": "设置代理行为的系统消息"
+            },
+            "humanMessage": {
+                "label": "人类消息",
+                "description": "发送给代理的人类消息"
+            }
+        }
+    },
+    "openAIFunctionsAgent": {
+        "label": "OpenAI 函数代理",
+        "description": "使用 OpenAI 函数调用功能的代理",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "代理使用的大语言模型"
+            },
+            "tools": {
+                "label": "工具",
+                "description": "代理可用的工具"
+            },
+            "memory": {
+                "label": "记忆",
+                "description": "对话历史的记忆组件"
+            },
+            "systemMessage": {
+                "label": "系统消息",
+                "description": "设置代理行为的系统消息"
+            },
+            "humanMessage": {
+                "label": "人类消息",
+                "description": "发送给代理的人类消息"
+            }
+        }
+    },
+    "xmlAgent": {
+        "label": "XML 代理",
+        "description": "使用基于 XML 的推理和工具调用的代理",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "代理使用的大语言模型"
+            },
+            "tools": {
+                "label": "工具",
+                "description": "代理可用的工具"
+            },
+            "memory": {
+                "label": "记忆",
+                "description": "对话历史的记忆组件"
+            },
+            "systemMessage": {
+                "label": "系统消息",
+                "description": "设置代理行为的系统消息"
+            },
+            "humanMessage": {
+                "label": "人类消息",
+                "description": "发送给代理的人类消息"
+            }
+        }
+    },
+    "autoGPT": {
+        "label": "AutoGPT 代理",
+        "description": "可以独立设定和实现目标的自主代理",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "代理使用的大语言模型"
+            },
+            "tools": {
+                "label": "工具",
+                "description": "代理可用的工具"
+            },
+            "memory": {
+                "label": "记忆",
+                "description": "对话历史的记忆组件"
+            },
+            "goal": {
+                "label": "目标",
+                "description": "代理应该实现的目标"
+            },
+            "maxIterations": {
+                "label": "最大迭代次数",
+                "description": "代理可以执行的最大迭代次数"
+            }
+        }
+    },
+    "babyAGI": {
+        "label": "BabyAGI 代理",
+        "description": "可以自主执行任务的简化版 AGI",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "代理使用的大语言模型"
+            },
+            "tools": {
+                "label": "工具",
+                "description": "代理可用的工具"
+            },
+            "memory": {
+                "label": "记忆",
+                "description": "对话历史的记忆组件"
+            },
+            "objective": {
+                "label": "目标",
+                "description": "代理应该努力实现的目标"
+            },
+            "maxIterations": {
+                "label": "最大迭代次数",
+                "description": "代理可以执行的最大迭代次数"
+            }
+        }
+    },
+    "conversationalRetrievalAgent": {
+        "label": "对话检索代理",
+        "description": "可以检索信息并与之对话的代理",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "代理使用的大语言模型"
+            },
+            "retriever": {
+                "label": "检索器",
+                "description": "用于信息检索的检索器"
+            },
+            "memory": {
+                "label": "记忆",
+                "description": "对话历史的记忆组件"
+            },
+            "systemMessage": {
+                "label": "系统消息",
+                "description": "设置代理行为的系统消息"
+            },
+            "humanMessage": {
+                "label": "人类消息",
+                "description": "发送给代理的人类消息"
+            }
+        }
+    },
+    "multiAgentExecutor": {
+        "label": "多代理执行器",
+        "description": "可以协调多个代理协同工作的执行器",
+        "category": "Agents",
+        "inputs": {
+            "agents": {
+                "label": "代理",
+                "description": "要协调的代理列表"
+            },
+            "memory": {
+                "label": "记忆",
+                "description": "对话历史的记忆组件"
+            },
+            "systemMessage": {
+                "label": "系统消息",
+                "description": "设置执行器行为的系统消息"
+            },
+            "humanMessage": {
+                "label": "人类消息",
+                "description": "发送给执行器的人类消息"
+            }
+        }
+    },
+    "selfAskWithSearchAgent": {
+        "label": "自问搜索代理",
+        "description": "可以自问问题并搜索答案的代理",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "代理使用的大语言模型"
+            },
+            "searchTool": {
+                "label": "搜索工具",
+                "description": "用于查找信息的搜索工具"
+            },
+            "memory": {
+                "label": "记忆",
+                "description": "对话历史的记忆组件"
+            },
+            "systemMessage": {
+                "label": "系统消息",
+                "description": "设置代理行为的系统消息"
+            },
+            "humanMessage": {
+                "label": "人类消息",
+                "description": "发送给代理的人类消息"
+            }
+        }
+    },
+    "zeroShotAgent": {
+        "label": "零样本代理",
+        "description": "可以在没有先验训练样本的情况下执行任务的代理",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "代理使用的大语言模型"
+            },
+            "tools": {
+                "label": "工具",
+                "description": "代理可用的工具"
+            },
+            "memory": {
+                "label": "记忆",
+                "description": "对话历史的记忆组件"
+            },
+            "systemMessage": {
+                "label": "系统消息",
+                "description": "设置代理行为的系统消息"
+            },
+            "humanMessage": {
+                "label": "人类消息",
+                "description": "发送给代理的人类消息"
+            }
+        }
+    },
+    "createReactAgent": {
+        "label": "创建 ReAct 代理",
+        "description": "使用 create_react_agent 函数创建的 ReAct 代理",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "代理使用的大语言模型"
+            },
+            "tools": {
+                "label": "工具",
+                "description": "代理可用的工具"
+            },
+            "memory": {
+                "label": "记忆",
+                "description": "对话历史的记忆组件"
+            },
+            "systemMessage": {
+                "label": "系统消息",
+                "description": "设置代理行为的系统消息"
+            },
+            "humanMessage": {
+                "label": "人类消息",
+                "description": "发送给代理的人类消息"
+            }
+        }
+    },
     "airtableAgent": {
         "label": "Airtable 代理",
-        "description": "用于回答 Airtable 表格查询的代理",
-        "category": "代理",
+        "description": "用于回答 Airtable 表查询的代理",
+        "category": "Agents",
         "credential": {
             "label": "连接凭证"
         },
         "inputs": {
-            "model": {
-                "label": "语言模型"
+            "llm": {
+                "label": "大语言模型",
+                "description": "代理使用的大语言模型"
             },
             "baseId": {
-                "label": "基础 ID",
-                "placeholder": "app11RobdGoX0YNsC",
-                "description": "如果您的表格 URL 如下所示：https://airtable.com/app11RobdGoX0YNsC/tblJdmvbrgizbYICO/viw9UrP77Id0CE4ee，app11RovdGoX0YNsC 就是基础 ID"
+                "label": "Base ID",
+                "description": "Airtable Base 的 ID"
             },
             "tableId": {
-                "label": "表格 ID",
-                "placeholder": "tblJdmvbrgizbYICO",
-                "description": "如果您的表格 URL 如下所示：https://airtable.com/app11RobdGoX0YNsC/tblJdmvbrgizbYICO/viw9UrP77Id0CE4ee，tblJdmvbrgizbYICO 就是表格 ID"
+                "label": "Table ID",
+                "description": "Airtable 表的 ID"
             },
-            "returnAll": {
-                "label": "返回全部",
-                "description": "是否应返回所有结果或仅返回到给定限制"
+            "tableName": {
+                "label": "表名",
+                "description": "Airtable 表的名称"
             },
-            "limit": {
-                "label": "限制数量",
-                "description": "要返回的结果数量"
+            "description": {
+                "label": "描述",
+                "description": "表的描述信息"
+            }
+        }
+    },
+    "csvAgent": {
+        "label": "CSV 代理",
+        "description": "用于处理 CSV 文件数据的代理",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "代理使用的大语言模型"
             },
-            "inputModeration": {
-                "label": "输入审核",
-                "description": "检测可能生成有害输出的文本并防止其发送到语言模型"
+            "csvFile": {
+                "label": "CSV 文件",
+                "description": "要处理的 CSV 文件"
+            },
+            "description": {
+                "label": "描述",
+                "description": "CSV 文件的描述信息"
+            }
+        }
+    },
+    "openAIAssistant": {
+        "label": "OpenAI 助手",
+        "description": "使用 OpenAI Assistant API 的智能助手",
+        "category": "Agents",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "assistantId": {
+                "label": "助手 ID",
+                "description": "OpenAI Assistant 的 ID"
+            },
+            "instructions": {
+                "label": "指令",
+                "description": "助手的系统指令"
+            },
+            "tools": {
+                "label": "工具",
+                "description": "助手可用的工具"
+            },
+            "model": {
+                "label": "模型",
+                "description": "使用的 OpenAI 模型"
+            }
+        }
+    },
+    "anthropicAgentLlamaIndex": {
+        "label": "Anthropic 代理 (LlamaIndex)",
+        "description": "使用 Anthropic 和 LlamaIndex 的代理",
+        "category": "Agents",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "代理使用的大语言模型"
+            },
+            "tools": {
+                "label": "工具",
+                "description": "代理可用的工具"
+            }
+        }
+    },
+    "openAIToolAgentLlamaIndex": {
+        "label": "OpenAI 工具代理 (LlamaIndex)",
+        "description": "使用 OpenAI 和 LlamaIndex 的工具代理",
+        "category": "Agents",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "代理使用的大语言模型"
+            },
+            "tools": {
+                "label": "工具",
+                "description": "代理可用的工具"
+            }
+        }
+    },
+    "reactAgentChat": {
+        "label": "ReAct 代理 (聊天)",
+        "description": "基于聊天的 ReAct 代理",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "代理使用的大语言模型"
+            },
+            "tools": {
+                "label": "工具",
+                "description": "代理可用的工具"
+            }
+        }
+    },
+    "reactAgentLLM": {
+        "label": "ReAct 代理 (LLM)",
+        "description": "基于 LLM 的 ReAct 代理",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "代理使用的大语言模型"
+            },
+            "tools": {
+                "label": "工具",
+                "description": "代理可用的工具"
+            }
+        }
+    },
+    "toolAgent": {
+        "label": "工具代理",
+        "description": "专门使用工具的代理",
+        "category": "Agents",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "代理使用的大语言模型"
+            },
+            "tools": {
+                "label": "工具",
+                "description": "代理可用的工具"
             }
         }
     }

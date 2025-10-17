@@ -1,0 +1,267 @@
+{
+    "agentAgentflow": {
+        "label": "代理",
+        "description": "Agent Flow 中的代理节点",
+        "category": "Agent Flows",
+        "inputs": {
+            "name": {
+                "label": "名称",
+                "description": "代理的名称"
+            },
+            "description": {
+                "label": "描述",
+                "description": "代理的描述"
+            },
+            "systemMessage": {
+                "label": "系统消息",
+                "description": "代理的系统消息"
+            }
+        }
+    },
+    "conditionAgentflow": {
+        "label": "条件",
+        "description": "Agent Flow 中的条件判断节点",
+        "category": "Agent Flows",
+        "inputs": {
+            "condition": {
+                "label": "条件",
+                "description": "判断条件"
+            },
+            "trueValue": {
+                "label": "真值",
+                "description": "条件为真时的值"
+            },
+            "falseValue": {
+                "label": "假值",
+                "description": "条件为假时的值"
+            }
+        }
+    },
+    "conditionAgentAgentflow": {
+        "label": "条件代理",
+        "description": "基于条件执行的代理节点",
+        "category": "Agent Flows",
+        "inputs": {
+            "condition": {
+                "label": "条件",
+                "description": "执行条件"
+            },
+            "agent": {
+                "label": "代理",
+                "description": "要执行的代理"
+            }
+        }
+    },
+    "customFunctionAgentflow": {
+        "label": "自定义函数",
+        "description": "Agent Flow 中的自定义函数节点",
+        "category": "Agent Flows",
+        "inputs": {
+            "functionName": {
+                "label": "函数名",
+                "description": "自定义函数的名称"
+            },
+            "parameters": {
+                "label": "参数",
+                "description": "函数的参数"
+            },
+            "code": {
+                "label": "代码",
+                "description": "函数的实现代码"
+            }
+        }
+    },
+    "directReplyAgentflow": {
+        "label": "直接回复",
+        "description": "Agent Flow 中的直接回复节点",
+        "category": "Agent Flows",
+        "inputs": {
+            "message": {
+                "label": "消息",
+                "description": "要回复的消息"
+            },
+            "type": {
+                "label": "类型",
+                "description": "回复的类型"
+            }
+        }
+    },
+    "executeFlowAgentflow": {
+        "label": "执行流程",
+        "description": "Agent Flow 中的流程执行节点",
+        "category": "Agent Flows",
+        "inputs": {
+            "flowId": {
+                "label": "流程 ID",
+                "description": "要执行的流程 ID"
+            },
+            "parameters": {
+                "label": "参数",
+                "description": "传递给流程的参数"
+            }
+        }
+    },
+    "httpAgentflow": {
+        "label": "HTTP 请求",
+        "description": "Agent Flow 中的 HTTP 请求节点",
+        "category": "Agent Flows",
+        "inputs": {
+            "url": {
+                "label": "URL",
+                "description": "请求的 URL"
+            },
+            "method": {
+                "label": "方法",
+                "description": "HTTP 方法"
+            },
+            "headers": {
+                "label": "请求头",
+                "description": "HTTP 请求头"
+            },
+            "body": {
+                "label": "请求体",
+                "description": "HTTP 请求体"
+            }
+        }
+    },
+    "humanInputAgentflow": {
+        "label": "人工输入",
+        "description": "Agent Flow 中的人工输入节点",
+        "category": "Agent Flows",
+        "inputs": {
+            "prompt": {
+                "label": "提示",
+                "description": "向用户显示的提示信息"
+            },
+            "inputType": {
+                "label": "输入类型",
+                "description": "期望的输入类型"
+            },
+            "required": {
+                "label": "必需",
+                "description": "是否为必需输入"
+            }
+        }
+    },
+    "iterationAgentflow": {
+        "label": "迭代",
+        "description": "Agent Flow 中的迭代节点",
+        "category": "Agent Flows",
+        "inputs": {
+            "iterable": {
+                "label": "可迭代对象",
+                "description": "要迭代的对象"
+            },
+            "iterator": {
+                "label": "迭代器",
+                "description": "迭代器函数"
+            },
+            "maxIterations": {
+                "label": "最大迭代次数",
+                "description": "最大迭代次数限制"
+            }
+        }
+    },
+    "llmAgentflow": {
+        "label": "大语言模型",
+        "description": "Agent Flow 中的大语言模型节点",
+        "category": "Agent Flows",
+        "inputs": {
+            "model": {
+                "label": "模型",
+                "description": "使用的大语言模型"
+            },
+            "prompt": {
+                "label": "提示",
+                "description": "发送给模型的提示"
+            },
+            "temperature": {
+                "label": "温度",
+                "description": "生成文本的随机性"
+            },
+            "maxTokens": {
+                "label": "最大令牌数",
+                "description": "生成的最大令牌数"
+            }
+        }
+    },
+    "loopAgentflow": {
+        "label": "循环",
+        "description": "Agent Flow 中的循环节点",
+        "category": "Agent Flows",
+        "inputs": {
+            "condition": {
+                "label": "循环条件",
+                "description": "循环执行的条件"
+            },
+            "body": {
+                "label": "循环体",
+                "description": "循环中要执行的内容"
+            },
+            "maxIterations": {
+                "label": "最大迭代次数",
+                "description": "最大迭代次数限制"
+            }
+        }
+    },
+    "retrieverAgentflow": {
+        "label": "检索器",
+        "description": "Agent Flow 中的检索器节点",
+        "category": "Agent Flows",
+        "inputs": {
+            "query": {
+                "label": "查询",
+                "description": "检索查询"
+            },
+            "vectorStore": {
+                "label": "向量存储",
+                "description": "用于检索的向量存储"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "返回的相似文档数量"
+            }
+        }
+    },
+    "startAgentflow": {
+        "label": "开始",
+        "description": "Agent Flow 中的开始节点",
+        "category": "Agent Flows",
+        "inputs": {
+            "input": {
+                "label": "输入",
+                "description": "流程的初始输入"
+            }
+        }
+    },
+    "stickyNoteAgentflow": {
+        "label": "便签",
+        "description": "Agent Flow 中的便签节点",
+        "category": "Agent Flows",
+        "inputs": {
+            "content": {
+                "label": "内容",
+                "description": "便签的内容"
+            },
+            "color": {
+                "label": "颜色",
+                "description": "便签的颜色"
+            }
+        }
+    },
+    "toolAgentflow": {
+        "label": "工具",
+        "description": "Agent Flow 中的工具节点",
+        "category": "Agent Flows",
+        "inputs": {
+            "toolName": {
+                "label": "工具名称",
+                "description": "要使用的工具名称"
+            },
+            "parameters": {
+                "label": "参数",
+                "description": "传递给工具的参数"
+            }
+        }
+    }
+}

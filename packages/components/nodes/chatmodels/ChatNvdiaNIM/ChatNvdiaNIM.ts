@@ -14,6 +14,9 @@ class ChatNvdiaNIM_ChatModels implements INode {
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
+    labelKey: string
+    descriptionKey: string
+    categoryKey: string
 
     constructor() {
         this.label = 'Chat NVIDIA NIM'
@@ -23,9 +26,13 @@ class ChatNvdiaNIM_ChatModels implements INode {
         this.icon = 'nvdia.svg'
         this.category = 'Chat Models'
         this.description = 'Wrapper around NVIDIA NIM Inference API'
+        this.labelKey = 'nodes.chatmodels.chatNvdiaNIM.label'
+        this.descriptionKey = 'nodes.chatmodels.chatNvdiaNIM.description'
+        this.categoryKey = 'nodes.chatmodels.chatNvdiaNIM.category'
         this.baseClasses = [this.type, ...getBaseClasses(ChatOpenAI)]
         this.credential = {
             label: 'Connect Credential',
+            labelKey: 'nodes.chatmodels.chatNvdiaNIM.credential.label',
             name: 'credential',
             type: 'credential',
             credentialNames: ['nvidiaNIMApi'],
@@ -34,18 +41,21 @@ class ChatNvdiaNIM_ChatModels implements INode {
         this.inputs = [
             {
                 label: 'Cache',
+                labelKey: 'nodes.chatmodels.chatNvdiaNIM.inputs.cache.label',
                 name: 'cache',
                 type: 'BaseCache',
                 optional: true
             },
             {
                 label: 'Model Name',
+                labelKey: 'nodes.chatmodels.chatNvdiaNIM.inputs.modelName.label',
                 name: 'modelName',
                 type: 'string',
                 placeholder: 'microsoft/phi-3-mini-4k-instruct'
             },
             {
                 label: 'Base Path',
+                labelKey: 'nodes.chatmodels.chatNvdiaNIM.inputs.basePath.label',
                 name: 'basePath',
                 type: 'string',
                 description: 'Specify the URL of the deployed NIM Inference API',
@@ -53,6 +63,7 @@ class ChatNvdiaNIM_ChatModels implements INode {
             },
             {
                 label: 'Temperature',
+                labelKey: 'nodes.chatmodels.chatNvdiaNIM.inputs.temperature.label',
                 name: 'temperature',
                 type: 'number',
                 step: 0.1,
@@ -61,6 +72,7 @@ class ChatNvdiaNIM_ChatModels implements INode {
             },
             {
                 label: 'Streaming',
+                labelKey: 'nodes.chatmodels.chatNvdiaNIM.inputs.streaming.label',
                 name: 'streaming',
                 type: 'boolean',
                 default: true,
@@ -69,6 +81,7 @@ class ChatNvdiaNIM_ChatModels implements INode {
             },
             {
                 label: 'Max Tokens',
+                labelKey: 'nodes.chatmodels.chatNvdiaNIM.inputs.maxTokens.label',
                 name: 'maxTokens',
                 type: 'number',
                 step: 1,
@@ -77,6 +90,7 @@ class ChatNvdiaNIM_ChatModels implements INode {
             },
             {
                 label: 'Top Probability',
+                labelKey: 'nodes.chatmodels.chatNvdiaNIM.inputs.topP.label',
                 name: 'topP',
                 type: 'number',
                 step: 0.1,
@@ -85,6 +99,7 @@ class ChatNvdiaNIM_ChatModels implements INode {
             },
             {
                 label: 'Frequency Penalty',
+                labelKey: 'nodes.chatmodels.chatNvdiaNIM.inputs.frequencyPenalty.label',
                 name: 'frequencyPenalty',
                 type: 'number',
                 step: 0.1,
@@ -93,6 +108,7 @@ class ChatNvdiaNIM_ChatModels implements INode {
             },
             {
                 label: 'Presence Penalty',
+                labelKey: 'nodes.chatmodels.chatNvdiaNIM.inputs.presencePenalty.label',
                 name: 'presencePenalty',
                 type: 'number',
                 step: 0.1,
@@ -101,6 +117,7 @@ class ChatNvdiaNIM_ChatModels implements INode {
             },
             {
                 label: 'Timeout',
+                labelKey: 'nodes.chatmodels.chatNvdiaNIM.inputs.timeout.label',
                 name: 'timeout',
                 type: 'number',
                 step: 1,
@@ -109,6 +126,7 @@ class ChatNvdiaNIM_ChatModels implements INode {
             },
             {
                 label: 'Base Options',
+                labelKey: 'nodes.chatmodels.chatNvdiaNIM.inputs.baseOptions.label',
                 name: 'baseOptions',
                 type: 'json',
                 optional: true,

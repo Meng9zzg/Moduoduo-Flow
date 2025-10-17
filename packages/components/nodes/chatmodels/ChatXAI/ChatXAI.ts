@@ -15,6 +15,9 @@ class ChatXAI_ChatModels implements INode {
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
+    labelKey: string
+    descriptionKey: string
+    categoryKey: string
 
     constructor() {
         this.label = 'ChatXAI'
@@ -24,9 +27,13 @@ class ChatXAI_ChatModels implements INode {
         this.icon = 'xai.png'
         this.category = 'Chat Models'
         this.description = 'Wrapper around Grok from XAI'
+        this.labelKey = 'nodes.chatmodels.chatXAI.label'
+        this.descriptionKey = 'nodes.chatmodels.chatXAI.description'
+        this.categoryKey = 'nodes.chatmodels.chatXAI.category'
         this.baseClasses = [this.type, ...getBaseClasses(ChatXAI)]
         this.credential = {
             label: 'Connect Credential',
+            labelKey: 'nodes.chatmodels.chatXAI.credential.label',
             name: 'credential',
             type: 'credential',
             credentialNames: ['xaiApi']
@@ -34,18 +41,21 @@ class ChatXAI_ChatModels implements INode {
         this.inputs = [
             {
                 label: 'Cache',
+                labelKey: 'nodes.chatmodels.chatXAI.inputs.cache.label',
                 name: 'cache',
                 type: 'BaseCache',
                 optional: true
             },
             {
                 label: 'Model',
+                labelKey: 'nodes.chatmodels.chatXAI.inputs.modelName.label',
                 name: 'modelName',
                 type: 'string',
                 placeholder: 'grok-beta'
             },
             {
                 label: 'Temperature',
+                labelKey: 'nodes.chatmodels.chatXAI.inputs.temperature.label',
                 name: 'temperature',
                 type: 'number',
                 step: 0.1,
@@ -54,6 +64,7 @@ class ChatXAI_ChatModels implements INode {
             },
             {
                 label: 'Streaming',
+                labelKey: 'nodes.chatmodels.chatXAI.inputs.streaming.label',
                 name: 'streaming',
                 type: 'boolean',
                 default: true,
@@ -62,6 +73,7 @@ class ChatXAI_ChatModels implements INode {
             },
             {
                 label: 'Max Tokens',
+                labelKey: 'nodes.chatmodels.chatXAI.inputs.maxTokens.label',
                 name: 'maxTokens',
                 type: 'number',
                 step: 1,
@@ -70,6 +82,7 @@ class ChatXAI_ChatModels implements INode {
             },
             {
                 label: 'Max Tokens',
+                labelKey: 'nodes.chatmodels.chatXAI.inputs.maxTokens.label',
                 name: 'maxTokens',
                 type: 'number',
                 step: 1,
@@ -78,6 +91,7 @@ class ChatXAI_ChatModels implements INode {
             },
             {
                 label: 'Allow Image Uploads',
+                labelKey: 'nodes.chatmodels.chatXAI.inputs.allowImageUploads.label',
                 name: 'allowImageUploads',
                 type: 'boolean',
                 description:

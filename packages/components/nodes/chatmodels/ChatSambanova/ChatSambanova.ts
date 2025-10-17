@@ -14,6 +14,9 @@ class ChatSambanova_ChatModels implements INode {
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
+    labelKey: string
+    descriptionKey: string
+    categoryKey: string
 
     constructor() {
         this.label = 'ChatSambanova'
@@ -23,9 +26,13 @@ class ChatSambanova_ChatModels implements INode {
         this.icon = 'sambanova.png'
         this.category = 'Chat Models'
         this.description = 'Wrapper around Sambanova Chat Endpoints'
+        this.labelKey = 'nodes.chatmodels.chatSambanova.label'
+        this.descriptionKey = 'nodes.chatmodels.chatSambanova.description'
+        this.categoryKey = 'nodes.chatmodels.chatSambanova.category'
         this.baseClasses = [this.type, ...getBaseClasses(ChatOpenAI)]
         this.credential = {
             label: 'Connect Credential',
+            labelKey: 'nodes.chatmodels.chatSambanova.credential.label',
             name: 'credential',
             type: 'credential',
             credentialNames: ['sambanovaApi']
@@ -33,12 +40,14 @@ class ChatSambanova_ChatModels implements INode {
         this.inputs = [
             {
                 label: 'Cache',
+                labelKey: 'nodes.chatmodels.chatSambanova.inputs.cache.label',
                 name: 'cache',
                 type: 'BaseCache',
                 optional: true
             },
             {
                 label: 'Model',
+                labelKey: 'nodes.chatmodels.chatSambanova.inputs.modelName.label',
                 name: 'modelName',
                 type: 'string',
                 default: 'Meta-Llama-3.3-70B-Instruct',
@@ -46,6 +55,7 @@ class ChatSambanova_ChatModels implements INode {
             },
             {
                 label: 'Temperature',
+                labelKey: 'nodes.chatmodels.chatSambanova.inputs.temperature.label',
                 name: 'temperature',
                 type: 'number',
                 step: 0.1,
@@ -54,6 +64,7 @@ class ChatSambanova_ChatModels implements INode {
             },
             {
                 label: 'Streaming',
+                labelKey: 'nodes.chatmodels.chatSambanova.inputs.streaming.label',
                 name: 'streaming',
                 type: 'boolean',
                 default: true,
@@ -61,6 +72,7 @@ class ChatSambanova_ChatModels implements INode {
             },
             {
                 label: 'BasePath',
+                labelKey: 'nodes.chatmodels.chatSambanova.inputs.basepath.label',
                 name: 'basepath',
                 type: 'string',
                 optional: true,
@@ -69,6 +81,7 @@ class ChatSambanova_ChatModels implements INode {
             },
             {
                 label: 'BaseOptions',
+                labelKey: 'nodes.chatmodels.chatSambanova.inputs.baseOptions.label',
                 name: 'baseOptions',
                 type: 'json',
                 optional: true,

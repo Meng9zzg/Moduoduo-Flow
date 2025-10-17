@@ -16,6 +16,9 @@ class ChatPerplexity_ChatModels implements INode {
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
+    labelKey: string
+    descriptionKey: string
+    categoryKey: string
 
     constructor() {
         this.label = 'ChatPerplexity'
@@ -25,9 +28,13 @@ class ChatPerplexity_ChatModels implements INode {
         this.icon = 'perplexity.svg'
         this.category = 'Chat Models'
         this.description = 'Wrapper around Perplexity large language models that use the Chat endpoint'
+        this.labelKey = 'nodes.chatmodels.chatPerplexity.label'
+        this.descriptionKey = 'nodes.chatmodels.chatPerplexity.description'
+        this.categoryKey = 'nodes.chatmodels.chatPerplexity.category'
         this.baseClasses = [this.type, ...getBaseClasses(LangchainChatPerplexity)]
         this.credential = {
             label: 'Connect Credential',
+            labelKey: 'nodes.chatmodels.chatPerplexity.credential.label',
             name: 'credential',
             type: 'credential',
             credentialNames: ['perplexityApi']
@@ -35,12 +42,14 @@ class ChatPerplexity_ChatModels implements INode {
         this.inputs = [
             {
                 label: 'Cache',
+                labelKey: 'nodes.chatmodels.chatPerplexity.inputs.cache.label',
                 name: 'cache',
                 type: 'BaseCache',
                 optional: true
             },
             {
                 label: 'Model Name',
+                labelKey: 'nodes.chatmodels.chatPerplexity.inputs.model.label',
                 name: 'model',
                 type: 'asyncOptions',
                 loadMethod: 'listModels',
@@ -48,6 +57,7 @@ class ChatPerplexity_ChatModels implements INode {
             },
             {
                 label: 'Temperature',
+                labelKey: 'nodes.chatmodels.chatPerplexity.inputs.temperature.label',
                 name: 'temperature',
                 type: 'number',
                 step: 0.1,
@@ -56,6 +66,7 @@ class ChatPerplexity_ChatModels implements INode {
             },
             {
                 label: 'Max Tokens',
+                labelKey: 'nodes.chatmodels.chatPerplexity.inputs.maxTokens.label',
                 name: 'maxTokens',
                 type: 'number',
                 step: 1,
@@ -64,6 +75,7 @@ class ChatPerplexity_ChatModels implements INode {
             },
             {
                 label: 'Top P',
+                labelKey: 'nodes.chatmodels.chatPerplexity.inputs.topP.label',
                 name: 'topP',
                 type: 'number',
                 step: 0.1,
@@ -72,6 +84,7 @@ class ChatPerplexity_ChatModels implements INode {
             },
             {
                 label: 'Top K',
+                labelKey: 'nodes.chatmodels.chatPerplexity.inputs.topK.label',
                 name: 'topK',
                 type: 'number',
                 step: 1,
@@ -80,6 +93,7 @@ class ChatPerplexity_ChatModels implements INode {
             },
             {
                 label: 'Presence Penalty',
+                labelKey: 'nodes.chatmodels.chatPerplexity.inputs.presencePenalty.label',
                 name: 'presencePenalty',
                 type: 'number',
                 step: 0.1,
@@ -88,6 +102,7 @@ class ChatPerplexity_ChatModels implements INode {
             },
             {
                 label: 'Frequency Penalty',
+                labelKey: 'nodes.chatmodels.chatPerplexity.inputs.frequencyPenalty.label',
                 name: 'frequencyPenalty',
                 type: 'number',
                 step: 0.1,
@@ -96,6 +111,7 @@ class ChatPerplexity_ChatModels implements INode {
             },
             {
                 label: 'Streaming',
+                labelKey: 'nodes.chatmodels.chatPerplexity.inputs.streaming.label',
                 name: 'streaming',
                 type: 'boolean',
                 default: true,
@@ -104,6 +120,7 @@ class ChatPerplexity_ChatModels implements INode {
             },
             {
                 label: 'Timeout',
+                labelKey: 'nodes.chatmodels.chatPerplexity.inputs.timeout.label',
                 name: 'timeout',
                 type: 'number',
                 step: 1,
@@ -154,6 +171,7 @@ class ChatPerplexity_ChatModels implements INode {
             // },
             {
                 label: 'Proxy Url',
+                labelKey: 'nodes.chatmodels.chatPerplexity.inputs.proxyUrl.label',
                 name: 'proxyUrl',
                 type: 'string',
                 optional: true,

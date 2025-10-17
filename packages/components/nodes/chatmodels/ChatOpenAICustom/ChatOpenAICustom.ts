@@ -14,6 +14,9 @@ class ChatOpenAICustom_ChatModels implements INode {
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
+    labelKey: string
+    descriptionKey: string
+    categoryKey: string
 
     constructor() {
         this.label = 'ChatOpenAI Custom'
@@ -23,9 +26,13 @@ class ChatOpenAICustom_ChatModels implements INode {
         this.icon = 'openai.svg'
         this.category = 'Chat Models'
         this.description = 'Custom/FineTuned model using OpenAI Chat compatible API'
+        this.labelKey = 'nodes.chatmodels.chatOpenAICustom.label'
+        this.descriptionKey = 'nodes.chatmodels.chatOpenAICustom.description'
+        this.categoryKey = 'nodes.chatmodels.chatOpenAICustom.category'
         this.baseClasses = [this.type, ...getBaseClasses(ChatOpenAI)]
         this.credential = {
             label: 'Connect Credential',
+            labelKey: 'nodes.chatmodels.chatOpenAICustom.credential.label',
             name: 'credential',
             type: 'credential',
             credentialNames: ['openAIApi'],
@@ -34,18 +41,21 @@ class ChatOpenAICustom_ChatModels implements INode {
         this.inputs = [
             {
                 label: 'Cache',
+                labelKey: 'nodes.chatmodels.chatOpenAICustom.inputs.cache.label',
                 name: 'cache',
                 type: 'BaseCache',
                 optional: true
             },
             {
                 label: 'Model Name',
+                labelKey: 'nodes.chatmodels.chatOpenAICustom.inputs.modelName.label',
                 name: 'modelName',
                 type: 'string',
                 placeholder: 'ft:gpt-3.5-turbo:my-org:custom_suffix:id'
             },
             {
                 label: 'Temperature',
+                labelKey: 'nodes.chatmodels.chatOpenAICustom.inputs.temperature.label',
                 name: 'temperature',
                 type: 'number',
                 step: 0.1,
@@ -54,6 +64,7 @@ class ChatOpenAICustom_ChatModels implements INode {
             },
             {
                 label: 'Streaming',
+                labelKey: 'nodes.chatmodels.chatOpenAICustom.inputs.streaming.label',
                 name: 'streaming',
                 type: 'boolean',
                 default: true,
@@ -62,6 +73,7 @@ class ChatOpenAICustom_ChatModels implements INode {
             },
             {
                 label: 'Max Tokens',
+                labelKey: 'nodes.chatmodels.chatOpenAICustom.inputs.maxTokens.label',
                 name: 'maxTokens',
                 type: 'number',
                 step: 1,
@@ -70,6 +82,7 @@ class ChatOpenAICustom_ChatModels implements INode {
             },
             {
                 label: 'Top Probability',
+                labelKey: 'nodes.chatmodels.chatOpenAICustom.inputs.topP.label',
                 name: 'topP',
                 type: 'number',
                 step: 0.1,
@@ -78,6 +91,7 @@ class ChatOpenAICustom_ChatModels implements INode {
             },
             {
                 label: 'Frequency Penalty',
+                labelKey: 'nodes.chatmodels.chatOpenAICustom.inputs.frequencyPenalty.label',
                 name: 'frequencyPenalty',
                 type: 'number',
                 step: 0.1,
@@ -86,6 +100,7 @@ class ChatOpenAICustom_ChatModels implements INode {
             },
             {
                 label: 'Presence Penalty',
+                labelKey: 'nodes.chatmodels.chatOpenAICustom.inputs.presencePenalty.label',
                 name: 'presencePenalty',
                 type: 'number',
                 step: 0.1,
@@ -94,6 +109,7 @@ class ChatOpenAICustom_ChatModels implements INode {
             },
             {
                 label: 'Timeout',
+                labelKey: 'nodes.chatmodels.chatOpenAICustom.inputs.timeout.label',
                 name: 'timeout',
                 type: 'number',
                 step: 1,
@@ -102,6 +118,7 @@ class ChatOpenAICustom_ChatModels implements INode {
             },
             {
                 label: 'BasePath',
+                labelKey: 'nodes.chatmodels.chatOpenAICustom.inputs.basepath.label',
                 name: 'basepath',
                 type: 'string',
                 optional: true,
@@ -109,6 +126,7 @@ class ChatOpenAICustom_ChatModels implements INode {
             },
             {
                 label: 'BaseOptions',
+                labelKey: 'nodes.chatmodels.chatOpenAICustom.inputs.baseOptions.label',
                 name: 'baseOptions',
                 type: 'json',
                 optional: true,

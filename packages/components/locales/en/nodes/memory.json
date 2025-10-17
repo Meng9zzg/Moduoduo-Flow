@@ -1,0 +1,373 @@
+{
+    "bufferMemory": {
+        "label": "Buffer Memory",
+        "description": "Store conversation history in a simple buffer",
+        "category": "Memory",
+        "inputs": {
+            "memoryKey": {
+                "label": "Memory Key",
+                "description": "Key to store the memory"
+            },
+            "inputKey": {
+                "label": "Input Key",
+                "description": "Key for the input message"
+            },
+            "outputKey": {
+                "label": "Output Key",
+                "description": "Key for the output message"
+            }
+        }
+    },
+    "bufferWindowMemory": {
+        "label": "Buffer Window Memory",
+        "description": "Store conversation history with a sliding window",
+        "category": "Memory",
+        "inputs": {
+            "memoryKey": {
+                "label": "Memory Key",
+                "description": "Key to store the memory"
+            },
+            "inputKey": {
+                "label": "Input Key",
+                "description": "Key for the input message"
+            },
+            "outputKey": {
+                "label": "Output Key",
+                "description": "Key for the output message"
+            },
+            "k": {
+                "label": "Window Size",
+                "description": "Number of messages to keep in memory"
+            }
+        }
+    },
+    "conversationSummaryMemory": {
+        "label": "Conversation Summary Memory",
+        "description": "Store conversation history as a summary",
+        "category": "Memory",
+        "inputs": {
+            "memoryKey": {
+                "label": "Memory Key",
+                "description": "Key to store the memory"
+            },
+            "inputKey": {
+                "label": "Input Key",
+                "description": "Key for the input message"
+            },
+            "outputKey": {
+                "label": "Output Key",
+                "description": "Key for the output message"
+            },
+            "llm": {
+                "label": "LLM",
+                "description": "Language model for summarization"
+            }
+        }
+    },
+    "conversationSummaryBufferMemory": {
+        "label": "Conversation Summary Buffer Memory",
+        "description": "Store conversation history with both buffer and summary",
+        "category": "Memory",
+        "inputs": {
+            "memoryKey": {
+                "label": "Memory Key",
+                "description": "Key to store the memory"
+            },
+            "inputKey": {
+                "label": "Input Key",
+                "description": "Key for the input message"
+            },
+            "outputKey": {
+                "label": "Output Key",
+                "description": "Key for the output message"
+            },
+            "llm": {
+                "label": "LLM",
+                "description": "Language model for summarization"
+            },
+            "maxTokenLimit": {
+                "label": "Max Token Limit",
+                "description": "Maximum tokens before summarization"
+            }
+        }
+    },
+    "agentMemory": {
+        "label": "Agent Memory",
+        "description": "Memory component for agents",
+        "category": "Memory",
+        "inputs": {
+            "memoryKey": {
+                "label": "Memory Key",
+                "description": "Key to store the memory"
+            },
+            "inputKey": {
+                "label": "Input Key",
+                "description": "Key for the input message"
+            },
+            "outputKey": {
+                "label": "Output Key",
+                "description": "Key for the output message"
+            }
+        }
+    },
+    "sqliteAgentMemory": {
+        "label": "SQLite Agent Memory",
+        "description": "Store agent memory in SQLite database",
+        "category": "Memory",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "memoryKey": {
+                "label": "Memory Key",
+                "description": "Key to store the memory"
+            },
+            "inputKey": {
+                "label": "Input Key",
+                "description": "Key for the input message"
+            },
+            "outputKey": {
+                "label": "Output Key",
+                "description": "Key for the output message"
+            },
+            "sessionId": {
+                "label": "Session ID",
+                "description": "Unique session identifier"
+            }
+        }
+    },
+    "postgresAgentMemory": {
+        "label": "PostgreSQL Agent Memory",
+        "description": "Store agent memory in PostgreSQL database",
+        "category": "Memory",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "memoryKey": {
+                "label": "Memory Key",
+                "description": "Key to store the memory"
+            },
+            "inputKey": {
+                "label": "Input Key",
+                "description": "Key for the input message"
+            },
+            "outputKey": {
+                "label": "Output Key",
+                "description": "Key for the output message"
+            },
+            "sessionId": {
+                "label": "Session ID",
+                "description": "Unique session identifier"
+            }
+        }
+    },
+    "mySQLAgentMemory": {
+        "label": "MySQL Agent Memory",
+        "description": "Store agent memory in MySQL database",
+        "category": "Memory",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "memoryKey": {
+                "label": "Memory Key",
+                "description": "Key to store the memory"
+            },
+            "inputKey": {
+                "label": "Input Key",
+                "description": "Key for the input message"
+            },
+            "outputKey": {
+                "label": "Output Key",
+                "description": "Key for the output message"
+            },
+            "sessionId": {
+                "label": "Session ID",
+                "description": "Unique session identifier"
+            }
+        }
+    },
+    "DynamoDBChatMemory": {
+        "label": "DynamoDB Chat Memory",
+        "description": "Store chat memory in DynamoDB",
+        "category": "Memory",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "memoryKey": {
+                "label": "Memory Key",
+                "description": "Key to store the memory"
+            },
+            "inputKey": {
+                "label": "Input Key",
+                "description": "Key for the input message"
+            },
+            "outputKey": {
+                "label": "Output Key",
+                "description": "Key for the output message"
+            },
+            "sessionId": {
+                "label": "Session ID",
+                "description": "Unique session identifier"
+            }
+        }
+    },
+    "MongoDBAtlasChatMemory": {
+        "label": "MongoDB Atlas Chat Memory",
+        "description": "Store chat memory in MongoDB Atlas",
+        "category": "Memory",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "memoryKey": {
+                "label": "Memory Key",
+                "description": "Key to store the memory"
+            },
+            "inputKey": {
+                "label": "Input Key",
+                "description": "Key for the input message"
+            },
+            "outputKey": {
+                "label": "Output Key",
+                "description": "Key for the output message"
+            },
+            "sessionId": {
+                "label": "Session ID",
+                "description": "Unique session identifier"
+            }
+        }
+    },
+    "RedisBackedChatMemory": {
+        "label": "Redis Backed Chat Memory",
+        "description": "Store chat memory in Redis",
+        "category": "Memory",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "memoryKey": {
+                "label": "Memory Key",
+                "description": "Key to store the memory"
+            },
+            "inputKey": {
+                "label": "Input Key",
+                "description": "Key for the input message"
+            },
+            "outputKey": {
+                "label": "Output Key",
+                "description": "Key for the output message"
+            },
+            "sessionId": {
+                "label": "Session ID",
+                "description": "Unique session identifier"
+            }
+        }
+    },
+    "upstashRedisBackedChatMemory": {
+        "label": "Upstash Redis Backed Chat Memory",
+        "description": "Store chat memory in Upstash Redis",
+        "category": "Memory",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "memoryKey": {
+                "label": "Memory Key",
+                "description": "Key to store the memory"
+            },
+            "inputKey": {
+                "label": "Input Key",
+                "description": "Key for the input message"
+            },
+            "outputKey": {
+                "label": "Output Key",
+                "description": "Key for the output message"
+            },
+            "sessionId": {
+                "label": "Session ID",
+                "description": "Unique session identifier"
+            }
+        }
+    },
+    "ZepMemory": {
+        "label": "Zep Memory",
+        "description": "Store memory using Zep",
+        "category": "Memory",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "memoryKey": {
+                "label": "Memory Key",
+                "description": "Key to store the memory"
+            },
+            "inputKey": {
+                "label": "Input Key",
+                "description": "Key for the input message"
+            },
+            "outputKey": {
+                "label": "Output Key",
+                "description": "Key for the output message"
+            },
+            "sessionId": {
+                "label": "Session ID",
+                "description": "Unique session identifier"
+            }
+        }
+    },
+    "ZepMemoryCloud": {
+        "label": "Zep Memory Cloud",
+        "description": "Store memory using Zep Cloud",
+        "category": "Memory",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "memoryKey": {
+                "label": "Memory Key",
+                "description": "Key to store the memory"
+            },
+            "inputKey": {
+                "label": "Input Key",
+                "description": "Key for the input message"
+            },
+            "outputKey": {
+                "label": "Output Key",
+                "description": "Key for the output message"
+            },
+            "sessionId": {
+                "label": "Session ID",
+                "description": "Unique session identifier"
+            }
+        }
+    },
+    "mem0": {
+        "label": "Mem0",
+        "description": "Store memory using Mem0",
+        "category": "Memory",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "memoryKey": {
+                "label": "Memory Key",
+                "description": "Key to store the memory"
+            },
+            "inputKey": {
+                "label": "Input Key",
+                "description": "Key for the input message"
+            },
+            "outputKey": {
+                "label": "Output Key",
+                "description": "Key for the output message"
+            },
+            "sessionId": {
+                "label": "Session ID",
+                "description": "Unique session identifier"
+            }
+        }
+    }
+}

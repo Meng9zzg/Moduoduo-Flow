@@ -28,6 +28,15 @@
         "langchain": "Langchain",
         "llamaIndex": "LlamaIndex"
     },
+    "usecaseOptions": {
+        "Agent": "智能体",
+        "Basic": "基础",
+        "Customer Support": "客户支持",
+        "Deep Research": "深度研究",
+        "Documents QnA": "文档问答",
+        "Extraction": "信息提取",
+        "Hierarchical Agent Teams": "分层智能体团队"
+    },
     "table": {
         "name": "名称",
         "type": "类型",

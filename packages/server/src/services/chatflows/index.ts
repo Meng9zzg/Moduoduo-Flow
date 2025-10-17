@@ -178,6 +178,12 @@ async function getAllChatflowsCountByOrganization(type: ChatflowType, organizati
     try {
         const appServer = getRunningExpressApp()
 
+        // In open source mode, bypass workspace lookup for placeholder org IDs
+        if (organizationId === 'opensource-org') {
+            // console.log('[chatflowsService] Open source mode detected, returning 0 for chatflow count check')
+            return 0
+        }
+
         const workspaces = await appServer.AppDataSource.getRepository(Workspace).findBy({ organizationId })
         const workspaceIds = workspaces.map((workspace) => workspace.id)
         const chatflowsCount = await appServer.AppDataSource.getRepository(ChatFlow).countBy({

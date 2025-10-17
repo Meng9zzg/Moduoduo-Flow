@@ -14,7 +14,18 @@ class SearchAPI_Tools implements INode {
     credential: INodeParams
     inputs: INodeParams[]
 
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
+
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.tools.searchAPI.label'
+        this.descriptionKey = 'nodes.tools.searchAPI.description'
+        this.categoryKey = 'nodes.tools.searchAPI.category'
+
+        // Default English values as fallback
         this.label = 'SearchApi'
         this.name = 'searchAPI'
         this.version = 1.0

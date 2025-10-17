@@ -141,9 +141,10 @@ export class TranslationService {
         if (nodeTranslations.description) {
             translatedNode.description = nodeTranslations.description
         }
-        if (nodeTranslations.category) {
-            translatedNode.category = nodeTranslations.category
-        }
+        // Note: We don't translate category to keep it in English for frontend grouping
+        // if (nodeTranslations.category) {
+        //     translatedNode.category = nodeTranslations.category
+        // }
 
         // Translate credential
         if (nodeTranslations.credential && translatedNode.credential) {

@@ -14,6 +14,9 @@ class ChatFireworks_ChatModels implements INode {
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
+    labelKey: string
+    descriptionKey: string
+    categoryKey: string
 
     constructor() {
         this.label = 'ChatFireworks'
@@ -23,9 +26,13 @@ class ChatFireworks_ChatModels implements INode {
         this.icon = 'Fireworks.png'
         this.category = 'Chat Models'
         this.description = 'Wrapper around Fireworks Chat Endpoints'
+        this.labelKey = 'nodes.chatmodels.chatFireworks.label'
+        this.descriptionKey = 'nodes.chatmodels.chatFireworks.description'
+        this.categoryKey = 'nodes.chatmodels.chatFireworks.category'
         this.baseClasses = [this.type, ...getBaseClasses(ChatFireworks)]
         this.credential = {
             label: 'Connect Credential',
+            labelKey: 'nodes.chatmodels.chatFireworks.credential.label',
             name: 'credential',
             type: 'credential',
             credentialNames: ['fireworksApi']
@@ -33,12 +40,14 @@ class ChatFireworks_ChatModels implements INode {
         this.inputs = [
             {
                 label: 'Cache',
+                labelKey: 'nodes.chatmodels.chatFireworks.inputs.cache.label',
                 name: 'cache',
                 type: 'BaseCache',
                 optional: true
             },
             {
                 label: 'Model',
+                labelKey: 'nodes.chatmodels.chatFireworks.inputs.modelName.label',
                 name: 'modelName',
                 type: 'string',
                 default: 'accounts/fireworks/models/llama-v3p1-8b-instruct',
@@ -46,6 +55,7 @@ class ChatFireworks_ChatModels implements INode {
             },
             {
                 label: 'Temperature',
+                labelKey: 'nodes.chatmodels.chatFireworks.inputs.temperature.label',
                 name: 'temperature',
                 type: 'number',
                 step: 0.1,
@@ -54,6 +64,7 @@ class ChatFireworks_ChatModels implements INode {
             },
             {
                 label: 'Streaming',
+                labelKey: 'nodes.chatmodels.chatFireworks.inputs.streaming.label',
                 name: 'streaming',
                 type: 'boolean',
                 default: true,

@@ -14,7 +14,18 @@ class MicrosoftOutlook_Tools implements INode {
     credential: INodeParams
     inputs: INodeParams[]
 
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
+
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.tools.microsoftOutlook.label'
+        this.descriptionKey = 'nodes.tools.microsoftOutlook.description'
+        this.categoryKey = 'nodes.tools.microsoftOutlook.category'
+
+        // Default English values as fallback
         this.label = 'Microsoft Outlook'
         this.name = 'microsoftOutlook'
         this.version = 1.0

@@ -13,8 +13,18 @@ class InMemoryCache implements INode {
     baseClasses: string[]
     inputs: INodeParams[]
     credential: INodeParams
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
 
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.inMemoryCache.label'
+        this.descriptionKey = 'nodes.inMemoryCache.description'
+        this.categoryKey = 'nodes.inMemoryCache.category'
+
+        // Default English values as fallback
         this.label = 'InMemory Cache'
         this.name = 'inMemoryCache'
         this.version = 1.0

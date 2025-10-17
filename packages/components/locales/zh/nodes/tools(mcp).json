@@ -1,0 +1,216 @@
+{
+    "braveSearchMCP": {
+        "label": "Brave 搜索 MCP",
+        "description": "使用 Brave 搜索 API 的 MCP 工具",
+        "category": "Tools (MCP)",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "query": {
+                "label": "查询",
+                "description": "搜索查询"
+            },
+            "count": {
+                "label": "结果数量",
+                "description": "要返回的结果数量"
+            }
+        }
+    },
+    "customMCP": {
+        "label": "自定义 MCP",
+        "description": "自定义的 MCP 工具实现",
+        "category": "Tools (MCP)",
+        "inputs": {
+            "name": {
+                "label": "名称",
+                "description": "MCP 工具名称"
+            },
+            "description": {
+                "label": "描述",
+                "description": "工具描述"
+            },
+            "parameters": {
+                "label": "参数",
+                "description": "工具参数"
+            }
+        }
+    },
+    "githubMCP": {
+        "label": "GitHub MCP",
+        "description": "GitHub 相关的 MCP 工具",
+        "category": "Tools (MCP)",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "repository": {
+                "label": "仓库",
+                "description": "GitHub 仓库名称"
+            },
+            "action": {
+                "label": "操作",
+                "description": "要执行的操作"
+            }
+        }
+    },
+    "postgreSQLMCP": {
+        "label": "PostgreSQL MCP",
+        "description": "PostgreSQL 数据库的 MCP 工具",
+        "category": "Tools (MCP)",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "query": {
+                "label": "查询",
+                "description": "SQL 查询语句"
+            },
+            "database": {
+                "label": "数据库",
+                "description": "数据库名称"
+            }
+        }
+    },
+    "sequentialThinkingMCP": {
+        "label": "顺序思考 MCP",
+        "description": "支持顺序思考过程的 MCP 工具",
+        "category": "Tools (MCP)",
+        "inputs": {
+            "prompt": {
+                "label": "提示",
+                "description": "思考提示"
+            },
+            "steps": {
+                "label": "步骤",
+                "description": "思考步骤数量"
+            }
+        }
+    },
+    "slackMCP": {
+        "label": "Slack MCP",
+        "description": "Slack 相关的 MCP 工具",
+        "category": "Tools (MCP)",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "channel": {
+                "label": "频道",
+                "description": "Slack 频道名称"
+            },
+            "message": {
+                "label": "消息",
+                "description": "要发送的消息"
+            }
+        }
+    },
+    "supergatewayMCP": {
+        "label": "Supergateway MCP",
+        "description": "Supergateway 服务的 MCP 工具",
+        "category": "Tools (MCP)",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "endpoint": {
+                "label": "端点",
+                "description": "API 端点"
+            },
+            "method": {
+                "label": "方法",
+                "description": "HTTP 方法"
+            }
+        }
+    },
+    "teradataMCP": {
+        "label": "Teradata MCP",
+        "description": "Teradata 数据库的 MCP 工具",
+        "category": "Tools (MCP)",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "query": {
+                "label": "查询",
+                "description": "SQL 查询语句"
+            },
+            "database": {
+                "label": "数据库",
+                "description": "数据库名称"
+            }
+        }
+    },
+    "anthropicMCP": {
+        "label": "Anthropic MCP",
+        "description": "Anthropic AI 服务的 MCP 工具",
+        "category": "Tools (MCP)",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "model": {
+                "label": "模型",
+                "description": "要使用的 Anthropic 模型"
+            },
+            "prompt": {
+                "label": "提示",
+                "description": "发送给模型的提示"
+            }
+        }
+    },
+    "openAIMCP": {
+        "label": "OpenAI MCP",
+        "description": "OpenAI 服务的 MCP 工具",
+        "category": "Tools (MCP)",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "model": {
+                "label": "模型",
+                "description": "要使用的 OpenAI 模型"
+            },
+            "prompt": {
+                "label": "提示",
+                "description": "发送给模型的提示"
+            }
+        }
+    },
+    "mistralMCP": {
+        "label": "Mistral MCP",
+        "description": "Mistral AI 服务的 MCP 工具",
+        "category": "Tools (MCP)",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "model": {
+                "label": "模型",
+                "description": "要使用的 Mistral 模型"
+            },
+            "prompt": {
+                "label": "提示",
+                "description": "发送给模型的提示"
+            }
+        }
+    },
+    "claudeMCP": {
+        "label": "Claude MCP",
+        "description": "Claude AI 服务的 MCP 工具",
+        "category": "Tools (MCP)",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "model": {
+                "label": "模型",
+                "description": "要使用的 Claude 模型"
+            },
+            "prompt": {
+                "label": "提示",
+                "description": "发送给模型的提示"
+            }
+        }
+    }
+}

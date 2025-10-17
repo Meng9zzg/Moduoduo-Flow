@@ -7,6 +7,7 @@ import { getFileName } from '@/utils/genericHelper'
 
 export const File = ({ value, formDataUpload, fileType, onChange, onFormDataChange, disabled = false }) => {
     const theme = useTheme()
+    // const { t } = useTranslation('dialog')
 
     const [myValue, setMyValue] = useState(value ?? '')
 

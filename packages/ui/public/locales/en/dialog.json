@@ -208,7 +208,15 @@
             "startEvaluation": "Start Evaluation"
         },
         "placeholders": {
-            "evaluation": "Evaluation"
+            "evaluation": "Friendly name to tag this run."
+        },
+        "metrics": {
+            "totalTokens": "Total Tokens",
+            "promptTokens": "Prompt Tokens",
+            "completionTokens": "Completion Tokens",
+            "totalApiLatency": "Total API Latency",
+            "llmLatency": "LLM Latency",
+            "outputCharsLength": "Output Chars Length"
         }
     },
     "credential": {
@@ -599,6 +607,24 @@
         "expand": "Expand",
         "evaluationPrompt": "Evaluation Prompt",
         "promptHint": "You can use <1>question</1> <2>actualOutput</2> <3>expectedOutput</3> to inject runtime values into your prompt.",
+        "evaluatorTypes": {
+            "text": {
+                "label": "Evaluate Result (Text Based)",
+                "description": "Set of Evaluators to evaluate the result of a Chatflow."
+            },
+            "json": {
+                "label": "Evaluate Result (JSON)",
+                "description": "Set of Evaluators to evaluate the JSON response of a Chatflow."
+            },
+            "numeric": {
+                "label": "Evaluate Metrics (Numeric)",
+                "description": "Set of Evaluators that evaluate the metrics (latency, tokens, cost, length of response) of a Chatflow."
+            },
+            "llm": {
+                "label": "LLM based Grading (JSON)",
+                "description": "Post execution, grades the answers by using an LLM."
+            }
+        },
         "columns": {
             "property": "Property",
             "type": "Type",
@@ -760,6 +786,7 @@
         "title": "Import API Keys",
         "fileLabel": "Import api.json file",
         "filePlaceholder": "Choose a file to upload",
+        "uploadButton": "Upload File",
         "importModeLabel": "Import Mode",
         "importModePlaceholder": "choose an option",
         "importModes": {

@@ -1,0 +1,31 @@
+{
+    "inputModerationOpenAI": {
+        "label": "OpenAI Input Moderation",
+        "description": "Moderate input using OpenAI's moderation API",
+        "category": "Moderation",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "input": {
+                "label": "Input",
+                "description": "Text to moderate"
+            }
+        }
+    },
+    "inputModerationSimple": {
+        "label": "Simple Input Moderation",
+        "description": "Simple text moderation using keyword filtering",
+        "category": "Moderation",
+        "inputs": {
+            "input": {
+                "label": "Input",
+                "description": "Text to moderate"
+            },
+            "blockedWords": {
+                "label": "Blocked Words",
+                "description": "List of words to block"
+            }
+        }
+    }
+}

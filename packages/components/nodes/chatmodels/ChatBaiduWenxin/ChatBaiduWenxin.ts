@@ -14,6 +14,9 @@ class ChatBaiduWenxin_ChatModels implements INode {
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
+    labelKey: string
+    descriptionKey: string
+    categoryKey: string
 
     constructor() {
         this.label = 'ChatBaiduWenxin'
@@ -24,8 +27,12 @@ class ChatBaiduWenxin_ChatModels implements INode {
         this.category = 'Chat Models'
         this.description = 'Wrapper around BaiduWenxin Chat Endpoints'
         this.baseClasses = [this.type, ...getBaseClasses(ChatBaiduQianfan)]
+        this.labelKey = 'nodes.chatmodels.chatBaiduWenxin.label'
+        this.descriptionKey = 'nodes.chatmodels.chatBaiduWenxin.description'
+        this.categoryKey = 'nodes.chatmodels.chatBaiduWenxin.category'
         this.credential = {
             label: 'Connect Credential',
+            labelKey: 'nodes.chatmodels.chatBaiduWenxin.credential.label',
             name: 'credential',
             type: 'credential',
             credentialNames: ['baiduQianfanApi']
@@ -33,18 +40,21 @@ class ChatBaiduWenxin_ChatModels implements INode {
         this.inputs = [
             {
                 label: 'Cache',
+                labelKey: 'nodes.chatmodels.chatBaiduWenxin.inputs.cache.label',
                 name: 'cache',
                 type: 'BaseCache',
                 optional: true
             },
             {
                 label: 'Model',
+                labelKey: 'nodes.chatmodels.chatBaiduWenxin.inputs.modelName.label',
                 name: 'modelName',
                 type: 'string',
                 placeholder: 'ERNIE-Bot-turbo'
             },
             {
                 label: 'Temperature',
+                labelKey: 'nodes.chatmodels.chatBaiduWenxin.inputs.temperature.label',
                 name: 'temperature',
                 type: 'number',
                 step: 0.1,
@@ -53,6 +63,7 @@ class ChatBaiduWenxin_ChatModels implements INode {
             },
             {
                 label: 'Streaming',
+                labelKey: 'nodes.chatmodels.chatBaiduWenxin.inputs.streaming.label',
                 name: 'streaming',
                 type: 'boolean',
                 default: true,

@@ -1,0 +1,58 @@
+{
+    "contextChatEngine": {
+        "label": "上下文聊天引擎",
+        "description": "带有上下文检索的聊天引擎",
+        "category": "Engine",
+        "inputs": {
+            "retriever": {
+                "label": "检索器",
+                "description": "用于上下文的检索器"
+            },
+            "llm": {
+                "label": "大语言模型",
+                "description": "用于聊天的语言模型"
+            }
+        }
+    },
+    "simpleChatEngine": {
+        "label": "简单聊天引擎",
+        "description": "不带上下文的简单聊天引擎",
+        "category": "Engine",
+        "inputs": {
+            "llm": {
+                "label": "大语言模型",
+                "description": "用于聊天的语言模型"
+            }
+        }
+    },
+    "queryEngine": {
+        "label": "查询引擎",
+        "description": "用于文档检索的查询引擎",
+        "category": "Engine",
+        "inputs": {
+            "retriever": {
+                "label": "检索器",
+                "description": "用于文档的检索器"
+            },
+            "llm": {
+                "label": "大语言模型",
+                "description": "用于查询处理的语言模型"
+            }
+        }
+    },
+    "subQuestionQueryEngine": {
+        "label": "子问题查询引擎",
+        "description": "将复杂问题分解的查询引擎",
+        "category": "Engine",
+        "inputs": {
+            "retriever": {
+                "label": "检索器",
+                "description": "用于文档的检索器"
+            },
+            "llm": {
+                "label": "大语言模型",
+                "description": "用于查询处理的语言模型"
+            }
+        }
+    }
+}

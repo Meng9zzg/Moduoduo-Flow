@@ -1,0 +1,769 @@
+{
+    "airtable": {
+        "label": "Airtable",
+        "description": "Load data from Airtable table",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "textSplitter": {
+                "label": "Text Splitter",
+                "description": "Text splitter to use for splitting documents"
+            },
+            "baseId": {
+                "label": "Base Id",
+                "description": "If your table URL looks like: https://airtable.com/app11RobdGoX0YNsC/tblJdmvbrgizbYICO/viw9UrP77Id0CE4ee, app11RovdGoX0YNsC is the base id",
+                "placeholder": "app11RobdGoX0YNsC"
+            },
+            "tableId": {
+                "label": "Table Id",
+                "description": "If your table URL looks like: https://airtable.com/app11RobdGoX0YNsC/tblJdmvbrgizbYICO/viw9UrP77Id0CE4ee, tblJdmvbrgizbYICO is the table id",
+                "placeholder": "tblJdmvbrgizbYICO"
+            },
+            "viewId": {
+                "label": "View Id",
+                "description": "If your view URL looks like: https://airtable.com/app11RobdGoX0YNsC/tblJdmvbrgizbYICO/viw9UrP77Id0CE4ee, viw9UrP77Id0CE4ee is the view id",
+                "placeholder": "viw9UrP77Id0CE4ee"
+            },
+            "fields": {
+                "label": "Include Only Fields",
+                "description": "Comma-separated list of field names or IDs to include. If empty, then ALL fields are used. Use field IDs if field names contain commas.",
+                "placeholder": "Name, Assignee, fld1u0qUz0SoOQ9Gg, fldew39v6LBN5CjUl"
+            },
+            "returnAll": {
+                "label": "Return All",
+                "description": "If all results should be returned or only up to a given limit"
+            },
+            "limit": {
+                "label": "Limit",
+                "description": "Number of results to return. Ignored when Return All is enabled."
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            },
+            "omitMetadataKeys": {
+                "label": "Omit Metadata Keys",
+                "description": "Each document loader comes with a default set of metadata keys that are extracted from the document. You can use this field to omit some of the default metadata keys. The value should be a list of keys, seperated by comma. Use * to omit all metadata keys execept the ones you specify in the Additional Metadata field",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            },
+            "filterByFormula": {
+                "label": "Filter By Formula",
+                "description": "A formula used to filter records. The formula will be evaluated for each record, and if the result is not 0, false, \"\", NaN, [], or #Error! the record will be included in the response.",
+                "placeholder": "NOT({Id} = \"\")"
+            }
+        }
+    },
+    "apiLoader": {
+        "label": "API Loader",
+        "description": "Load data from an API",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "url": {
+                "label": "URL",
+                "description": "The URL to fetch data from"
+            },
+            "method": {
+                "label": "Method",
+                "description": "HTTP method to use"
+            },
+            "headers": {
+                "label": "Headers",
+                "description": "HTTP headers to include in the request"
+            },
+            "body": {
+                "label": "Body",
+                "description": "Request body for POST/PUT requests"
+            }
+        }
+    },
+    "apifyWebsiteContentCrawler": {
+        "label": "Apify Website Content Crawler",
+        "description": "Load data from Apify Website Content Crawler",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "actorId": {
+                "label": "Actor ID",
+                "description": "Apify actor ID"
+            },
+            "runId": {
+                "label": "Run ID",
+                "description": "Apify run ID"
+            },
+            "datasetId": {
+                "label": "Dataset ID",
+                "description": "Apify dataset ID"
+            }
+        }
+    },
+    "braveSearchApiLoader": {
+        "label": "BraveSearch API Document Loader",
+        "description": "Load and process data from BraveSearch results",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "query": {
+                "label": "Query",
+                "description": "Search query"
+            },
+            "count": {
+                "label": "Count",
+                "description": "Number of results to return"
+            },
+            "country": {
+                "label": "Country",
+                "description": "Country code for search results"
+            },
+            "language": {
+                "label": "Language",
+                "description": "Language code for search results"
+            }
+        }
+    },
+    "cheerioWebScraper": {
+        "label": "Cheerio Web Scraper",
+        "description": "Load data from webpages",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "url": {
+                "label": "URL",
+                "description": "The URL to scrape"
+            },
+            "selector": {
+                "label": "Selector",
+                "description": "CSS selector to extract content"
+            },
+            "waitFor": {
+                "label": "Wait For",
+                "description": "CSS selector to wait for before scraping"
+            }
+        }
+    },
+    "csvFile": {
+        "label": "Csv File",
+        "description": "Load data from CSV files",
+        "category": "Document Loaders",
+        "inputs": {
+            "csvFile": {
+                "label": "Csv File"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "columnName": {
+                "label": "Single Column Extraction",
+                "description": "Extracting a single column",
+                "placeholder": "Enter column name"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            },
+            "omitMetadataKeys": {
+                "label": "Omit Metadata Keys",
+                "description": "Each document loader comes with a default set of metadata keys that are extracted from the document. You can use this field to omit some of the default metadata keys. The value should be a list of keys, seperated by comma. Use * to omit all metadata keys execept the ones you specify in the Additional Metadata field",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            }
+        }
+    },
+    "docxFile": {
+        "label": "Docx File",
+        "description": "Load data from DOCX files",
+        "category": "Document Loaders",
+        "inputs": {
+            "docxFile": {
+                "label": "Docx File"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            },
+            "omitMetadataKeys": {
+                "label": "Omit Metadata Keys",
+                "description": "Each document loader comes with a default set of metadata keys that are extracted from the document. You can use this field to omit some of the default metadata keys. The value should be a list of keys, seperated by comma. Use * to omit all metadata keys execept the ones you specify in the Additional Metadata field",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            }
+        }
+    },
+    "epubFile": {
+        "label": "Epub File",
+        "description": "Load data from EPUB files",
+        "category": "Document Loaders",
+        "inputs": {
+            "epubFile": {
+                "label": "Epub File"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "usage": {
+                "label": "Usage"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            },
+            "omitMetadataKeys": {
+                "label": "Omit Metadata Keys",
+                "description": "Each document loader comes with a default set of metadata keys that are extracted from the document. You can use this field to omit some of the default metadata keys. The value should be a list of keys, seperated by comma. Use * to omit all metadata keys execept the ones you specify in the Additional Metadata field",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            }
+        }
+    },
+    "jsonFile": {
+        "label": "Json File",
+        "description": "Load data from JSON files",
+        "category": "Document Loaders",
+        "inputs": {
+            "jsonFile": {
+                "label": "Json File"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "pointersName": {
+                "label": "Pointers Extraction (separated by commas)",
+                "description": "JSON pointers to extract from the JSON file"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            },
+            "omitMetadataKeys": {
+                "label": "Omit Metadata Keys",
+                "description": "Each document loader comes with a default set of metadata keys that are extracted from the document. You can use this field to omit some of the default metadata keys. The value should be a list of keys, seperated by comma. Use * to omit all metadata keys execept the ones you specify in the Additional Metadata field",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            }
+        }
+    },
+    "pdfFile": {
+        "label": "Pdf File",
+        "description": "Load data from PDF files",
+        "category": "Document Loaders",
+        "inputs": {
+            "pdfFile": {
+                "label": "Pdf File"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "usage": {
+                "label": "Usage"
+            },
+            "legacyBuild": {
+                "label": "Use Legacy Build",
+                "description": "Use legacy build for PDF processing"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            },
+            "omitMetadataKeys": {
+                "label": "Omit Metadata Keys",
+                "description": "Each document loader comes with a default set of metadata keys that are extracted from the document. You can use this field to omit some of the default metadata keys. The value should be a list of keys, seperated by comma. Use * to omit all metadata keys execept the ones you specify in the Additional Metadata field",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            }
+        }
+    },
+    "textFile": {
+        "label": "Text File",
+        "description": "Load data from text files",
+        "category": "Document Loaders",
+        "inputs": {
+            "txtFile": {
+                "label": "Txt File"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            },
+            "omitMetadataKeys": {
+                "label": "Omit Metadata Keys",
+                "description": "Each document loader comes with a default set of metadata keys that are extracted from the document. You can use this field to omit some of the default metadata keys. The value should be a list of keys, seperated by comma. Use * to omit all metadata keys execept the ones you specify in the Additional Metadata field",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            }
+        }
+    },
+    "htmlFile": {
+        "label": "HTML File",
+        "description": "Load data from HTML files",
+        "category": "Document Loaders",
+        "inputs": {
+            "htmlFile": {
+                "label": "HTML File"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            },
+            "omitMetadataKeys": {
+                "label": "Omit Metadata Keys",
+                "description": "Each document loader comes with a default set of metadata keys that are extracted from the document. You can use this field to omit some of the default metadata keys. The value should be a list of keys, seperated by comma. Use * to omit all metadata keys execept the ones you specify in the Additional Metadata field",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            }
+        }
+    },
+    "markdownFile": {
+        "label": "Markdown File",
+        "description": "Load data from Markdown files",
+        "category": "Document Loaders",
+        "inputs": {
+            "markdownFile": {
+                "label": "Markdown File"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            },
+            "omitMetadataKeys": {
+                "label": "Omit Metadata Keys",
+                "description": "Each document loader comes with a default set of metadata keys that are extracted from the document. You can use this field to omit some of the default metadata keys. The value should be a list of keys, seperated by comma. Use * to omit all metadata keys execept the ones you specify in the Additional Metadata field",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            }
+        }
+    },
+    "powerpointFile": {
+        "label": "PowerPoint File",
+        "description": "Load data from PowerPoint files",
+        "category": "Document Loaders",
+        "inputs": {
+            "powerpointFile": {
+                "label": "PowerPoint File"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            },
+            "omitMetadataKeys": {
+                "label": "Omit Metadata Keys",
+                "description": "Each document loader comes with a default set of metadata keys that are extracted from the document. You can use this field to omit some of the default metadata keys. The value should be a list of keys, seperated by comma. Use * to omit all metadata keys execept the ones you specify in the Additional Metadata field",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            }
+        }
+    },
+    "rtfFile": {
+        "label": "RTF File",
+        "description": "Load data from RTF files",
+        "category": "Document Loaders",
+        "inputs": {
+            "rtfFile": {
+                "label": "RTF File"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            },
+            "omitMetadataKeys": {
+                "label": "Omit Metadata Keys",
+                "description": "Each document loader comes with a default set of metadata keys that are extracted from the document. You can use this field to omit some of the default metadata keys. The value should be a list of keys, seperated by comma. Use * to omit all metadata keys execept the ones you specify in the Additional Metadata field",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            }
+        }
+    },
+    "srtFile": {
+        "label": "SRT File",
+        "description": "Load data from SRT subtitle files",
+        "category": "Document Loaders",
+        "inputs": {
+            "srtFile": {
+                "label": "SRT File"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            },
+            "omitMetadataKeys": {
+                "label": "Omit Metadata Keys",
+                "description": "Each document loader comes with a default set of metadata keys that are extracted from the document. You can use this field to omit some of the default metadata keys. The value should be a list of keys, seperated by comma. Use * to omit all metadata keys execept the ones you specify in the Additional Metadata field",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            }
+        }
+    },
+    "xlsxFile": {
+        "label": "XLSX File",
+        "description": "Load data from XLSX files",
+        "category": "Document Loaders",
+        "inputs": {
+            "xlsxFile": {
+                "label": "XLSX File"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            },
+            "omitMetadataKeys": {
+                "label": "Omit Metadata Keys",
+                "description": "Each document loader comes with a default set of metadata keys that are extracted from the document. You can use this field to omit some of the default metadata keys. The value should be a list of keys, seperated by comma. Use * to omit all metadata keys execept the ones you specify in the Additional Metadata field",
+                "placeholder": "key1, key2, key3.nestedKey1"
+            }
+        }
+    },
+    "youtubeAudioLoader": {
+        "label": "YouTube Audio Loader",
+        "description": "Load audio data from YouTube videos",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "url": {
+                "label": "URL",
+                "description": "YouTube video URL"
+            },
+            "language": {
+                "label": "Language",
+                "description": "Language for transcription"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            }
+        }
+    },
+    "unstructuredFileLoader": {
+        "label": "Unstructured File Loader",
+        "description": "Load data from unstructured files using Unstructured library",
+        "category": "Document Loaders",
+        "inputs": {
+            "filePath": {
+                "label": "File Path",
+                "description": "Path to the unstructured file"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            }
+        }
+    },
+    "unstructuredFolderLoader": {
+        "label": "Unstructured Folder Loader",
+        "description": "Load data from unstructured files in a folder using Unstructured library",
+        "category": "Document Loaders",
+        "inputs": {
+            "folderPath": {
+                "label": "Folder Path",
+                "description": "Path to the folder containing unstructured files"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            }
+        }
+    },
+    "vectorStoreToDocument": {
+        "label": "Vector Store to Document",
+        "description": "Convert vector store data to documents",
+        "category": "Document Loaders",
+        "inputs": {
+            "vectorStore": {
+                "label": "Vector Store",
+                "description": "Vector store to convert to documents"
+            },
+            "query": {
+                "label": "Query",
+                "description": "Query to search the vector store"
+            },
+            "topK": {
+                "label": "Top K",
+                "description": "Number of top results to fetch"
+            }
+        }
+    },
+    "notionLoader": {
+        "label": "Notion Loader",
+        "description": "Load data from Notion pages and databases",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "notionPageId": {
+                "label": "Notion Page ID",
+                "description": "ID of the Notion page to load"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            }
+        }
+    },
+    "discordLoader": {
+        "label": "Discord Loader",
+        "description": "Load data from Discord channels and messages",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "channelId": {
+                "label": "Channel ID",
+                "description": "ID of the Discord channel to load"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            }
+        }
+    },
+    "slackLoader": {
+        "label": "Slack Loader",
+        "description": "Load data from Slack channels and messages",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "channelId": {
+                "label": "Channel ID",
+                "description": "ID of the Slack channel to load"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            }
+        }
+    },
+    "githubLoader": {
+        "label": "GitHub Loader",
+        "description": "Load data from GitHub repositories",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "repositoryUrl": {
+                "label": "Repository URL",
+                "description": "URL of the GitHub repository to load"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            }
+        }
+    },
+    "webBaseLoader": {
+        "label": "Web Base Loader",
+        "description": "Load data from web pages using WebBaseLoader",
+        "category": "Document Loaders",
+        "inputs": {
+            "urls": {
+                "label": "URLs",
+                "description": "List of URLs to load"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            }
+        }
+    },
+    "playwrightWebLoader": {
+        "label": "Playwright Web Loader",
+        "description": "Load data from web pages using Playwright for dynamic content",
+        "category": "Document Loaders",
+        "inputs": {
+            "urls": {
+                "label": "URLs",
+                "description": "List of URLs to load"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            }
+        }
+    },
+    "sitemapLoader": {
+        "label": "Sitemap Loader",
+        "description": "Load data from websites using sitemap.xml",
+        "category": "Document Loaders",
+        "inputs": {
+            "sitemapUrl": {
+                "label": "Sitemap URL",
+                "description": "URL of the sitemap.xml file"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            }
+        }
+    },
+    "rssLoader": {
+        "label": "RSS Loader",
+        "description": "Load data from RSS feeds",
+        "category": "Document Loaders",
+        "inputs": {
+            "rssUrl": {
+                "label": "RSS URL",
+                "description": "URL of the RSS feed"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            }
+        }
+    },
+    "twitterLoader": {
+        "label": "Twitter Loader",
+        "description": "Load data from Twitter/X posts",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "username": {
+                "label": "Username",
+                "description": "Twitter username to load posts from"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            }
+        }
+    },
+    "redditLoader": {
+        "label": "Reddit Loader",
+        "description": "Load data from Reddit posts and comments",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "subreddit": {
+                "label": "Subreddit",
+                "description": "Reddit subreddit to load posts from"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            }
+        }
+    },
+    "youtubeLoader": {
+        "label": "YouTube Loader",
+        "description": "Load data from YouTube videos and transcripts",
+        "category": "Document Loaders",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "videoId": {
+                "label": "Video ID",
+                "description": "YouTube video ID to load"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            }
+        }
+    },
+    "wikipediaLoader": {
+        "label": "Wikipedia Loader",
+        "description": "Load data from Wikipedia articles",
+        "category": "Document Loaders",
+        "inputs": {
+            "query": {
+                "label": "Query",
+                "description": "Wikipedia search query"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            }
+        }
+    },
+    "arxivLoader": {
+        "label": "ArXiv Loader",
+        "description": "Load data from ArXiv research papers",
+        "category": "Document Loaders",
+        "inputs": {
+            "query": {
+                "label": "Query",
+                "description": "ArXiv search query"
+            },
+            "textSplitter": {
+                "label": "Text Splitter"
+            },
+            "metadata": {
+                "label": "Additional Metadata",
+                "description": "Additional metadata to be added to the extracted documents"
+            }
+        }
+    }
+}

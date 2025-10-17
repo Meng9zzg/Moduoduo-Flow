@@ -33,6 +33,11 @@ import useNotifier from '@/utils/useNotifier'
 import { HIDE_CANVAS_DIALOG, SHOW_CANVAS_DIALOG } from '@/store/actions'
 import { evaluators, evaluatorTypes, numericOperators } from './evaluatorConstant'
 
+// Translation mapping for evaluator types
+const _getEvaluatorTypeTranslationKey = (type) => {
+    return `addEvaluator.evaluatorTypes.${type}`
+}
+
 const AddEditEvaluatorDialog = ({ show, dialogProps, onCancel, onConfirm }) => {
     const portalElement = document.getElementById('portal')
 

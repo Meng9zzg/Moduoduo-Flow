@@ -15,8 +15,18 @@ class DirectReply_Agentflow implements INode {
     documentation?: string
     credential: INodeParams
     inputs: INodeParams[]
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
 
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.directReplyAgentflow.label'
+        this.descriptionKey = 'nodes.directReplyAgentflow.description'
+        this.categoryKey = 'nodes.directReplyAgentflow.category'
+
+        // Default English values as fallback
         this.label = 'Direct Reply'
         this.name = 'directReplyAgentflow'
         this.version = 1.0

@@ -1,0 +1,31 @@
+{
+    "inputModerationOpenAI": {
+        "label": "OpenAI 输入审核",
+        "description": "使用 OpenAI 的审核 API 进行输入审核",
+        "category": "Moderation",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "input": {
+                "label": "输入",
+                "description": "要审核的文本"
+            }
+        }
+    },
+    "inputModerationSimple": {
+        "label": "简单输入审核",
+        "description": "使用关键词过滤进行简单文本审核",
+        "category": "Moderation",
+        "inputs": {
+            "input": {
+                "label": "输入",
+                "description": "要审核的文本"
+            },
+            "blockedWords": {
+                "label": "屏蔽词",
+                "description": "要屏蔽的词语列表"
+            }
+        }
+    }
+}

@@ -15,7 +15,18 @@ class StripeTool_Tools implements INode {
     inputs: INodeParams[]
     badge?: string
 
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
+
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.tools.stripeAgentTool.label'
+        this.descriptionKey = 'nodes.tools.stripeAgentTool.description'
+        this.categoryKey = 'nodes.tools.stripeAgentTool.category'
+
+        // Default English values as fallback
         this.label = 'StripeAgentTool'
         this.name = 'stripeAgentTool'
         this.version = 1.0

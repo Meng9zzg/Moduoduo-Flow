@@ -72,10 +72,12 @@ export interface INodeOutputsValue {
 
 export interface INodeParams {
     label: string
+    labelKey?: string
     name: string
     type: NodeParamsType | string
     default?: CommonType | ICommonObject | ICommonObject[]
     description?: string
+    descriptionKey?: string
     warning?: string
     options?: Array<INodeOptionsValue>
     datagrid?: Array<ICommonObject>
@@ -117,14 +119,17 @@ export interface INodeDisplay {
 
 export interface INodeProperties {
     label: string
+    labelKey?: string
     name: string
     type: string
     icon: string
     version: number
     category: string // TODO: use enum instead of string
+    categoryKey?: string
     baseClasses: string[]
     tags?: string[]
     description?: string
+    descriptionKey?: string
     filePath?: string
     badge?: string
     deprecateMessage?: string

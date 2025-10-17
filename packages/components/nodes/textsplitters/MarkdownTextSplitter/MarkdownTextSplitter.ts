@@ -12,8 +12,18 @@ class MarkdownTextSplitter_TextSplitters implements INode {
     category: string
     baseClasses: string[]
     inputs: INodeParams[]
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
 
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.textsplitters.markdownTextSplitter.label'
+        this.descriptionKey = 'nodes.textsplitters.markdownTextSplitter.description'
+        this.categoryKey = 'nodes.textsplitters.markdownTextSplitter.category'
+
+        // Default English values as fallback
         this.label = 'Markdown Text Splitter'
         this.name = 'markdownTextSplitter'
         this.version = 1.1

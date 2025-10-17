@@ -14,7 +14,18 @@ class GoogleCustomSearchAPI_Tools implements INode {
     credential: INodeParams
     inputs: INodeParams[]
 
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
+
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.tools.googleCustomSearch.label'
+        this.descriptionKey = 'nodes.tools.googleCustomSearch.description'
+        this.categoryKey = 'nodes.tools.googleCustomSearch.category'
+
+        // Default English values as fallback
         this.label = 'Google Custom Search'
         this.name = 'googleCustomSearch'
         this.version = 1.0

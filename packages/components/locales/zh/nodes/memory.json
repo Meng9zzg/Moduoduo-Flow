@@ -1,0 +1,373 @@
+{
+    "bufferMemory": {
+        "label": "缓冲区记忆",
+        "description": "在简单缓冲区中存储对话历史",
+        "category": "Memory",
+        "inputs": {
+            "memoryKey": {
+                "label": "记忆键",
+                "description": "存储记忆的键"
+            },
+            "inputKey": {
+                "label": "输入键",
+                "description": "输入消息的键"
+            },
+            "outputKey": {
+                "label": "输出键",
+                "description": "输出消息的键"
+            }
+        }
+    },
+    "bufferWindowMemory": {
+        "label": "缓冲区窗口记忆",
+        "description": "使用滑动窗口存储对话历史",
+        "category": "Memory",
+        "inputs": {
+            "memoryKey": {
+                "label": "记忆键",
+                "description": "存储记忆的键"
+            },
+            "inputKey": {
+                "label": "输入键",
+                "description": "输入消息的键"
+            },
+            "outputKey": {
+                "label": "输出键",
+                "description": "输出消息的键"
+            },
+            "k": {
+                "label": "窗口大小",
+                "description": "保持在记忆中的消息数量"
+            }
+        }
+    },
+    "conversationSummaryMemory": {
+        "label": "对话摘要记忆",
+        "description": "将对话历史存储为摘要",
+        "category": "Memory",
+        "inputs": {
+            "memoryKey": {
+                "label": "记忆键",
+                "description": "存储记忆的键"
+            },
+            "inputKey": {
+                "label": "输入键",
+                "description": "输入消息的键"
+            },
+            "outputKey": {
+                "label": "输出键",
+                "description": "输出消息的键"
+            },
+            "llm": {
+                "label": "大语言模型",
+                "description": "用于摘要的语言模型"
+            }
+        }
+    },
+    "conversationSummaryBufferMemory": {
+        "label": "对话摘要缓冲区记忆",
+        "description": "同时使用缓冲区和摘要存储对话历史",
+        "category": "Memory",
+        "inputs": {
+            "memoryKey": {
+                "label": "记忆键",
+                "description": "存储记忆的键"
+            },
+            "inputKey": {
+                "label": "输入键",
+                "description": "输入消息的键"
+            },
+            "outputKey": {
+                "label": "输出键",
+                "description": "输出消息的键"
+            },
+            "llm": {
+                "label": "大语言模型",
+                "description": "用于摘要的语言模型"
+            },
+            "maxTokenLimit": {
+                "label": "最大令牌限制",
+                "description": "摘要前的最大令牌数"
+            }
+        }
+    },
+    "agentMemory": {
+        "label": "代理记忆",
+        "description": "代理的记忆组件",
+        "category": "Memory",
+        "inputs": {
+            "memoryKey": {
+                "label": "记忆键",
+                "description": "存储记忆的键"
+            },
+            "inputKey": {
+                "label": "输入键",
+                "description": "输入消息的键"
+            },
+            "outputKey": {
+                "label": "输出键",
+                "description": "输出消息的键"
+            }
+        }
+    },
+    "sqliteAgentMemory": {
+        "label": "SQLite 代理记忆",
+        "description": "在 SQLite 数据库中存储代理记忆",
+        "category": "Memory",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "memoryKey": {
+                "label": "记忆键",
+                "description": "存储记忆的键"
+            },
+            "inputKey": {
+                "label": "输入键",
+                "description": "输入消息的键"
+            },
+            "outputKey": {
+                "label": "输出键",
+                "description": "输出消息的键"
+            },
+            "sessionId": {
+                "label": "会话 ID",
+                "description": "唯一会话标识符"
+            }
+        }
+    },
+    "postgresAgentMemory": {
+        "label": "PostgreSQL 代理记忆",
+        "description": "在 PostgreSQL 数据库中存储代理记忆",
+        "category": "Memory",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "memoryKey": {
+                "label": "记忆键",
+                "description": "存储记忆的键"
+            },
+            "inputKey": {
+                "label": "输入键",
+                "description": "输入消息的键"
+            },
+            "outputKey": {
+                "label": "输出键",
+                "description": "输出消息的键"
+            },
+            "sessionId": {
+                "label": "会话 ID",
+                "description": "唯一会话标识符"
+            }
+        }
+    },
+    "mySQLAgentMemory": {
+        "label": "MySQL 代理记忆",
+        "description": "在 MySQL 数据库中存储代理记忆",
+        "category": "Memory",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "memoryKey": {
+                "label": "记忆键",
+                "description": "存储记忆的键"
+            },
+            "inputKey": {
+                "label": "输入键",
+                "description": "输入消息的键"
+            },
+            "outputKey": {
+                "label": "输出键",
+                "description": "输出消息的键"
+            },
+            "sessionId": {
+                "label": "会话 ID",
+                "description": "唯一会话标识符"
+            }
+        }
+    },
+    "DynamoDBChatMemory": {
+        "label": "DynamoDB 聊天记忆",
+        "description": "在 DynamoDB 中存储聊天记忆",
+        "category": "Memory",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "memoryKey": {
+                "label": "记忆键",
+                "description": "存储记忆的键"
+            },
+            "inputKey": {
+                "label": "输入键",
+                "description": "输入消息的键"
+            },
+            "outputKey": {
+                "label": "输出键",
+                "description": "输出消息的键"
+            },
+            "sessionId": {
+                "label": "会话 ID",
+                "description": "唯一会话标识符"
+            }
+        }
+    },
+    "MongoDBAtlasChatMemory": {
+        "label": "MongoDB Atlas 聊天记忆",
+        "description": "在 MongoDB Atlas 中存储聊天记忆",
+        "category": "Memory",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "memoryKey": {
+                "label": "记忆键",
+                "description": "存储记忆的键"
+            },
+            "inputKey": {
+                "label": "输入键",
+                "description": "输入消息的键"
+            },
+            "outputKey": {
+                "label": "输出键",
+                "description": "输出消息的键"
+            },
+            "sessionId": {
+                "label": "会话 ID",
+                "description": "唯一会话标识符"
+            }
+        }
+    },
+    "RedisBackedChatMemory": {
+        "label": "Redis 支持聊天记忆",
+        "description": "在 Redis 中存储聊天记忆",
+        "category": "Memory",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "memoryKey": {
+                "label": "记忆键",
+                "description": "存储记忆的键"
+            },
+            "inputKey": {
+                "label": "输入键",
+                "description": "输入消息的键"
+            },
+            "outputKey": {
+                "label": "输出键",
+                "description": "输出消息的键"
+            },
+            "sessionId": {
+                "label": "会话 ID",
+                "description": "唯一会话标识符"
+            }
+        }
+    },
+    "upstashRedisBackedChatMemory": {
+        "label": "Upstash Redis 支持聊天记忆",
+        "description": "在 Upstash Redis 中存储聊天记忆",
+        "category": "Memory",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "memoryKey": {
+                "label": "记忆键",
+                "description": "存储记忆的键"
+            },
+            "inputKey": {
+                "label": "输入键",
+                "description": "输入消息的键"
+            },
+            "outputKey": {
+                "label": "输出键",
+                "description": "输出消息的键"
+            },
+            "sessionId": {
+                "label": "会话 ID",
+                "description": "唯一会话标识符"
+            }
+        }
+    },
+    "ZepMemory": {
+        "label": "Zep 记忆",
+        "description": "使用 Zep 存储记忆",
+        "category": "Memory",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "memoryKey": {
+                "label": "记忆键",
+                "description": "存储记忆的键"
+            },
+            "inputKey": {
+                "label": "输入键",
+                "description": "输入消息的键"
+            },
+            "outputKey": {
+                "label": "输出键",
+                "description": "输出消息的键"
+            },
+            "sessionId": {
+                "label": "会话 ID",
+                "description": "唯一会话标识符"
+            }
+        }
+    },
+    "ZepMemoryCloud": {
+        "label": "Zep 云记忆",
+        "description": "使用 Zep Cloud 存储记忆",
+        "category": "Memory",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "memoryKey": {
+                "label": "记忆键",
+                "description": "存储记忆的键"
+            },
+            "inputKey": {
+                "label": "输入键",
+                "description": "输入消息的键"
+            },
+            "outputKey": {
+                "label": "输出键",
+                "description": "输出消息的键"
+            },
+            "sessionId": {
+                "label": "会话 ID",
+                "description": "唯一会话标识符"
+            }
+        }
+    },
+    "mem0": {
+        "label": "Mem0",
+        "description": "使用 Mem0 存储记忆",
+        "category": "Memory",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "memoryKey": {
+                "label": "记忆键",
+                "description": "存储记忆的键"
+            },
+            "inputKey": {
+                "label": "输入键",
+                "description": "输入消息的键"
+            },
+            "outputKey": {
+                "label": "输出键",
+                "description": "输出消息的键"
+            },
+            "sessionId": {
+                "label": "会话 ID",
+                "description": "唯一会话标识符"
+            }
+        }
+    }
+}

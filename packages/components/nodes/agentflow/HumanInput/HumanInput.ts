@@ -27,8 +27,18 @@ class HumanInput_Agentflow implements INode {
     credential: INodeParams
     inputs: INodeParams[]
     outputs: INodeOutputsValue[]
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
 
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.humanInputAgentflow.label'
+        this.descriptionKey = 'nodes.humanInputAgentflow.description'
+        this.categoryKey = 'nodes.humanInputAgentflow.category'
+
+        // Default English values as fallback
         this.label = 'Human Input'
         this.name = 'humanInputAgentflow'
         this.version = 1.0

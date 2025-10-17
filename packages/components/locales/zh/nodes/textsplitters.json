@@ -1,0 +1,109 @@
+{
+    "characterTextSplitter": {
+        "label": "字符文本分割器",
+        "description": "仅按一种字符类型分割文本（默认为\"\\n\\n\"）。",
+        "category": "文本分割器",
+        "inputs": {
+            "chunkSize": {
+                "label": "块大小",
+                "description": "每个块中的字符数。默认为1000。"
+            },
+            "chunkOverlap": {
+                "label": "块重叠",
+                "description": "块之间重叠的字符数。默认为200。"
+            },
+            "separator": {
+                "label": "自定义分隔符",
+                "description": "确定何时分割文本的分隔符，将覆盖默认分隔符",
+                "placeholder": "\" \""
+            }
+        }
+    },
+    "recursiveCharacterTextSplitter": {
+        "label": "递归字符文本分割器",
+        "description": "通过不同字符递归分割文本 - 从第一个字符开始，然后是第二个字符，依此类推。",
+        "category": "文本分割器",
+        "inputs": {
+            "chunkSize": {
+                "label": "块大小",
+                "description": "每个块中的字符数。默认为1000。"
+            },
+            "chunkOverlap": {
+                "label": "块重叠",
+                "description": "块之间重叠的字符数。默认为200。"
+            },
+            "separators": {
+                "label": "自定义分隔符",
+                "description": "确定何时分割文本的分隔符列表，将覆盖默认分隔符"
+            }
+        }
+    },
+    "markdownTextSplitter": {
+        "label": "Markdown文本分割器",
+        "description": "基于Markdown标题分割文本。",
+        "category": "文本分割器",
+        "inputs": {
+            "chunkSize": {
+                "label": "块大小",
+                "description": "每个块中的字符数。默认为1000。"
+            },
+            "chunkOverlap": {
+                "label": "块重叠",
+                "description": "块之间重叠的字符数。默认为200。"
+            }
+        }
+    },
+    "codeTextSplitter": {
+        "label": "代码文本分割器",
+        "description": "基于特定语言语法分割代码。",
+        "category": "文本分割器",
+        "inputs": {
+            "language": {
+                "label": "编程语言",
+                "description": "要分割的代码的编程语言"
+            },
+            "chunkSize": {
+                "label": "块大小",
+                "description": "每个块中的字符数。默认为1000。"
+            },
+            "chunkOverlap": {
+                "label": "块重叠",
+                "description": "块之间重叠的字符数。默认为200。"
+            }
+        }
+    },
+    "htmlToMarkdownTextSplitter": {
+        "label": "HTML转Markdown文本分割器",
+        "description": "将HTML转换为Markdown，然后基于Markdown标题分割。",
+        "category": "文本分割器",
+        "inputs": {
+            "chunkSize": {
+                "label": "块大小",
+                "description": "每个块中的字符数。默认为1000。"
+            },
+            "chunkOverlap": {
+                "label": "块重叠",
+                "description": "块之间重叠的字符数。默认为200。"
+            }
+        }
+    },
+    "tokenTextSplitter": {
+        "label": "Token文本分割器",
+        "description": "使用tiktoken分词器基于token数量分割文本。",
+        "category": "文本分割器",
+        "inputs": {
+            "encodingName": {
+                "label": "编码名称",
+                "description": "用于分词的编码名称"
+            },
+            "chunkSize": {
+                "label": "块大小",
+                "description": "每个块中的token数。默认为1000。"
+            },
+            "chunkOverlap": {
+                "label": "块重叠",
+                "description": "块之间重叠的token数。默认为200。"
+            }
+        }
+    }
+}

@@ -1,0 +1,159 @@
+{
+    "seqAgent": {
+        "label": "Sequential Agent",
+        "description": "Agent that executes tasks sequentially",
+        "category": "Sequential Agents",
+        "inputs": {
+            "llm": {
+                "label": "LLM",
+                "description": "Language model for the agent"
+            },
+            "tools": {
+                "label": "Tools",
+                "description": "Tools available to the agent"
+            }
+        }
+    },
+    "seqStart": {
+        "label": "Sequential Start",
+        "description": "Start node for sequential execution",
+        "category": "Sequential Agents",
+        "inputs": {
+            "input": {
+                "label": "Input",
+                "description": "Input data for the sequence"
+            }
+        }
+    },
+    "seqEnd": {
+        "label": "Sequential End",
+        "description": "End node for sequential execution",
+        "category": "Sequential Agents",
+        "inputs": {
+            "output": {
+                "label": "Output",
+                "description": "Output data from the sequence"
+            }
+        }
+    },
+    "seqCondition": {
+        "label": "Sequential Condition",
+        "description": "Conditional node for sequential execution",
+        "category": "Sequential Agents",
+        "inputs": {
+            "condition": {
+                "label": "Condition",
+                "description": "Condition to evaluate"
+            },
+            "truePath": {
+                "label": "True Path",
+                "description": "Path to take if condition is true"
+            },
+            "falsePath": {
+                "label": "False Path",
+                "description": "Path to take if condition is false"
+            }
+        }
+    },
+    "seqLLMNode": {
+        "label": "Sequential LLM Node",
+        "description": "LLM node for sequential execution",
+        "category": "Sequential Agents",
+        "inputs": {
+            "llm": {
+                "label": "LLM",
+                "description": "Language model to use"
+            },
+            "prompt": {
+                "label": "Prompt",
+                "description": "Prompt for the LLM"
+            }
+        }
+    },
+    "seqToolNode": {
+        "label": "Sequential Tool Node",
+        "description": "Tool node for sequential execution",
+        "category": "Sequential Agents",
+        "inputs": {
+            "tool": {
+                "label": "Tool",
+                "description": "Tool to execute"
+            },
+            "input": {
+                "label": "Input",
+                "description": "Input for the tool"
+            }
+        }
+    },
+    "seqLoop": {
+        "label": "Sequential Loop",
+        "description": "Loop node for sequential execution",
+        "category": "Sequential Agents",
+        "inputs": {
+            "condition": {
+                "label": "Condition",
+                "description": "Condition for the loop"
+            },
+            "maxIterations": {
+                "label": "Max Iterations",
+                "description": "Maximum number of iterations"
+            }
+        }
+    },
+    "seqState": {
+        "label": "Sequential State",
+        "description": "State management node for sequential execution",
+        "category": "Sequential Agents",
+        "inputs": {
+            "state": {
+                "label": "State",
+                "description": "State to manage"
+            }
+        }
+    },
+    "seqCustomFunction": {
+        "label": "Sequential Custom Function",
+        "description": "Custom function node for sequential execution",
+        "category": "Sequential Agents",
+        "inputs": {
+            "function": {
+                "label": "Function",
+                "description": "Custom function to execute"
+            },
+            "input": {
+                "label": "Input",
+                "description": "Input for the function"
+            }
+        }
+    },
+    "seqExecuteFlow": {
+        "label": "Sequential Execute Flow",
+        "description": "Execute a sub-flow in sequential execution",
+        "category": "Sequential Agents",
+        "inputs": {
+            "flow": {
+                "label": "Flow",
+                "description": "Flow to execute"
+            },
+            "input": {
+                "label": "Input",
+                "description": "Input for the flow"
+            }
+        }
+    },
+    "seqConditionAgent": {
+        "label": "Sequential Condition Agent",
+        "description": "Conditional agent for sequential execution",
+        "category": "Sequential Agents",
+        "inputs": {
+            "condition": {
+                "label": "Condition",
+                "description": "Condition to evaluate"
+            },
+            "agent": {
+                "label": "Agent",
+                "description": "Agent to execute if condition is true"
+            }
+        }
+    }
+}

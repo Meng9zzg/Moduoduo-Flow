@@ -1,0 +1,55 @@
+{
+    "promptTemplate": {
+        "label": "提示模板",
+        "description": "创建带有变量的提示模板",
+        "category": "Prompts",
+        "inputs": {
+            "template": {
+                "label": "模板",
+                "description": "带有占位符的提示模板"
+            },
+            "inputVariables": {
+                "label": "输入变量",
+                "description": "输入变量名称列表"
+            }
+        }
+    },
+    "chatPromptTemplate": {
+        "label": "聊天提示模板",
+        "description": "创建带有系统消息和人类消息的聊天提示模板",
+        "category": "Prompts",
+        "inputs": {
+            "systemMessage": {
+                "label": "系统消息",
+                "description": "系统消息模板"
+            },
+            "humanMessage": {
+                "label": "人类消息",
+                "description": "人类消息模板"
+            },
+            "inputVariables": {
+                "label": "输入变量",
+                "description": "输入变量名称列表"
+            }
+        }
+    },
+    "fewShotPromptTemplate": {
+        "label": "少样本提示模板",
+        "description": "创建带有示例的少样本提示模板",
+        "category": "Prompts",
+        "inputs": {
+            "template": {
+                "label": "模板",
+                "description": "带有占位符的提示模板"
+            },
+            "examples": {
+                "label": "示例",
+                "description": "少样本学习的示例列表"
+            },
+            "inputVariables": {
+                "label": "输入变量",
+                "description": "输入变量名称列表"
+            }
+        }
+    }
+}

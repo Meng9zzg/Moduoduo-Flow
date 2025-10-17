@@ -557,5 +557,626 @@
                 "label": "Streaming"
             }
         }
+    },
+    "chatAlibabaTongyi": {
+        "label": "ChatAlibabaTongyi",
+        "description": "Wrapper around Alibaba Tongyi Chat Endpoints",
+        "category": "Chat Models",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "cache": {
+                "label": "Cache"
+            },
+            "modelName": {
+                "label": "Model"
+            },
+            "temperature": {
+                "label": "Temperature"
+            },
+            "streaming": {
+                "label": "Streaming"
+            }
+        }
+    },
+    "chatBaiduWenxin": {
+        "label": "ChatBaiduWenxin",
+        "description": "Wrapper around BaiduWenxin Chat Endpoints",
+        "category": "Chat Models",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "cache": {
+                "label": "Cache"
+            },
+            "modelName": {
+                "label": "Model"
+            },
+            "temperature": {
+                "label": "Temperature"
+            },
+            "streaming": {
+                "label": "Streaming"
+            }
+        }
+    },
+    "chatCerebras": {
+        "label": "ChatCerebras",
+        "description": "Wrapper around Cerebras Inference API",
+        "category": "Chat Models",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "cache": {
+                "label": "Cache"
+            },
+            "modelName": {
+                "label": "Model Name"
+            },
+            "temperature": {
+                "label": "Temperature"
+            },
+            "streaming": {
+                "label": "Streaming"
+            },
+            "maxTokens": {
+                "label": "Max Tokens"
+            },
+            "topP": {
+                "label": "Top Probability"
+            },
+            "frequencyPenalty": {
+                "label": "Frequency Penalty"
+            },
+            "presencePenalty": {
+                "label": "Presence Penalty"
+            },
+            "timeout": {
+                "label": "Timeout"
+            },
+            "basepath": {
+                "label": "BasePath"
+            },
+            "baseOptions": {
+                "label": "BaseOptions"
+            }
+        }
+    },
+    "chatCometAPI": {
+        "label": "ChatCometAPI",
+        "description": "Wrapper around CometAPI large language models that use the Chat endpoint",
+        "category": "Chat Models",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "cache": {
+                "label": "Cache"
+            },
+            "modelName": {
+                "label": "Model Name",
+                "description": "Enter the model name (e.g., gpt-5-mini, claude-sonnet-4-20250514, gemini-2.0-flash)"
+            },
+            "temperature": {
+                "label": "Temperature"
+            },
+            "streaming": {
+                "label": "Streaming"
+            },
+            "maxTokens": {
+                "label": "Max Tokens"
+            },
+            "topP": {
+                "label": "Top Probability"
+            },
+            "frequencyPenalty": {
+                "label": "Frequency Penalty"
+            },
+            "presencePenalty": {
+                "label": "Presence Penalty"
+            },
+            "baseOptions": {
+                "label": "Base Options",
+                "description": "Additional options to pass to the CometAPI client. This should be a JSON object."
+            }
+        }
+    },
+    "chatFireworks": {
+        "label": "ChatFireworks",
+        "description": "Wrapper around Fireworks Chat Endpoints",
+        "category": "Chat Models",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "cache": {
+                "label": "Cache"
+            },
+            "modelName": {
+                "label": "Model"
+            },
+            "temperature": {
+                "label": "Temperature"
+            },
+            "streaming": {
+                "label": "Streaming"
+            }
+        }
+    },
+    "chatGoogleVertexAI": {
+        "label": "ChatGoogleVertexAI",
+        "description": "Wrapper around VertexAI large language models that use the Chat endpoint",
+        "category": "Chat Models",
+        "credential": {
+            "label": "Connect Credential",
+            "description": "Google Vertex AI credential. If you are using a GCP service like Cloud Run, or if you have installed default credentials on your local machine, you do not need to set this credential."
+        },
+        "inputs": {
+            "cache": {
+                "label": "Cache"
+            },
+            "region": {
+                "label": "Region",
+                "description": "Region to use for the model."
+            },
+            "modelName": {
+                "label": "Model Name"
+            },
+            "customModelName": {
+                "label": "Custom Model Name",
+                "description": "Custom model name to use. If provided, it will override the model selected"
+            },
+            "temperature": {
+                "label": "Temperature"
+            },
+            "allowImageUploads": {
+                "label": "Allow Image Uploads",
+                "description": "Allow image input. Refer to the <a href=\"https://docs.flowiseai.com/using-flowise/uploads#image\" target=\"_blank\">docs</a> for more details."
+            },
+            "streaming": {
+                "label": "Streaming"
+            },
+            "maxOutputTokens": {
+                "label": "Max Output Tokens"
+            },
+            "topP": {
+                "label": "Top Probability"
+            },
+            "topK": {
+                "label": "Top Next Highest Probability Tokens",
+                "description": "Decode using top-k sampling: consider the set of top_k most probable tokens. Must be positive"
+            },
+            "thinkingBudget": {
+                "label": "Thinking Budget",
+                "description": "Number of tokens to use for thinking process (0 to disable)"
+            }
+        }
+    },
+    "chatIBMWatsonx": {
+        "label": "ChatIBMWatsonx",
+        "description": "Wrapper around IBM watsonx.ai foundation models",
+        "category": "Chat Models",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "cache": {
+                "label": "Cache"
+            },
+            "modelName": {
+                "label": "Model"
+            },
+            "temperature": {
+                "label": "Temperature"
+            },
+            "streaming": {
+                "label": "Streaming"
+            },
+            "maxTokens": {
+                "label": "Max Tokens"
+            },
+            "frequencyPenalty": {
+                "label": "Frequency Penalty",
+                "description": "Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim."
+            },
+            "logprobs": {
+                "label": "Log Probs",
+                "description": "Whether to return log probabilities of the output tokens or not. If true, returns the log probabilities of each output token returned in the content of message."
+            },
+            "n": {
+                "label": "N",
+                "description": "How many chat completion choices to generate for each input message. Note that you will be charged based on the number of generated tokens across all of the choices. Keep n as 1 to minimize costs."
+            },
+            "presencePenalty": {
+                "label": "Presence Penalty",
+                "description": "Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics."
+            },
+            "topP": {
+                "label": "Top P",
+                "description": "An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered."
+            }
+        }
+    },
+    "chatLitellm": {
+        "label": "ChatLitellm",
+        "description": "Connect to a Litellm server using OpenAI-compatible API",
+        "category": "Chat Models",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "cache": {
+                "label": "Cache"
+            },
+            "basePath": {
+                "label": "Base URL"
+            },
+            "modelName": {
+                "label": "Model Name"
+            },
+            "temperature": {
+                "label": "Temperature"
+            },
+            "streaming": {
+                "label": "Streaming"
+            },
+            "maxTokens": {
+                "label": "Max Tokens"
+            },
+            "topP": {
+                "label": "Top P"
+            },
+            "timeout": {
+                "label": "Timeout"
+            }
+        }
+    },
+    "chatLocalAI": {
+        "label": "ChatLocalAI",
+        "description": "Use local LLMs like llama.cpp, gpt4all using LocalAI",
+        "category": "Chat Models",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "cache": {
+                "label": "Cache"
+            },
+            "basePath": {
+                "label": "Base Path"
+            },
+            "modelName": {
+                "label": "Model Name"
+            },
+            "temperature": {
+                "label": "Temperature"
+            },
+            "streaming": {
+                "label": "Streaming"
+            },
+            "maxTokens": {
+                "label": "Max Tokens"
+            },
+            "topP": {
+                "label": "Top Probability"
+            },
+            "timeout": {
+                "label": "Timeout"
+            }
+        }
+    },
+    "chatNemoGuardrails": {
+        "label": "Chat Nemo Guardrails",
+        "description": "Access models through the Nemo Guardrails API",
+        "category": "Chat Models",
+        "inputs": {
+            "configurationId": {
+                "label": "Configuration ID"
+            },
+            "baseUrl": {
+                "label": "Base URL"
+            }
+        }
+    },
+    "chatNvdiaNIM": {
+        "label": "Chat NVIDIA NIM",
+        "description": "Wrapper around NVIDIA NIM Inference API",
+        "category": "Chat Models",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "cache": {
+                "label": "Cache"
+            },
+            "modelName": {
+                "label": "Model Name"
+            },
+            "basePath": {
+                "label": "Base Path",
+                "description": "Specify the URL of the deployed NIM Inference API"
+            },
+            "temperature": {
+                "label": "Temperature"
+            },
+            "streaming": {
+                "label": "Streaming"
+            },
+            "maxTokens": {
+                "label": "Max Tokens"
+            },
+            "topP": {
+                "label": "Top Probability"
+            },
+            "frequencyPenalty": {
+                "label": "Frequency Penalty"
+            },
+            "presencePenalty": {
+                "label": "Presence Penalty"
+            },
+            "timeout": {
+                "label": "Timeout"
+            },
+            "baseOptions": {
+                "label": "Base Options"
+            }
+        }
+    },
+    "chatOpenAICustom": {
+        "label": "ChatOpenAI Custom",
+        "description": "Custom/FineTuned model using OpenAI Chat compatible API",
+        "category": "Chat Models",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "cache": {
+                "label": "Cache"
+            },
+            "modelName": {
+                "label": "Model Name"
+            },
+            "temperature": {
+                "label": "Temperature"
+            },
+            "streaming": {
+                "label": "Streaming"
+            },
+            "maxTokens": {
+                "label": "Max Tokens"
+            },
+            "topP": {
+                "label": "Top Probability"
+            },
+            "frequencyPenalty": {
+                "label": "Frequency Penalty"
+            },
+            "presencePenalty": {
+                "label": "Presence Penalty"
+            },
+            "timeout": {
+                "label": "Timeout"
+            },
+            "basepath": {
+                "label": "BasePath"
+            },
+            "baseOptions": {
+                "label": "BaseOptions"
+            }
+        }
+    },
+    "chatOpenRouter": {
+        "label": "ChatOpenRouter",
+        "description": "Wrapper around Open Router Inference API",
+        "category": "Chat Models",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "cache": {
+                "label": "Cache"
+            },
+            "modelName": {
+                "label": "Model Name"
+            },
+            "temperature": {
+                "label": "Temperature"
+            },
+            "streaming": {
+                "label": "Streaming"
+            },
+            "maxTokens": {
+                "label": "Max Tokens"
+            },
+            "topP": {
+                "label": "Top Probability"
+            },
+            "frequencyPenalty": {
+                "label": "Frequency Penalty"
+            },
+            "presencePenalty": {
+                "label": "Presence Penalty"
+            },
+            "timeout": {
+                "label": "Timeout"
+            },
+            "basepath": {
+                "label": "BasePath"
+            },
+            "baseOptions": {
+                "label": "BaseOptions"
+            }
+        }
+    },
+    "chatPerplexity": {
+        "label": "ChatPerplexity",
+        "description": "Wrapper around Perplexity large language models that use the Chat endpoint",
+        "category": "Chat Models",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "cache": {
+                "label": "Cache"
+            },
+            "model": {
+                "label": "Model Name"
+            },
+            "temperature": {
+                "label": "Temperature"
+            },
+            "maxTokens": {
+                "label": "Max Tokens"
+            },
+            "topP": {
+                "label": "Top P"
+            },
+            "topK": {
+                "label": "Top K"
+            },
+            "presencePenalty": {
+                "label": "Presence Penalty"
+            },
+            "frequencyPenalty": {
+                "label": "Frequency Penalty"
+            },
+            "streaming": {
+                "label": "Streaming"
+            },
+            "timeout": {
+                "label": "Timeout"
+            },
+            "proxyUrl": {
+                "label": "Proxy Url"
+            }
+        }
+    },
+    "chatSambanova": {
+        "label": "ChatSambanova",
+        "description": "Wrapper around Sambanova Chat Endpoints",
+        "category": "Chat Models",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "cache": {
+                "label": "Cache"
+            },
+            "modelName": {
+                "label": "Model"
+            },
+            "temperature": {
+                "label": "Temperature"
+            },
+            "streaming": {
+                "label": "Streaming"
+            },
+            "basepath": {
+                "label": "BasePath"
+            },
+            "baseOptions": {
+                "label": "BaseOptions"
+            }
+        }
+    },
+    "chatTogetherAI": {
+        "label": "ChatTogetherAI",
+        "description": "Wrapper around TogetherAI large language models",
+        "category": "Chat Models",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "cache": {
+                "label": "Cache"
+            },
+            "modelName": {
+                "label": "Model Name",
+                "description": "Refer to <a target=\"_blank\" href=\"https://docs.together.ai/docs/inference-models\">models</a> page"
+            },
+            "temperature": {
+                "label": "Temperature"
+            },
+            "streaming": {
+                "label": "Streaming"
+            }
+        }
+    },
+    "chatXAI": {
+        "label": "ChatXAI",
+        "description": "Wrapper around Grok from XAI",
+        "category": "Chat Models",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "cache": {
+                "label": "Cache"
+            },
+            "modelName": {
+                "label": "Model"
+            },
+            "temperature": {
+                "label": "Temperature"
+            },
+            "streaming": {
+                "label": "Streaming"
+            },
+            "maxTokens": {
+                "label": "Max Tokens"
+            },
+            "allowImageUploads": {
+                "label": "Allow Image Uploads",
+                "description": "Allow image input. Refer to the <a href=\"https://docs.flowiseai.com/using-flowise/uploads#image\" target=\"_blank\">docs</a> for more details."
+            }
+        }
+    },
+    "chatDeepseek": {
+        "label": "ChatDeepseek",
+        "description": "Wrapper around Deepseek large language models that use the Chat endpoint",
+        "category": "Chat Models",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "cache": {
+                "label": "Cache"
+            },
+            "modelName": {
+                "label": "Model Name"
+            },
+            "temperature": {
+                "label": "Temperature"
+            },
+            "streaming": {
+                "label": "Streaming"
+            },
+            "maxTokens": {
+                "label": "Max Tokens"
+            },
+            "topP": {
+                "label": "Top Probability"
+            },
+            "frequencyPenalty": {
+                "label": "Frequency Penalty"
+            },
+            "presencePenalty": {
+                "label": "Presence Penalty"
+            },
+            "timeout": {
+                "label": "Timeout"
+            },
+            "stopSequence": {
+                "label": "Stop Sequence",
+                "description": "List of stop words to use when generating. Use comma to separate multiple stop words."
+            },
+            "baseOptions": {
+                "label": "Base Options",
+                "description": "Additional options to pass to the Deepseek client. This should be a JSON object."
+            }
+        }
     }
 }

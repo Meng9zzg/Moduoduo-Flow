@@ -27,8 +27,18 @@ class LLM_Agentflow implements INode {
     documentation?: string
     credential: INodeParams
     inputs: INodeParams[]
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
 
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.llmAgentflow.label'
+        this.descriptionKey = 'nodes.llmAgentflow.description'
+        this.categoryKey = 'nodes.llmAgentflow.category'
+
+        // Default English values as fallback
         this.label = 'LLM'
         this.name = 'llmAgentflow'
         this.version = 1.0

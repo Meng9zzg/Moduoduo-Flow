@@ -16,6 +16,9 @@ class Deepseek_ChatModels implements INode {
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
+    labelKey: string
+    descriptionKey: string
+    categoryKey: string
 
     constructor() {
         this.label = 'ChatDeepseek'
@@ -25,9 +28,13 @@ class Deepseek_ChatModels implements INode {
         this.icon = 'deepseek.svg'
         this.category = 'Chat Models'
         this.description = 'Wrapper around Deepseek large language models that use the Chat endpoint'
+        this.labelKey = 'nodes.chatmodels.chatDeepseek.label'
+        this.descriptionKey = 'nodes.chatmodels.chatDeepseek.description'
+        this.categoryKey = 'nodes.chatmodels.chatDeepseek.category'
         this.baseClasses = [this.type, ...getBaseClasses(ChatOpenAI)]
         this.credential = {
             label: 'Connect Credential',
+            labelKey: 'nodes.chatmodels.chatDeepseek.credential.label',
             name: 'credential',
             type: 'credential',
             credentialNames: ['deepseekApi']
@@ -35,12 +42,14 @@ class Deepseek_ChatModels implements INode {
         this.inputs = [
             {
                 label: 'Cache',
+                labelKey: 'nodes.chatmodels.chatDeepseek.inputs.cache.label',
                 name: 'cache',
                 type: 'BaseCache',
                 optional: true
             },
             {
                 label: 'Model Name',
+                labelKey: 'nodes.chatmodels.chatDeepseek.inputs.modelName.label',
                 name: 'modelName',
                 type: 'asyncOptions',
                 loadMethod: 'listModels',
@@ -48,6 +57,7 @@ class Deepseek_ChatModels implements INode {
             },
             {
                 label: 'Temperature',
+                labelKey: 'nodes.chatmodels.chatDeepseek.inputs.temperature.label',
                 name: 'temperature',
                 type: 'number',
                 step: 0.1,
@@ -56,6 +66,7 @@ class Deepseek_ChatModels implements INode {
             },
             {
                 label: 'Streaming',
+                labelKey: 'nodes.chatmodels.chatDeepseek.inputs.streaming.label',
                 name: 'streaming',
                 type: 'boolean',
                 default: true,
@@ -64,6 +75,7 @@ class Deepseek_ChatModels implements INode {
             },
             {
                 label: 'Max Tokens',
+                labelKey: 'nodes.chatmodels.chatDeepseek.inputs.maxTokens.label',
                 name: 'maxTokens',
                 type: 'number',
                 step: 1,
@@ -72,6 +84,7 @@ class Deepseek_ChatModels implements INode {
             },
             {
                 label: 'Top Probability',
+                labelKey: 'nodes.chatmodels.chatDeepseek.inputs.topP.label',
                 name: 'topP',
                 type: 'number',
                 step: 0.1,
@@ -80,6 +93,7 @@ class Deepseek_ChatModels implements INode {
             },
             {
                 label: 'Frequency Penalty',
+                labelKey: 'nodes.chatmodels.chatDeepseek.inputs.frequencyPenalty.label',
                 name: 'frequencyPenalty',
                 type: 'number',
                 step: 0.1,
@@ -88,6 +102,7 @@ class Deepseek_ChatModels implements INode {
             },
             {
                 label: 'Presence Penalty',
+                labelKey: 'nodes.chatmodels.chatDeepseek.inputs.presencePenalty.label',
                 name: 'presencePenalty',
                 type: 'number',
                 step: 0.1,
@@ -96,6 +111,7 @@ class Deepseek_ChatModels implements INode {
             },
             {
                 label: 'Timeout',
+                labelKey: 'nodes.chatmodels.chatDeepseek.inputs.timeout.label',
                 name: 'timeout',
                 type: 'number',
                 step: 1,
@@ -104,6 +120,7 @@ class Deepseek_ChatModels implements INode {
             },
             {
                 label: 'Stop Sequence',
+                labelKey: 'nodes.chatmodels.chatDeepseek.inputs.stopSequence.label',
                 name: 'stopSequence',
                 type: 'string',
                 rows: 4,
@@ -113,6 +130,7 @@ class Deepseek_ChatModels implements INode {
             },
             {
                 label: 'Base Options',
+                labelKey: 'nodes.chatmodels.chatDeepseek.inputs.baseOptions.label',
                 name: 'baseOptions',
                 type: 'json',
                 optional: true,

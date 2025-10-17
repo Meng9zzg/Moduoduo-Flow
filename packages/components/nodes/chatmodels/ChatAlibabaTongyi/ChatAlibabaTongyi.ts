@@ -15,6 +15,9 @@ class ChatAlibabaTongyi_ChatModels implements INode {
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
+    labelKey: string
+    descriptionKey: string
+    categoryKey: string
 
     constructor() {
         this.label = 'ChatAlibabaTongyi'
@@ -25,8 +28,12 @@ class ChatAlibabaTongyi_ChatModels implements INode {
         this.category = 'Chat Models'
         this.description = 'Wrapper around Alibaba Tongyi Chat Endpoints'
         this.baseClasses = [this.type, ...getBaseClasses(ChatAlibabaTongyi)]
+        this.labelKey = 'nodes.chatmodels.chatAlibabaTongyi.label'
+        this.descriptionKey = 'nodes.chatmodels.chatAlibabaTongyi.description'
+        this.categoryKey = 'nodes.chatmodels.chatAlibabaTongyi.category'
         this.credential = {
             label: 'Connect Credential',
+            labelKey: 'nodes.chatmodels.chatAlibabaTongyi.credential.label',
             name: 'credential',
             type: 'credential',
             credentialNames: ['AlibabaApi']
@@ -34,18 +41,21 @@ class ChatAlibabaTongyi_ChatModels implements INode {
         this.inputs = [
             {
                 label: 'Cache',
+                labelKey: 'nodes.chatmodels.chatAlibabaTongyi.inputs.cache.label',
                 name: 'cache',
                 type: 'BaseCache',
                 optional: true
             },
             {
                 label: 'Model',
+                labelKey: 'nodes.chatmodels.chatAlibabaTongyi.inputs.modelName.label',
                 name: 'modelName',
                 type: 'string',
                 placeholder: 'qwen-plus'
             },
             {
                 label: 'Temperature',
+                labelKey: 'nodes.chatmodels.chatAlibabaTongyi.inputs.temperature.label',
                 name: 'temperature',
                 type: 'number',
                 step: 0.1,
@@ -54,6 +64,7 @@ class ChatAlibabaTongyi_ChatModels implements INode {
             },
             {
                 label: 'Streaming',
+                labelKey: 'nodes.chatmodels.chatAlibabaTongyi.inputs.streaming.label',
                 name: 'streaming',
                 type: 'boolean',
                 default: true,

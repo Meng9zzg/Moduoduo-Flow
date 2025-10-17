@@ -1,0 +1,55 @@
+{
+    "promptTemplate": {
+        "label": "Prompt Template",
+        "description": "Create a prompt template with variables",
+        "category": "Prompts",
+        "inputs": {
+            "template": {
+                "label": "Template",
+                "description": "Prompt template with placeholders"
+            },
+            "inputVariables": {
+                "label": "Input Variables",
+                "description": "List of input variable names"
+            }
+        }
+    },
+    "chatPromptTemplate": {
+        "label": "Chat Prompt Template",
+        "description": "Create a chat prompt template with system and human messages",
+        "category": "Prompts",
+        "inputs": {
+            "systemMessage": {
+                "label": "System Message",
+                "description": "System message template"
+            },
+            "humanMessage": {
+                "label": "Human Message",
+                "description": "Human message template"
+            },
+            "inputVariables": {
+                "label": "Input Variables",
+                "description": "List of input variable names"
+            }
+        }
+    },
+    "fewShotPromptTemplate": {
+        "label": "Few Shot Prompt Template",
+        "description": "Create a few-shot prompt template with examples",
+        "category": "Prompts",
+        "inputs": {
+            "template": {
+                "label": "Template",
+                "description": "Prompt template with placeholders"
+            },
+            "examples": {
+                "label": "Examples",
+                "description": "List of examples for few-shot learning"
+            },
+            "inputVariables": {
+                "label": "Input Variables",
+                "description": "List of input variable names"
+            }
+        }
+    }
+}

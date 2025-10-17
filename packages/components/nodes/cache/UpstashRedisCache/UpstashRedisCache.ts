@@ -12,8 +12,18 @@ class UpstashRedisCache implements INode {
     baseClasses: string[]
     inputs: INodeParams[]
     credential: INodeParams
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
 
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.upstashRedisCache.label'
+        this.descriptionKey = 'nodes.upstashRedisCache.description'
+        this.categoryKey = 'nodes.upstashRedisCache.category'
+
+        // Default English values as fallback
         this.label = 'Upstash Redis Cache'
         this.name = 'upstashRedisCache'
         this.version = 1.0

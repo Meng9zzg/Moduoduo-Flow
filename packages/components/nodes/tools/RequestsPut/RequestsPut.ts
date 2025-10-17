@@ -25,7 +25,18 @@ class RequestsPut_Tools implements INode {
     baseClasses: string[]
     inputs: INodeParams[]
 
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
+
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.tools.requestsPut.label'
+        this.descriptionKey = 'nodes.tools.requestsPut.description'
+        this.categoryKey = 'nodes.tools.requestsPut.category'
+
+        // Default English values as fallback
         this.label = 'Requests Put'
         this.name = 'requestsPut'
         this.version = 1.0

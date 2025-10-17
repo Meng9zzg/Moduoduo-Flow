@@ -11,33 +11,39 @@
 
 -   **前端页面**: 100% (27 个页面，34 个命名空间，1100+翻译条目)
 -   **后端节点**:
-    -   ✅ Chat Models: 10/28 节点 (36%)
-        -   ChatOpenAI, Azure ChatOpenAI, ChatAnthropic, ChatGoogleGenerativeAI
-        -   ChatMistralAI, GroqChat, ChatOllama, ChatHuggingFace
-        -   AWS ChatBedrock, ChatCohere
+    -   ✅ **Chat Models: 28/28 节点 (100%)** 🎉
+        -   包含所有主流大语言模型：OpenAI, Anthropic, Google, Azure, Alibaba, Baidu 等
+        -   翻译条目：231+ (English + Chinese)
+        -   文件：chatmodels.json (en/zh)
+    -   ✅ **Tools: 41/41 节点 (100%)** 🎉
+        -   涵盖 8 大类工具：API/搜索/学术/云服务/通讯/文件/实用/集成
+        -   翻译条目：410+ (English + Chinese)
+        -   文件：tools.json (en/zh)
     -   ✅ Agents: 1/12 节点 (8%)
         -   AirtableAgent
 
-### 🟡 进行中 (In Progress)
+### 📈 当前进度
 
--   **后端节点翻译**: 11/200+ 节点 (5%)
+-   **后端节点翻译**: 70/200+ 节点 (35%)
+-   **翻译条目总数**: 640+ (English + Chinese)
+-   **已加载翻译**: 140 entries (后端服务器确认)
 
 ### ⏳ 待完成 (To Do)
 
--   **后端节点翻译**: 189+ 节点 (95%)
+-   **后端节点翻译**: 130+ 节点 (65%)
 
 ---
 
 ## 🗂️ 节点分类统计
 
-| 分类                 | 节点数量 | 已翻译 | 待翻译 | 进度 | 优先级 |
-| -------------------- | -------- | ------ | ------ | ---- | ------ |
-| **Chat Models**      | 28       | 10     | 18     | 36%  | 🔴 高  |
-| **Tools**            | 42       | 0      | 42     | 0%   | 🔴 高  |
-| **Document Loaders** | 39       | 0      | 39     | 0%   | 🟡 中  |
-| **Vector Stores**    | 24       | 0      | 24     | 0%   | 🟡 中  |
-| **Embeddings**       | 15       | 0      | 15     | 0%   | 🟡 中  |
-| **Agents**           | 12       | 1      | 11     | 8%   | 🟡 中  |
+| 分类                 | 节点数量 | 已翻译 | 待翻译 | 进度 | 优先级 | 状态 |
+| -------------------- | -------- | ------ | ------ | ---- | ------ | ---- |
+| **Chat Models**      | 28       | 28     | 0      | 100% | 🔴 高  | ✅   |
+| **Tools**            | 41       | 41     | 0      | 100% | 🔴 高  | ✅   |
+| **Document Loaders** | 39       | 0      | 39     | 0%   | 🟡 中  | ⏳   |
+| **Vector Stores**    | 24       | 0      | 24     | 0%   | 🟡 中  | ⏳   |
+| **Embeddings**       | 15       | 0      | 15     | 0%   | 🟡 中  | ⏳   |
+| **Agents**           | 12       | 1      | 11     | 8%   | 🟡 中  | ⏳   |
 | **Chains**           | 待统计   | 0      | 待统计 | 0%   | 🟢 低  |
 | **Memory**           | 待统计   | 0      | 待统计 | 0%   | 🟢 低  |
 | **Text Splitters**   | 待统计   | 0      | 待统计 | 0%   | 🟢 低  |
@@ -51,74 +57,104 @@
 
 ## 📅 分阶段翻译计划
 
-### 🔴 Phase 1: Chat Models (剩余 18 个) - 高优先级
+### ✅ Phase 1: Chat Models - 高优先级 【已完成】
 
-**目标**: 完成所有 Chat Models 节点翻译
-**预计工作量**: 4-6 小时
-**截止时间**: 建议 1 周内完成
+**状态**: ✅ 100% 完成
+**完成时间**: 2025-10-17
+**实际工作量**: ~6 小时
 
-#### 待翻译节点列表 (18 个):
+#### 完成的节点列表 (28 个):
 
 ```
-1. ✅ ChatOpenAI (已完成)
-2. ✅ Azure ChatOpenAI (已完成)
-3. ✅ ChatAnthropic (已完成)
-4. ✅ ChatGoogleGenerativeAI (已完成)
-5. ✅ ChatMistralAI (已完成)
-6. ✅ GroqChat (已完成)
-7. ✅ ChatOllama (已完成)
-8. ✅ ChatHuggingFace (已完成)
-9. ✅ AWS ChatBedrock (已完成)
-10. ✅ ChatCohere (已完成)
-
---- 以下待翻译 ---
-
-11. ⏳ ChatAlibabaTongyi - 阿里通义千问
-12. ⏳ ChatBaiduWenxin - 百度文心一言
-13. ⏳ ChatCerebras - Cerebras AI
-14. ⏳ ChatCometAPI - Comet API
-15. ⏳ ChatFireworks - Fireworks AI
-16. ⏳ ChatGoogleVertexAI - Google Vertex AI
-17. ⏳ ChatIBMWatsonx - IBM Watsonx
-18. ⏳ ChatLitellm - LiteLLM
-19. ⏳ ChatLocalAI - LocalAI
-20. ⏳ ChatNemoGuardrails - NVIDIA Nemo
-21. ⏳ ChatNvdiaNIM - NVIDIA NIM
-22. ⏳ ChatOpenAICustom - 自定义OpenAI
-23. ⏳ ChatOpenRouter - OpenRouter
-24. ⏳ ChatPerplexity - Perplexity AI
-25. ⏳ ChatSambanova - SambaNova
-26. ⏳ ChatTogetherAI - Together AI
-27. ⏳ ChatXAI - xAI (Grok)
-28. ⏳ Deepseek - Deepseek AI
+1. ✅ ChatOpenAI
+2. ✅ Azure ChatOpenAI
+3. ✅ ChatAnthropic
+4. ✅ ChatGoogleGenerativeAI
+5. ✅ ChatMistralAI
+6. ✅ GroqChat
+7. ✅ ChatOllama
+8. ✅ ChatHuggingFace
+9. ✅ AWS ChatBedrock
+10. ✅ ChatCohere
+11. ✅ ChatAlibabaTongyi - 阿里通义千问
+12. ✅ ChatBaiduWenxin - 百度文心一言
+13. ✅ ChatCerebras - Cerebras AI
+14. ✅ ChatCometAPI - Comet API
+15. ✅ ChatFireworks - Fireworks AI
+16. ✅ ChatGoogleVertexAI - Google Vertex AI
+17. ✅ ChatIBMWatsonx - IBM Watsonx
+18. ✅ ChatLitellm - LiteLLM
+19. ✅ ChatLocalAI - LocalAI
+20. ✅ ChatNemoGuardrails - NVIDIA Nemo
+21. ✅ ChatNvdiaNIM - NVIDIA NIM
+22. ✅ ChatOpenAICustom - 自定义OpenAI
+23. ✅ ChatOpenRouter - OpenRouter
+24. ✅ ChatPerplexity - Perplexity AI
+25. ✅ ChatSambanova - SambaNova
+26. ✅ ChatTogetherAI - Together AI
+27. ✅ ChatXAI - xAI (Grok)
+28. ✅ Deepseek - Deepseek AI
 ```
 
-**翻译文件**:
+**已完成的文件**:
 
--   `packages/components/locales/en/nodes/chatmodels.json` (已存在，需扩充)
--   `packages/components/locales/zh/nodes/chatmodels.json` (已存在，需扩充)
+-   ✅ `packages/components/locales/en/nodes/chatmodels.json` (231+ 翻译条目)
+-   ✅ `packages/components/locales/zh/nodes/chatmodels.json` (231+ 翻译条目)
+-   ✅ 已更新 28 个节点源码文件，添加 i18n keys
+-   ✅ 已验证后端 API 返回正确的中文翻译
 
 ---
 
-### 🔴 Phase 2: Tools (42 个) - 高优先级
+### ✅ Phase 2: Tools - 高优先级 【已完成】
 
-**目标**: 完成所有 Tools 节点翻译
-**预计工作量**: 8-12 小时
-**截止时间**: 建议 2 周内完成
+**状态**: ✅ 100% 完成
+**完成时间**: 2025-10-17
+**实际工作量**: ~10 小时
 
-#### 重点工具类别:
+#### 已完成工具类别 (41 个节点):
 
--   API 工具 (HTTP Request, GraphQL 等)
--   数据库工具 (MySQL, PostgreSQL, MongoDB 等)
--   搜索工具 (Google Search, Bing Search, Serper 等)
--   文档工具 (PDF Loader, CSV Reader 等)
--   AI 工具 (DALL-E, Stable Diffusion 等)
--   实用工具 (Calculator, Web Scraper 等)
+1. **API/Request 工具 (7 个)**:
 
-**翻译文件**:
+    - ✅ RequestsGet, RequestsPost, RequestsPut, RequestsDelete
+    - ✅ OpenAPIToolkit, CustomTool, ChainTool
 
--   `packages/components/locales/en/nodes/tools.json` (待创建)
--   `packages/components/locales/zh/nodes/tools.json` (待创建)
+2. **搜索工具 (8 个)**:
+
+    - ✅ GoogleSearchAPI, SerpAPI, Serper, BraveSearchAPI
+    - ✅ SearchAPI, Searxng, TavilyAPI, ExaSearch
+
+3. **学术/研究工具 (2 个)**:
+
+    - ✅ Arxiv, WolframAlpha
+
+4. **云服务工具 (2 个)**:
+
+    - ✅ AWSDynamoDBKVStorage, AWSSNS
+
+5. **通讯工具 (6 个)**:
+
+    - ✅ Gmail, GoogleCalendar, GoogleDocs, GoogleDrive, GoogleSheets
+    - ✅ MicrosoftOutlook, MicrosoftTeams
+
+6. **文件操作 (3 个)**:
+
+    - ✅ ReadFile, WriteFile, WebScraperTool
+
+7. **实用工具 (5 个)**:
+
+    - ✅ Calculator, CurrentDateTime, JSONPathExtractor
+    - ✅ CodeInterpreterE2B, WebBrowser
+
+8. **集成工具 (7 个)**:
+    - ✅ Jira, Composio, StripeTool
+    - ✅ AgentAsTool, ChatflowTool, RetrieverTool, QueryEngineTool
+
+**已完成的文件**:
+
+-   ✅ `packages/components/locales/en/nodes/tools.json` (410+ 翻译条目)
+-   ✅ `packages/components/locales/zh/nodes/tools.json` (410+ 翻译条目)
+-   ✅ 已更新 41 个节点源码文件，添加 i18n keys
+-   ✅ 已验证后端 API 返回正确的中文翻译
 
 ---
 
@@ -485,7 +521,8 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 
 ---
 
-**最后更新**: 2025-10-17
-**文档版本**: 1.0.0
-**当前进度**: 11/200+ 节点 (5%)
-**预计完成**: 根据投入时间而定 (建议 6-8 周)
+**最后更新**: 2025-10-18
+**文档版本**: 2.0.0
+**当前进度**: 70/200+ 节点 (35%)
+**已完成阶段**: Phase 1 (Chat Models) ✅, Phase 2 (Tools) ✅
+**预计完成**: 根据投入时间而定 (建议 4-6 周)

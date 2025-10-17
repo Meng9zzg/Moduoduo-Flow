@@ -122,14 +122,20 @@ const saveChatflow = async (req: Request, res: Response, next: NextFunction) => 
         if (!req.body) {
             throw new InternalFlowiseError(StatusCodes.PRECONDITION_FAILED, `Error: chatflowsController.saveChatflow - body not provided!`)
         }
-        const orgId = req.user?.activeOrganizationId
+
+        // Check if running in open source mode
+        const appServer = getRunningExpressApp()
+        const isOpenSource = appServer.identityManager.isOpenSource()
+
+        // For open source mode, use placeholder values if user context is not available
+        const orgId = req.user?.activeOrganizationId || (isOpenSource ? 'opensource-org' : undefined)
         if (!orgId) {
             throw new InternalFlowiseError(
                 StatusCodes.NOT_FOUND,
                 `Error: chatflowsController.saveChatflow - organization ${orgId} not found!`
             )
         }
-        const workspaceId = req.user?.activeWorkspaceId
+        const workspaceId = req.user?.activeWorkspaceId || (isOpenSource ? 'opensource-workspace' : undefined)
         if (!workspaceId) {
             throw new InternalFlowiseError(
                 StatusCodes.NOT_FOUND,
@@ -169,18 +175,24 @@ const updateChatflow = async (req: Request, res: Response, next: NextFunction) =
         if (!chatflow) {
             return res.status(404).send(`Chatflow ${req.params.id} not found`)
         }
-        const orgId = req.user?.activeOrganizationId
+
+        // Check if running in open source mode
+        const appServer = getRunningExpressApp()
+        const isOpenSource = appServer.identityManager.isOpenSource()
+
+        // For open source mode, use placeholder values if user context is not available
+        const orgId = req.user?.activeOrganizationId || (isOpenSource ? 'opensource-org' : undefined)
         if (!orgId) {
             throw new InternalFlowiseError(
                 StatusCodes.NOT_FOUND,
-                `Error: chatflowsController.saveChatflow - organization ${orgId} not found!`
+                `Error: chatflowsController.updateChatflow - organization ${orgId} not found!`
             )
         }
-        const workspaceId = req.user?.activeWorkspaceId
+        const workspaceId = req.user?.activeWorkspaceId || (isOpenSource ? 'opensource-workspace' : undefined)
         if (!workspaceId) {
             throw new InternalFlowiseError(
                 StatusCodes.NOT_FOUND,
-                `Error: chatflowsController.saveChatflow - workspace ${workspaceId} not found!`
+                `Error: chatflowsController.updateChatflow - workspace ${workspaceId} not found!`
             )
         }
         const subscriptionId = req.user?.activeOrganizationSubscriptionId || ''

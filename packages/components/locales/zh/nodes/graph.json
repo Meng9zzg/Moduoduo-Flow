@@ -1,0 +1,24 @@
+{
+    "Neo4j": {
+        "label": "Neo4j 图数据库",
+        "description": "使用 Neo4j 图数据库进行图操作",
+        "category": "Graph",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "uri": {
+                "label": "URI",
+                "description": "Neo4j 数据库连接 URI"
+            },
+            "database": {
+                "label": "数据库",
+                "description": "要使用的数据库名称"
+            },
+            "query": {
+                "label": "查询",
+                "description": "Cypher 查询语句"
+            }
+        }
+    }
+}

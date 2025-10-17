@@ -14,7 +14,18 @@ class MicrosoftTeams_Tools implements INode {
     inputs: INodeParams[]
     credential: INodeParams
 
+    // i18n support fields
+    labelKey?: string
+    descriptionKey?: string
+    categoryKey?: string
+
     constructor() {
+        // i18n keys for translation
+        this.labelKey = 'nodes.tools.microsoftTeams.label'
+        this.descriptionKey = 'nodes.tools.microsoftTeams.description'
+        this.categoryKey = 'nodes.tools.microsoftTeams.category'
+
+        // Default English values as fallback
         this.label = 'Microsoft Teams'
         this.name = 'microsoftTeams'
         this.version = 1.0

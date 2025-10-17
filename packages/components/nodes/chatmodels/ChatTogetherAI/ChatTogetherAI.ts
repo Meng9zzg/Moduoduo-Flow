@@ -15,6 +15,10 @@ class ChatTogetherAI_ChatModels implements INode {
     inputs: INodeParams[]
     credential: INodeParams
 
+    labelKey: string
+    descriptionKey: string
+    categoryKey: string
+
     constructor() {
         this.label = 'ChatTogetherAI'
         this.name = 'chatTogetherAI'
@@ -23,9 +27,13 @@ class ChatTogetherAI_ChatModels implements INode {
         this.icon = 'togetherai.png'
         this.category = 'Chat Models'
         this.description = 'Wrapper around TogetherAI large language models'
+        this.labelKey = 'nodes.chatmodels.chatTogetherAI.label'
+        this.descriptionKey = 'nodes.chatmodels.chatTogetherAI.description'
+        this.categoryKey = 'nodes.chatmodels.chatTogetherAI.category'
         this.baseClasses = [this.type, ...getBaseClasses(ChatTogetherAI)]
         this.credential = {
             label: 'Connect Credential',
+            labelKey: 'nodes.chatmodels.chatTogetherAI.credential.label',
             name: 'credential',
             type: 'credential',
             credentialNames: ['togetherAIApi']
@@ -33,12 +41,14 @@ class ChatTogetherAI_ChatModels implements INode {
         this.inputs = [
             {
                 label: 'Cache',
+                labelKey: 'nodes.chatmodels.chatTogetherAI.inputs.cache.label',
                 name: 'cache',
                 type: 'BaseCache',
                 optional: true
             },
             {
                 label: 'Model Name',
+                labelKey: 'nodes.chatmodels.chatTogetherAI.inputs.modelName.label',
                 name: 'modelName',
                 type: 'string',
                 placeholder: 'mixtral-8x7b-32768',
@@ -46,6 +56,7 @@ class ChatTogetherAI_ChatModels implements INode {
             },
             {
                 label: 'Temperature',
+                labelKey: 'nodes.chatmodels.chatTogetherAI.inputs.temperature.label',
                 name: 'temperature',
                 type: 'number',
                 step: 0.1,
@@ -54,6 +65,7 @@ class ChatTogetherAI_ChatModels implements INode {
             },
             {
                 label: 'Streaming',
+                labelKey: 'nodes.chatmodels.chatTogetherAI.inputs.streaming.label',
                 name: 'streaming',
                 type: 'boolean',
                 default: true,
