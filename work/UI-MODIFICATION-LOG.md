@@ -359,6 +359,295 @@ npm install framer-motion @mui/material react-i18next prop-types
 
 ---
 
+## 2025-10-17: 首页左侧菜单栏自定义动画图标替换
+
+### 任务概述
+
+全面优化首页左侧菜单栏的用户体验，使用自定义动画图标替换所有静态 Tabler 图标，并优化菜单样式和间距。
+
+### 完成内容
+
+#### 1. 菜单样式优化
+
+**修改文件：**
+
+-   `packages/ui/src/layout/MainLayout/Sidebar/MenuList/NavGroup/index.jsx`
+-   `packages/ui/src/menu-items/dashboard.js`
+
+**具体改动：**
+
+1. **移除分组标题及占位空间**
+
+    - 移除"Evaluations"和"Others"分组标题
+    - 添加条件渲染：只在 title 存在时渲染 Typography 组件
+
+    ```jsx
+    subheader={
+        group.title ? (
+            <Typography>...</Typography>
+        ) : null
+    }
+    ```
+
+2. **调整菜单项间距**
+    - 标签间距：从`gap: 1` (8px) 减小到`gap: 0.75` (6px)
+    - 标签内边距：保持`py: 1.25` (20px)
+
+#### 2. 图标动画触发机制
+
+**修改文件：**
+
+-   `packages/ui/src/layout/MainLayout/Sidebar/MenuList/NavItem/index.jsx`
+
+**实现方案：**
+
+1. 使用`useRef`存储图标引用
+2. 添加`handleMouseEnter`和`handleMouseLeave`处理函数
+3. 在 ListItemButton 上添加 hover 事件监听
+4. 通过 ref 调用图标的`startAnimation()`和`stopAnimation()`方法
+
+```jsx
+const iconRef = useRef(null)
+
+const handleMouseEnter = () => {
+    if (iconRef.current?.startAnimation) {
+        iconRef.current.startAnimation()
+    }
+}
+
+const handleMouseLeave = () => {
+    if (iconRef.current?.stopAnimation) {
+        iconRef.current.stopAnimation()
+    }
+}
+
+;<ListItemButton onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <Icon ref={iconRef} />
+</ListItemButton>
+```
+
+#### 3. 创建 15 个自定义动画图标
+
+所有图标位于：`packages/ui/src/ui-component/animated-icons/menu/`
+
+##### 用户提供的动画图标 (10 个)
+
+| 序号 | 菜单项           | 组件名             | 动画效果                                  |
+| ---- | ---------------- | ------------------ | ----------------------------------------- |
+| 1    | Account Settings | SettingsIcon       | 用户头像路径绘制，圆圈缩放+路径延迟绘制   |
+| 2    | Logs             | ListIcon           | 文件图标+齿轮旋转 180 度(spring 物理效果) |
+| 3    | Assistants       | RobotIcon          | Twitch 风格路径绘制，3 条路径依次绘制     |
+| 4    | API Keys         | KeyIcon            | 钥匙 Y 轴弹跳+轻微旋转 (bounce: 0.5)      |
+| 5    | Credentials      | LockIcon           | 锁抖动+缩放+锁扣路径长度变化              |
+| 6    | Executions       | CctvIcon           | 监控摄像头旋转(以特定点为原点)+指示点闪烁 |
+| 7    | Evaluators       | ArrowDown10Icon    | 数字"1"和"0"上下交换位置(spring 动画)     |
+| 8    | Evaluations      | ChartScatterIcon   | 5 个散点依次消失再依次出现(延迟 0.15s)    |
+| 9    | Agentflows       | BoxesIcon          | 3 个盒子向不同方向分散 (左下、右下、上)   |
+| 10   | Chatflows        | GitPullRequestIcon | Git 分支依次绘制(4 个元素顺序出现)        |
+
+##### 自定义创建的动画图标 (5 个)
+
+| 序号 | 菜单项          | 组件名            | 动画效果                                   |
+| ---- | --------------- | ----------------- | ------------------------------------------ |
+| 11   | Marketplaces    | BuildingStoreIcon | 商店门 Y 轴缩放 (scaleY: 1→0.7→1)          |
+| 12   | Tools           | ToolIcon          | 扳手左右摆动旋转-15 度(repeat: 1, reverse) |
+| 13   | Variables       | VariableIcon      | 变量符号透明度脉冲+中间路径绘制            |
+| 14   | Document Stores | FilesIcon         | 两个文件层分散展开(对角移动)               |
+| 15   | Datasets        | DatabaseIcon      | 数据库顶部椭圆缩放+底层透明度变化          |
+
+#### 4. 图标实现模式
+
+所有动画图标遵循统一的实现模式：
+
+**技术栈：**
+
+-   `framer-motion`: 动画库
+-   `forwardRef`: React 引用转发
+-   `useImperativeHandle`: 暴露控制方法
+-   `useAnimation`: framer-motion 动画控制
+-   `PropTypes`: 类型验证
+
+**标准接口：**
+
+```jsx
+// Props
+{
+    stroke: 1.5,        // 线条粗细
+    size: '1.3rem',     // 图标尺寸
+    className: string,  // 自定义类名
+    onMouseEnter: func, // 鼠标进入回调
+    onMouseLeave: func  // 鼠标离开回调
+}
+
+// 暴露方法
+{
+    startAnimation: () => void,  // 开始动画
+    stopAnimation: () => void    // 停止动画
+}
+```
+
+**动画状态：**
+
+-   `normal`: 默认状态
+-   `animate`: 动画状态
+
+**支持两种模式：**
+
+1. **非受控模式**: 图标自身处理 hover 事件
+2. **受控模式**: 父组件通过 ref 控制动画
+
+#### 5. 配置文件更新
+
+**修改文件：**
+
+-   `packages/ui/src/menu-items/dashboard.js`
+
+**具体改动：**
+
+1. **移除 Tabler Icons 导入**：
+
+    - IconKey, IconLock, IconVariable, IconFiles, IconDatabase, IconTool, IconBuildingStore, IconUsersGroup, IconTestPipe, IconChartHistogram
+
+2. **添加自定义图标导入**：
+
+    ```javascript
+    import SettingsIcon from '@/ui-component/animated-icons/menu/SettingsIcon'
+    import ListIcon from '@/ui-component/animated-icons/menu/ListIcon'
+    import RobotIcon from '@/ui-component/animated-icons/menu/RobotIcon'
+    import KeyIcon from '@/ui-component/animated-icons/menu/KeyIcon'
+    import LockIcon from '@/ui-component/animated-icons/menu/LockIcon'
+    import CctvIcon from '@/ui-component/animated-icons/menu/CctvIcon'
+    import ArrowDown10Icon from '@/ui-component/animated-icons/menu/ArrowDown10Icon'
+    import ChartScatterIcon from '@/ui-component/animated-icons/menu/ChartScatterIcon'
+    import BoxesIcon from '@/ui-component/animated-icons/menu/BoxesIcon'
+    import GitPullRequestIcon from '@/ui-component/animated-icons/menu/GitPullRequestIcon'
+    import BuildingStoreIcon from '@/ui-component/animated-icons/menu/BuildingStoreIcon'
+    import ToolIcon from '@/ui-component/animated-icons/menu/ToolIcon'
+    import VariableIcon from '@/ui-component/animated-icons/menu/VariableIcon'
+    import FilesIcon from '@/ui-component/animated-icons/menu/FilesIcon'
+    import DatabaseIcon from '@/ui-component/animated-icons/menu/DatabaseIcon'
+    ```
+
+3. **更新 icons 对象**：
+   将所有菜单项的 icon 引用从 Tabler Icons 更新为自定义动画图标
+
+#### 6. 动画细节设计
+
+**动画时长控制：**
+
+-   快速动画：0.3-0.4 秒 (工具类图标)
+-   中速动画：0.6 秒 (大部分图标)
+-   慢速动画：0.8-1 秒 (复杂动画，如变量符号)
+-   顺序动画：使用 delay 控制时序
+
+**动画曲线：**
+
+-   `easeInOut`: 大部分动画
+-   `linear`: 路径绘制
+-   `spring`: 物理弹跳效果
+
+**性能优化：**
+
+-   使用`variants`预定义动画状态
+-   避免在动画过程中重新计算
+-   使用`transform`属性而非 position 属性
+
+### 文件清单
+
+#### 新增文件 (15 个)
+
+```
+packages/ui/src/ui-component/animated-icons/menu/
+├── SettingsIcon.jsx          # Account Settings
+├── ListIcon.jsx              # Logs
+├── RobotIcon.jsx             # Assistants
+├── KeyIcon.jsx               # API Keys
+├── LockIcon.jsx              # Credentials
+├── CctvIcon.jsx              # Executions
+├── ArrowDown10Icon.jsx       # Evaluators
+├── ChartScatterIcon.jsx      # Evaluations
+├── BoxesIcon.jsx             # Agentflows
+├── GitPullRequestIcon.jsx    # Chatflows
+├── BuildingStoreIcon.jsx     # Marketplaces
+├── ToolIcon.jsx              # Tools
+├── VariableIcon.jsx          # Variables
+├── FilesIcon.jsx             # Document Stores
+└── DatabaseIcon.jsx          # Datasets
+```
+
+#### 修改文件 (3 个)
+
+-   `packages/ui/src/menu-items/dashboard.js` - 菜单配置
+-   `packages/ui/src/layout/MainLayout/Sidebar/MenuList/NavGroup/index.jsx` - 分组组件
+-   `packages/ui/src/layout/MainLayout/Sidebar/MenuList/NavItem/index.jsx` - 菜单项组件
+
+### Git 提交信息
+
+**Commit:** `6b77cf26`
+
+```
+feat(ui): 完成首页左侧菜单栏自定义动画图标替换
+```
+
+**提交内容：**
+
+-   27 个文件修改
+-   4806 行新增
+-   53 行删除
+
+### 技术栈
+
+-   **React**: 组件开发
+-   **framer-motion (v4.1.13)**: 动画效果
+-   **PropTypes**: 类型验证
+-   **React Hooks**: useRef, useAnimation, useImperativeHandle, useCallback
+
+### 用户体验提升
+
+1. **视觉反馈增强**
+
+    - 鼠标悬浮时触发流畅的图标动画
+    - 每个图标都有独特的动画效果
+    - 提升界面活力和品牌辨识度
+
+2. **操作效率优化**
+
+    - 动画时长控制在 0.3-1 秒之间
+    - 不影响用户快速浏览和点击
+    - 保持原有的视觉风格和尺寸
+
+3. **空间利用优化**
+    - 移除不必要的分组标题
+    - 缩小菜单项间距，增加可视区域
+    - 保持舒适的内边距
+
+### 设计原则
+
+1. **一致性**: 所有图标遵循相同的实现模式和接口规范
+2. **流畅性**: 使用 easeInOut 曲线，动画自然流畅
+3. **适度性**: 动画时长适中，不喧宾夺主
+4. **可维护性**: 代码结构清晰，便于后续扩展和维护
+5. **可复用性**: 组件独立封装，可在其他项目中复用
+
+### 测试要点
+
+-   [x] 所有 15 个菜单图标正确显示
+-   [x] 鼠标悬浮按钮时动画正常触发
+-   [x] 动画结束后恢复正常状态
+-   [x] 图标尺寸和颜色与原设计一致
+-   [x] 菜单间距调整正确 (6px)
+-   [x] 分组标题正确移除
+-   [x] 深色/浅色模式下图标颜色正常
+-   [x] 构建无错误，无警告
+-   [x] 菜单点击功能正常
+-   [x] 性能表现良好，无卡顿
+
+### 已知问题
+
+无
+
+---
+
 ## 下次修改时间：待定
 
 _本文档持续更新中..._
