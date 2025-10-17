@@ -26,7 +26,6 @@ const MoreItemsTooltip = ({ images, children }) => {
                 </StyledOl>
             }
             placement='top'
-            arrow
         >
             {children}
         </Tooltip>
