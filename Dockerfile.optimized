@@ -1,0 +1,42 @@
+# Build local monorepo image - Optimized version
+# docker build -f Dockerfile.optimized -t meng9zzg/moduoduo-agent-flow-packages:latest .
+
+FROM node:20-alpine
+
+# Install dependencies in separate steps to avoid hanging
+RUN apk add --no-cache --update libc6-compat python3 make git
+
+# Install g++ separately (this was causing the hang)
+RUN apk add --no-cache g++
+
+# Install build dependencies for pdfjs-dist
+RUN apk add --no-cache build-base cairo-dev pango-dev
+
+# Install Chromium
+RUN apk add --no-cache chromium
+
+# Install curl for container-level health checks
+RUN apk add --no-cache curl
+
+# Install PNPM globally
+RUN npm install -g pnpm
+
+ENV PUPPETEER_SKIP_DOWNLOAD=true
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+ENV NODE_OPTIONS=--max-old-space-size=8192
+
+WORKDIR /usr/src
+
+# Copy app source
+COPY . .
+
+RUN pnpm install
+
+RUN pnpm build
+
+EXPOSE 3000
+
+# Install flowise globally from the built packages
+RUN cd packages/server && npm install -g .
+
+CMD [ "flowise", "start" ]

@@ -347,9 +347,300 @@ Moduoduo-Agent-Flow/
 -   不要修改 `.npmrc` 中的 node-gyp 配置
 -   添加新的 native 依赖前请先测试兼容性
 
+## Docker 镜像构建指南
+
+### 构建背景
+
+在开源模式下修复了 403 Forbidden 问题后，需要构建包含这些修复的 Docker 镜像。
+
+### 关键问题：依赖安装卡住
+
+#### 问题描述
+
+使用原始 Dockerfile 构建时，会在安装系统依赖的步骤卡住（无响应超过 25 分钟）：
+
+```dockerfile
+# 原始 Dockerfile - 会卡住
+RUN apk add --update libc6-compat python3 make g++ git
+```
+
+**症状：**
+
+-   构建卡在 "Installing gcc (14.2.0-r6)" 步骤
+-   显示 `...` 表示输出被截断
+-   没有 CPU 使用和磁盘 I/O 活动
+-   多次尝试均在同一位置卡住
+
+**根本原因：**
+一次性安装 42 个包（包括 gcc、g++ 等大型编译工具）时，Alpine Linux 的包管理器 (apk) 在某些环境下会出现死锁或挂起问题。
+
+### 解决方案：分步安装依赖
+
+#### 优化的 Dockerfile
+
+创建 `Dockerfile.optimized`，将依赖安装分解为多个独立步骤：
+
+```dockerfile
+FROM node:20-alpine
+
+# 步骤 1: 安装基础依赖（不包括 g++）
+RUN apk add --no-cache --update libc6-compat python3 make git
+
+# 步骤 2: 单独安装 g++（之前卡住的地方）
+RUN apk add --no-cache g++
+
+# 步骤 3: 安装 PDF 支持依赖
+RUN apk add --no-cache build-base cairo-dev pango-dev
+
+# 步骤 4: 安装 Chromium
+RUN apk add --no-cache chromium
+
+# 步骤 5: 安装 curl
+RUN apk add --no-cache curl
+
+# 步骤 6: 安装 pnpm
+RUN npm install -g pnpm
+
+ENV PUPPETEER_SKIP_DOWNLOAD=true
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+ENV NODE_OPTIONS=--max-old-space-size=8192
+
+WORKDIR /usr/src
+
+# 复制源代码
+COPY . .
+
+# 安装依赖
+RUN pnpm install
+
+# 构建项目
+RUN pnpm build
+
+EXPOSE 3000
+
+# 全局安装 flowise
+RUN cd packages/server && npm install -g .
+
+CMD [ "flowise", "start" ]
+```
+
+#### 关键改进点
+
+1. **分步安装**：将 `apk add` 命令分成 5 个独立步骤
+2. **单独处理 g++**：将容易卡住的 g++ 单独安装
+3. **添加 --no-cache**：每个 apk 命令都使用 `--no-cache` 避免缓存问题
+4. **减少单次包数量**：避免一次性安装 42 个包
+
+### 构建命令
+
+```bash
+# 清理旧的构建缓存（可选）
+docker buildx prune -af
+
+# 使用优化的 Dockerfile 构建
+docker build --progress=plain \
+  -f Dockerfile.optimized \
+  -t meng9zzg/moduoduo-agent-flow-packages:latest \
+  .
+```
+
+**参数说明：**
+
+-   `--progress=plain`：显示详细的构建输出
+-   `-f Dockerfile.optimized`：使用优化的 Dockerfile
+-   `-t`：指定镜像标签
+
+### 构建性能数据
+
+**成功构建统计：**
+
+-   总耗时：约 6-8 分钟
+-   镜像大小：3.46GB
+-   主要步骤耗时：
+    -   系统依赖安装：约 1 分钟
+    -   Chromium 安装：40 秒
+    -   pnpm install：43 秒（3855 个包）
+    -   pnpm build：约 3-4 分钟
+
+**对比原始 Dockerfile：**
+
+-   原始：卡住 25+ 分钟后失败
+-   优化：6-8 分钟成功完成
+
+### 故障诊断流程
+
+如果构建卡住，按以下步骤诊断：
+
+#### 1. 检查构建是否真的在工作
+
+```bash
+# 检查容器 CPU 和 I/O
+docker stats --no-stream --format "table {{.Container}}\t{{.CPUPerc}}\t{{.BlockIO}}"
+
+# 查看 Docker 进程
+tasklist | findstr docker
+```
+
+**判断标准：**
+
+-   ✅ 正常：有 CPU 使用或 Block I/O 活动
+-   ❌ 卡住：CPU 0.00%，Block I/O 无变化
+
+#### 2. 查看详细构建日志
+
+```bash
+# 使用 --progress=plain 获取完整输出
+docker build --progress=plain -t image-name .
+```
+
+#### 3. 检查构建缓存
+
+```bash
+# 查看缓存使用情况
+docker system df -v
+
+# 如果缓存过大（>10GB），清理
+docker buildx prune -af
+```
+
+### 常见问题
+
+#### 问题 1：构建卡在 gcc 安装
+
+**症状：**
+
+```
+#6 3.685 (11/42) Installing gcc (14.2.0-r6)
+#6 ...
+```
+
+**解决方案：**
+使用 `Dockerfile.optimized` 分步安装依赖。
+
+#### 问题 2：构建缓存导致使用旧代码
+
+**症状：**
+镜像构建成功，但运行时仍有 403 错误。
+
+**解决方案：**
+
+```bash
+# 清理缓存后重新构建
+docker buildx prune -af
+docker build --no-cache -f Dockerfile.optimized -t image-name .
+```
+
+#### 问题 3：Docker Desktop 资源不足
+
+**症状：**
+构建过程中 Docker Desktop 崩溃或极慢。
+
+**解决方案：**
+
+1. 增加 Docker Desktop 的内存限制（至少 8GB）
+2. 增加磁盘空间限制（至少 60GB）
+3. 清理未使用的镜像和容器：
+    ```bash
+    docker system prune -a
+    ```
+
+### 验证镜像
+
+构建成功后验证镜像：
+
+```bash
+# 查看镜像
+docker images | grep meng9zzg/moduoduo-agent-flow-packages
+
+# 测试运行
+docker run -d -p 3001:3000 \
+  -e FLOWISE_USERNAME=admin \
+  -e FLOWISE_PASSWORD=admin123 \
+  meng9zzg/moduoduo-agent-flow-packages:latest
+
+# 等待启动（约 10-20 秒）
+sleep 20
+
+# 测试 API
+curl http://localhost:3001/api/v1/chatflows
+# 应返回: []
+
+# 测试开源模式
+curl http://localhost:3001/api/v1/settings
+# 应返回: {"PLATFORM_TYPE":"open source"}
+
+# 停止容器
+docker stop $(docker ps -q --filter ancestor=meng9zzg/moduoduo-agent-flow-packages:latest)
+```
+
+### 推送到 Docker Hub
+
+```bash
+# 登录 Docker Hub
+docker login
+
+# 推送镜像
+docker push meng9zzg/moduoduo-agent-flow-packages:latest
+
+# 验证推送成功
+docker pull meng9zzg/moduoduo-agent-flow-packages:latest
+```
+
+### 最佳实践总结
+
+1. **分步安装系统依赖**
+
+    - 不要一次性安装过多包
+    - 将大型工具（gcc、g++）单独安装
+    - 每个 RUN 命令使用 `--no-cache`
+
+2. **使用详细输出**
+
+    - 始终使用 `--progress=plain` 查看完整日志
+    - 便于诊断卡住的具体位置
+
+3. **定期清理缓存**
+
+    - 构建前运行 `docker buildx prune -af`
+    - 避免使用过时的缓存层
+
+4. **监控构建过程**
+
+    - 使用 `docker stats` 监控资源使用
+    - 超过 5 分钟无输出就应该检查
+
+5. **保留优化的 Dockerfile**
+    - 将 `Dockerfile.optimized` 提交到代码库
+    - 在 CI/CD 中使用优化版本
+
+### 相关文件
+
+-   [Dockerfile](./Dockerfile) - 原始 Dockerfile（会卡住）
+-   [Dockerfile.optimized](./Dockerfile.optimized) - 优化的 Dockerfile（推荐使用）
+-   [docs/FIX_403_FORBIDDEN.md](./docs/FIX_403_FORBIDDEN.md) - 403 问题修复文档
+
+### 技术要点
+
+**为什么分步安装能解决问题？**
+
+1. **减少单次操作复杂度**：每个 RUN 层独立执行，减少死锁可能
+2. **更好的错误隔离**：如果某个包安装失败，只影响该步骤
+3. **利用 Docker 层缓存**：前面的步骤可以缓存，加速后续构建
+4. **避免 Alpine APK 的并发问题**：减少同时处理的依赖关系
+
+**Alpine vs Debian 镜像：**
+
+-   Alpine 更小（~5MB vs ~100MB）但包管理器较简单
+-   Debian 更稳定但镜像更大
+-   本项目选择 Alpine 是为了减小镜像体积
+
 ## 更新日志
 
 -   **2025-10-17**: 初始版本，记录 Node 20 本地开发配置
     -   配置 .npmrc 解决 Windows SDK 问题
     -   成功安装 sqlite3 预编译版本
     -   前后端开发服务器启动成功
+-   **2025-10-17**: 添加 Docker 镜像构建指南
+    -   记录依赖安装卡住问题和解决方案
+    -   提供优化的 Dockerfile 和构建流程
+    -   包含完整的故障诊断和最佳实践
