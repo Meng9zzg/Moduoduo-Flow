@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback, useContext } from 'react'
-import ReactFlow, { addEdge, Controls, MiniMap, Background, useNodesState, useEdgesState } from 'reactflow'
+import ReactFlow, { addEdge, MiniMap, Background, useNodesState, useEdgesState } from 'reactflow'
 import 'reactflow/dist/style.css'
 import './index.css'
 import { useReward } from 'react-rewards'
@@ -28,6 +28,7 @@ import ConnectionLine from './ConnectionLine'
 import StickyNote from './StickyNote'
 import CanvasHeader from '@/views/canvas/CanvasHeader'
 import AddNodes from '@/views/canvas/AddNodes'
+import CustomControls from './CustomControls'
 import ConfirmDialog from '@/ui-component/dialog/ConfirmDialog'
 import EditNodeDialog from '@/views/agentflowsv2/EditNodeDialog'
 import ChatPopUp from '@/views/chatmessage/ChatPopUp'
@@ -43,7 +44,7 @@ import useApi from '@/hooks/useApi'
 import useConfirm from '@/hooks/useConfirm'
 
 // icons
-import { IconX, IconRefreshAlert, IconMagnetFilled, IconMagnetOff, IconArtboard, IconArtboardOff } from '@tabler/icons-react'
+import { IconX, IconRefreshAlert } from '@tabler/icons-react'
 
 // utils
 import {
@@ -731,36 +732,13 @@ const AgentflowCanvas = () => {
                                 connectionLineComponent={ConnectionLine}
                                 proOptions={{ hideAttribution: true }}
                             >
-                                <Controls
-                                    className={customization.isDarkMode ? 'dark-mode-controls' : ''}
-                                    style={{
-                                        display: 'flex',
-                                        flexDirection: 'row',
-                                        left: '50%',
-                                        transform: 'translate(-50%, -50%)'
-                                    }}
-                                >
-                                    <button
-                                        className='react-flow__controls-button react-flow__controls-interactive'
-                                        onClick={() => {
-                                            setIsSnappingEnabled(!isSnappingEnabled)
-                                        }}
-                                        title={t('agentflowV2.controls.toggleSnapping')}
-                                        aria-label={t('agentflowV2.controls.toggleSnapping')}
-                                    >
-                                        {isSnappingEnabled ? <IconMagnetFilled /> : <IconMagnetOff />}
-                                    </button>
-                                    <button
-                                        className='react-flow__controls-button react-flow__controls-interactive'
-                                        onClick={() => {
-                                            setIsBackgroundEnabled(!isBackgroundEnabled)
-                                        }}
-                                        title={t('agentflowV2.controls.toggleBackground')}
-                                        aria-label={t('agentflowV2.controls.toggleBackground')}
-                                    >
-                                        {isBackgroundEnabled ? <IconArtboard /> : <IconArtboardOff />}
-                                    </button>
-                                </Controls>
+                                <CustomControls
+                                    isDarkMode={customization.isDarkMode}
+                                    isSnappingEnabled={isSnappingEnabled}
+                                    setIsSnappingEnabled={setIsSnappingEnabled}
+                                    isBackgroundEnabled={isBackgroundEnabled}
+                                    setIsBackgroundEnabled={setIsBackgroundEnabled}
+                                />
                                 <MiniMap
                                     nodeStrokeWidth={3}
                                     nodeColor={customization.isDarkMode ? '#2d2d2d' : '#e2e2e2'}

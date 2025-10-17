@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback, useContext } from 'react'
-import ReactFlow, { addEdge, Controls, Background, useNodesState, useEdgesState } from 'reactflow'
+import ReactFlow, { addEdge, Background, useNodesState, useEdgesState } from 'reactflow'
 import 'reactflow/dist/style.css'
 import { useTranslation } from 'react-i18next'
 
@@ -24,6 +24,7 @@ import ButtonEdge from './ButtonEdge'
 import StickyNote from './StickyNote'
 import CanvasHeader from './CanvasHeader'
 import AddNodes from './AddNodes'
+import CustomControls from './CustomControls'
 import ConfirmDialog from '@/ui-component/dialog/ConfirmDialog'
 import ChatPopUp from '@/views/chatmessage/ChatPopUp'
 import VectorStorePopUp from '@/views/vectorstore/VectorStorePopUp'
@@ -39,7 +40,7 @@ import useConfirm from '@/hooks/useConfirm'
 import { useAuth } from '@/hooks/useAuth'
 
 // icons
-import { IconX, IconRefreshAlert, IconMagnetFilled, IconMagnetOff, IconArtboard, IconArtboardOff } from '@tabler/icons-react'
+import { IconX, IconRefreshAlert } from '@tabler/icons-react'
 
 // utils
 import {
@@ -607,36 +608,13 @@ const Canvas = () => {
                                 className='chatflow-canvas'
                                 proOptions={{ hideAttribution: true }}
                             >
-                                <Controls
-                                    className={customization.isDarkMode ? 'dark-mode-controls' : ''}
-                                    style={{
-                                        display: 'flex',
-                                        flexDirection: 'row',
-                                        left: '50%',
-                                        transform: 'translate(-50%, -50%)'
-                                    }}
-                                >
-                                    <button
-                                        className='react-flow__controls-button react-flow__controls-interactive'
-                                        onClick={() => {
-                                            setIsSnappingEnabled(!isSnappingEnabled)
-                                        }}
-                                        title={t('controls.toggleSnapping')}
-                                        aria-label={t('controls.toggleSnapping')}
-                                    >
-                                        {isSnappingEnabled ? <IconMagnetFilled /> : <IconMagnetOff />}
-                                    </button>
-                                    <button
-                                        className='react-flow__controls-button react-flow__controls-interactive'
-                                        onClick={() => {
-                                            setIsBackgroundEnabled(!isBackgroundEnabled)
-                                        }}
-                                        title={t('controls.toggleBackground')}
-                                        aria-label={t('controls.toggleBackground')}
-                                    >
-                                        {isBackgroundEnabled ? <IconArtboard /> : <IconArtboardOff />}
-                                    </button>
-                                </Controls>
+                                <CustomControls
+                                    isDarkMode={customization.isDarkMode}
+                                    isSnappingEnabled={isSnappingEnabled}
+                                    setIsSnappingEnabled={setIsSnappingEnabled}
+                                    isBackgroundEnabled={isBackgroundEnabled}
+                                    setIsBackgroundEnabled={setIsBackgroundEnabled}
+                                />
                                 {isBackgroundEnabled && <Background color='#aaa' gap={16} />}
                                 <AddNodes isAgentCanvas={isAgentCanvas} nodesData={getNodesApi.data} node={selectedNode} />
                                 {isSyncNodesButtonEnabled && (

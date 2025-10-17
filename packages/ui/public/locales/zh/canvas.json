@@ -75,6 +75,10 @@
         "unsavedChanges": "您有未保存的更改！是否要离开？"
     },
     "controls": {
+        "zoomIn": "放大",
+        "zoomOut": "缩小",
+        "fitView": "居中对齐",
+        "fullScreen": "全屏模式",
         "toggleSnapping": "切换对齐网格",
         "toggleBackground": "切换背景",
         "syncNodes": "同步节点"
