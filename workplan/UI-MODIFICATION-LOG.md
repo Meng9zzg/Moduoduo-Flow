@@ -1746,6 +1746,124 @@ const CustomWidthTooltip = styled(({ className, ...props }) => <Tooltip {...prop
 
 ---
 
+## 2025-10-18: 精确回滚全局毛玻璃 Tooltip 样式修改
+
+### 任务概述
+
+用户反馈全局毛玻璃 Tooltip 样式修改过于激进，导致原有样式丢失。需要精确回滚 Tooltip 相关的修改，但保留其他 UI 优化工作。
+
+### 回滚原因
+
+**用户反馈：**
+
+-   全局毛玻璃 Tooltip 样式修改影响了原有设计
+-   需要保留其他 UI 优化工作（Canvas 界面、Marketplace 组件等）
+-   只回滚 Tooltip 相关修改，其他功能保持不变
+
+### 回滚内容
+
+#### 1. 回滚的文件列表
+
+**全局主题配置：**
+
+-   `packages/ui/src/themes/compStyleOverride.js` - 回滚 MUI 主题 Tooltip 样式覆盖
+
+**自定义 Tooltip 组件：**
+
+-   `packages/ui/src/ui-component/tooltip/NodeTooltip.jsx` - 回滚毛玻璃样式
+-   `packages/ui/src/views/canvas/NodeInputHandler.jsx` - 回滚 CustomWidthTooltip 样式
+-   `packages/ui/src/views/canvas/NodeOutputHandler.jsx` - 回滚 CustomWidthTooltip 样式
+-   `packages/ui/src/ui-component/tooltip/MoreItemsTooltip.jsx` - 回滚 arrow 属性修改
+-   `packages/ui/src/ui-component/tooltip/TooltipWithParser.jsx` - 回滚 arrow 属性修改
+
+**强制 CSS 样式：**
+
+-   `packages/ui/src/assets/scss/style.scss` - 回滚强制 Tooltip 样式覆盖
+-   `packages/ui/src/views/agentflowsv2/index.css` - 回滚强制 Tooltip 样式覆盖
+
+#### 2. 保留的内容
+
+**Canvas 界面优化：**
+
+-   ✅ 顶部栏一致性（logo、边框、主题切换）
+-   ✅ 移除 MiniMap 组件
+-   ✅ 清理冗余 CSS 样式
+
+**Marketplace 界面完善：**
+
+-   ✅ 主题切换和语言切换组件
+-   ✅ CustomControls 替换简单控制组件
+-   ✅ 顶部栏 logo 和样式统一
+
+**其他 UI 优化：**
+
+-   ✅ 账单按钮变形问题修复
+-   ✅ 所有翻译工作（200+个节点翻译）
+-   ✅ 权限系统修复
+-   ✅ 文档更新
+
+### 技术实现
+
+#### 回滚策略
+
+```bash
+# 1. 重置到完整状态
+git reset --hard 9d8240b6
+
+# 2. 精确回滚Tooltip相关文件
+git checkout 27ffdfd9~1 -- packages/ui/src/themes/compStyleOverride.js packages/ui/src/ui-component/tooltip/NodeTooltip.jsx packages/ui/src/views/canvas/NodeInputHandler.jsx packages/ui/src/views/canvas/NodeOutputHandler.jsx packages/ui/src/ui-component/tooltip/MoreItemsTooltip.jsx packages/ui/src/ui-component/tooltip/TooltipWithParser.jsx packages/ui/src/views/agentflowsv2/index.css packages/ui/src/assets/scss/style.scss
+
+# 3. 提交精确回滚
+git commit -m "revert(ui): 仅回滚全局毛玻璃Tooltip样式修改"
+```
+
+#### 回滚结果
+
+**提交信息：** `revert(ui): 仅回滚全局毛玻璃Tooltip样式修改`
+
+**修改统计：**
+
+-   **8 个文件** 被回滚
+-   **88 行** 新增代码
+-   **89 行** 删除代码
+
+### 影响范围
+
+**回滚影响：**
+
+-   Tooltip 组件恢复原有样式
+-   移除毛玻璃效果和强制样式覆盖
+-   恢复自定义组件的原始实现
+
+**保留功能：**
+
+-   所有 Canvas 界面优化
+-   所有 Marketplace 界面功能
+-   所有翻译工作
+-   所有其他 UI 改进
+
+### 经验总结
+
+**回滚策略：**
+
+1. **精确回滚**：只回滚有问题的功能，保留其他改进
+2. **分层回滚**：从全局配置到组件级别，确保完整性
+3. **功能验证**：回滚后验证其他功能正常工作
+
+**最佳实践：**
+
+-   全局样式修改要谨慎，考虑对现有设计的影响
+-   回滚时要精确识别问题范围，避免过度回滚
+-   保留用户认可的功能，只修复有问题的部分
+
+**后续建议：**
+
+-   如需重新实现 Tooltip 样式，建议采用更温和的方式
+-   考虑用户反馈，确保样式修改符合设计预期
+-   建立更好的样式修改测试和验证机制
+
+---
+
 ## 下次修改时间：待定
 
 _本文档持续更新中..._
