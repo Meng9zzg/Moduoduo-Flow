@@ -1,18 +1,15 @@
 import { useState, useEffect } from 'react'
 import { useReactFlow } from 'reactflow'
-import {
-    IconPlus,
-    IconMinus,
-    IconMaximize,
-    IconFocus2,
-    IconMagnetFilled,
-    IconMagnetOff,
-    IconArtboard,
-    IconArtboardOff
-} from '@tabler/icons-react'
 import { useTranslation } from 'react-i18next'
 import { Tooltip } from '@mui/material'
 import PropTypes from 'prop-types'
+import { PlusIcon } from '@/ui-component/animated-icons/PlusIcon'
+import { MinusIcon } from '@/ui-component/animated-icons/MinusIcon'
+import { FocusIcon } from '@/ui-component/animated-icons/FocusIcon'
+import { MaximizeIcon } from '@/ui-component/animated-icons/MaximizeIcon'
+import { BlocksIcon } from '@/ui-component/animated-icons/BlocksIcon'
+import { GridIcon } from '@/ui-component/animated-icons/GridIcon'
+import { GripIcon } from '@/ui-component/animated-icons/GripIcon'
 import './CustomControls.css'
 
 const CustomControls = ({ isDarkMode, isSnappingEnabled, setIsSnappingEnabled, isBackgroundEnabled, setIsBackgroundEnabled }) => {
@@ -42,17 +39,17 @@ const CustomControls = ({ isDarkMode, isSnappingEnabled, setIsSnappingEnabled, i
             <div className='btn-group'>
                 <Tooltip title={t('controls.zoomIn')} arrow>
                     <button className='btn left' type='button' onClick={() => zoomIn()} aria-label={t('controls.zoomIn')}>
-                        <IconPlus size={22} />
+                        <PlusIcon size={22} />
                     </button>
                 </Tooltip>
                 <Tooltip title={t('controls.zoomOut')} arrow>
                     <button className='btn middle' type='button' onClick={() => zoomOut()} aria-label={t('controls.zoomOut')}>
-                        <IconMinus size={22} />
+                        <MinusIcon size={22} />
                     </button>
                 </Tooltip>
                 <Tooltip title={t('controls.fitView')} arrow>
                     <button className='btn middle' type='button' onClick={() => fitView()} aria-label={t('controls.fitView')}>
-                        <IconFocus2 size={22} />
+                        <FocusIcon size={20} />
                     </button>
                 </Tooltip>
                 <Tooltip title={t('controls.fullScreen')} arrow>
@@ -62,7 +59,7 @@ const CustomControls = ({ isDarkMode, isSnappingEnabled, setIsSnappingEnabled, i
                         onClick={handleFullScreen}
                         aria-label={t('controls.fullScreen')}
                     >
-                        <IconMaximize size={22} />
+                        <MaximizeIcon size={20} />
                     </button>
                 </Tooltip>
                 <Tooltip title={t('controls.toggleSnapping')} arrow>
@@ -72,7 +69,7 @@ const CustomControls = ({ isDarkMode, isSnappingEnabled, setIsSnappingEnabled, i
                         onClick={() => setIsSnappingEnabled(!isSnappingEnabled)}
                         aria-label={t('controls.toggleSnapping')}
                     >
-                        {isSnappingEnabled ? <IconMagnetFilled size={22} /> : <IconMagnetOff size={22} />}
+                        {isSnappingEnabled ? <GridIcon size={22} /> : <BlocksIcon size={22} />}
                     </button>
                 </Tooltip>
                 <Tooltip title={t('controls.toggleBackground')} arrow>
@@ -82,7 +79,7 @@ const CustomControls = ({ isDarkMode, isSnappingEnabled, setIsSnappingEnabled, i
                         onClick={() => setIsBackgroundEnabled(!isBackgroundEnabled)}
                         aria-label={t('controls.toggleBackground')}
                     >
-                        {isBackgroundEnabled ? <IconArtboard size={22} /> : <IconArtboardOff size={22} />}
+                        <GripIcon size={22} />
                     </button>
                 </Tooltip>
             </div>

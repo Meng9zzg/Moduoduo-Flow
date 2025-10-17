@@ -33,6 +33,15 @@
     height: 100%;
 }
 
+/* Ensure theme is preserved in fullscreen mode */
+.reactflow-parent-wrapper:fullscreen {
+    background-color: #ffffff;
+}
+
+.reactflow-parent-wrapper.dark-mode:fullscreen {
+    background-color: #1a1a1a;
+}
+
 .reactflow-parent-wrapper .reactflow-wrapper {
     flex-grow: 1;
     height: 100%;
@@ -90,4 +99,46 @@
 /* Hide React Flow attribution */
 .react-flow__attribution {
     display: none !important;
+}
+
+/* Enlarge and round controls */
+.react-flow__controls {
+    transform: scale(2);
+    transform-origin: bottom center;
+    border-radius: 50px !important;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
+    background: rgba(255, 255, 255, 0.7) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.dark-mode-controls.react-flow__controls {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+    background: rgba(45, 45, 45, 0.7) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.react-flow__controls-button {
+    background: transparent !important;
+    border: none !important;
+}
+
+.react-flow__controls-button:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.dark-mode-controls .react-flow__controls-button:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.react-flow__controls-button:first-child {
+    border-top-left-radius: 50px !important;
+    border-bottom-left-radius: 50px !important;
+}
+
+.react-flow__controls-button:last-child {
+    border-top-right-radius: 50px !important;
+    border-bottom-right-radius: 50px !important;
 }

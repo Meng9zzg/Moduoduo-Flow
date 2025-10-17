@@ -708,7 +708,7 @@ const AgentflowCanvas = () => {
                     </Toolbar>
                 </AppBar>
                 <Box sx={{ pt: '70px', height: '100vh', width: '100%' }}>
-                    <div className='reactflow-parent-wrapper'>
+                    <div className={`reactflow-parent-wrapper ${customization.isDarkMode ? 'dark-mode' : ''}`}>
                         <div className='reactflow-wrapper' ref={reactFlowWrapper}>
                             <ReactFlow
                                 nodes={nodes}

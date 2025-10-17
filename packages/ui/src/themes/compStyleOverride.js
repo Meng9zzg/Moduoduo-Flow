@@ -278,11 +278,7 @@ export default function componentStyleOverrides(theme) {
                     WebkitBackdropFilter: 'blur(10px)'
                 },
                 arrow: {
-                    color: theme?.customization?.isDarkMode ? 'rgba(150, 169, 255, 0.25)' : 'rgba(177, 191, 255, 0.25)',
-                    '&::before': {
-                        backdropFilter: 'blur(10px)',
-                        WebkitBackdropFilter: 'blur(10px)'
-                    }
+                    color: theme?.customization?.isDarkMode ? 'rgba(150, 169, 255, 0.25)' : 'rgba(177, 191, 255, 0.25)'
                 }
             }
         },

@@ -35,8 +35,6 @@
 
 .custom-controls-wrapper .btn svg {
     display: block;
-    width: 22px;
-    height: 22px;
 }
 
 .custom-controls-wrapper .middle {
@@ -70,20 +68,28 @@
     color: #414fff;
 }
 
-/* Dark mode styles */
+/* Dark mode styles - 基于主题色设计 */
 .custom-controls-wrapper.dark-mode .btn {
-    background-color: #3a3a3a;
-    color: #e0e0e0;
-    text-shadow: 0 0.0625em 0 #000;
-    box-shadow: inset 0 0.0625em 0 0 #4a4a4a, 0 0.0625em 0 0 #2a2a2a, 0 0.125em 0 0 #282828, 0 0.25em 0 0 #202020, 0 0.3125em 0 0 #1e1e1e,
-        0 0.375em 0 0 #1c1c1c, 0 0.425em 0 0 #1a1a1a, 0 0.425em 0.5em 0 #181818;
-}
-
-.custom-controls-wrapper.dark-mode .btn:active {
-    box-shadow: inset 0 0.03em 0 0 #4a4a4a, 0 0.03em 0 0 #2a2a2a, 0 0.0625em 0 0 #282828, 0 0.125em 0 0 #202020, 0 0.125em 0 0 #1e1e1e,
-        0 0.2em 0 0 #1c1c1c, 0 0.225em 0 0 #1a1a1a, 0 0.225em 0.375em 0 #181818;
+    background-color: #23262c; /* darkPrimaryLight - 与深色主题卡片一致 */
+    color: #7b7e8c; /* 静态默认 - 更深的灰紫色 */
+    text-shadow: 0 0.0625em 0 rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0.0625em 0 0 #2d2f39, 0 0.0625em 0 0 #1c1e25, 0 0.125em 0 0 #191b1f, 0 0.25em 0 0 #111217, 0 0.3125em 0 0 #0f1115,
+        0 0.375em 0 0 #0d0f12, 0 0.425em 0 0 #0b0c0f, 0 0.425em 0.5em 0 rgba(17, 18, 23, 0.6);
 }
 
 .custom-controls-wrapper.dark-mode .btn:hover {
-    background-color: #454545;
+    background-color: #32353b; /* darkPrimary800 - 悬浮时更亮的层级 */
+    color: #b7bbcb; /* 悬浮状态 - 更亮的灰紫色 */
+}
+
+/* 选中状态 - 使用蓝紫色强调 */
+.custom-controls-wrapper.dark-mode .btn.active {
+    color: #96a9ff; /* 选中状态 - 蓝紫色 */
+}
+
+.custom-controls-wrapper.dark-mode .btn:active {
+    translate: 0 0.225em;
+    box-shadow: inset 0 0.03em 0 0 #2d2f39, 0 0.03em 0 0 #1c1e25, 0 0.0625em 0 0 #191b1f, 0 0.125em 0 0 #111217, 0 0.125em 0 0 #0f1115,
+        0 0.2em 0 0 #0d0f12, 0 0.225em 0 0 #0b0c0f, 0 0.225em 0.375em 0 rgba(17, 18, 23, 0.4);
+    color: #96a9ff; /* 点击时使用蓝紫色 */
 }
