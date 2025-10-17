@@ -1,0 +1,82 @@
+import { motion, useAnimation } from 'framer-motion'
+import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react'
+import PropTypes from 'prop-types'
+
+const KeyIcon = forwardRef(({ onMouseEnter, onMouseLeave, className, stroke = 1.5, size = '1.3rem', ...props }, ref) => {
+    const controls = useAnimation()
+    const isControlledRef = useRef(false)
+
+    useImperativeHandle(ref, () => {
+        isControlledRef.current = true
+
+        return {
+            startAnimation: () => controls.start('animate'),
+            stopAnimation: () => controls.start('normal')
+        }
+    })
+
+    const handleMouseEnter = useCallback(
+        (e) => {
+            if (!isControlledRef.current) {
+                controls.start('animate')
+            } else {
+                onMouseEnter?.(e)
+            }
+        },
+        [controls, onMouseEnter]
+    )
+
+    const handleMouseLeave = useCallback(
+        (e) => {
+            if (!isControlledRef.current) {
+                controls.start('normal')
+            } else {
+                onMouseLeave?.(e)
+            }
+        },
+        [controls, onMouseLeave]
+    )
+
+    return (
+        <div className={className} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} {...props}>
+            <motion.svg
+                xmlns='http://www.w3.org/2000/svg'
+                width={size}
+                height={size}
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='currentColor'
+                strokeWidth={stroke}
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                variants={{
+                    normal: { y: 0, rotate: 0 },
+                    animate: {
+                        y: [0, -3, 0, -2, 0],
+                        rotate: [0, 3, -3, 0]
+                    }
+                }}
+                transition={{
+                    duration: 0.9,
+                    bounce: 0.5
+                }}
+                animate={controls}
+            >
+                <path d='M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z' />
+                <circle cx='16.5' cy='7.5' r='.5' fill='currentColor' />
+            </motion.svg>
+        </div>
+    )
+})
+
+KeyIcon.displayName = 'KeyIcon'
+
+KeyIcon.propTypes = {
+    onMouseEnter: PropTypes.func,
+    onMouseLeave: PropTypes.func,
+    className: PropTypes.string,
+    stroke: PropTypes.number,
+    size: PropTypes.string
+}
+
+export default KeyIcon

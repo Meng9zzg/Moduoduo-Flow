@@ -90,7 +90,7 @@ const NavGroup = ({ item }) => {
                         </Typography>
                     )
                 }
-                sx={{ p: '16px', py: 2, display: 'flex', flexDirection: 'column', gap: 1 }}
+                sx={{ p: '16px', py: 2, display: 'flex', flexDirection: 'column', gap: 0.75 }}
             >
                 {renderPrimaryItems().map((menu) => listItems(menu))}
             </List>
@@ -109,11 +109,18 @@ const NavGroup = ({ item }) => {
                             />
                             <List
                                 subheader={
-                                    <Typography variant='caption' sx={{ ...theme.typography.subMenuCaption }} display='block' gutterBottom>
-                                        {t(group.id, group.title)}
-                                    </Typography>
+                                    group.title ? (
+                                        <Typography
+                                            variant='caption'
+                                            sx={{ ...theme.typography.subMenuCaption }}
+                                            display='block'
+                                            gutterBottom
+                                        >
+                                            {t(group.id, group.title)}
+                                        </Typography>
+                                    ) : null
                                 }
-                                sx={{ p: '16px', py: 2, display: 'flex', flexDirection: 'column', gap: 1 }}
+                                sx={{ p: '16px', py: 2, display: 'flex', flexDirection: 'column', gap: 0.75 }}
                             >
                                 {group.children.map((menu) => listItems(menu))}
                             </List>

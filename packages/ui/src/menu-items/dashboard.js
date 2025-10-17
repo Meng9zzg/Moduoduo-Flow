@@ -1,20 +1,7 @@
 // assets
 import {
-    IconList,
-    IconUsersGroup,
     IconHierarchy,
-    IconBuildingStore,
-    IconKey,
-    IconTool,
-    IconLock,
-    IconRobot,
-    IconSettings,
-    IconVariable,
-    IconFiles,
-    IconTestPipe,
     IconMicroscope,
-    IconDatabase,
-    IconChartHistogram,
     IconUserEdit,
     IconFileUpload,
     IconClipboardList,
@@ -22,28 +9,42 @@ import {
     IconUsers,
     IconLockCheck,
     IconFileDatabase,
-    IconShieldLock,
-    IconListCheck
+    IconShieldLock
 } from '@tabler/icons-react'
+import SettingsIcon from '@/ui-component/animated-icons/menu/SettingsIcon'
+import ListIcon from '@/ui-component/animated-icons/menu/ListIcon'
+import RobotIcon from '@/ui-component/animated-icons/menu/RobotIcon'
+import KeyIcon from '@/ui-component/animated-icons/menu/KeyIcon'
+import LockIcon from '@/ui-component/animated-icons/menu/LockIcon'
+import CctvIcon from '@/ui-component/animated-icons/menu/CctvIcon'
+import ArrowDown10Icon from '@/ui-component/animated-icons/menu/ArrowDown10Icon'
+import ChartScatterIcon from '@/ui-component/animated-icons/menu/ChartScatterIcon'
+import BoxesIcon from '@/ui-component/animated-icons/menu/BoxesIcon'
+import GitPullRequestIcon from '@/ui-component/animated-icons/menu/GitPullRequestIcon'
+import BuildingStoreIcon from '@/ui-component/animated-icons/menu/BuildingStoreIcon'
+import ToolIcon from '@/ui-component/animated-icons/menu/ToolIcon'
+import VariableIcon from '@/ui-component/animated-icons/menu/VariableIcon'
+import FilesIcon from '@/ui-component/animated-icons/menu/FilesIcon'
+import DatabaseIcon from '@/ui-component/animated-icons/menu/DatabaseIcon'
 
 // constant
 const icons = {
     IconHierarchy,
-    IconUsersGroup,
-    IconBuildingStore,
-    IconList,
-    IconKey,
-    IconTool,
-    IconLock,
-    IconRobot,
-    IconSettings,
-    IconVariable,
-    IconFiles,
-    IconTestPipe,
+    BoxesIcon,
+    BuildingStoreIcon,
+    ListIcon,
+    KeyIcon,
+    ToolIcon,
+    LockIcon,
+    RobotIcon,
+    GitPullRequestIcon,
+    SettingsIcon,
+    VariableIcon,
+    FilesIcon,
+    ArrowDown10Icon,
     IconMicroscope,
-    IconDatabase,
+    DatabaseIcon,
     IconUserEdit,
-    IconChartHistogram,
     IconFileUpload,
     IconClipboardList,
     IconStack2,
@@ -51,7 +52,8 @@ const icons = {
     IconLockCheck,
     IconFileDatabase,
     IconShieldLock,
-    IconListCheck
+    CctvIcon,
+    ChartScatterIcon
 }
 
 // ==============================|| DASHBOARD MENU ITEMS ||============================== //
@@ -71,7 +73,7 @@ const dashboard = {
                     title: 'Chatflows',
                     type: 'item',
                     url: '/chatflows',
-                    icon: icons.IconHierarchy,
+                    icon: icons.GitPullRequestIcon,
                     breadcrumbs: true,
                     permission: 'chatflows:view'
                 },
@@ -80,7 +82,7 @@ const dashboard = {
                     title: 'Agentflows',
                     type: 'item',
                     url: '/agentflows',
-                    icon: icons.IconUsersGroup,
+                    icon: icons.BoxesIcon,
                     breadcrumbs: true,
                     permission: 'agentflows:view'
                 },
@@ -89,7 +91,7 @@ const dashboard = {
                     title: 'Executions',
                     type: 'item',
                     url: '/executions',
-                    icon: icons.IconListCheck,
+                    icon: icons.CctvIcon,
                     breadcrumbs: true,
                     permission: 'executions:view'
                 },
@@ -98,7 +100,7 @@ const dashboard = {
                     title: 'Assistants',
                     type: 'item',
                     url: '/assistants',
-                    icon: icons.IconRobot,
+                    icon: icons.RobotIcon,
                     breadcrumbs: true,
                     permission: 'assistants:view'
                 },
@@ -107,7 +109,7 @@ const dashboard = {
                     title: 'Marketplaces',
                     type: 'item',
                     url: '/marketplaces',
-                    icon: icons.IconBuildingStore,
+                    icon: icons.BuildingStoreIcon,
                     breadcrumbs: true,
                     permission: 'templates:marketplace,templates:custom'
                 },
@@ -116,7 +118,7 @@ const dashboard = {
                     title: 'Tools',
                     type: 'item',
                     url: '/tools',
-                    icon: icons.IconTool,
+                    icon: icons.ToolIcon,
                     breadcrumbs: true,
                     permission: 'tools:view'
                 },
@@ -125,7 +127,7 @@ const dashboard = {
                     title: 'Credentials',
                     type: 'item',
                     url: '/credentials',
-                    icon: icons.IconLock,
+                    icon: icons.LockIcon,
                     breadcrumbs: true,
                     permission: 'credentials:view'
                 },
@@ -134,7 +136,7 @@ const dashboard = {
                     title: 'Variables',
                     type: 'item',
                     url: '/variables',
-                    icon: icons.IconVariable,
+                    icon: icons.VariableIcon,
                     breadcrumbs: true,
                     permission: 'variables:view'
                 },
@@ -143,7 +145,7 @@ const dashboard = {
                     title: 'API Keys',
                     type: 'item',
                     url: '/apikey',
-                    icon: icons.IconKey,
+                    icon: icons.KeyIcon,
                     breadcrumbs: true,
                     permission: 'apikeys:view'
                 },
@@ -152,7 +154,7 @@ const dashboard = {
                     title: 'Document Stores',
                     type: 'item',
                     url: '/document-stores',
-                    icon: icons.IconFiles,
+                    icon: icons.FilesIcon,
                     breadcrumbs: true,
                     permission: 'documentStores:view'
                 }
@@ -160,7 +162,7 @@ const dashboard = {
         },
         {
             id: 'evaluations',
-            title: 'Evaluations',
+            title: '',
             type: 'group',
             children: [
                 {
@@ -168,7 +170,7 @@ const dashboard = {
                     title: 'Datasets',
                     type: 'item',
                     url: '/datasets',
-                    icon: icons.IconDatabase,
+                    icon: icons.DatabaseIcon,
                     breadcrumbs: true,
                     permission: 'datasets:view'
                 },
@@ -177,7 +179,7 @@ const dashboard = {
                     title: 'Evaluators',
                     type: 'item',
                     url: '/evaluators',
-                    icon: icons.IconTestPipe,
+                    icon: icons.ArrowDown10Icon,
                     breadcrumbs: true,
                     permission: 'evaluators:view'
                 },
@@ -186,7 +188,7 @@ const dashboard = {
                     title: 'Evaluations',
                     type: 'item',
                     url: '/evaluations',
-                    icon: icons.IconChartHistogram,
+                    icon: icons.ChartScatterIcon,
                     breadcrumbs: true,
                     permission: 'evaluations:view'
                 }
@@ -251,7 +253,7 @@ const dashboard = {
         },
         {
             id: 'others',
-            title: 'Others',
+            title: '',
             type: 'group',
             children: [
                 {
@@ -259,7 +261,7 @@ const dashboard = {
                     title: 'Logs',
                     type: 'item',
                     url: '/logs',
-                    icon: icons.IconList,
+                    icon: icons.ListIcon,
                     breadcrumbs: true,
                     permission: 'logs:view'
                 },
@@ -277,7 +279,7 @@ const dashboard = {
                     title: 'Account Settings',
                     type: 'item',
                     url: '/account',
-                    icon: icons.IconSettings,
+                    icon: icons.SettingsIcon,
                     breadcrumbs: true
                 }
             ]

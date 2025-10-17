@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { forwardRef, useEffect } from 'react'
+import { forwardRef, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTranslation } from 'react-i18next'
@@ -23,10 +23,11 @@ const NavItem = ({ item, level, navType, onClick, onUploadFile }) => {
     const customization = useSelector((state) => state.customization)
     const matchesSM = useMediaQuery(theme.breakpoints.down('lg'))
     const { t } = useTranslation('menu')
+    const iconRef = useRef(null)
 
     const Icon = item.icon
     const itemIcon = item?.icon ? (
-        <Icon stroke={1.5} size='1.3rem' />
+        <Icon ref={iconRef} stroke={1.5} size='1.3rem' />
     ) : (
         <FiberManualRecordIcon
             sx={{
@@ -97,6 +98,18 @@ const NavItem = ({ item, level, navType, onClick, onUploadFile }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [navType])
 
+    const handleMouseEnter = () => {
+        if (iconRef.current?.startAnimation) {
+            iconRef.current.startAnimation()
+        }
+    }
+
+    const handleMouseLeave = () => {
+        if (iconRef.current?.stopAnimation) {
+            iconRef.current.stopAnimation()
+        }
+    }
+
     return (
         <ListItemButton
             {...listItemProps}
@@ -110,6 +123,8 @@ const NavItem = ({ item, level, navType, onClick, onUploadFile }) => {
             }}
             selected={customization.isOpen.findIndex((id) => id === item.id) > -1}
             onClick={() => itemHandler(item.id)}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
         >
             {item.id === 'loadChatflow' && <input type='file' hidden accept='.json' onChange={(e) => handleFileUpload(e)} />}
             <ListItemIcon sx={{ my: 'auto', minWidth: !item?.icon ? 18 : 36 }}>{itemIcon}</ListItemIcon>
