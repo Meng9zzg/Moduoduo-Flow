@@ -350,6 +350,8 @@
     "vectorStore": {
         "showApi": "Show API",
         "upsert": "Upsert",
+        "upsertTitle": "Upsert Vector Store",
+        "upsertTooltip": "Upsert Vector Database",
         "upsertSuccess": "Successfully upserted vector store. You can start chatting now!",
         "securityWarning": "For security reason, override config is disabled by default. You can change this by going into Agent Builder Configuration -> Security tab, and enable the property you want to override.",
         "refer": "Refer",

@@ -30,6 +30,10 @@
     "connections": "Connections",
     "properties": "Properties",
     "untitled": "Untitled {{type}}",
+    "types": {
+        "agent": "Agent",
+        "chatflow": "Chatflow"
+    },
     "header": {
         "back": "Back",
         "editName": "Edit Name",
@@ -102,7 +106,9 @@
         "seeExample": "See Example",
         "chooseAnOption": "choose an option",
         "manageLinks": "Manage Links",
-        "selectModel": "Select Model"
+        "selectModel": "Select Model",
+        "outputFrom": "Output from {{nodeId}}",
+        "valueFrom": "Value from {{key}}"
     },
     "node": {
         "actions": {
@@ -134,6 +140,27 @@
             "langchain": "LangChain",
             "llamaindex": "LlamaIndex",
             "utilities": "Utilities"
+        },
+        "categories": {
+            "Agents": "Agents",
+            "Memory": "Memory",
+            "Record Manager": "Record Manager",
+            "Utilities": "Utilities",
+            "Multi Agents": "Multi Agents",
+            "Sequential Agents": "Sequential Agents",
+            "Agent Flows": "Agent Flows",
+            "Chat Models": "Chat Models",
+            "Chains": "Chains",
+            "Document Loaders": "Document Loaders",
+            "Embeddings": "Embeddings",
+            "Tools": "Tools",
+            "Vector Stores": "Vector Stores",
+            "Text Splitters": "Text Splitters",
+            "Output Parsers": "Output Parsers",
+            "Retrievers": "Retrievers",
+            "Prompts": "Prompts",
+            "Cache": "Cache",
+            "Moderation": "Moderation"
         }
     },
     "nodeOutput": {

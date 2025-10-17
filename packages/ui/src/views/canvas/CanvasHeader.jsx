@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 
 // material-ui
 import { useTheme } from '@mui/material/styles'
-import { Avatar, Box, ButtonBase, Typography, Stack, TextField, Button } from '@mui/material'
+import { Avatar, Box, ButtonBase, Typography, Stack, TextField, Button, Tooltip } from '@mui/material'
 
 // icons
 import { IconSettings, IconChevronLeft, IconDeviceFloppy, IconPencil, IconCheck, IconX, IconCode } from '@tabler/icons-react'
@@ -21,6 +21,8 @@ import UpsertHistoryDialog from '@/views/vectorstore/UpsertHistoryDialog'
 import ViewLeadsDialog from '@/ui-component/dialog/ViewLeadsDialog'
 import ExportAsTemplateDialog from '@/ui-component/dialog/ExportAsTemplateDialog'
 import { Available } from '@/ui-component/rbac/available'
+import ThemeSwitch from '@/ui-component/switch/ThemeSwitch'
+import LanguageSwitch from '@/ui-component/switch/LanguageSwitch'
 
 // API
 import chatflowsApi from '@/api/chatflows'
@@ -31,7 +33,11 @@ import useApi from '@/hooks/useApi'
 // utils
 import { generateExportFlowData } from '@/utils/genericHelper'
 import { uiBaseURL } from '@/store/constant'
-import { closeSnackbar as closeSnackbarAction, enqueueSnackbar as enqueueSnackbarAction, SET_CHATFLOW } from '@/store/actions'
+import { closeSnackbar as closeSnackbarAction, enqueueSnackbar as enqueueSnackbarAction, SET_CHATFLOW, SET_DARKMODE } from '@/store/actions'
+
+// logo
+import logoDark from '@/assets/images/moduoduo_dark.svg'
+import logoLight from '@/assets/images/moduoduo_white1.svg'
 
 // ==============================|| CANVAS HEADER ||============================== //
 
@@ -64,11 +70,20 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, isAgentflowV2, handleSaveFlow, 
     const closeSnackbar = (...args) => dispatch(closeSnackbarAction(...args))
 
     const [savePermission, setSavePermission] = useState(isAgentCanvas ? 'agentflows:create' : 'chatflows:create')
+    const [isDark, setIsDark] = useState(false)
 
-    const title = isAgentCanvas ? 'Agents' : 'Chatflow'
+    const title = isAgentCanvas ? t('types.agent') : t('types.chatflow')
 
     const updateChatflowApi = useApi(chatflowsApi.updateChatflow)
     const canvas = useSelector((state) => state.canvas)
+    const customization = useSelector((state) => state.customization)
+
+    const handleThemeChange = (theme) => {
+        const isDarkMode = theme === 'dark'
+        dispatch({ type: SET_DARKMODE, isDarkMode })
+        setIsDark(isDarkMode)
+        localStorage.setItem('isDarkMode', isDarkMode)
+    }
 
     const onSettingsItemClick = (setting) => {
         setSettingsOpen(false)
@@ -250,12 +265,16 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, isAgentflowV2, handleSaveFlow, 
         }
     }, [chatflow, isAgentCanvas, chatflowConfigurationDialogOpen, t])
 
+    useEffect(() => {
+        setIsDark(customization.isDarkMode)
+    }, [customization.isDarkMode])
+
     return (
         <>
-            <Stack flexDirection='row' justifyContent='space-between' sx={{ width: '100%' }}>
-                <Stack flexDirection='row' sx={{ width: '100%', maxWidth: '50%' }}>
+            <Stack flexDirection='row' justifyContent='space-between' alignItems='center' sx={{ width: '100%' }}>
+                <Stack flexDirection='row' alignItems='center' sx={{ flex: 1, maxWidth: '40%' }}>
                     <Box>
-                        <ButtonBase title={t('header.back')} sx={{ borderRadius: '50%' }}>
+                        <ButtonBase title={t('header.back')} sx={{ borderRadius: '12px', overflow: 'hidden' }}>
                             <Avatar
                                 variant='rounded'
                                 sx={{
@@ -284,7 +303,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, isAgentflowV2, handleSaveFlow, 
                     </Box>
                     <Box sx={{ width: '100%' }}>
                         {!isEditingFlowName ? (
-                            <Stack flexDirection='row'>
+                            <Stack flexDirection='row' sx={{ width: '100%' }}>
                                 <Typography
                                     sx={{
                                         fontSize: '1.5rem',
@@ -299,7 +318,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, isAgentflowV2, handleSaveFlow, 
                                 </Typography>
                                 {chatflow?.id && (
                                     <Available permission={savePermission}>
-                                        <ButtonBase title={t('header.editName')} sx={{ borderRadius: '50%' }}>
+                                        <ButtonBase title={t('header.editName')} sx={{ borderRadius: '12px', overflow: 'hidden' }}>
                                             <Avatar
                                                 variant='rounded'
                                                 sx={{
@@ -343,7 +362,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, isAgentflowV2, handleSaveFlow, 
                                         }
                                     }}
                                 />
-                                <ButtonBase title={t('header.saveName')} sx={{ borderRadius: '50%' }}>
+                                <ButtonBase title={t('header.saveName')} sx={{ borderRadius: '12px', overflow: 'hidden' }}>
                                     <Avatar
                                         variant='rounded'
                                         sx={{
@@ -364,7 +383,7 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, isAgentflowV2, handleSaveFlow, 
                                         <IconCheck stroke={1.5} size='1.3rem' />
                                     </Avatar>
                                 </ButtonBase>
-                                <ButtonBase title={t('header.cancel')} sx={{ borderRadius: '50%' }}>
+                                <ButtonBase title={t('header.cancel')} sx={{ borderRadius: '12px', overflow: 'hidden' }}>
                                     <Avatar
                                         variant='rounded'
                                         sx={{
@@ -389,9 +408,29 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, isAgentflowV2, handleSaveFlow, 
                         )}
                     </Box>
                 </Stack>
-                <Box>
+                {/* Center Logo */}
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        left: '50%',
+                        top: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        display: 'flex',
+                        alignItems: 'center'
+                    }}
+                >
+                    <img
+                        src={customization.isDarkMode ? logoDark : logoLight}
+                        alt='Moduoduo Logo'
+                        style={{
+                            height: '48px',
+                            width: 'auto'
+                        }}
+                    />
+                </Box>
+                <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
                     {chatflow?.id && (
-                        <ButtonBase title={t('header.apiEndpoint')} sx={{ borderRadius: '50%', mr: 2 }}>
+                        <ButtonBase title={t('header.apiEndpoint')} sx={{ borderRadius: '12px', overflow: 'hidden', mr: 2 }}>
                             <Avatar
                                 variant='rounded'
                                 sx={{
@@ -412,50 +451,58 @@ const CanvasHeader = ({ chatflow, isAgentCanvas, isAgentflowV2, handleSaveFlow, 
                             </Avatar>
                         </ButtonBase>
                     )}
+                    <Box sx={{ display: 'flex', alignItems: 'center', transform: 'translateY(1px)' }}>
+                        <ThemeSwitch onThemeChange={handleThemeChange} isDarkMode={isDark} />
+                    </Box>
+                    <Box sx={{ ml: 3 }}></Box>
+                    <LanguageSwitch />
+                    <Box sx={{ ml: 1.25 }}></Box>
                     <Available permission={savePermission}>
-                        <ButtonBase
-                            title={isAgentCanvas ? t('header.saveAgents') : t('header.saveChatflow')}
-                            sx={{ borderRadius: '50%', mr: 2 }}
-                        >
+                        <Tooltip title={isAgentCanvas ? t('header.saveAgents') : t('header.saveChatflow')} arrow>
+                            <ButtonBase sx={{ borderRadius: '12px', overflow: 'hidden' }}>
+                                <Avatar
+                                    variant='rounded'
+                                    sx={{
+                                        ...theme.typography.commonAvatar,
+                                        ...theme.typography.mediumAvatar,
+                                        transition: 'all .2s ease-in-out',
+                                        background: theme.palette.secondary.light,
+                                        color: theme.palette.secondary.dark,
+                                        '&:hover': {
+                                            background: customization.isDarkMode ? '#22339a80' : theme.palette.secondary.dark,
+                                            color: customization.isDarkMode ? theme.palette.grey[50] : theme.palette.secondary.light
+                                        }
+                                    }}
+                                    color='inherit'
+                                    onClick={onSaveChatflowClick}
+                                >
+                                    <IconDeviceFloppy stroke={1.5} size='1.3rem' />
+                                </Avatar>
+                            </ButtonBase>
+                        </Tooltip>
+                    </Available>
+                    <Box sx={{ ml: 1.25 }}></Box>
+                    <Tooltip title={t('canvas:settings')} arrow>
+                        <ButtonBase ref={settingsRef} sx={{ borderRadius: '12px', overflow: 'hidden' }}>
                             <Avatar
                                 variant='rounded'
                                 sx={{
                                     ...theme.typography.commonAvatar,
                                     ...theme.typography.mediumAvatar,
                                     transition: 'all .2s ease-in-out',
-                                    background: theme.palette.canvasHeader.saveLight,
-                                    color: theme.palette.canvasHeader.saveDark,
+                                    background: theme.palette.secondary.light,
+                                    color: theme.palette.secondary.dark,
                                     '&:hover': {
-                                        background: theme.palette.canvasHeader.saveDark,
-                                        color: theme.palette.canvasHeader.saveLight
+                                        background: customization.isDarkMode ? '#22339a80' : theme.palette.secondary.dark,
+                                        color: customization.isDarkMode ? theme.palette.grey[50] : theme.palette.secondary.light
                                     }
                                 }}
-                                color='inherit'
-                                onClick={onSaveChatflowClick}
+                                onClick={() => setSettingsOpen(!isSettingsOpen)}
                             >
-                                <IconDeviceFloppy stroke={1.5} size='1.3rem' />
+                                <IconSettings stroke={1.5} size='1.3rem' />
                             </Avatar>
                         </ButtonBase>
-                    </Available>
-                    <ButtonBase ref={settingsRef} title={t('canvas:settings')} sx={{ borderRadius: '50%' }}>
-                        <Avatar
-                            variant='rounded'
-                            sx={{
-                                ...theme.typography.commonAvatar,
-                                ...theme.typography.mediumAvatar,
-                                transition: 'all .2s ease-in-out',
-                                background: theme.palette.canvasHeader.settingsLight,
-                                color: theme.palette.canvasHeader.settingsDark,
-                                '&:hover': {
-                                    background: theme.palette.canvasHeader.settingsDark,
-                                    color: theme.palette.canvasHeader.settingsLight
-                                }
-                            }}
-                            onClick={() => setSettingsOpen(!isSettingsOpen)}
-                        >
-                            <IconSettings stroke={1.5} size='1.3rem' />
-                        </Avatar>
-                    </ButtonBase>
+                    </Tooltip>
                 </Box>
             </Stack>
             <Settings

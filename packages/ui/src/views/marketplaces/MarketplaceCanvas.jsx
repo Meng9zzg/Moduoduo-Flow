@@ -97,6 +97,7 @@ const MarketplaceCanvas = () => {
                                 minZoom={0.1}
                                 snapGrid={[25, 25]}
                                 snapToGrid={isSnappingEnabled}
+                                proOptions={{ hideAttribution: true }}
                             >
                                 <Controls
                                     className={customization.isDarkMode ? 'dark-mode-controls' : ''}

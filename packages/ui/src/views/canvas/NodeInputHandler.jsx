@@ -318,7 +318,7 @@ const NodeInputHandler = ({
                     for (const node of nodes) {
                         preLoadOptions.push({
                             value: `$${node.id}`,
-                            label: `Output from ${node.data.id}`
+                            label: t('nodeInput.outputFrom', { nodeId: node.data.id })
                         })
                     }
                 }
@@ -343,7 +343,7 @@ const NodeInputHandler = ({
                                     for (const key of keys) {
                                         preLoadOptions.push({
                                             value: `$flow.state.${key}`,
-                                            label: `Value from ${key}`
+                                            label: t('nodeInput.valueFrom', { key: key })
                                         })
                                     }
                                 } catch (error) {

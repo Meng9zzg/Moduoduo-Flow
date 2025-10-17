@@ -729,6 +729,7 @@ const AgentflowCanvas = () => {
                                 snapGrid={[25, 25]}
                                 snapToGrid={isSnappingEnabled}
                                 connectionLineComponent={ConnectionLine}
+                                proOptions={{ hideAttribution: true }}
                             >
                                 <Controls
                                     className={customization.isDarkMode ? 'dark-mode-controls' : ''}

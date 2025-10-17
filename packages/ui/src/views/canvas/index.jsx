@@ -74,7 +74,7 @@ const Canvas = () => {
     const chatflowId =
         URLpath[URLpath.length - 1] === 'canvas' || URLpath[URLpath.length - 1] === 'agentcanvas' ? '' : URLpath[URLpath.length - 1]
     const isAgentCanvas = URLpath.includes('agentcanvas') ? true : false
-    const canvasTitle = URLpath.includes('agentcanvas') ? 'Agent' : 'Chatflow'
+    const canvasTitle = URLpath.includes('agentcanvas') ? t('types.agent') : t('types.chatflow')
 
     const { confirm } = useConfirm()
 
@@ -567,9 +567,10 @@ const Canvas = () => {
                     enableColorOnDark
                     position='fixed'
                     color='inherit'
-                    elevation={1}
+                    elevation={0}
                     sx={{
-                        bgcolor: theme.palette.background.default
+                        bgcolor: theme.palette.background.default,
+                        borderBottom: customization.isDarkMode ? `1px solid ${theme.palette.divider}` : '1px solid rgba(0, 0, 0, 0.10)'
                     }}
                 >
                     <Toolbar>
@@ -604,6 +605,7 @@ const Canvas = () => {
                                 snapGrid={[25, 25]}
                                 snapToGrid={isSnappingEnabled}
                                 className='chatflow-canvas'
+                                proOptions={{ hideAttribution: true }}
                             >
                                 <Controls
                                     className={customization.isDarkMode ? 'dark-mode-controls' : ''}

@@ -30,6 +30,10 @@
     "connections": "连接",
     "properties": "属性",
     "untitled": "未命名{{type}}",
+    "types": {
+        "agent": "智能体工作流",
+        "chatflow": "智能体"
+    },
     "header": {
         "back": "返回",
         "editName": "编辑名称",
@@ -102,7 +106,9 @@
         "seeExample": "查看示例",
         "chooseAnOption": "选择一个选项",
         "manageLinks": "管理链接",
-        "selectModel": "选择模型"
+        "selectModel": "选择模型",
+        "outputFrom": "来自 {{nodeId}} 的输出",
+        "valueFrom": "来自 {{key}} 的值"
     },
     "node": {
         "actions": {
@@ -134,6 +140,27 @@
             "langchain": "LangChain",
             "llamaindex": "LlamaIndex",
             "utilities": "实用工具"
+        },
+        "categories": {
+            "Agents": "智能体",
+            "Memory": "记忆",
+            "Record Manager": "记录管理器",
+            "Utilities": "实用工具",
+            "Multi Agents": "多智能体",
+            "Sequential Agents": "顺序智能体",
+            "Agent Flows": "智能体流",
+            "Chat Models": "聊天模型",
+            "Chains": "链",
+            "Document Loaders": "文档加载器",
+            "Embeddings": "嵌入模型",
+            "Tools": "工具",
+            "Vector Stores": "向量存储",
+            "Text Splitters": "文本分割器",
+            "Output Parsers": "输出解析器",
+            "Retrievers": "检索器",
+            "Prompts": "提示词",
+            "Cache": "缓存",
+            "Moderation": "审核"
         }
     },
     "nodeOutput": {

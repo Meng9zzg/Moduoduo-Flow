@@ -350,6 +350,8 @@
     "vectorStore": {
         "showApi": "显示 API",
         "upsert": "上传",
+        "upsertTitle": "上传向量存储",
+        "upsertTooltip": "上传向量数据库",
         "upsertSuccess": "成功上传向量存储。您现在可以开始聊天了！",
         "securityWarning": "出于安全原因，覆盖配置默认禁用。您可以通过进入智能体搭建配置 -> 安全选项卡来更改此设置，并启用要覆盖的属性。",
         "refer": "参考",
