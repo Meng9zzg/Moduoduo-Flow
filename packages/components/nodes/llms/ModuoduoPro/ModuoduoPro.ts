@@ -116,14 +116,27 @@ class ModuoduoPro_LLMs implements INode {
 
     //@ts-ignore
     loadMethods = {
-        async listModels(_: INodeData, options: ICommonObject): Promise<INodeOptionsValue[]> {
+        async listModels(nodeData: INodeData, options: ICommonObject): Promise<INodeOptionsValue[]> {
             try {
-                const credentialData = await getCredentialData(_.credential ?? '', options)
-                const moduoduoProApiKey = getCredentialParam('moduoduoProApiKey', credentialData, _)
-                const baseURL = getCredentialParam('moduoduoProBaseURL', credentialData, _) || 'https://www.moduoduo.pro'
+                // ⭐ 关键修复：从 inputs.credentialId 读取凭证 ID
+                const credentialId = nodeData.inputs?.credentialId || nodeData.credential
 
-                console.log('Fetching models from (LLM):', `${baseURL}/v1/models`)
-                console.log('Using API Key (LLM):', moduoduoProApiKey ? `${moduoduoProApiKey.substring(0, 10)}...` : 'NOT PROVIDED')
+                if (!credentialId) {
+                    console.log('❌ No credential provided for LLM, returning empty list')
+                    return []
+                }
+
+                const credentialData = await getCredentialData(credentialId, options)
+                const moduoduoProApiKey = getCredentialParam('moduoduoProApiKey', credentialData, nodeData)
+                const baseURL = getCredentialParam('moduoduoProBaseURL', credentialData, nodeData) || 'https://www.moduoduo.pro'
+
+                if (!moduoduoProApiKey) {
+                    console.error('❌ API Key not found for LLM')
+                    return []
+                }
+
+                console.log('✅ Fetching models from (LLM):', `${baseURL}/v1/models`)
+                console.log('✅ Using API Key (LLM):', `${moduoduoProApiKey.substring(0, 10)}...`)
 
                 const response = await fetch(`${baseURL}/v1/models`, {
                     method: 'GET',
@@ -150,26 +163,13 @@ class ModuoduoPro_LLMs implements INode {
                     }))
                 }
 
-                return [
-                    { label: 'GPT-4o', name: 'gpt-4o' },
-                    { label: 'GPT-4o-mini', name: 'gpt-4o-mini' },
-                    { label: 'GPT-4-turbo', name: 'gpt-4-turbo' },
-                    { label: 'Claude-3.5-Sonnet', name: 'claude-3-5-sonnet-20241022' },
-                    { label: 'Claude-3.5-Haiku', name: 'claude-3-5-haiku-20241022' },
-                    { label: 'Gemini-1.5-Pro', name: 'gemini-1.5-pro' },
-                    { label: 'Gemini-1.5-Flash', name: 'gemini-1.5-flash' }
-                ]
+                // 如果API格式不符合预期，抛出错误
+                console.error('Unexpected API response format:', data)
+                throw new Error('Invalid API response format from Moduoduo Pro')
             } catch (error) {
                 console.error('Error loading Moduoduo Pro models:', error)
-                return [
-                    { label: 'GPT-4o', name: 'gpt-4o' },
-                    { label: 'GPT-4o-mini', name: 'gpt-4o-mini' },
-                    { label: 'GPT-4-turbo', name: 'gpt-4-turbo' },
-                    { label: 'Claude-3.5-Sonnet', name: 'claude-3-5-sonnet-20241022' },
-                    { label: 'Claude-3.5-Haiku', name: 'claude-3-5-haiku-20241022' },
-                    { label: 'Gemini-1.5-Pro', name: 'gemini-1.5-pro' },
-                    { label: 'Gemini-1.5-Flash', name: 'gemini-1.5-flash' }
-                ]
+                // 不返回默认模型，让用户知道真实的错误
+                throw error
             }
         }
     }

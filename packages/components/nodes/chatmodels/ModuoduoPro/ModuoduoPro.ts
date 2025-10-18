@@ -1,4 +1,4 @@
-import { ChatOpenAI as LangchainChatOpenAI } from '@langchain/openai'
+import { ChatOpenAI as LangchainChatOpenAI, ChatOpenAIFields } from '@langchain/openai'
 import { BaseCache } from '@langchain/core/caches'
 import { ICommonObject, IMultiModalOption, INode, INodeData, INodeOptionsValue, INodeParams } from '../../../src/Interface'
 import { getBaseClasses, getCredentialData, getCredentialParam } from '../../../src/utils'
@@ -141,34 +141,34 @@ class ModuoduoPro_ChatModels implements INode {
     //@ts-ignore
     loadMethods = {
         async listModels(nodeData: INodeData, options: ICommonObject): Promise<INodeOptionsValue[]> {
+            console.log('🔍 ModuoduoPro listModels called')
+            console.log('📋 nodeData.credential:', nodeData.credential)
+            console.log('📋 nodeData.inputs:', nodeData.inputs)
+
             try {
-                console.log('🔍 ModuoduoPro listModels called')
-                console.log('📋 nodeData:', JSON.stringify(nodeData, null, 2))
-                console.log('⚙️ options:', JSON.stringify(options, null, 2))
-
-                // 获取凭证数据 - 支持多种方式获取凭证ID
-                let credentialId = nodeData.credential
-                if (!credentialId && nodeData.inputs?.credentialId) {
-                    credentialId = nodeData.inputs.credentialId
-                }
-
+                // 关键修复：从 inputs.credentialId 读取凭证 ID（前端会把选中的凭证放在这里）
+                const credentialId = nodeData.inputs?.credentialId || nodeData.credential
                 console.log('🔑 credentialId found:', credentialId)
 
                 if (!credentialId) {
-                    console.log('❌ No credential provided, returning default models')
-                    return [
-                        { label: 'GPT-4o (No Credential)', name: 'gpt-4o', description: 'Please configure credentials first' },
-                        { label: 'GPT-4o-mini (No Credential)', name: 'gpt-4o-mini', description: 'Please configure credentials first' }
-                    ]
+                    console.log('❌ No credential provided, returning empty list to allow credential selection')
+                    // 返回空数组，提示用户先选择凭证
+                    return []
                 }
 
+                // 获取凭证数据
                 const credentialData = await getCredentialData(credentialId, options)
                 const moduoduoProApiKey = getCredentialParam('moduoduoProApiKey', credentialData, nodeData)
                 const baseURL = getCredentialParam('moduoduoProBaseURL', credentialData, nodeData) || 'https://www.moduoduo.pro'
 
+                if (!moduoduoProApiKey) {
+                    console.error('❌ API Key not found in credential data')
+                    throw new Error('Please configure Moduoduo Pro API Key in credentials')
+                }
+
                 // 动态加载模型列表，使用 API Key
-                console.log('Fetching models from:', `${baseURL}/v1/models`)
-                console.log('Using API Key:', moduoduoProApiKey ? `${moduoduoProApiKey.substring(0, 10)}...` : 'NOT PROVIDED')
+                console.log('✅ Fetching models from:', `${baseURL}/v1/models`)
+                console.log('✅ Using API Key:', `${moduoduoProApiKey.substring(0, 10)}...`)
 
                 const response = await fetch(`${baseURL}/v1/models`, {
                     method: 'GET',
@@ -239,21 +239,19 @@ class ModuoduoPro_ChatModels implements INode {
         }
         const credentialData = await getCredentialData(nodeData.credential ?? '', options)
         const moduoduoProApiKey = getCredentialParam('moduoduoProApiKey', credentialData, nodeData)
-
-        // ⭐ 关键修复：从凭证读取 Base URL
+        // ⭐ 关键修复：动态读取 Base URL
         const baseURL = getCredentialParam('moduoduoProBaseURL', credentialData, nodeData) || 'https://www.moduoduo.pro'
 
         const cache = nodeData.inputs?.cache as BaseCache
 
-        const obj: any = {
-            // ⭐ 改为 any 避免类型错误
+        const obj: ChatOpenAIFields = {
             temperature: parseFloat(temperature),
             modelName,
             openAIApiKey: moduoduoProApiKey,
             apiKey: moduoduoProApiKey,
             streaming: streaming ?? true,
             configuration: {
-                baseURL: baseURL + '/v1' // ⭐ 使用凭证中的 Base URL
+                baseURL: baseURL + '/v1' // ⭐ 使用动态 Base URL
             }
         }
 
