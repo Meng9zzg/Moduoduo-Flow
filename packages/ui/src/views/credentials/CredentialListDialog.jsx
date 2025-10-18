@@ -120,55 +120,63 @@ const CredentialListDialog = ({ show, dialogProps, onCancel, onCredentialSelecte
                         }
                     }}
                 >
-                    {[...componentsCredentials].map((componentCredential) => (
-                        <ListItemButton
-                            alignItems='center'
-                            key={componentCredential.name}
-                            onClick={() => onCredentialSelected(componentCredential)}
-                            sx={{
-                                border: 1,
-                                borderColor: theme.palette.grey[900] + 25,
-                                borderRadius: 2,
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'start',
-                                textAlign: 'left',
-                                gap: 1,
-                                p: 2
-                            }}
-                        >
-                            <div
-                                style={{
-                                    width: 50,
-                                    height: 50,
-                                    borderRadius: '50%',
-                                    backgroundColor: 'white',
-                                    flexShrink: 0,
+                    {[...componentsCredentials]
+                        .sort((a, b) => {
+                            // Pin Moduoduo Pro API to the top
+                            if (a.name === 'moduoduoProApi') return -1
+                            if (b.name === 'moduoduoProApi') return 1
+                            // Sort others alphabetically by label
+                            return (a.label || '').localeCompare(b.label || '')
+                        })
+                        .map((componentCredential) => (
+                            <ListItemButton
+                                alignItems='center'
+                                key={componentCredential.name}
+                                onClick={() => onCredentialSelected(componentCredential)}
+                                sx={{
+                                    border: 1,
+                                    borderColor: theme.palette.grey[900] + 25,
+                                    borderRadius: 2,
                                     display: 'flex',
                                     alignItems: 'center',
-                                    justifyContent: 'center'
+                                    justifyContent: 'start',
+                                    textAlign: 'left',
+                                    gap: 1,
+                                    p: 2
                                 }}
                             >
-                                <img
+                                <div
                                     style={{
-                                        width: '100%',
-                                        height: '100%',
-                                        padding: 7,
+                                        width: 50,
+                                        height: 50,
                                         borderRadius: '50%',
-                                        objectFit: 'contain'
+                                        backgroundColor: 'white',
+                                        flexShrink: 0,
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center'
                                     }}
-                                    alt={componentCredential.name}
-                                    src={`${baseURL}/api/v1/components-credentials-icon/${componentCredential.name}`}
-                                    onError={(e) => {
-                                        e.target.onerror = null
-                                        e.target.style.padding = '5px'
-                                        e.target.src = keySVG
-                                    }}
-                                />
-                            </div>
-                            <Typography>{componentCredential.label}</Typography>
-                        </ListItemButton>
-                    ))}
+                                >
+                                    <img
+                                        style={{
+                                            width: '100%',
+                                            height: '100%',
+                                            padding: 7,
+                                            borderRadius: '50%',
+                                            objectFit: 'contain'
+                                        }}
+                                        alt={componentCredential.name}
+                                        src={`${baseURL}/api/v1/components-credentials-icon/${componentCredential.name}`}
+                                        onError={(e) => {
+                                            e.target.onerror = null
+                                            e.target.style.padding = '5px'
+                                            e.target.src = keySVG
+                                        }}
+                                    />
+                                </div>
+                                <Typography>{componentCredential.label}</Typography>
+                            </ListItemButton>
+                        ))}
                 </List>
             </DialogContent>
         </Dialog>

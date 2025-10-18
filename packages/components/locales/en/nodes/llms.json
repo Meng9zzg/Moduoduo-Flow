@@ -259,5 +259,43 @@
                 "description": "Maximum number of tokens to generate"
             }
         }
+    },
+    "moduoduoPro": {
+        "label": "Moduoduo Pro",
+        "description": "Moduoduo Pro unified AI model gateway interface",
+        "category": "LLMs",
+        "credential": {
+            "label": "Connect Credential"
+        },
+        "inputs": {
+            "cache": {
+                "label": "Cache"
+            },
+            "modelName": {
+                "label": "Model Name"
+            },
+            "temperature": {
+                "label": "Temperature"
+            },
+            "maxTokens": {
+                "label": "Max Tokens"
+            },
+            "topP": {
+                "label": "Top P"
+            },
+            "frequencyPenalty": {
+                "label": "Frequency Penalty"
+            },
+            "presencePenalty": {
+                "label": "Presence Penalty"
+            },
+            "timeout": {
+                "label": "Timeout"
+            },
+            "stopSequence": {
+                "label": "Stop Sequence",
+                "description": "List of stop words to use when generating. Use comma to separate multiple stop words."
+            }
+        }
     }
 }

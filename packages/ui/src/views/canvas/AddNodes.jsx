@@ -233,7 +233,10 @@ const AddNodes = ({ nodesData, node, isAgentCanvas, isAgentflowv2, onFlowGenerat
                     const nodes = blacklistForChatflowCanvas[category]
                     result[category] = result[category].filter((nd) => !nodes.includes(nd.name))
                 }
-                filteredResult[category] = result[category]
+                // Sort nodes by label within each category
+                filteredResult[category] = result[category].sort((a, b) => {
+                    return (a.label || '').localeCompare(b.label || '')
+                })
             }
 
             setNodes(filteredResult)

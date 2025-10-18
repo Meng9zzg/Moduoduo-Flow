@@ -8,7 +8,7 @@ import { useTheme, styled } from '@mui/material/styles'
 
 // API
 import credentialsApi from '@/api/credentials'
-import client from '@/api/client'
+import axios from 'axios'
 
 // const
 import { baseURL } from '@/store/constant'

@@ -1319,5 +1319,52 @@
                 "description": "控制输出的随机性"
             }
         }
+    },
+    "moduoduoPro": {
+        "label": "Moduoduo Pro",
+        "description": "Moduoduo Pro 统一大模型网关接口",
+        "category": "聊天模型",
+        "credential": {
+            "label": "连接凭证"
+        },
+        "inputs": {
+            "cache": {
+                "label": "缓存"
+            },
+            "modelName": {
+                "label": "模型名称"
+            },
+            "temperature": {
+                "label": "温度"
+            },
+            "streaming": {
+                "label": "流式输出"
+            },
+            "maxTokens": {
+                "label": "最大令牌数"
+            },
+            "topP": {
+                "label": "Top P 概率"
+            },
+            "frequencyPenalty": {
+                "label": "频率惩罚"
+            },
+            "presencePenalty": {
+                "label": "存在惩罚"
+            },
+            "timeout": {
+                "label": "超时时间"
+            },
+            "stopSequence": {
+                "label": "停止序列",
+                "description": "生成时使用的停止词列表。使用逗号分隔多个停止词。"
+            },
+            "proxyUrl": {
+                "label": "代理地址"
+            },
+            "baseOptions": {
+                "label": "基础选项"
+            }
+        }
     }
 }
