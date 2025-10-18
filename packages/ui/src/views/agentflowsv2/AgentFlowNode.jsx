@@ -210,10 +210,7 @@ const AgentFlowNode = ({ data }) => {
                                 duplicateNode(data.id)
                             }}
                             sx={{
-                                color: customization.isDarkMode ? 'white' : 'inherit',
-                                '&:hover': {
-                                    color: theme.palette.primary.main
-                                }
+                                color: customization.isDarkMode ? 'white' : 'inherit'
                             }}
                         >
                             <IconCopy size={20} />
@@ -226,10 +223,7 @@ const AgentFlowNode = ({ data }) => {
                             deleteNode(data.id)
                         }}
                         sx={{
-                            color: customization.isDarkMode ? 'white' : 'inherit',
-                            '&:hover': {
-                                color: theme.palette.error.main
-                            }
+                            color: customization.isDarkMode ? 'white' : 'inherit'
                         }}
                     >
                         <IconTrash size={20} />
@@ -242,10 +236,7 @@ const AgentFlowNode = ({ data }) => {
                             setShowInfoDialog(true)
                         }}
                         sx={{
-                            color: customization.isDarkMode ? 'white' : 'inherit',
-                            '&:hover': {
-                                color: theme.palette.info.main
-                            }
+                            color: customization.isDarkMode ? 'white' : 'inherit'
                         }}
                     >
                         <IconInfoCircle size={20} />
