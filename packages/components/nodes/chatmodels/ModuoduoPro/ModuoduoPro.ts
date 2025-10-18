@@ -1,4 +1,4 @@
-import { ChatOpenAI as LangchainChatOpenAI, ChatOpenAIFields } from '@langchain/openai'
+import { ChatOpenAI as LangchainChatOpenAI } from '@langchain/openai'
 import { BaseCache } from '@langchain/core/caches'
 import { ICommonObject, IMultiModalOption, INode, INodeData, INodeOptionsValue, INodeParams } from '../../../src/Interface'
 import { getBaseClasses, getCredentialData, getCredentialParam } from '../../../src/utils'
@@ -142,8 +142,27 @@ class ModuoduoPro_ChatModels implements INode {
     loadMethods = {
         async listModels(nodeData: INodeData, options: ICommonObject): Promise<INodeOptionsValue[]> {
             try {
-                // 获取凭证数据
-                const credentialData = await getCredentialData(nodeData.credential ?? '', options)
+                console.log('🔍 ModuoduoPro listModels called')
+                console.log('📋 nodeData:', JSON.stringify(nodeData, null, 2))
+                console.log('⚙️ options:', JSON.stringify(options, null, 2))
+
+                // 获取凭证数据 - 支持多种方式获取凭证ID
+                let credentialId = nodeData.credential
+                if (!credentialId && nodeData.inputs?.credentialId) {
+                    credentialId = nodeData.inputs.credentialId
+                }
+
+                console.log('🔑 credentialId found:', credentialId)
+
+                if (!credentialId) {
+                    console.log('❌ No credential provided, returning default models')
+                    return [
+                        { label: 'GPT-4o (No Credential)', name: 'gpt-4o', description: 'Please configure credentials first' },
+                        { label: 'GPT-4o-mini (No Credential)', name: 'gpt-4o-mini', description: 'Please configure credentials first' }
+                    ]
+                }
+
+                const credentialData = await getCredentialData(credentialId, options)
                 const moduoduoProApiKey = getCredentialParam('moduoduoProApiKey', credentialData, nodeData)
                 const baseURL = getCredentialParam('moduoduoProBaseURL', credentialData, nodeData) || 'https://www.moduoduo.pro'
 
@@ -221,16 +240,20 @@ class ModuoduoPro_ChatModels implements INode {
         const credentialData = await getCredentialData(nodeData.credential ?? '', options)
         const moduoduoProApiKey = getCredentialParam('moduoduoProApiKey', credentialData, nodeData)
 
+        // ⭐ 关键修复：从凭证读取 Base URL
+        const baseURL = getCredentialParam('moduoduoProBaseURL', credentialData, nodeData) || 'https://www.moduoduo.pro'
+
         const cache = nodeData.inputs?.cache as BaseCache
 
-        const obj: ChatOpenAIFields = {
+        const obj: any = {
+            // ⭐ 改为 any 避免类型错误
             temperature: parseFloat(temperature),
             modelName,
             openAIApiKey: moduoduoProApiKey,
             apiKey: moduoduoProApiKey,
             streaming: streaming ?? true,
             configuration: {
-                baseURL: 'https://www.moduoduo.pro/v1'
+                baseURL: baseURL + '/v1' // ⭐ 使用凭证中的 Base URL
             }
         }
 

@@ -190,6 +190,9 @@ class ModuoduoPro_LLMs implements INode {
         const credentialData = await getCredentialData(nodeData.credential ?? '', options)
         const moduoduoProApiKey = getCredentialParam('moduoduoProApiKey', credentialData, nodeData)
 
+        // ⭐ 关键修复：从凭证读取 Base URL
+        const baseURL = getCredentialParam('moduoduoProBaseURL', credentialData, nodeData) || 'https://www.moduoduo.pro'
+
         const cache = nodeData.inputs?.cache as BaseCache
 
         const obj: any = {
@@ -198,7 +201,7 @@ class ModuoduoPro_LLMs implements INode {
             openAIApiKey: moduoduoProApiKey,
             apiKey: moduoduoProApiKey,
             configuration: {
-                baseURL: 'https://www.moduoduo.pro/v1'
+                baseURL: baseURL + '/v1' // ⭐ 使用凭证中的 Base URL
             }
         }
 

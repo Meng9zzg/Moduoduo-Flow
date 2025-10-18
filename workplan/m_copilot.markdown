@@ -597,3 +597,310 @@ participant DB as 数据库
         Gateway-->>AgentFlow: 402 余额不足
         AgentFlow-->>User: 提示充值
     end
+
+# 我之前另外一个项目是如何成功实现接入 moduoduopro 的 apikey 的
+
+# moduoduo-edu-backend 的实现原理
+
+## 核心架构图
+
+graph TB
+A[FastAPI 后端] --> B[统一聊天入口 /ai/chat]
+B --> C{意图识别}
+C -->|stem_qa| D[理科问答]
+C -->|humanities_qa| E[人文问答]
+C -->|vision_qa| F[图像理解]
+C -->|t2i| G[文生图]
+C -->|t2v| H[文生视频]
+C -->|codegen| I[代码生成]
+
+    D --> J[moduoduo-pro Gateway]
+    E --> J
+    F --> J
+    G --> J
+    H --> J
+    I --> J
+
+    J --> K[Token 扣费]
+    K --> L[返回结果]
+
+## 关键实现要点
+
+### 1. 配置管理（app/core/config.py）
+
+class Settings(BaseSettings): # === 核心配置 ===
+NEW_API_BASE_URL: str = "https://www.api.moduoduo.cn" # moduoduo-pro 网关地址
+NEW_API_KEY: str = "" # API Key（从环境变量读取）
+
+    # === 各场景使用的模型 ===
+    AI_DEFAULT_HUMANITIES_MODEL: str = "ernie-4.5-turbo-vl"  # 人文问答
+    AI_STEM_MODEL: str = "qwen3-235b-a22b-thinking-2507"    # 理科问答
+    AI_VISION_MODEL: str = "ernie-4.5-turbo-vl"             # 图像理解
+    AI_T2I_MODEL: str = "Doubao-seedream-3-0-t2i"           # 文生图
+    AI_T2V_MODEL: str = "Doubao-seedance-1-0-pro"           # 文生视频
+    AI_CODE_MODEL: str = "qwen3-coder-plus"                 # 代码生成
+
+    # === 意图识别服务（Claude）===
+    AI_INTENT_BASE_URL: str = "https://www.moduoduo.pro"
+    AI_INTENT_KEY: str = ""
+    AI_INTENT_MODEL: str = "claude-sonnet-4-20250514"
+
+    # === 请求配置 ===
+    AI_REQUEST_TIMEOUT: int = 600  # 10分钟超时
+    AI_REQUIRE_AUTH: bool = True   # 需要鉴权
+    AI_RATE_LIMIT_PER_MINUTE: int = 60  # 每分钟60次请求
+
+### 2. 核心接入逻辑（app/api/ai.py）
+
+#### 2.1 构建请求头（第 70-78 行）
+
+async def \_auth_headers(provider: str, db: AsyncSession, user: User | None) -> dict:
+"""
+核心函数：获取有效的 API Key 并构建请求头 - 支持用户级别、学校级别、全局 Key 的优先级
+"""
+rk = await resolve_effective_key(provider, db, user)
+if not rk.key:
+raise HTTPException(status_code=500, detail=f"No upstream key configured for provider={provider}")
+
+    # 关键：自动补齐 sk- 前缀
+    token = _normalize_key(provider, rk.key)
+
+    return {
+        "Authorization": f"Bearer {token}",
+        "Content-Type": "application/json",
+    }
+
+关键点：
+
+✅ API Key 可以从数据库动态读取（支持用户自己的 Key）
+✅ 自动标准化 Key 格式（补齐 sk- 前缀）
+
+#### 2.2 调用 moduoduo-pro 的三个端点
+
+A. 文本对话（第 169-195 行）
+async def \_handle_stem_qa(payload: ChatRequest, request: Request, user: User | None, db: AsyncSession):
+"""理科问答：调用 /v1/chat/completions"""
+model = settings.AI_STEM_MODEL # 选择模型
+
+    # 构建完整 URL
+    url = f"{settings.NEW_API_BASE_URL.rstrip('/')}/v1/chat/completions"
+
+    # 获取 API Key
+    headers = await _auth_headers("new_api", db, user)
+
+    # 构建请求体
+    messages = [m.model_dump() for m in payload.messages]
+    if "system" not in roles:
+        messages.insert(0, {"role": "system", "content": "你是一个理科学习助教..."})
+
+    json_payload = {
+        "model": model,
+        "messages": messages,
+        "stream": bool(payload.stream),  # 支持流式和非流式
+    }
+
+    # 发送请求
+    if payload.stream:
+        return StreamingResponse(
+            _stream_response(url, headers, json_payload),
+            media_type="text/event-stream",
+        )
+    else:
+        async with httpx.AsyncClient(timeout=settings.AI_REQUEST_TIMEOUT) as client:
+            r = await client.post(url, headers=headers, json=json_payload)
+            if r.status_code != 200:
+                raise HTTPException(status_code=r.status_code, detail=f"Upstream error: {r.text}")
+            return JSONResponse(r.json())
+
+B. 文生图（第 507-523 行）
+@router.post("/draw")
+async def draw_image(payload: DrawRequest, ...):
+"""调用 /v1/images/generations"""
+
+    # 注意：URL 不同！
+    url = f"{settings.NEW_API_BASE_URL.rstrip('/')}/v1/images/generations"
+    headers = await _auth_headers("new_api", db, user)
+
+    json_payload = {
+        "model": settings.AI_T2I_MODEL,  # 文生图模型
+        "prompt": payload.prompt,
+        "size": payload.size,
+        "n": payload.n,
+        "response_format": payload.response_format,
+    }
+
+    async with httpx.AsyncClient(timeout=settings.AI_REQUEST_TIMEOUT) as client:
+        r = await client.post(url, headers=headers, json=json_payload)
+        if r.status_code != 200:
+            raise HTTPException(status_code=r.status_code, detail=r.text)
+        return JSONResponse(r.json())
+
+C. 文生视频（第 526-554 行）
+@router.post("/video/task")
+async def video_task_submit(payload: VideoTaskSubmitRequest, ...):
+"""调用 /doubao/contents/generations/tasks（豆包特殊端点）"""
+
+    # 注意：URL 完全不同！
+    url = f"{settings.NEW_API_BASE_URL.rstrip('/')}/doubao/contents/generations/tasks"
+    headers = await _auth_headers("new_api", db, user)
+
+    json_payload = {
+        "model": payload.model or settings.AI_T2V_MODEL,
+        "content": [c.model_dump() for c in payload.content],  # 支持文本+图片
+    }
+
+    # 第一步：提交任务
+    r = await client.post(url, headers=headers, json=json_payload)
+    return JSONResponse(r.json())  # 返回 task_id
+
+# 第二步：查询任务状态
+
+@router.get("/video/task/{task_id}")
+async def video_task_fetch(task_id: str, ...):
+url = f"{settings.NEW_API_BASE_URL.rstrip('/')}/doubao/contents/generations/tasks/{task_id}"
+r = await client.get(url, headers=headers)
+return JSONResponse(r.json()) # 返回视频 URL
+
+#### 3. 流式响应处理（第 51-62 行）
+
+async def \_stream_response(url: str, headers: dict, json_payload: dict) -> AsyncIterator[bytes]:
+"""
+通用的 SSE 流式响应处理 - 透传 moduoduo-pro 的流式输出 - 逐行返回给前端
+"""
+async with httpx.AsyncClient(timeout=settings.AI_REQUEST_TIMEOUT) as client:
+async with client.stream("POST", url, headers=headers, json=json_payload) as r:
+if r.status_code != 200:
+body = await r.aread()
+raise HTTPException(status_code=r.status_code, detail=body.decode(errors="ignore"))
+
+            # 逐行读取并转发
+            async for line in r.aiter_lines():
+                if not line:
+                    continue
+                # 关键：保持 SSE 格式（data: xxx\n\n）
+                yield (line + "\n\n").encode("utf-8")
+
+对比：moduoduo-edu-backend vs Moduoduo-Agent-Flow
+对比项 moduoduo-edu-backend（Python） Moduoduo-Agent-Flow（TypeScript）
+API 调用库 httpx.AsyncClient fetch API 或 ChatOpenAI 类
+Base URL 配置 环境变量 NEW_API_BASE_URL 凭证中的 moduoduoProBaseURL
+API Key 管理 数据库存储（支持多级） Flowise 凭证系统
+流式处理 StreamingResponse + aiter_lines() LangChain 内置流式支持
+端点差异处理 手动构建不同 URL 需要在节点中区分
+Token 计费 moduoduo-pro 自动扣费 moduoduo-pro 自动扣费（相同）
+
+### 当前问题诊断
+
+您的 Chat Models 节点模型列表无法加载，根据 moduoduo-edu-backend 的实现，我发现您的代码中：
+✅ 做对的地方：
+// ModuoduoPro.ts 第 154-161 行
+const response = await fetch(`${baseURL}/v1/models`, {
+method: 'GET',
+headers: {
+'Content-Type': 'application/json',
+Authorization: `Bearer ${moduoduoProApiKey}`, // ✅ 正确
+'User-Agent': 'Flowise-ModuoduoPro-Client/1.0'
+}
+})
+
+❌ 需要修复的地方：
+// ModuoduoPro.ts 第 233 行 - 硬编码了 Base URL
+configuration: {
+baseURL: 'https://www.moduoduo.pro/v1' // ❌ 应该从凭证读取
+}
+
+// 应该改为：
+const baseURL = getCredentialParam('moduoduoProBaseURL', credentialData, nodeData) || 'https://www.moduoduo.pro'
+configuration: {
+baseURL: baseURL + '/v1' // ✅ 动态读取
+}
+
+## 完整修复方案
+
+基于 moduoduo-edu-backend 的成功经验，您的 Moduoduo-Agent-Flow 需要：
+
+修复 Chat Models 节点
+
+// packages/components/nodes/chatmodels/ModuoduoPro/ModuoduoPro.ts
+
+async init(nodeData: INodeData, \_: string, options: ICommonObject): Promise<any> {
+// ... 其他代码 ...
+
+    const credentialData = await getCredentialData(nodeData.credential ?? '', options)
+    const moduoduoProApiKey = getCredentialParam('moduoduoProApiKey', credentialData, nodeData)
+
+    // ⭐ 关键修复：动态读取 Base URL
+    const baseURL = getCredentialParam('moduoduoProBaseURL', credentialData, nodeData) || 'https://www.moduoduo.pro'
+
+    const obj: any = {
+        temperature: parseFloat(temperature),
+        modelName,
+        openAIApiKey: moduoduoProApiKey,
+        apiKey: moduoduoProApiKey,
+        streaming: streaming ?? true,
+        configuration: {
+            baseURL: baseURL + '/v1'  // ⭐ 使用动态 Base URL
+        }
+    }
+
+    // ... 其他配置 ...
+
+    const model = new ChatOpenAI(nodeData.id, obj)
+    return model
+
+}
+
+同步修复 LLMs 和 LlamaIndex 节点
+对以下文件应用相同的修复：
+
+packages/components/nodes/llms/ModuoduoPro/ModuoduoPro.ts
+packages/components/nodes/chatmodels/ModuoduoPro/ChatModuoduoPro_LlamaIndex.ts
+
+### 测试验证
+
+1. 先用 curl 测试 API
+
+# 测试模型列表（参考 edu-backend 的做法）
+
+curl -X GET "https://www.moduoduo.pro/v1/models" \
+ -H "Authorization: Bearer YOUR_API_KEY" \
+ -H "Content-Type: application/json"
+
+# 测试聊天接口
+
+curl -X POST "https://www.moduoduo.pro/v1/chat/completions" \
+ -H "Authorization: Bearer YOUR_API_KEY" \
+ -H "Content-Type: application/json" \
+ -d '{
+"model": "gpt-4o-mini",
+"messages": [{"role": "user", "content": "你好"}],
+"stream": false
+}'
+
+2. 查看后端日志
+
+# 启动开发服务器并查看日志
+
+pnpm dev
+
+应该看到类似 edu-backend 的日志：
+Fetching models from: https://www.moduoduo.pro/v1/models
+Using API Key: sk-HKgB...
+Moduoduo Pro models response: {...}
+
+# 总结：edu-backend 的成功经验
+
+统一网关地址 - 所有端点都用同一个 Base URL 前缀
+动态 API Key - 支持从数据库读取，您可以从凭证读取
+端点区分 - 文本、图片、视频使用不同的路径
+流式透传 - 直接转发 moduoduo-pro 的流式输出
+错误处理 - 捕获上游错误并友好提示
+超时配置 - 600 秒超时（视频生成需要时间）
+
+# 核心代码模式：
+
+url = f"{settings.NEW_API_BASE_URL.rstrip('/')}/v1/chat/completions"
+headers = {"Authorization": f"Bearer {api_key}"}
+response = await client.post(url, headers=headers, json=payload)
+
+Agent Flow 项目只需要确保 Base URL 从凭证动态读取，就能像 edu-backend 一样正常工作！
