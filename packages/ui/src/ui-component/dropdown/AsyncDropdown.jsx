@@ -164,8 +164,19 @@ export const AsyncDropdown = ({
                         response[j].imageSrc = imageSrc
                     }
                 }
-                if (isCreateNewOption) setOptions([...response, ...addNewOption])
-                else setOptions([...response])
+
+                // 将 ModuoduoPro 相关的模型置顶
+                const sortedResponse = response.sort((a, b) => {
+                    const isAModuoduo = a.name?.toLowerCase().includes('moduoduopro') || a.label?.toLowerCase().includes('moduoduo')
+                    const isBModuoduo = b.name?.toLowerCase().includes('moduoduopro') || b.label?.toLowerCase().includes('moduoduo')
+
+                    if (isAModuoduo && !isBModuoduo) return -1
+                    if (!isAModuoduo && isBModuoduo) return 1
+                    return 0
+                })
+
+                if (isCreateNewOption) setOptions([...sortedResponse, ...addNewOption])
+                else setOptions([...sortedResponse])
                 setLoading(false)
             }
             fetchData()
