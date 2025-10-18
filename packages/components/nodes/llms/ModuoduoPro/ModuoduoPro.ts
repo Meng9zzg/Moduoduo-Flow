@@ -122,11 +122,15 @@ class ModuoduoPro_LLMs implements INode {
                 const moduoduoProApiKey = getCredentialParam('moduoduoProApiKey', credentialData, _)
                 const baseURL = getCredentialParam('moduoduoProBaseURL', credentialData, _) || 'https://www.moduoduo.pro'
 
+                console.log('Fetching models from (LLM):', `${baseURL}/v1/models`)
+                console.log('Using API Key (LLM):', moduoduoProApiKey ? `${moduoduoProApiKey.substring(0, 10)}...` : 'NOT PROVIDED')
+
                 const response = await fetch(`${baseURL}/v1/models`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                        Authorization: `Bearer ${moduoduoProApiKey}`
+                        Authorization: `Bearer ${moduoduoProApiKey}`,
+                        'User-Agent': 'Flowise-ModuoduoPro-Client/1.0'
                     }
                 })
 

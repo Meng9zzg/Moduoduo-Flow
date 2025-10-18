@@ -148,11 +148,15 @@ class ModuoduoPro_ChatModels implements INode {
                 const baseURL = getCredentialParam('moduoduoProBaseURL', credentialData, nodeData) || 'https://www.moduoduo.pro'
 
                 // 动态加载模型列表，使用 API Key
+                console.log('Fetching models from:', `${baseURL}/v1/models`)
+                console.log('Using API Key:', moduoduoProApiKey ? `${moduoduoProApiKey.substring(0, 10)}...` : 'NOT PROVIDED')
+
                 const response = await fetch(`${baseURL}/v1/models`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                        Authorization: `Bearer ${moduoduoProApiKey}`
+                        Authorization: `Bearer ${moduoduoProApiKey}`,
+                        'User-Agent': 'Flowise-ModuoduoPro-Client/1.0'
                     }
                 })
 

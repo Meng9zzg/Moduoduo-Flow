@@ -233,8 +233,13 @@ const AddNodes = ({ nodesData, node, isAgentCanvas, isAgentflowv2, onFlowGenerat
                     const nodes = blacklistForChatflowCanvas[category]
                     result[category] = result[category].filter((nd) => !nodes.includes(nd.name))
                 }
-                // Sort nodes by label within each category
+                // Sort nodes by label within each category, with Moduoduo Pro at the top
                 filteredResult[category] = result[category].sort((a, b) => {
+                    // Pin Moduoduo Pro nodes to the top
+                    const moduoduoProNames = ['chatModuoduoPro', 'chatModuoduoProLlamaIndex', 'moduoduoPro']
+                    if (moduoduoProNames.includes(a.name)) return -1
+                    if (moduoduoProNames.includes(b.name)) return 1
+                    // Sort others alphabetically by label
                     return (a.label || '').localeCompare(b.label || '')
                 })
             }
