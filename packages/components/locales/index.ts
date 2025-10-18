@@ -22,7 +22,7 @@ export class TranslationService {
      * Load all translation files from locales directory
      */
     private loadTranslations(): void {
-        const localesDir = __dirname
+        const localesDir = path.join(process.cwd(), 'packages', 'components', 'locales')
 
         for (const lang of this.supportedLanguages) {
             const langPath = path.join(localesDir, lang, 'nodes')
@@ -74,10 +74,12 @@ export class TranslationService {
             return key
         }
 
-        // Parse key: nodes.chatOpenAI.label -> category:chatOpenAI, path: label
-        const category = parts[0] // 'nodes'
-        const nodeName = parts[1] // 'chatOpenAI'
-        const fieldPath = parts.slice(2) // ['label'] or ['inputs', 'modelName', 'label']
+        // Parse key: nodes.airtableAgent.inputs.model.label -> category:agents, nodeName:airtableAgent, path: inputs.model.label
+        const nodeName = parts[1] // 'airtableAgent'
+        const fieldPath = parts.slice(2) // ['inputs', 'model', 'label']
+
+        // Get category from node name mapping
+        const category = this.getCategoryFromNodeName(nodeName)
 
         const translationKey = `${lang}:${category}:${nodeName}`
         const nodeTranslations = this.translations.get(translationKey)
@@ -211,6 +213,47 @@ export class TranslationService {
         }
 
         return categoryMap[category] || category.toLowerCase().replace(/\s+/g, '')
+    }
+
+    /**
+     * Get category from node name
+     */
+    private getCategoryFromNodeName(nodeName: string): string {
+        // Map node names to their categories
+        const nodeCategoryMap: { [key: string]: string } = {
+            airtableAgent: 'agents',
+            csvAgent: 'agents',
+            chatOpenAI: 'chatmodels',
+            codeTextSplitter: 'textsplitters',
+            characterTextSplitter: 'textsplitters',
+            recursiveCharacterTextSplitter: 'textsplitters',
+            markdownTextSplitter: 'textsplitters',
+            htmlToMarkdownTextSplitter: 'textsplitters',
+            tokenTextSplitter: 'textsplitters',
+            structuredOutputParser: 'outputparsers',
+            structuredOutputParserAdvanced: 'outputparsers',
+            csvListOutputParser: 'outputparsers',
+            customListOutputParser: 'outputparsers',
+            vectorStoreRetriever: 'retrievers',
+            multiQueryRetriever: 'retrievers',
+            similarityThresholdRetriever: 'retrievers',
+            hydeRetriever: 'retrievers',
+            llmFilterRetriever: 'retrievers',
+            embeddingsFilterRetriever: 'retrievers',
+            cohereRerankRetriever: 'retrievers',
+            rrfRetriever: 'retrievers',
+            customRetriever: 'retrievers',
+            awsBedrockKBRetriever: 'retrievers',
+            extractMetadataRetriever: 'retrievers',
+            promptRetriever: 'retrievers',
+            jinaRerankRetriever: 'retrievers',
+            voyageAIRerankRetriever: 'retrievers',
+            promptTemplate: 'prompts',
+            chatPromptTemplate: 'prompts',
+            fewShotPromptTemplate: 'prompts'
+        }
+
+        return nodeCategoryMap[nodeName] || 'agents' // Default to agents
     }
 
     /**

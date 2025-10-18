@@ -1864,6 +1864,59 @@ git commit -m "revert(ui): 仅回滚全局毛玻璃Tooltip样式修改"
 
 ---
 
+## 2025-01-17 15:30:00 - CanvasNode 工具栏样式调整
+
+### 修改内容：
+
+-   **目标**：将 CanvasNode 的三图标操作面板样式与 AgentFlowNode 保持一致
+-   **修改文件**：`packages/ui/src/views/canvas/CanvasNode.jsx`
+
+### 具体变更：
+
+1. **容器组件统一**：
+
+    - 将 `NodeTooltip` 替换为 `StyledNodeToolbar`
+    - 使用与 AgentFlowNode 相同的样式定义
+
+2. **布局调整**：
+
+    - `ButtonGroup` 设置为垂直排列 (`flexDirection: 'column'`)
+    - 按钮尺寸统一为 `size={'small'}`
+    - 图标尺寸统一为 `size={20}`
+
+3. **样式统一**：
+
+    - 深色模式颜色：`customization.isDarkMode ? 'white' : 'inherit'`
+    - 背景样式与 AgentFlowNode 的 `StyledNodeToolbar` 完全一致
+    - 移除了原有的悬浮效果
+
+4. **定位调整**：
+    - 使用 `position="right"` 属性定位到右侧
+    - 尝试使用 `offset={0}` 实现顶部对齐
+    - 移除了 `NodeCardWrapper` 的 `position: 'relative'` 样式
+
+### 技术细节：
+
+-   添加了必要的导入：`styled`, `ButtonGroup`, `NodeToolbar`
+-   添加了 `useRef` 和 `isHovered` 状态管理
+-   移除了 `NodeTooltip` 相关的状态和函数
+-   保持了与 AgentFlowNode 相同的组件结构
+
+### 当前状态：
+
+-   工具栏基本功能正常
+-   样式与 AgentFlowNode 保持一致
+-   垂直排列布局已实现
+-   定位和显示效果需要进一步优化
+
+### 备注：
+
+-   用户反馈工具栏显示和定位存在问题
+-   建议后续继续优化工具栏的显示和定位逻辑
+-   考虑使用更稳定的定位方案
+
+---
+
 ## 下次修改时间：待定
 
 _本文档持续更新中..._
